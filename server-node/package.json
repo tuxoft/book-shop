@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "server node",
+  "name": "server-node",
   "version": "1.0.0",
   "scripts": {
     "build": "tsc && gulp copyFiles",

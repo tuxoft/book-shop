@@ -1,7 +1,7 @@
 import * as express from 'express';
 import { findById, getAll } from '../../dao';
 
-const what = 'birds';
+const what = 'books';
 
 const router = express.Router();
 

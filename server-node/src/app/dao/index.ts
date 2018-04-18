@@ -1,12 +1,8 @@
-import * as allCatsJson from './json/all-cats.json';
-import * as allBirdsJson from './json/all-birds.json';
-import * as allDogsJson from './json/all-dogs.json';
+import * as allBooksJson from './json/all-books.json';
 
 export const getAll = (what: string): any => {
   switch (what) {
-    case 'cats': return allCatsJson;
-    case 'birds': return allBirdsJson;
-    case 'dogs': return allDogsJson;
+    case 'books': return allBooksJson;
     default: return [];
   }
 };
