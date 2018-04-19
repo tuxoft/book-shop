@@ -12,7 +12,7 @@ export default router;
 ].forEach(e => router.use(e.path, e.router));
 
 // Для всех API-ресурсов устанавливаем
-// Content-Type: text/plain
+// Content-Type: application/json
 router.use((req, res, next) => {
   res.type('json');
   next();
