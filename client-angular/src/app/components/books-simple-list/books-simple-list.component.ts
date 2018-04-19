@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import { Book } from '../../model/book';
+import { BooksService } from '../../services/rest/books.service';
 
 @Component({
   selector: 'books-simple-list',
@@ -16,14 +17,9 @@ import { Book } from '../../model/book';
 export class BooksSimpleListComponent implements OnInit {
   books$: Observable<Book[]>;
 
+  constructor(private booksService: BooksService) {}
+
   ngOnInit(): void {
-    const book1: Book = {
-      id: 1234567890,
-      title: 'Огонь и ярость',
-      authors: 'Вольф М.К.',
-      price: '626 р.',
-      coverUrl: 'https://img-gorod.ru/upload/iblock/348/140_224/34873331c7e3ce02d73256cd557b2e3a.jpg',
-    };
-    this.books$ = Observable.of([book1]);
+    this.books$ = this.booksService.get();
   }
 }

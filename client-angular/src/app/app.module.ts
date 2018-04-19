@@ -8,6 +8,8 @@ import { BooksSimpleListComponent } from './components/books-simple-list/books-s
 import { ShopHeaderComponent } from './components/shop-header/shop-header.component';
 import { ButtonModule } from 'primeng/primeng';
 import { ShopMenuHorizontalComponent } from './components/shop-menu-horizontal/shop-menu-horizontal.component';
+import { HttpClientModule } from '@angular/common/http';
+import { BooksService } from './services/rest/books.service';
 
 
 @NgModule({
@@ -21,8 +23,9 @@ import { ShopMenuHorizontalComponent } from './components/shop-menu-horizontal/s
   imports: [
     BrowserModule,
     ButtonModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [BooksService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
