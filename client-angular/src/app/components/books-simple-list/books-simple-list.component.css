@@ -4,6 +4,10 @@
 
 .book-list-item {
   display: inline-block;
-  margin: 5px 10px 0 5px;
+  margin: 10px 15px 0 10px;
   width: 150px;
+  height: 372px;
+  border-color: #fff;
+  box-shadow: 0 0 5px 0 rgba(0,0,0,.3);
+  vertical-align: top;
 }
