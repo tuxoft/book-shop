@@ -8,9 +8,9 @@ describe('ShopMenuHorizontalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ShopMenuHorizontalComponent ]
+      declarations: [ShopMenuHorizontalComponent],
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

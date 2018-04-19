@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-
 import { AppComponent } from './app.component';
 import { BookSimpleViewComponent } from './components/book-simple-view/book-simple-view.component';
 import { BooksSimpleListComponent } from './components/books-simple-list/books-simple-list.component';
@@ -10,7 +9,8 @@ import { ButtonModule } from 'primeng/primeng';
 import { ShopMenuHorizontalComponent } from './components/shop-menu-horizontal/shop-menu-horizontal.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BooksService } from './services/rest/books.service';
-
+import { MegaMenuModule } from 'primeng/megamenu';
+import { MenubarModule } from 'primeng/menubar';
 
 @NgModule({
   declarations: [
@@ -24,6 +24,8 @@ import { BooksService } from './services/rest/books.service';
     BrowserModule,
     ButtonModule,
     HttpClientModule,
+    MegaMenuModule,
+    MenubarModule,
   ],
   providers: [BooksService],
   bootstrap: [AppComponent],
