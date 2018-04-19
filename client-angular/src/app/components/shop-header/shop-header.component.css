@@ -1,0 +1,22 @@
+.header-logo {
+  font-size: 30px;
+  padding: 10px;
+}
+
+.search-input {
+  width: 80%;
+  border-radius: 5px 0 0 5px;
+  height: 30px;
+}
+
+.search-container {
+  padding: 10px;
+}
+
+.search-button {
+  width: 30px;
+}
+
+.cart-label {
+  width: 14px;
+}
