@@ -22,7 +22,7 @@ export class BooksSimpleListComponent implements OnInit {
       title: 'Огонь и ярость',
       authors: 'Вольф М.К.',
       price: '626 р.',
-      coverUrl: 'https://img-gorod.ru/upload/iblock/348/140_224/34873331c7e3ce02d73256cd557b2e3a.jpg',
+      coverUrl: '/public/images/covers/34873331c7e3ce02d73256cd557b2e3a.jpg',
     };
     this.books$ = Observable.of([book1]);
   }
