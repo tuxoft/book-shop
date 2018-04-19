@@ -11,7 +11,7 @@ import { Book } from '../../model/book';
       <div>{{book.price}}</div>
       <img src="{{book.coverUrl}}"/>
     </span>
-  `
+  `,
 })
 export class BookSimpleViewComponent {
   @Input() book: Book;
