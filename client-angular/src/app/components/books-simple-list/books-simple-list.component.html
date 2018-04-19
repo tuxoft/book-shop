@@ -1,0 +1,5 @@
+<div class="book-list-container">
+  <div *ngFor="let book of books$ | async" class="book-list-item">
+    <book-simple-view [book]="book"></book-simple-view>
+  </div>
+</div>

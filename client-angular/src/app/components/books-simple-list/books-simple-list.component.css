@@ -1,0 +1,9 @@
+.book-list-container {
+  padding: 5px;
+}
+
+.book-list-item {
+  display: inline-block;
+  margin: 5px 10px 0 5px;
+  width: 150px;
+}
