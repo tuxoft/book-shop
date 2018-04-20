@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
-import { Book } from '../../model/book';
+import { BookOld } from '../../model/book-old';
 import { BooksService } from '../../services/rest/books.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { BooksService } from '../../services/rest/books.service';
   styleUrls: ['./books-simple-list.component.css'],
 })
 export class BooksSimpleListComponent implements OnInit {
-  books$: Observable<Book[]>;
+  books$: Observable<BookOld[]>;
 
   constructor(private booksService: BooksService) { }
 

@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Book } from '../../model/book';
+import { BookOld } from '../../model/book-old';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class BooksService {
   private booksUrl = 'api/books';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  get(): Observable<Book[]> {
-    return this.http.get<Book[]>(this.booksUrl);
+  get(): Observable<BookOld[]> {
+    return this.http.get<BookOld[]>(this.booksUrl);
   }
 
-  getById(id: number): Observable<Book[]> {
+  getById(id: number): Observable<BookOld[]> {
     const url = `${this.booksUrl}/${id}`;
-    return this.http.get<Book[]>(url);
+    return this.http.get<BookOld[]>(url);
   }
 }

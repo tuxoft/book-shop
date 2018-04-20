@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Book } from '../../model/book';
+import { BookOld } from '../../model/book-old';
 
 @Component({
   selector: 'book-card',
@@ -7,5 +7,5 @@ import { Book } from '../../model/book';
   styleUrls: ['./book-card.component.css'],
 })
 export class BookCardComponent {
-  @Input() book: Book;
+  @Input() book: BookOld;
 }
