@@ -1,5 +1,5 @@
 import * as express from 'express';
-import { findById, getAll, getBestSellers, getLatestsBooks } from '../../dao';
+import { getAll, getBooksBestsellers, getBooksLatests, getByIds } from '../../dao';
 import { sendData } from '../../utils/response.util';
 
 const what = 'books';
@@ -12,14 +12,15 @@ router.get('/', (req, res) => {
   sendData(req, res, getAll(what));
 });
 
-router.get('/best-sellers', (req, res) => {
-  sendData(req, res, getBestSellers());
+router.get('/bestsellers', (req, res) => {
+  sendData(req, res, getBooksBestsellers());
 });
 
 router.get('/latests', (req, res) => {
-  sendData(req, res, getLatestsBooks());
+  sendData(req, res, getBooksLatests());
 });
 
-router.get('/:id', (req, res) => {
-  sendData(req, res, findById(what, req.params.id));
+router.get('/:ids', (req, res) => {
+  const ids: string[] = req.params.ids.split(',');
+  sendData(req, res, getByIds(what, ids));
 });
