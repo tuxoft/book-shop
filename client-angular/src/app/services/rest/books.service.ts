@@ -17,4 +17,14 @@ export class BooksService {
     const url = `${this.booksUrl}/${id}`;
     return this.http.get<Book[]>(url);
   }
+
+  getBestSellers(): Observable<Book[]> {
+    const url = `${this.booksUrl}/best-sellers`;
+    return this.http.get<Book[]>(url);
+  }
+
+  getLatests(): Observable<Book[]> {
+    const url = `${this.booksUrl}/latests`;
+    return this.http.get<Book[]>(url);
+  }
 }
