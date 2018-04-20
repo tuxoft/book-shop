@@ -18,13 +18,13 @@ export class BooksService {
     return this.http.get<BookOld[]>(url);
   }
 
-  getBestSellers(): Observable<Book[]> {
+  getBestSellers(): Observable<BookOld[]> {
     const url = `${this.booksUrl}/best-sellers`;
-    return this.http.get<Book[]>(url);
+    return this.http.get<BookOld[]>(url);
   }
 
-  getLatests(): Observable<Book[]> {
+  getLatests(): Observable<BookOld[]> {
     const url = `${this.booksUrl}/latests`;
-    return this.http.get<Book[]>(url);
+    return this.http.get<BookOld[]>(url);
   }
 }

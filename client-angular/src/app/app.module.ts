@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BooksService } from './services/rest/books.service';
 import { MegaMenuModule } from 'primeng/megamenu';
 import { MenubarModule } from 'primeng/menubar';
+import { CartLogoComponent } from './components/cart-logo/cart-logo.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { MenubarModule } from 'primeng/menubar';
     BooksSimpleListComponent,
     ShopHeaderComponent,
     ShopMenuHorizontalComponent,
+    CartLogoComponent,
   ],
   imports: [
     BrowserModule,
