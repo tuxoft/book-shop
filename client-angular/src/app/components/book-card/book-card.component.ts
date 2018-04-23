@@ -8,4 +8,8 @@ import { BookOld } from '../../model/book-old';
 })
 export class BookCardComponent {
   @Input() book: BookOld;
+
+  addToCart() {
+    console.log('added to cart');
+  }
 }
