@@ -2,9 +2,9 @@ import { Controller, Get, Post, Body } from '@nestjs/common';
 import { PhotoService } from './photo.service';
 import { Photo } from './photo.entity';
 
-@Controller('/api/photo')
+@Controller('photo')
 export class PhotoController {
-  constructor(private readonly photoService: PhotoService) {}
+  constructor(private readonly photoService: PhotoService) { }
 
   @Get()
   findAll(): Promise<Photo[]> {

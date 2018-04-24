@@ -4,7 +4,7 @@
     <img src="{{book.coverUrl}}" />
   </div>
   <span>{{book.title}}</span>
-  <span>{{book.authors}}</span>
+  <span *ngFor="let author of book.authors">{{author.name}}</span>
   <span>{{book.price}}</span>
   <button pButton type="button" label="В корзину" (click)="addToCart()"></button>
 </div>

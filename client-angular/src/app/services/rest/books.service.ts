@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { BookOld } from '../../model/book-old';
+import { Book } from '../../model/book';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable()
@@ -9,22 +9,22 @@ export class BooksService {
 
   constructor(private http: HttpClient) { }
 
-  get(): Observable<BookOld[]> {
-    return this.http.get<BookOld[]>(this.booksUrl);
+  get(): Observable<Book[]> {
+    return this.http.get<Book[]>(this.booksUrl);
   }
 
-  getById(id: number): Observable<BookOld[]> {
+  getById(id: number): Observable<Book[]> {
     const url = `${this.booksUrl}/${id}`;
-    return this.http.get<BookOld[]>(url);
+    return this.http.get<Book[]>(url);
   }
 
-  getBestSellers(): Observable<BookOld[]> {
+  getBestSellers(): Observable<Book[]> {
     const url = `${this.booksUrl}/best-sellers`;
-    return this.http.get<BookOld[]>(url);
+    return this.http.get<Book[]>(url);
   }
 
-  getLatests(): Observable<BookOld[]> {
+  getLatests(): Observable<Book[]> {
     const url = `${this.booksUrl}/latests`;
-    return this.http.get<BookOld[]>(url);
+    return this.http.get<Book[]>(url);
   }
 }
