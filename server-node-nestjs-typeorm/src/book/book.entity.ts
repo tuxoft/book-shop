@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { City } from '../city/city.entity';
 
 @Entity()
 export class Book {
@@ -70,11 +71,12 @@ export class Book {
    */
   // @Column()
   // authors?: BookAuthor[];
+
   /**
    * город издания
    */
-  // @Column()
-  // city?: City;
+  @ManyToOne(type => City)
+  city: City;
   /**
    * язык издания
    */
