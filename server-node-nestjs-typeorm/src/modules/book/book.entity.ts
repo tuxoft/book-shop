@@ -1,7 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany, ManyToMany } from 'typeorm';
 import { City } from '../city/city.entity';
 import { Publisher } from '../publisher/publisher.entity';
 import { BookAuthor } from '../book-author/book-author.entity';
+import { Language } from '../language/language.entity';
+import { BookSeries } from '../bookSeries/book-series.entity';
+import { Category } from '../category/category.entity';
 
 @Entity()
 export class Book {
@@ -89,21 +92,25 @@ export class Book {
    */
   @ManyToOne(type => City)
   city: City;
+
   /**
    * язык издания
    */
-  // @Column()
-  // language?: Language;
+  @ManyToOne(type => Language)
+  language: Language;
+
   /**
    * серия книг
    */
-  // @Column()
-  // bookSeries?: BookSeries;
+  @ManyToOne(type => BookSeries)
+  bookSeries: BookSeries;
+
   /**
    * категории(жанр) книги
    */
-  // @Column()
-  // categories?: Category[];
+  @ManyToMany(type => Category, category => category.books)
+  categories: Category[];
+
   /**
    * URL обложки книги
    */

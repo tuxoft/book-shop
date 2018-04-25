@@ -5,6 +5,7 @@ import { CityModule } from './modules/city/city.module';
 import { PublisherModule } from './modules/publisher/publisher.module';
 import { AuthorModule } from './modules/author/author.module';
 import { BookAuthorModule } from './modules/book-author/book-author.module';
+import { CategoryModule } from './modules/category/category.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { BookAuthorModule } from './modules/book-author/book-author.module';
     CityModule,
     PublisherModule,
     AuthorModule,
-    BookAuthorModule],
+    BookAuthorModule,
+    CategoryModule],
 })
 export class ApplicationModule { }
