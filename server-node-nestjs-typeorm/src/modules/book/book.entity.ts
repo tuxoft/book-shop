@@ -1,5 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany } from 'typeorm';
 import { City } from '../city/city.entity';
+import { Publisher } from '../publisher/publisher.entity';
+import { BookAuthor } from '../book-author/book-author.entity';
 
 @Entity()
 export class Book {
@@ -21,56 +23,66 @@ export class Book {
    */
   @Column()
   edition?: number;
+
   /**
    * международный стандартный книжный номер
    */
   @Column()
   ISBN?: string;
+
   /**
    * индекс Универсальной десятичной классификации
    */
   @Column()
   UDC?: string;
+
   /**
    * индекс Библиотечно - библиографической классификации
    */
   @Column()
   BBK?: string;
+
   /**
    * авторский знак
    */
   @Column()
   cutterCode?: string;
+
   /**
    * год издания
    */
   @Column()
   publicationYear?: Date;
+
   /**
    * тираж
    */
   @Column()
   circulation?: number;
+
   /**
    * цена
    */
   @Column()
   price?: number;
+
   /**
    * в наличии
    */
   @Column()
   inStock?: number;
+
   /**
    * издательство
    */
-  // @Column()
-  // publisher?: Publisher;
+  @ManyToOne(type => Publisher)
+  publisher: Publisher;
+
   /**
    * авторы книги
    */
-  // @Column()
-  // authors?: BookAuthor[];
+  @OneToMany(type => BookAuthor, bookAuthor => bookAuthor.book)
+  authors?: BookAuthor[];
 
   /**
    * город издания

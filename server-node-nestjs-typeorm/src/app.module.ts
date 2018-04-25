@@ -1,10 +1,18 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { PhotoModule } from './photo/photo.module';
-import { BookModule } from './book/book.module';
-import { CityModule } from './city/city.module';
+import { BookModule } from './modules/book/book.module';
+import { CityModule } from './modules/city/city.module';
+import { PublisherModule } from './modules/publisher/publisher.module';
+import { AuthorModule } from './modules/author/author.module';
+import { BookAuthorModule } from './modules/book-author/book-author.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(), PhotoModule, BookModule, CityModule],
+  imports: [
+    TypeOrmModule.forRoot(),
+    BookModule,
+    CityModule,
+    PublisherModule,
+    AuthorModule,
+    BookAuthorModule],
 })
 export class ApplicationModule { }
