@@ -10,26 +10,32 @@
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "lint:fix": "yarn lint -- --fix",
     "prestart:prod": "tsc",
-    "start:prod": "node dist/server.js"
+    "start:prod": "node dist/server.js",
+    "generate-db": "nodemon",
+    "migrate:generate": "ts-node ./node_modules/typeorm/cli.js migration:generate -n Init -d ./src/database/migrations",
+    "migrate:create": "ts-node ./node_modules/typeorm/cli.js migration:create -n -d ./src/database/migrations",
+    "migrate:drop": "ts-node ./node_modules/typeorm/cli.js schema:drop",
+    "migrate:sync": "ts-node ./node_modules/typeorm/cli.js schema:sync"
   },
   "dependencies": {
     "@nestjs/common": "^4.5.0",
     "@nestjs/core": "^4.5.0",
     "@nestjs/typeorm": "^2.0.0",
+    "body-parser": "^1.18.2",
+    "class-validator": "^0.7.3",
+    "express": "^4.15.3",
+    "morgan": "^1.8.2",
     "mysql": "^2.14.1",
     "redis": "^2.7.1",
     "reflect-metadata": "^0.1.10",
     "rxjs": "^5.4.3",
-    "typeorm": "0.1.0-alpha.40",
-    "typescript": "^2.4.2",
-    "body-parser": "^1.18.2",
-    "class-validator": "^0.7.3",
-    "express": "^4.15.3",
-    "morgan": "^1.8.2"
+    "typeorm": "^0.2.0-alpha.46",
+    "typescript": "^2.4.2"
   },
   "devDependencies": {
     "@types/node": "^7.0.41",
-    "ts-node": "^3.3.0",
+    "typescript": "~2.5.3",
+    "ts-node": "~4.1.0",
     "nodemon": "^1.11.0"
   }
 }

@@ -44,6 +44,11 @@ export class Book {
    */
   @Column()
   BBK?: string;
+  /**
+   * индекс Библиотечно - библиографической классификации
+   */
+  @Column()
+  BBC?: string;
 
   /**
    * авторский знак
@@ -54,7 +59,7 @@ export class Book {
   /**
    * год издания
    */
-  @Column()
+  @Column('datetime')
   publicationYear?: Date;
 
   /**
