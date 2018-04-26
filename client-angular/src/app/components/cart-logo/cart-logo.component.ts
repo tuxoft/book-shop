@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Store, select } from '@ngrx/store';
+import { StoreState } from '../../store/reducers';
+import { Observable } from 'rxjs/Observable';
+import * as CartSelectors from '../../store/cart/cart.selectors';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart-logo',
@@ -7,9 +12,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartLogoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store: Store<StoreState>, private router: Router) { }
+
+  numProducts$: Observable<number>;
 
   ngOnInit() {
+    this.numProducts$ = this.store.select(CartSelectors.getCartOrderItemCount);
   }
 
+  redirectToCart() {
+    this.router.navigate(['/cart']);
+  }
 }

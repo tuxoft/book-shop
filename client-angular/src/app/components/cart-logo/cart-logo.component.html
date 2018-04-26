@@ -1,8 +1,8 @@
 <div class="preview">
-  <button type="button" class="circle">
+  <button type="button" class="cart-button" (click)="redirectToCart()">
     <img src="../../../assets/cart_white.svg" alt="cart" />
     <div class="indicator">
-      <span>{{numProducts}}</span>
+      <span>{{numProducts$ | async}}</span>
     </div>
   </button>
 </div>

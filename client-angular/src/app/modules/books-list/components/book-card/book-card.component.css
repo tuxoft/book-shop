@@ -1,0 +1,17 @@
+.book-cover-img {
+  text-align: center;
+}
+
+.book-card {
+  margin: 2px;
+  text-align: center;
+}
+
+.book-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.book-price {
+  margin-top: 2px;
+}

@@ -1,10 +1,11 @@
 <div class="book-card">
-  <!-- <div>{{book.id}}</div> -->
   <div class="book-cover-img">
     <img src="{{book.coverUrl}}" />
   </div>
-  <span>{{book.title}}</span>
-  <span *ngFor="let author of book.authors">{{author.name}}</span>
-  <span>{{book.price}}</span>
+  <div class="book-title">{{book.title}}</div>
+  <div *ngFor="let author of book.authorsString">
+    {{author}}
+  </div>
+  <div class="book-price">Цена: {{book.price}} р.</div>
   <button pButton type="button" label="В корзину" (click)="addToCart()"></button>
 </div>

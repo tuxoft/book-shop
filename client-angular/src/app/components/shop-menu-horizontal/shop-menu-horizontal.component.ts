@@ -19,6 +19,7 @@ export class ShopMenuHorizontalComponent implements OnInit {
           {
             label: 'Книги',
             icon: 'fa fa-book',
+            routerLink: [''],
           },
           {
             label: 'Журналы',
