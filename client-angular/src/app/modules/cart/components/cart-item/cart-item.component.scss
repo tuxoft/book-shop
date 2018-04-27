@@ -1,12 +1,16 @@
 @import "../../cart.styles";
 
 .cart-items {
-  display: block;
-  height: 30px;
+  display: flex;
+  height: 80px;
   border-bottom: 1px solid #b3b3b3;
   color: grey;
-  font-size: 12px;
   line-height: 30px;
+  margin: 0 auto;
+  .cart-items-checkbox {
+    display: inline-block;
+    align-self: center;
+  }
   .cart-items-product {
     width: 550px;
     margin-left: 35px;
