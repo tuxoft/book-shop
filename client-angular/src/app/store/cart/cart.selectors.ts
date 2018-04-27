@@ -4,9 +4,11 @@ import { CartState } from './cart.state';
 export const getCartState = createFeatureSelector<CartState>('cartState');
 
 export const getCartOrderItems = createSelector(
-  getCartState, (state: CartState) => state.orderItemIds
-    .map(id => state.orderItems[id]),
-);
+  getCartState, (state: CartState) => {
+    const ids = state.orderItemIds.toJS();
+    const orderItems = state.orderItems.toJS();
+    return ids.map(id => orderItems[id]);
+  });
 
 export const getCartOrderItemCount = createSelector(
   getCartState,

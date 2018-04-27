@@ -17,6 +17,10 @@ import { Book } from './book';
  */
 export interface OrderItem {
   /**
+  * уникальный идентификатор элемента корзины
+  */
+  id?: number;
+  /**
    * Книга
    */
   book?: Book;

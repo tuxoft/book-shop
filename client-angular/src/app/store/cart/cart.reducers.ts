@@ -8,10 +8,11 @@ export const initialState: CartState = new CART_STATE_RECORD() as CartState;
 export function cartStateReducer(state = initialState, { type, payload }: any): CartState {
   let payloadOrderItemId;
   let payloadOrderItemIds;
+  let payloadOrderItem;
 
   switch (type) {
     case CartActions.ADD_TO_CART:
-      payloadOrderItemId = payload.book.id;
+      payloadOrderItemId = payload.id;
 
       // return the same state if the item is already included.
       if (state.orderItemIds.includes(payloadOrderItemId)) {
@@ -20,8 +21,10 @@ export function cartStateReducer(state = initialState, { type, payload }: any): 
 
       payloadOrderItemIds = state.orderItemIds.push(payloadOrderItemId);
 
+      payloadOrderItem = { [payloadOrderItemId]: payload };
+
       return state.merge({
-        orderItems: state.orderItems.push(payload),
+        orderItems: state.orderItems.merge(payloadOrderItem),
         orderItemIds: payloadOrderItemIds,
       }) as CartState;
   }

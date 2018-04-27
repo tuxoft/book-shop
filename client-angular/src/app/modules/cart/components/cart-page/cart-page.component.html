@@ -1,5 +1,17 @@
-<div class="ui-g">
+<div class="cart-container standart-theme">
+  <div class="cart-header">
+    <span>Корзина: {{itemsCount$ | async}}</span>
+  </div>
   <div class="check-all">
     <p-checkbox label="Выбрать всё"></p-checkbox>
+  </div>
+  <div class="cart-items-header">
+    <div class="cart-items-header-product">Товар</div>
+    <div class="cart-items-header-count">Количество</div>
+    <div class="cart-items-header-weight">Вес</div>
+    <div class="cart-items-header-total">Сумма</div>
+  </div>
+  <div *ngFor="let cartItem of cartItems$ | async" class="cart-item">
+    <app-cart-item [item]="cartItem"></app-cart-item>
   </div>
 </div>

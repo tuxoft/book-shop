@@ -1,0 +1,25 @@
+$small: 1024px;
+$large: 1360px;
+$productWidthSmall: 550px;
+$productWidthLarge: 970px;
+$countWidth: 115px;
+$weightWidth: 80px;
+$totalWidth: 80px;
+
+@mixin respond-to($media) {
+  @if $media == handhelds {
+    @media only screen and (max-width: $small) {
+      @content;
+    }
+  }
+  @else if $media == medium-screens {
+    @media only screen and (min-width: $small + 1) and (max-width: $large - 1) {
+      @content;
+    }
+  }
+  @else if $media == wide-screens {
+    @media only screen and (min-width: $large) {
+      @content;
+    }
+  }
+}

@@ -15,6 +15,8 @@ import { storeReducers } from './store/reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { CheckboxModule } from 'primeng/checkbox';
 import { routes } from './app.routes';
+import { ButtonModule } from 'primeng/primeng';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +32,7 @@ import { routes } from './app.routes';
     MegaMenuModule,
     MenubarModule,
     CheckboxModule,
+    ButtonModule,
     StoreModule.forRoot(storeReducers),
     StoreDevtoolsModule.instrument({
       maxAge: 50,

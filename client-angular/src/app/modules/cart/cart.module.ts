@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { routes } from './cart.routes';
 import { CartPageComponent } from './components/cart-page/cart-page.component';
 import { CheckboxModule } from 'primeng/checkbox';
+import { CartItemComponent } from './components/cart-item/cart-item.component';
 
 @NgModule({
   imports: [
@@ -13,6 +14,7 @@ import { CheckboxModule } from 'primeng/checkbox';
   ],
   declarations: [
     CartPageComponent,
+    CartItemComponent,
   ],
 })
 export class CartModule { }

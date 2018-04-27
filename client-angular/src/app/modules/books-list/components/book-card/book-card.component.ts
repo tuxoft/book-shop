@@ -19,9 +19,14 @@ export class BookCardComponent {
   addToCart() {
     console.log('added to cart');
     this.store.dispatch(new CartActions.AddToCart({
+      id: this.randomInt(0, 100000),
       book: this.book,
       count: 4,
     }));
+  }
+
+  randomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
   getAuthorsAsString(authors: string[]): string {
