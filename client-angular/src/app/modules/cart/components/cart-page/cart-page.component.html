@@ -1,4 +1,4 @@
-<div class="cart-container standart-theme">
+<div class="cart-container standart-theme" *ngIf="(itemsCount$ | async) > 0 else emptyCart">
   <div class="cart-header">
     <span>Корзина: {{itemsCount$ | async}}</span>
   </div>
@@ -15,3 +15,10 @@
     <app-cart-item [item]="cartItem"></app-cart-item>
   </div>
 </div>
+<ng-template #emptyCart>
+  <div class="cart-container standart-theme">
+    <div class="cart-header">
+      Корзина пуста
+    </div>
+  </div>
+</ng-template>

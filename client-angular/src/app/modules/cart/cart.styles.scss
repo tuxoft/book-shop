@@ -1,10 +1,11 @@
 $small: 1024px;
 $large: 1360px;
 $productWidthSmall: 550px;
-$productWidthLarge: 970px;
-$countWidth: 115px;
-$weightWidth: 80px;
+$productWidthLarge: 920px;
+$countWidth: 150px;
+$weightWidth: 100px;
 $totalWidth: 80px;
+$checkboxWidth: 20px;
 
 @mixin respond-to($media) {
   @if $media == handhelds {

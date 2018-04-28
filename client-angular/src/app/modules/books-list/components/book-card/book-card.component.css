@@ -5,6 +5,10 @@
 .book-card {
   margin: 2px;
   text-align: center;
+  height: 396px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .book-title {
@@ -14,4 +18,8 @@
 
 .book-price {
   margin-top: 2px;
+}
+
+.add-to-cart-button-container {
+  margin-bottom: 5px;
 }

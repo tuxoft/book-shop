@@ -5,12 +5,14 @@ import { routes } from './cart.routes';
 import { CartPageComponent } from './components/cart-page/cart-page.component';
 import { CheckboxModule } from 'primeng/checkbox';
 import { CartItemComponent } from './components/cart-item/cart-item.component';
+import { InputTextModule } from 'primeng/inputtext';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     CheckboxModule,
+    InputTextModule,
   ],
   declarations: [
     CartPageComponent,

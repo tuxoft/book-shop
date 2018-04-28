@@ -2,4 +2,32 @@
   <div class="cart-items-checkbox">
     <p-checkbox></p-checkbox>
   </div>
+  <div class="cart-items-product">
+    <div class="cart-items-product-img-container">
+      <img src="{{item.book.coverUrl}}" class="cart-items-product-img" />
+    </div>
+    <div class="cart-items-product-title-container">
+      <div class="cart-items-product-title">
+        <span class="cart-items-product-book-title">
+          {{item.book.title}}
+        </span>
+        <span>
+          {{getAuthorsAsString(item.book.authorsString)}}
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="cart-items-count">
+    <div class="cart-items-count-change-control">
+      -
+    </div>
+    <input type="text" pInputText class="cart-items-count-input" />
+    <div class="cart-items-count-change-control">
+      +
+    </div>
+  </div>
+  <div class="cart-items-weight"></div>
+  <div class="cart-items-total">
+    {{item.book.price}}
+  </div>
 </div>

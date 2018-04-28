@@ -13,7 +13,15 @@ export class CartItemComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  getAuthorsAsString(authors: string[]): string {
+    return authors
+      .reduce(
+        (total, author) => total === ''
+          ? author
+          : total.concat(', ', author),
+        '');
   }
 
+  ngOnInit() {
+  }
 }

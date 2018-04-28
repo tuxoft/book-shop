@@ -7,5 +7,7 @@
     {{author}}
   </div>
   <div class="book-price">Цена: {{book.price}} р.</div>
-  <button pButton type="button" label="В корзину" (click)="addToCart()"></button>
+  <div class="add-to-cart-button-container">
+    <button pButton type="button" label="В корзину" (click)="addToCart()"></button>
+  </div>
 </div>

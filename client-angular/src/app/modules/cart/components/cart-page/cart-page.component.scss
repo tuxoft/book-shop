@@ -25,14 +25,14 @@
   line-height: 30px;
   .cart-items-header-product {
     width: 550px;
-    margin-left: 35px;
+    margin-left: 35px + $checkboxWidth;
     text-align: left;
     display: inline-block;
     @include respond-to(medium-screens) {
-      width: $productWidthSmall;
+      width: $productWidthSmall - $checkboxWidth;
     }
     @include respond-to(wide-screens) {
-      width: $productWidthLarge;
+      width: $productWidthLarge - $checkboxWidth;
     }
   }
   .cart-items-header-count {

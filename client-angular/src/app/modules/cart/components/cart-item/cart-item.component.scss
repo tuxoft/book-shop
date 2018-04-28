@@ -2,11 +2,11 @@
 
 .cart-items {
   display: flex;
-  height: 80px;
-  border-bottom: 1px solid #b3b3b3;
-  color: grey;
+
+  height: 175px;
   line-height: 30px;
-  margin: 0 auto;
+  margin: 5px auto;
+  font-size: 18px;
   .cart-items-checkbox {
     display: inline-block;
     align-self: center;
@@ -15,18 +15,57 @@
     width: 550px;
     margin-left: 35px;
     text-align: left;
-    display: inline-block;
+    display: flex;
     @include respond-to(medium-screens) {
-      width: $productWidthSmall;
+      width: $productWidthSmall - 25;
     }
     @include respond-to(wide-screens) {
-      width: $productWidthLarge;
+      width: $productWidthLarge - 25;
+    }
+    .cart-items-product-img-container {
+      display: inline-block;
+      .cart-items-product-img {
+        height: 170px;
+      }
+      margin-right: 10px;
+    }
+    .cart-items-product-title-container {
+      display: inline-block;
+      .cart-items-product-title {
+        display: flex;
+        flex-direction: column;
+        .cart-items-product-book-title {
+          font-weight: bold;
+          margin-bottom: 5px;
+        }
+      }
     }
   }
   .cart-items-count {
     width: $countWidth;
     text-align: left;
-    display: inline-block;
+    display: flex;
+    flex-direction: row;
+    align-self: flex-start;
+    margin-top: 10px;
+    height: 30px;
+    .cart-items-count-change-control {
+      cursor: pointer;
+      width: 30px;
+      font-size: 30px;
+      line-height: 25px;
+      color: #b3b3b3;
+      height: 30px;
+      box-sizing: border-box;
+      border: 1px solid #b3b3b3;
+      border-radius: 3px;
+      background-color: #fff;
+      text-align: center;
+      margin: 0 3px; 
+    }
+    .cart-items-count-input {
+      width: 40px;
+    }
   }
   .cart-items-weight {
     width: $weightWidth;
@@ -35,5 +74,6 @@
   .cart-items-total {
     width: $totalWidth;
     display: inline-block;
+    margin: 10px 0 0 15px;
   }
 }
