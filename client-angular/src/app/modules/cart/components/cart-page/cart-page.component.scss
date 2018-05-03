@@ -49,3 +49,19 @@
     display: inline-block;
   }
 }
+
+.cart-total {
+  float: right;
+  margin-top: 20px;
+  margin-right: 50px;
+  @include respond-to(medium-screens) {
+    margin-right: 50px;
+  }
+  @include respond-to(wide-screens) {
+    margin-right: 20px;
+  }
+}
+
+.cart-items {
+  border-bottom: 1px solid #b3b3b3;
+}

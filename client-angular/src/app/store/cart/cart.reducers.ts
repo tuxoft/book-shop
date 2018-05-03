@@ -27,5 +27,22 @@ export function cartStateReducer(state = initialState, { type, payload }: any): 
         orderItems: state.orderItems.merge(payloadOrderItem),
         orderItemIds: payloadOrderItemIds,
       }) as CartState;
+
+    case CartActions.CHANGE_ITEM_COUNT:
+      payloadOrderItemId = payload.id;
+
+      // return the same state if the item is already included.
+      // if (state.orderItemIds.includes(payloadOrderItemId)) {
+      //   return state;
+      // }
+
+      // payloadOrderItemIds = state.orderItemIds.push(payloadOrderItemId);
+
+      payloadOrderItem = { [payloadOrderItemId]: payload };
+
+      return state.merge({
+        orderItemIds: state.orderItemIds,
+        orderItems: state.orderItems.merge(payloadOrderItem),
+      }) as CartState;
   }
 }

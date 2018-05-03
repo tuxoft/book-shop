@@ -11,8 +11,13 @@
     <div class="cart-items-header-weight">Вес</div>
     <div class="cart-items-header-total">Сумма</div>
   </div>
-  <div *ngFor="let cartItem of cartItems$ | async" class="cart-item">
-    <app-cart-item [item]="cartItem"></app-cart-item>
+  <div class="cart-items">
+    <div *ngFor="let cartItem of cartItems$ | async" class="cart-item">
+      <app-cart-item [item]="cartItem"></app-cart-item>
+    </div>
+  </div>
+  <div class="cart-total">
+    <app-cart-total [items]="cartItems$ | async"></app-cart-total>
   </div>
 </div>
 <ng-template #emptyCart>

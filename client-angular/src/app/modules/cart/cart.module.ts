@@ -7,6 +7,8 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { CartItemComponent } from './components/cart-item/cart-item.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
+import { CartTotalComponent } from './components/cart-total/cart-total.component';
+import { ButtonModule } from 'primeng/primeng';
 
 @NgModule({
   imports: [
@@ -15,10 +17,12 @@ import { FormsModule } from '@angular/forms';
     CheckboxModule,
     InputTextModule,
     FormsModule,
+    ButtonModule,
   ],
   declarations: [
     CartPageComponent,
     CartItemComponent,
+    CartTotalComponent,
   ],
 })
 export class CartModule { }
