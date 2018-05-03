@@ -18,11 +18,11 @@
     </div>
   </div>
   <div class="cart-items-count">
-    <div class="cart-items-count-change-control">
+    <div class="cart-items-count-change-control" (click)="decrementCount()">
       -
     </div>
-    <input type="text" pInputText class="cart-items-count-input" />
-    <div class="cart-items-count-change-control">
+    <input type="text" pInputText [(ngModel)]="countItem" class="cart-items-count-input" />
+    <div class="cart-items-count-change-control" (click)="incrementCount()">
       +
     </div>
   </div>

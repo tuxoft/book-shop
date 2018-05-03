@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { OrderItem } from '../../../../model/models';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-cart-item',
@@ -10,6 +11,11 @@ export class CartItemComponent implements OnInit {
 
   @Input()
   item: OrderItem;
+
+  @Output()
+  count: EventEmitter<number>;
+
+  countItem: number;
 
   constructor() { }
 
@@ -23,5 +29,18 @@ export class CartItemComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.countItem = this.item.count;
+  }
+
+  decrementCount() {
+    if (this.countItem > 1) {
+      this.countItem = this.countItem - 1;
+    }
+  }
+
+  incrementCount() {
+    if (this.countItem < this.item.book.inStock) {
+      this.countItem = this.countItem + 1;
+    }
   }
 }

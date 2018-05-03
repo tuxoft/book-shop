@@ -6,6 +6,7 @@ import { CartPageComponent } from './components/cart-page/cart-page.component';
 import { CheckboxModule } from 'primeng/checkbox';
 import { CartItemComponent } from './components/cart-item/cart-item.component';
 import { InputTextModule } from 'primeng/inputtext';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -13,6 +14,7 @@ import { InputTextModule } from 'primeng/inputtext';
     RouterModule.forChild(routes),
     CheckboxModule,
     InputTextModule,
+    FormsModule,
   ],
   declarations: [
     CartPageComponent,

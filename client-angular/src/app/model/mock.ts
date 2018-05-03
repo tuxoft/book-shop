@@ -6,6 +6,7 @@ export const BOOK_1 = {
   authorsString: ['Яхина Г.Т.'],
   price: 468,
   coverUrl: 'public/images/covers/149c59e99c8a0a444ef6eaf9d860172d.jpg',
+  inStock: 10,
 };
 
 export const BOOK_2 = {
@@ -14,6 +15,7 @@ export const BOOK_2 = {
   authorsString: ['Семенова М.С.'],
   price: 336,
   coverUrl: 'public/images/covers/d44ac4f99e682662692ac0fd794868ad.jpg',
+  inStock: 10,
 };
 
 export const BOOK_3 = {
@@ -22,6 +24,7 @@ export const BOOK_3 = {
   authorsString: ['Макарова Е.А.'],
   price: 430,
   coverUrl: 'public/images/covers/7171a82862d1d4f7b6742bf6cf4593af.jpg',
+  inStock: 10,
 };
 
 export const BOOK_4 = {
@@ -30,6 +33,7 @@ export const BOOK_4 = {
   authorsString: ['Вольф М.К.'],
   price: 626,
   coverUrl: 'public/images/covers/34873331c7e3ce02d73256cd557b2e3a.jpg',
+  inStock: 10,
 };
 
 export const BOOK_5 = {
@@ -38,6 +42,7 @@ export const BOOK_5 = {
   authorsString: ['Гейв К.Р.'],
   price: 317,
   coverUrl: 'public/images/covers/287d89e6785281199c80c3974b2440a8.jpg',
+  inStock: 10,
 };
 
 export const BOOK_6 = {
@@ -46,6 +51,7 @@ export const BOOK_6 = {
   authorsString: ['Семина И.Л', 'Кулибова Н.А.'],
   price: 237,
   coverUrl: 'public/images/covers/8175db6f1ab560fd34251d38aff8e17b.jpg',
+  inStock: 10,
 };
 
 export const BOOK_7 = {
@@ -54,6 +60,7 @@ export const BOOK_7 = {
   authorsString: ['One', 'Мурата Ю.'],
   price: 373,
   coverUrl: 'public/images/covers/f701c318216a1ec5310ece8bb28476a3.jpg',
+  inStock: 10,
 };
 
 export const BOOK_8 = {
@@ -62,6 +69,7 @@ export const BOOK_8 = {
   authorsString: ['Страуд Дж.'],
   price: 256,
   coverUrl: 'public/images/covers/b9374b36b38a9e28f8d5aa528e857aa5.jpg',
+  inStock: 10,
 };
 
 export const BOOK_9 = {
@@ -70,6 +78,7 @@ export const BOOK_9 = {
   authorsString: ['Цугуми Ооба', 'Такэси Обата'],
   price: 540,
   coverUrl: 'public/images/covers/3f9e851ae18ebe11abf74de98bbe3ef5.jpg',
+  inStock: 10,
 };
 
 export const BOOK_10 = {
@@ -78,6 +87,7 @@ export const BOOK_10 = {
   authorsString: ['Гейман Н.'],
   price: 685,
   coverUrl: 'public/images/covers/1c90f5de8f1b4b747da5bf7f229509c6.jpg',
+  inStock: 10,
 };
 
 export const BOOK_11 = {
@@ -86,6 +96,7 @@ export const BOOK_11 = {
   authorsString: ['Мойес Дж.'],
   price: 264,
   coverUrl: 'public/images/covers/3f8acc234e8fa61062de8701d35195d1.jpg',
+  inStock: 10,
 };
 
 export const BOOK_12 = {
@@ -94,6 +105,7 @@ export const BOOK_12 = {
   authorsString: ['Аллен С.'],
   price: 243,
   coverUrl: 'public/images/covers/31ab1fdbe004a8c4e88d05033498ee1d.jpg',
+  inStock: 10,
 };
 
 export const BOOK_13 = {
@@ -102,6 +114,7 @@ export const BOOK_13 = {
   authorsString: ['Бардуго Л.'],
   price: 253,
   coverUrl: 'public/images/covers/4fc61875a25aed5da72cfda3c4a0257d.jpg',
+  inStock: 10,
 };
 
 export const BOOK_14 = {
@@ -110,6 +123,7 @@ export const BOOK_14 = {
   authorsString: ['Карризи Д.'],
   price: 296,
   coverUrl: 'public/images/covers/2c5c4d36757d7bdc0643398e5b9922d7.jpg',
+  inStock: 10,
 };
 
 export const BOOK_15 = {
@@ -118,6 +132,7 @@ export const BOOK_15 = {
   authorsString: ['Финн А. Дж.'],
   price: 296,
   coverUrl: 'public/images/covers/790a2f15a2e8e4571bf00620b63852ea.jpg',
+  inStock: 10,
 };
 
 export const BOOK_16 = {
@@ -126,6 +141,7 @@ export const BOOK_16 = {
   authorsString: ['Чиджи К.'],
   price: 269,
   coverUrl: 'public/images/covers/834f32737525cff163d0d8c4a48ae521.jpg',
+  inStock: 10,
 };
 
 export const BOOK_17 = {
@@ -134,6 +150,7 @@ export const BOOK_17 = {
   authorsString: ['Колесникова Ю.'],
   price: 189,
   coverUrl: 'public/images/covers/1493538039f9512df8ebfd66ef11bf03.jpg',
+  inStock: 10,
 };
 
 export const BOOK_18 = {
@@ -142,6 +159,7 @@ export const BOOK_18 = {
   authorsString: ['Иванов А.'],
   price: 202,
   coverUrl: 'public/images/covers/f8eb6a86e6c48011107c3770e383186b.jpg',
+  inStock: 10,
 };
 
 export const BOOK_19 = {
@@ -150,6 +168,7 @@ export const BOOK_19 = {
   authorsString: ['Недоруб С.'],
   price: 344,
   coverUrl: 'public/images/covers/731dc65bd3d643652848aa2225a352d3.jpg',
+  inStock: 10,
 };
 
 export const BOOK_20 = {
@@ -158,6 +177,7 @@ export const BOOK_20 = {
   authorsString: ['Девова Н.'],
   price: 297,
   coverUrl: 'public/images/covers/804f9efd0cd268469c4dc4ccc17924a8.jpg',
+  inStock: 10,
 };
 
 export const BOOK_21 = {
@@ -166,6 +186,7 @@ export const BOOK_21 = {
   authorsString: ['Соболева Л.'],
   price: 202,
   coverUrl: 'public/images/covers/1f1ca9f4f0fd9210a54aa8ba8678b513.jpg',
+  inStock: 10,
 };
 
 export const BOOK_22 = {
@@ -174,6 +195,7 @@ export const BOOK_22 = {
   authorsString: ['Берсенева А.'],
   price: 242,
   coverUrl: 'public/images/covers/640a59a2063f1652debe1b91e4703d80.jpg',
+  inStock: 10,
 };
 
 export const BOOK_23 = {
@@ -182,6 +204,7 @@ export const BOOK_23 = {
   authorsString: ['Зурков Д.', 'Черепнев И.'],
   price: 202,
   coverUrl: 'public/images/covers/479ac939897512bef141c8e9feb15a12.jpg',
+  inStock: 10,
 };
 
 export const BOOK_24 = {
@@ -190,6 +213,7 @@ export const BOOK_24 = {
   authorsString: ['Волков А.'],
   price: 237,
   coverUrl: 'public/images/covers/79cae30cbfd4b333dc5b4446b6fa9f07.jpg',
+  inStock: 10,
 };
 
 export const BOOKS = [
