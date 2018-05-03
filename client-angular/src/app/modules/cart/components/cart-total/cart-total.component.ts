@@ -13,9 +13,6 @@ export class CartTotalComponent implements OnInit {
 
   constructor(private store: Store<StoreState>) { }
 
-  @Input()
-  items: OrderItem[];
-
   totalSum: number = 0;
   discountSum: number = 0;
   totalWeight: number = 0;
