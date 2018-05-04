@@ -16,13 +16,13 @@ export class BooksService {
     return of(BOOKS);
   }
 
-  getById(id: number): Observable<Book[]> {
-    const url = `${this.booksUrl}/${id}`;
+  getByIds(ids: number[]): Observable<Book[]> {
+    const url = `${this.booksUrl}/${ids}`;
     return this.http.get<Book[]>(url);
   }
 
-  getBestSellers(): Observable<Book[]> {
-    const url = `${this.booksUrl}/best-sellers`;
+  getBestsellers(): Observable<Book[]> {
+    const url = `${this.booksUrl}/bestsellers`;
     return this.http.get<Book[]>(url);
   }
 

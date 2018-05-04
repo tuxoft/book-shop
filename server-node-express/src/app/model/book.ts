@@ -61,7 +61,7 @@ export interface Book {
   /**
    * цена
    */
-  price?: number;
+  price?: string;
   /**
    * в наличии
    */
@@ -73,7 +73,7 @@ export interface Book {
   /**
    * авторы книги
    */
-  authors?: BookAuthor[];
+  authors?: string[];
   /**
    * город издания
    */
