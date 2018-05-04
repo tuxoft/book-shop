@@ -61,7 +61,7 @@ export interface Book {
   /**
    * цена
    */
-  price?: string;
+  price?: number;
   /**
    * в наличии
    */
