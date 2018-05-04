@@ -36,13 +36,34 @@ export function cartStateReducer(state = initialState, { type, payload }: any): 
       //   return state;
       // }
 
-      // payloadOrderItemIds = state.orderItemIds.push(payloadOrderItemId);
-
       payloadOrderItem = { [payloadOrderItemId]: payload };
 
       return state.merge({
         orderItemIds: state.orderItemIds,
         orderItems: state.orderItems.merge(payloadOrderItem),
+      }) as CartState;
+
+    case CartActions.REMOVE_ITEM:
+      payloadOrderItemId = payload.id;
+
+      // return the same state if the item is already included.
+      // if (state.orderItemIds.includes(payloadOrderItemId)) {
+      //   return state;
+      // }
+
+      // payloadOrderItemIds = state.orderItemIds.push(payloadOrderItemId);
+      payloadOrderItemIds = payload.map(orderItem => orderItem.id);
+
+      let newOrderItemIds;
+
+      payloadOrderItemIds.forEach((itemId) => {
+        const index = state.orderItemIds.indexOf(itemId);
+        newOrderItemIds = state.orderItemIds.splice(index, 1);
+      });
+
+      return state.merge({
+        orderItemIds: newOrderItemIds,
+        orderItems: state.orderItems.deleteIn(payloadOrderItemIds),
       }) as CartState;
   }
 }

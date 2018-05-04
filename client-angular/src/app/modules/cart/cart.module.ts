@@ -8,7 +8,7 @@ import { CartItemComponent } from './components/cart-item/cart-item.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import { CartTotalComponent } from './components/cart-total/cart-total.component';
-import { ButtonModule } from 'primeng/primeng';
+import { ButtonModule, DialogModule } from 'primeng/primeng';
 import { CartFooterControlsComponent } from './components/cart-footer-controls/cart-footer-controls.component';
 
 @NgModule({
@@ -19,6 +19,7 @@ import { CartFooterControlsComponent } from './components/cart-footer-controls/c
     InputTextModule,
     FormsModule,
     ButtonModule,
+    DialogModule,
   ],
   declarations: [
     CartPageComponent,
