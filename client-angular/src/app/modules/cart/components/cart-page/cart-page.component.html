@@ -1,4 +1,4 @@
-<div class="cart-container standart-theme" *ngIf="(itemsCount$ | async) > 0 else emptyCart">
+<div class="cart-container standart-theme container" *ngIf="(itemsCount$ | async) > 0 else emptyCart">
   <div class="cart-header">
     <span>Корзина: {{itemsCount$ | async}}</span>
   </div>
@@ -13,15 +13,16 @@
   </div>
   <div class="cart-items">
     <div *ngFor="let cartItem of cartItems$ | async" class="cart-item">
-      <app-cart-item [item]="cartItem"></app-cart-item>
+      <app-cart-item [item]="cartItem" (check)="checkItem($event)"></app-cart-item>
     </div>
   </div>
   <div class="cart-total">
     <app-cart-total></app-cart-total>
   </div>
 </div>
+<app-cart-footer-controls *ngIf="hasSelectedItems()" [selectedItems]="selectedItems"></app-cart-footer-controls>
 <ng-template #emptyCart>
-  <div class="cart-container standart-theme">
+  <div class="cart-container standart-theme container">
     <div class="cart-header">
       Корзина пуста
     </div>

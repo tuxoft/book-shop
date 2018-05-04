@@ -1,0 +1,44 @@
+@import "../../../../../app.styles.scss";
+
+.cart-footer-controls {
+  width: 100%;
+  height: 75px;
+  position: fixed;
+  bottom: 0;
+  background-color: rgba(27,117,187,.9);
+  z-index: 1;
+  .cart-footer-controls-container {
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 100%;
+    .title-selected {
+      margin-left: 45px;
+      margin-right: 25px;
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .delete-button {
+      background-color: rgba(255,255,255,.6);
+      height: 35px;
+      margin: 0 25px 0 0;
+      line-height: 35px;
+      color: #333;
+      cursor: pointer;
+      &:hover {
+        background-color: rgba(255,255,255,.8);
+      }
+    }
+    .cancel-selection {
+      font-size: 14px;
+      color: #fff;
+      text-decoration: underline;
+      cursor: pointer;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}

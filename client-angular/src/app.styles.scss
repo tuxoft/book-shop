@@ -1,0 +1,56 @@
+$small: 1024px;
+$large: 1360px;
+$productWidthSmall: 550px;
+$productWidthLarge: 920px;
+$countWidth: 150px;
+$weightWidth: 100px;
+$totalWidth: 80px;
+$checkboxWidth: 20px;
+
+@mixin respond-to($media) {
+  @if $media == handhelds {
+    @media only screen and (max-width: $small) {
+      @content;
+    }
+  }
+  @else if $media == medium-screens {
+    @media only screen and (min-width: $small + 1) and (max-width: $large - 1) {
+      @content;
+    }
+  }
+  @else if $media == wide-screens {
+    @media only screen and (min-width: $large) {
+      @content;
+    }
+  }
+}
+
+.container {
+  margin: 0 auto;
+  width: $small;
+  @include respond-to(handhelds) { width: $small ;}
+  @include respond-to(medium-screens) { width: $small; }
+  @include respond-to(wide-screens) { width: $large; }
+}
+
+.standart-theme {
+  font-family: 'PT Sans' !important;
+}
+
+body {
+  margin: 0;
+}
+
+.btn-normal {
+  -ms-flex-pack: distribute;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  justify-content: space-around;
+  box-shadow: none;
+  height: 35px;
+  padding: 0 20px;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 3px;
+}

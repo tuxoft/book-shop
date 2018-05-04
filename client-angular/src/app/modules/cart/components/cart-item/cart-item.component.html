@@ -1,6 +1,6 @@
 <div class="cart-items">
   <div class="cart-items-checkbox">
-    <p-checkbox></p-checkbox>
+    <p-checkbox [(ngModel)]="checked" binary="true" (onChange)="checkItem()"></p-checkbox>
   </div>
   <div class="cart-items-product">
     <div class="cart-items-product-img-container">

@@ -16,11 +16,13 @@ export class CartItemComponent implements OnInit {
   item: OrderItem;
 
   @Output()
-  count: EventEmitter<number>;
+  check = new EventEmitter();
 
   countItem: number;
 
   validationShow: boolean;
+
+  checked: boolean;
 
   constructor(private store: Store<StoreState>) { }
 
@@ -67,5 +69,12 @@ export class CartItemComponent implements OnInit {
     const newItem = this.item;
     newItem.count = +$event.target.value;
     this.store.dispatch(new CartActions.ChangeItemCount(newItem));
+  }
+
+  checkItem() {
+    this.check.emit({
+      item: this.item,
+      checked: this.checked,
+    });
   }
 }

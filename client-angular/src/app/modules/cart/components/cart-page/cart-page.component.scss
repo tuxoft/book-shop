@@ -1,12 +1,4 @@
-@import "../../cart.styles";
-
-.cart-container {
-  margin: 0 auto;
-  width: $small;
-  @include respond-to(handhelds) { width: $small ;}
-  @include respond-to(medium-screens) { width: $small; }
-  @include respond-to(wide-screens) { width: $large; }
-}
+@import "../../../../../app.styles.scss";
 
 .cart-header {
   margin: 15px 5px 15px 5px;

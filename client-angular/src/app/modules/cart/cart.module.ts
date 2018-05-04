@@ -9,6 +9,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import { CartTotalComponent } from './components/cart-total/cart-total.component';
 import { ButtonModule } from 'primeng/primeng';
+import { CartFooterControlsComponent } from './components/cart-footer-controls/cart-footer-controls.component';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { ButtonModule } from 'primeng/primeng';
     CartPageComponent,
     CartItemComponent,
     CartTotalComponent,
+    CartFooterControlsComponent,
   ],
 })
 export class CartModule { }
