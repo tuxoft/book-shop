@@ -11,7 +11,7 @@ export class BookEntity implements Book{
   title: string;
 
   @Column()
-  price: string;
+  price: number;
 
   @Column('simple-array')
   authors: string[];
