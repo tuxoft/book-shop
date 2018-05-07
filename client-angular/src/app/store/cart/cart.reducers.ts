@@ -59,17 +59,20 @@ export function cartStateReducer(state = initialState, { type, payload }: any): 
 
       // payloadOrderItemIds = state.orderItemIds.push(payloadOrderItemId);
       payloadOrderItemIds = payload.map(orderItem => orderItem.id);
+      const payloadOrderItemStringIds = payloadOrderItemIds.map(
+        orderItemId => orderItemId.toString());
 
-      let newOrderItemIds;
+      const newOrderItemIds = payloadOrderItemIds.reduce(
+        (tempOrderItemIds, itemId) => {
+          const index = state.orderItemIds.indexOf(itemId);
 
-      payloadOrderItemIds.forEach((itemId) => {
-        const index = state.orderItemIds.indexOf(itemId);
-        newOrderItemIds = state.orderItemIds.splice(index, 1);
-      });
+          return tempOrderItemIds.splice(index, 1);
+        },
+        state.orderItemIds);
 
       return state.merge({
         orderItemIds: newOrderItemIds,
-        orderItems: state.orderItems.deleteIn(payloadOrderItemIds),
+        orderItems: state.orderItems.deleteIn(payloadOrderItemStringIds),
       }) as CartState;
   }
 }

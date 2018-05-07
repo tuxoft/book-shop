@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
   if (!cart) {
     cart = cartRepository.create();
     await cartRepository.save(cart);
-    res.cookie(cookieCartName, cart.id, {maxAge: cookieMaxAge});
+    res.cookie(cookieCartName, cart.id, { maxAge: cookieMaxAge });
   }
 
   res.send(cart);

@@ -4,7 +4,7 @@ import { CartItemEntity } from './cartItem';
 @Entity('cart')
 export class CartEntity {
 
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn('uuid')
   id: number;
 
   @OneToMany(type => CartItemEntity, cartItem => cartItem.cart)
