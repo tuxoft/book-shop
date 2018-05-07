@@ -21,6 +21,7 @@ export class CartFooterControlsComponent implements OnInit {
 
   deleteItems() {
     this.store.dispatch(new CartActions.RemoveItem(Array.from(this.selectedItems)));
+    this.selectedItems.clear();
   }
 
 }
