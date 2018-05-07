@@ -21,7 +21,7 @@ export class BookCardComponent {
     this.store.dispatch(new CartActions.AddToCart({
       id: this.randomInt(0, 100000),
       book: this.book,
-      count: 4,
+      count: 1,
     }));
   }
 

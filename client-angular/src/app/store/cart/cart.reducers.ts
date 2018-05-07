@@ -9,13 +9,19 @@ export function cartStateReducer(state = initialState, { type, payload }: any): 
   let payloadOrderItemId;
   let payloadOrderItemIds;
   let payloadOrderItem;
+  let payloadBookId;
 
   switch (type) {
     case CartActions.ADD_TO_CART:
       payloadOrderItemId = payload.id;
+      payloadBookId = payload.book.id;
+      const orderItems = state.orderItems.toJS();
+
+      const bookIds = state.orderItemIds
+        .map(orderItemId => orderItems[orderItemId].book.id);
 
       // return the same state if the item is already included.
-      if (state.orderItemIds.includes(payloadOrderItemId)) {
+      if (bookIds.includes(payloadBookId)) {
         return state;
       }
 

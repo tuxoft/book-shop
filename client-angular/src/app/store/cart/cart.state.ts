@@ -3,7 +3,7 @@ import { Map, Record, List } from 'immutable';
 import { OrderItem } from '../../model/orderItem';
 
 export interface CartState extends Map<string, any> {
-  orderItems: Map<number, OrderItem>;
+  orderItems: Map<string, OrderItem>;
   orderItemIds: List<number>;
 }
 
