@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { OrderItem } from '../../../../model/models';
 import { Store } from '@ngrx/store';
 import { StoreState } from '../../../../store/reducers';
@@ -14,6 +14,9 @@ export class CartFooterControlsComponent implements OnInit {
   @Input()
   selectedItems: Set<OrderItem>;
 
+  @Output()
+  clearSelections: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   constructor(private store: Store<StoreState>) { }
 
   ngOnInit() {
@@ -24,4 +27,8 @@ export class CartFooterControlsComponent implements OnInit {
     this.selectedItems.clear();
   }
 
+  clearSelection() {
+    this.selectedItems.clear();
+    this.clearSelections.emit(true);
+  }
 }

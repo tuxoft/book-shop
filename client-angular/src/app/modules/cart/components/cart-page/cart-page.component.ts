@@ -32,6 +32,14 @@ export class CartPageComponent implements OnInit {
     return false;
   }
 
+  isItemSelected(cartItem: OrderItem) {
+    if (!this.selectedItems) {
+      return false;
+    }
+
+    return this.selectedItems.has(cartItem);
+  }
+
   checkItem(param: any) {
     if (!this.selectedItems) {
       this.selectedItems = new Set();
@@ -44,6 +52,10 @@ export class CartPageComponent implements OnInit {
     if (param && !param.checked) {
       this.selectedItems.delete(param.item);
     }
+  }
+
+  clearSelections() {
+    this.selectedItems.clear();
   }
 
 }
