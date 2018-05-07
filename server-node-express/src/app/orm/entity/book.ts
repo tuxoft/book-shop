@@ -18,4 +18,7 @@ export class BookEntity implements Book{
 
   @Column()
   coverUrl: string;
+
+  @Column()
+  inStock: number;
 }
