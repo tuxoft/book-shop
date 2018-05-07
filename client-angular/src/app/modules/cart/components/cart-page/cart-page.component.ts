@@ -17,11 +17,13 @@ export class CartPageComponent implements OnInit {
 
   itemsCount$: Observable<number>;
   cartItems$: Observable<OrderItem[]>;
+  cartItems: OrderItem[];
   selectedItems: Set<OrderItem>;
 
   ngOnInit() {
     this.itemsCount$ = this.store.select(CartSelectors.getCartOrderItemCount);
     this.cartItems$ = this.store.select(CartSelectors.getCartOrderItems);
+    this.cartItems$.subscribe(orderItems => this.cartItems = orderItems);
   }
 
   hasSelectedItems() {
@@ -58,4 +60,15 @@ export class CartPageComponent implements OnInit {
     this.selectedItems.clear();
   }
 
+  selectAll(checked: boolean) {
+    if (checked) {
+      if (!this.selectedItems) {
+        this.selectedItems = new Set();
+      }
+
+      this.cartItems.forEach(cartItem => this.selectedItems.add(cartItem));
+    } else {
+      this.clearSelections();
+    }
+  }
 }

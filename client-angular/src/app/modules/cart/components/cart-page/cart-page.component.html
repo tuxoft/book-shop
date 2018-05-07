@@ -3,7 +3,7 @@
     <span>Корзина: {{itemsCount$ | async}}</span>
   </div>
   <div class="check-all">
-    <p-checkbox label="Выбрать всё"></p-checkbox>
+    <p-checkbox label="Выбрать всё" (onChange)="selectAll($event)"></p-checkbox>
   </div>
   <div class="cart-items-header">
     <div class="cart-items-header-product">Товар</div>
