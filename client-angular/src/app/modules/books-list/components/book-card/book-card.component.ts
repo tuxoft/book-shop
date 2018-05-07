@@ -1,19 +1,28 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Book } from '../../../../model/book';
 import * as CartActions from '../../../../store/cart/cart.actions';
+import * as CartSelectors from '../../../../store/cart/cart.selectors';
 import { Store } from '@ngrx/store';
 import { StoreState } from '../../../../store/reducers';
 import { OrderItem } from '../../../../model/orderItem';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'book-card',
   templateUrl: './book-card.component.html',
   styleUrls: ['./book-card.component.css'],
 })
-export class BookCardComponent {
+export class BookCardComponent implements OnInit {
   @Input() book: Book;
 
-  constructor(private store: Store<StoreState>) {
+  $inCart: Observable<boolean>;
+
+  constructor(private store: Store<StoreState>, private router: Router) {
+  }
+
+  ngOnInit(): void {
+    this.$inCart = this.store.select(CartSelectors.isBookInCart(this.book.id));
   }
 
   addToCart() {
@@ -36,5 +45,9 @@ export class BookCardComponent {
           ? author
           : total.concat(', ', author),
         '');
+  }
+
+  redirectToCart() {
+    this.router.navigate(['/cart']);
   }
 }

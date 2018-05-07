@@ -8,6 +8,7 @@
   </div>
   <div class="book-price">Цена: {{book.price}}</div>
   <div class="add-to-cart-button-container">
-    <button pButton type="button" label="В корзину" (click)="addToCart()"></button>
+    <button pButton type="button" label="В корзину" (click)="addToCart()" *ngIf="!($inCart | async)"></button>
+    <button pButton type="button" label="В корзинe" class="ui-button-success" (click)="redirectToCart()" *ngIf="$inCart | async"></button>
   </div>
 </div>

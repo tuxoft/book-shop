@@ -20,3 +20,20 @@ export const getCartOrderItemCount = createSelector(
     return 0;
   },
 );
+
+export const isBookInCart = (searchBookId: number) => createSelector(
+  getCartState,
+  (state: CartState) => {
+
+    if (state && state.orderItemIds) {
+      const orderItems = state.orderItems.toJS();
+
+      const bookIds = state.orderItemIds
+        .map(orderItemId => orderItems[orderItemId].book.id);
+
+      return bookIds.contains(searchBookId);
+    }
+
+    return false;
+  },
+);
