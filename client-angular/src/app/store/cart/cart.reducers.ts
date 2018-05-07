@@ -10,17 +10,17 @@ export function cartStateReducer(state = initialState, { type, payload }: any): 
   let payloadOrderItemIds;
   let payloadOrderItem;
   let payloadBookId;
+  let orderItems;
 
   switch (type) {
     case CartActions.ADD_TO_CART:
       payloadOrderItemId = payload.id;
       payloadBookId = payload.book.id;
-      const orderItems = state.orderItems.toJS();
+      orderItems = state.orderItems.toJS();
 
       const bookIds = state.orderItemIds
         .map(orderItemId => orderItems[orderItemId].book.id);
 
-      // return the same state if the item is already included.
       if (bookIds.includes(payloadBookId)) {
         return state;
       }
@@ -37,11 +37,6 @@ export function cartStateReducer(state = initialState, { type, payload }: any): 
     case CartActions.CHANGE_ITEM_COUNT:
       payloadOrderItemId = payload.id;
 
-      // return the same state if the item is already included.
-      // if (state.orderItemIds.includes(payloadOrderItemId)) {
-      //   return state;
-      // }
-
       payloadOrderItem = { [payloadOrderItemId]: payload };
 
       return state.merge({
@@ -52,27 +47,23 @@ export function cartStateReducer(state = initialState, { type, payload }: any): 
     case CartActions.REMOVE_ITEM:
       payloadOrderItemId = payload.id;
 
-      // return the same state if the item is already included.
-      // if (state.orderItemIds.includes(payloadOrderItemId)) {
-      //   return state;
-      // }
-
-      // payloadOrderItemIds = state.orderItemIds.push(payloadOrderItemId);
       payloadOrderItemIds = payload.map(orderItem => orderItem.id);
-      const payloadOrderItemStringIds = payloadOrderItemIds.map(
-        orderItemId => orderItemId.toString());
 
       const newOrderItemIds = payloadOrderItemIds.reduce(
         (tempOrderItemIds, itemId) => {
-          const index = state.orderItemIds.indexOf(itemId);
+          const index = tempOrderItemIds.indexOf(itemId);
 
           return tempOrderItemIds.splice(index, 1);
         },
         state.orderItemIds);
 
+      const newOrderItems = payloadOrderItemIds.reduce(
+        (tempOrderItems, itemId) => tempOrderItems.delete(itemId.toString()),
+        state.orderItems);
+
       return state.merge({
         orderItemIds: newOrderItemIds,
-        orderItems: state.orderItems.deleteIn(payloadOrderItemStringIds),
+        orderItems: newOrderItems,
       }) as CartState;
   }
 }
