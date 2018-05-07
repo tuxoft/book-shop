@@ -1,5 +1,6 @@
 import * as express from 'express';
 import booksRouter from './books.router';
+import cartRouter from './cart.router';
 
 const router = express.Router();
 
@@ -8,6 +9,7 @@ export default router;
 // В этот массив добавляем новые API-ресурсы
 [
   { path: '/books', router: booksRouter },
+  { path: '/cart', router: cartRouter },
 
 ].forEach(e => router.use(e.path, e.router));
 
