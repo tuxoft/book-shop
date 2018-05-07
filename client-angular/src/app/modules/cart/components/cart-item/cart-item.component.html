@@ -18,12 +18,17 @@
     </div>
   </div>
   <div class="cart-items-count">
-    <div class="cart-items-count-change-control" (click)="decrementCount()">
-      -
+    <div class="cart-items-count-control-container">
+      <div class="cart-items-count-change-control" (click)="decrementCount()">
+        -
+      </div>
+      <input type="text" pInputText [(ngModel)]="countItem" class="cart-items-count-input" (input)="changeCountItem($event)" />
+      <div class="cart-items-count-change-control" (click)="incrementCount()">
+        +
+      </div>
     </div>
-    <input type="text" pInputText [(ngModel)]="countItem" class="cart-items-count-input" (input)="changeCountItem($event)" />
-    <div class="cart-items-count-change-control" (click)="incrementCount()">
-      +
+    <div *ngIf="validationShow" class="count-validation-violation">
+      Доступно для покупки: {{item.book.inStock}}
     </div>
   </div>
   <div class="cart-items-weight"></div>
