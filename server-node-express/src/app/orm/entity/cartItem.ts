@@ -1,12 +1,16 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, Index, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { CartEntity } from './cart';
 import { BookEntity } from './book';
 
 @Entity('cart-item')
+@Index(['cartId', 'bookId'], { unique: true })
 export class CartItemEntity {
 
   @PrimaryGeneratedColumn()
   id: number;
+
+  @Column()
+  cartId: number;
 
   @ManyToOne(type => CartEntity, cart => cart.items)
   cart: CartEntity;
@@ -14,9 +18,9 @@ export class CartItemEntity {
   @Column()
   bookId: number;
 
-  @ManyToOne(type => BookEntity, {eager: true})
+  @ManyToOne(type => BookEntity, { eager: true })
   book: BookEntity;
 
-  @Column()
+  @Column({default: 1})
   count: number;
 }

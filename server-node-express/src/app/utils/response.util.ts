@@ -11,6 +11,6 @@ export function sendError(err: any, res: express.Response) {
 
 export function sendData(req: express.Request, res: express.Response, data: Promise<any>) {
   data
-    .then(e => e.length ? res.send(e) : send404(req, res))
+    .then(e => Object.keys(e).length ? res.send(e) : send404(req, res))
     .catch(e => sendError(e, res));
 }

@@ -2,14 +2,14 @@ import * as express from 'express';
 import { sendData } from '../../utils/response.util';
 import { getConnection } from 'typeorm';
 import { CartEntity } from '../../orm/entity/cart';
-import { BookEntity } from '../../orm/entity/book';
+import { CartItemEntity } from '../../orm/entity/cartItem';
 
 const router = express.Router();
 
 export default router;
 
 const getCartRepository = () => getConnection().getRepository(CartEntity);
-const getBookRepository = () => getConnection().getRepository(BookEntity);
+const getCartItemRepository = () => getConnection().getRepository(CartItemEntity);
 
 const cookieCartName = 'cart';
 const cookieMaxAge = 2147483647000;
@@ -22,23 +22,18 @@ router.get('/', async (req, res) => {
   if (!cart) {
     cart = cartRepository.create();
     await cartRepository.save(cart);
-    res.cookie(cookieCartName, cart.id, {maxAge: cookieMaxAge});
+    res.cookie(cookieCartName, cart.id, { maxAge: cookieMaxAge });
   }
 
   res.send(cart);
 });
 
-router.post('/', async (req, res) => {
-  console.log(req.body);
+router.post('/item', async (req, res) => {
+  const item = await getCartItemRepository().save(req.body);
 
-  const a = await getCartRepository().preload(req.body);
-  console.log(a);
+  sendData(req, res, getCartItemRepository().findOne(item.id));
+});
 
-  const b = await getCartRepository().save(a);
-  console.log(b);
-
-  const c = await getCartRepository().findOne(b.id);
-  console.log(c);
-
-  res.send(c);
+router.delete('/item', async (req, res) => {
+  sendData(req, res, getCartItemRepository().remove(req.body));
 });

@@ -4,9 +4,9 @@ import { CartItemEntity } from './cartItem';
 @Entity('cart')
 export class CartEntity {
 
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn('uuid')
   id: number;
 
-  @OneToMany(type => CartItemEntity, cartItem => cartItem.cart, {cascade: true, eager: true})
+  @OneToMany(type => CartItemEntity, cartItem => cartItem.cart, { eager: true })
   items: CartItemEntity[];
 }
