@@ -1,17 +1,26 @@
 import { Injectable } from '@angular/core';
 import { map, switchMap, tap } from 'rxjs/operators';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { Action } from '@ngrx/store';
+import { Action, Store } from '@ngrx/store';
 import { toPayload } from '../store/utils';
 import * as CartActions from '../store/cart/cart.actions';
 import { CartService } from '../services/rest/cart.service';
 import { Observable } from 'rxjs/Observable';
 import { Cart } from '../model/cart';
+import { OrderItem } from '../model/order-item';
+import { StoreState } from '../store/reducers';
+import * as CartSelectors from '../store/cart/cart.selectors';
 
 @Injectable()
 export class CartEffects {
 
-  constructor(private actions$: Actions, private cartService: CartService) {
+  cartId: string;
+
+  constructor(private actions$: Actions,
+              private cartService: CartService,
+              private store: Store<StoreState>) {
+    this.store.select(CartSelectors.getCartId).subscribe(
+      cartId => this.cartId = cartId);
   }
 
   @Effect()
@@ -21,5 +30,21 @@ export class CartEffects {
       return this.cartService.get();
     }),
     map((cart: Cart) => new CartActions.InitCartSuccess(cart)),
+  );
+
+  @Effect()
+  onAddToCart$ = this.actions$.pipe(
+    ofType(CartActions.ADD_TO_CART),
+    map(toPayload),
+    switchMap((action: any) => {
+      return this.cartService.addToCart({
+        cartId: this.cartId,
+        bookId: action.book.id,
+        count: action.count,
+      });
+    }),
+    map((orderItem: OrderItem) => {
+      return new CartActions.AddToCartSuccess(orderItem);
+    }),
   );
 }

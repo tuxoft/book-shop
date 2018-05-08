@@ -6,10 +6,16 @@ export const CHANGE_ITEM_COUNT = 'CHANGE_ITEM_COUNT';
 export const REMOVE_ITEM = 'REMOVE_ITEM';
 export const INIT_CART = 'INIT_CART';
 export const INIT_CART_SUCCESS = 'INIT_CART_SUCCESS';
+export const ADD_TO_CART_SUCCESS = 'ADD_TO_CART_SUCCESS';
 
 export class AddToCart implements Action {
   readonly type = ADD_TO_CART;
   constructor(public payload: OrderItem) { }
+}
+
+export class AddToCartSuccess implements Action {
+  readonly type = ADD_TO_CART_SUCCESS;
+  constructor(public payload: any) { }
 }
 
 export class ChangeItemCount implements Action {
@@ -36,4 +42,5 @@ export type Actions = AddToCart
   | ChangeItemCount
   | RemoveItem
   | InitCart
-  | InitCartSuccess;
+  | InitCartSuccess
+  | AddToCartSuccess;

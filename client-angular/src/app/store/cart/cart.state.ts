@@ -9,6 +9,7 @@ export interface CartState extends Map<string, any> {
 }
 
 export const CART_STATE_RECORD = Record({
+  id: '',
   orderItems: Map({}),
   orderItemIds: List([]),
 });

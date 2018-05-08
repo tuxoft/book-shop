@@ -10,29 +10,29 @@ export function cartStateReducer(state = initialState, { type, payload }: any): 
   let payloadOrderItemIds;
   let payloadOrderItem;
   let payloadBookId;
-  let orderItems;
+  let payloadOrderItems;
 
   switch (type) {
     case CartActions.ADD_TO_CART:
-      payloadOrderItemId = payload.id;
-      payloadBookId = payload.book.id;
-      orderItems = state.orderItems.toJS();
+      // payloadOrderItemId = payload.id;
+      // payloadBookId = payload.book.id;
+      // payloadOrderItems = state.orderItems.toJS();
 
-      const bookIds = state.orderItemIds
-        .map(orderItemId => orderItems[orderItemId].book.id);
+      // const bookIds = state.orderItemIds
+      //   .map(orderItemId => payloadOrderItems[orderItemId].book.id);
 
-      if (bookIds.includes(payloadBookId)) {
-        return state;
-      }
+      // if (bookIds.includes(payloadBookId)) {
+      //   return state;
+      // }
 
-      payloadOrderItemIds = state.orderItemIds.push(payloadOrderItemId);
+      // payloadOrderItemIds = state.orderItemIds.push(payloadOrderItemId);
 
-      payloadOrderItem = { [payloadOrderItemId]: payload };
+      // payloadOrderItem = { [payloadOrderItemId]: payload };
 
-      return state.merge({
-        orderItems: state.orderItems.merge(payloadOrderItem),
-        orderItemIds: payloadOrderItemIds,
-      }) as CartState;
+      // return state.merge({
+      //   orderItems: state.orderItems.merge(payloadOrderItem),
+      //   orderItemIds: payloadOrderItemIds,
+      // }) as CartState;
 
     case CartActions.CHANGE_ITEM_COUNT:
       payloadOrderItemId = payload.id;
@@ -68,11 +68,46 @@ export function cartStateReducer(state = initialState, { type, payload }: any): 
 
     case CartActions.INIT_CART_SUCCESS:
       payloadOrderItemIds = payload.items.map(item => item.id);
+      payloadOrderItems = {};
+      payload.items.forEach((item) => {
+        payloadOrderItems = Object.assign(payloadOrderItems, {
+          [item.id]: item,
+        });
+      });
 
       return state.merge({
         id: payload.id,
         orderItemIds: payloadOrderItemIds,
-        orderItems: payload.items,
+        orderItems: payloadOrderItems,
       }) as CartState;
+
+    case CartActions.ADD_TO_CART_SUCCESS:
+      payloadOrderItemId = payload.id;
+      payloadBookId = payload.book.id;
+      payloadOrderItems = state.orderItems.toJS();
+
+      const bookIds = state.orderItemIds
+        .map(orderItemId => payloadOrderItems[orderItemId].book.id);
+
+      if (bookIds.includes(payloadBookId)) {
+        return state;
+      }
+
+      payloadOrderItemIds = state.orderItemIds.push(payloadOrderItemId);
+
+      payloadOrderItem = { [payloadOrderItemId]: payload };
+
+      return state.merge({
+        orderItems: state.orderItems.merge(payloadOrderItem),
+        orderItemIds: payloadOrderItemIds,
+      }) as CartState;
+      // payloadOrderItemId = payload.id;
+
+      // payloadOrderItem = { [payloadOrderItemId]: payload };
+
+      // return state.merge({
+      //   orderItemIds: state.orderItemIds,
+      //   orderItems: state.orderItems.merge(payloadOrderItem),
+      // }) as CartState;
   }
 }

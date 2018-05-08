@@ -25,6 +25,17 @@ export const getCartOrderItemCount = createSelector(
   },
 );
 
+export const getCartId = createSelector(
+  getCartState,
+  (state: CartState) => {
+    if (state) {
+      return state.id;
+    }
+
+    return null;
+  },
+);
+
 export const isBookInCart = (searchBookId: number) => createSelector(
   getCartState,
   (state: CartState) => {
