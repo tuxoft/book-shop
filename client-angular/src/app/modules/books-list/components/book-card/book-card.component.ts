@@ -4,7 +4,7 @@ import * as CartActions from '../../../../store/cart/cart.actions';
 import * as CartSelectors from '../../../../store/cart/cart.selectors';
 import { Store } from '@ngrx/store';
 import { StoreState } from '../../../../store/reducers';
-import { OrderItem } from '../../../../model/orderItem';
+import { OrderItem } from '../../../../model/order-item';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 

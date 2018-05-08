@@ -1,5 +1,5 @@
-import { BookAuthor } from './bookAuthor';
-import { BookSeries } from './bookSeries';
+import { BookAuthor } from './book-author';
+import { BookSeries } from './book-series';
 import { Category } from './category';
 import { City } from './city';
 import { Language } from './language';

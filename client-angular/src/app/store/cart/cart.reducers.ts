@@ -1,7 +1,7 @@
 import * as CartActions from './cart.actions';
 import { CartState, CART_STATE_RECORD } from './cart.state';
 import { Map, Record, List } from 'immutable';
-import { OrderItem } from '../../model/orderItem';
+import { OrderItem } from '../../model/order-item';
 
 export const initialState: CartState = new CART_STATE_RECORD() as CartState;
 
@@ -64,6 +64,15 @@ export function cartStateReducer(state = initialState, { type, payload }: any): 
       return state.merge({
         orderItemIds: newOrderItemIds,
         orderItems: newOrderItems,
+      }) as CartState;
+
+    case CartActions.INIT_CART_SUCCESS:
+      payloadOrderItemIds = payload.items.map(item => item.id);
+
+      return state.merge({
+        id: payload.id,
+        orderItemIds: payloadOrderItemIds,
+        orderItems: payload.items,
       }) as CartState;
   }
 }

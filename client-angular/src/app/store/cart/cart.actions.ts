@@ -1,9 +1,11 @@
 import { Action } from '@ngrx/store';
-import { OrderItem } from '../../model/models';
+import { OrderItem, Cart } from '../../model/models';
 
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const CHANGE_ITEM_COUNT = 'CHANGE_ITEM_COUNT';
 export const REMOVE_ITEM = 'REMOVE_ITEM';
+export const INIT_CART = 'INIT_CART';
+export const INIT_CART_SUCCESS = 'INIT_CART_SUCCESS';
 
 export class AddToCart implements Action {
   readonly type = ADD_TO_CART;
@@ -20,6 +22,18 @@ export class RemoveItem implements Action {
   constructor(public payload: OrderItem[]) { }
 }
 
+export class InitCart implements Action {
+  readonly type = INIT_CART;
+  constructor() { }
+}
+
+export class InitCartSuccess implements Action {
+  readonly type = INIT_CART_SUCCESS;
+  constructor(public payload: Cart) { }
+}
+
 export type Actions = AddToCart
   | ChangeItemCount
-  | RemoveItem;
+  | RemoveItem
+  | InitCart
+  | InitCartSuccess;
