@@ -7,6 +7,6 @@ export class CartEntity {
   @PrimaryGeneratedColumn("uuid")
   id: number;
 
-  @OneToMany(type => CartItemEntity, cartItem => cartItem.cart)
+  @OneToMany(type => CartItemEntity, cartItem => cartItem.cart, {cascade: true, eager: true})
   items: CartItemEntity[];
 }

@@ -11,8 +11,10 @@ export class CartItemEntity {
   @ManyToOne(type => CartEntity, cart => cart.items)
   cart: CartEntity;
 
-  @OneToOne(type => BookEntity)
-  @JoinColumn()
+  @Column()
+  bookId: number;
+
+  @ManyToOne(type => BookEntity, {eager: true})
   book: BookEntity;
 
   @Column()
