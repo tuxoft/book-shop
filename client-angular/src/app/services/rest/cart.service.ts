@@ -20,4 +20,8 @@ export class CartService {
   addToCart(order): Observable<OrderItem> {
     return this.http.post<OrderItem>(this.cartItemUrl, order);
   }
+
+  deleteItem(order): Observable<any> {
+    return this.http.delete<number>(this.cartItemUrl, order);
+  }
 }

@@ -47,4 +47,17 @@ export class CartEffects {
       return new CartActions.AddToCartSuccess(orderItem);
     }),
   );
+
+  @Effect()
+  onDeleteItem$ = this.actions$.pipe(
+    ofType(CartActions.REMOVE_ITEM),
+    map(toPayload),
+    map(item => item.id),
+    mergeMap((action: any) => {
+      return this.cartService.deleteItem(action);
+    }),
+    map((action: any) => {
+      return new CartActions.RemoveItemSuccess(action);
+    }),
+  );
 }
