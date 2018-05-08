@@ -18,7 +18,7 @@ router.get('/', async (req, res, next) => {
   const cartRepository = getCartRepository();
 
   let cart = await cartRepository
-    .findOne(req.cookies[cookieCartName])
+    .findOne({id: req.cookies[cookieCartName]})
     .catch(err => next(err));
 
   if (!cart) {
