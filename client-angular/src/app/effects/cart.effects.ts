@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { map, switchMap, tap } from 'rxjs/operators';
+import { map, switchMap, tap, mergeMap } from 'rxjs/operators';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Action, Store } from '@ngrx/store';
 import { toPayload } from '../store/utils';
@@ -36,7 +36,7 @@ export class CartEffects {
   onAddToCart$ = this.actions$.pipe(
     ofType(CartActions.ADD_TO_CART),
     map(toPayload),
-    switchMap((action: any) => {
+    mergeMap((action: any) => {
       return this.cartService.addToCart({
         cartId: this.cartId,
         bookId: action.book.id,
