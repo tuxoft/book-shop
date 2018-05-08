@@ -1,12 +1,15 @@
 import * as express from 'express';
+import { sendData } from '../../utils/response.util';
 import { getConnection } from 'typeorm';
 import { CartEntity } from '../../orm/entity/cart';
+import { CartItemEntity } from '../../orm/entity/cartItem';
 
 const router = express.Router();
 
 export default router;
 
 const getCartRepository = () => getConnection().getRepository(CartEntity);
+const getCartItemRepository = () => getConnection().getRepository(CartItemEntity);
 
 const cookieCartName = 'cart';
 const cookieMaxAge = 2147483647000;
@@ -23,4 +26,14 @@ router.get('/', async (req, res) => {
   }
 
   res.send(cart);
+});
+
+router.post('/item', async (req, res) => {
+  const item = await getCartItemRepository().save(req.body);
+
+  sendData(req, res, getCartItemRepository().findOne(item.id));
+});
+
+router.delete('/item', async (req, res) => {
+  sendData(req, res, getCartItemRepository().remove(req.body));
 });
