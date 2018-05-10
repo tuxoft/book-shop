@@ -22,6 +22,6 @@ export class CartService {
   }
 
   deleteItem(order): Observable<any> {
-    return this.http.delete<number>(this.cartItemUrl, order);
+    return this.http.request('delete', this.cartItemUrl, { body: order });
   }
 }

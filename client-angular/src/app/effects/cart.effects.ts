@@ -26,7 +26,7 @@ export class CartEffects {
   @Effect()
   onCartInit$ = this.actions$.pipe(
     ofType(CartActions.INIT_CART),
-    switchMap((action: any) => {
+    mergeMap((action: any) => {
       return this.cartService.get();
     }),
     map((cart: Cart) => new CartActions.InitCartSuccess(cart)),
@@ -52,12 +52,11 @@ export class CartEffects {
   onDeleteItem$ = this.actions$.pipe(
     ofType(CartActions.REMOVE_ITEM),
     map(toPayload),
-    map(item => item.id),
     mergeMap((action: any) => {
       return this.cartService.deleteItem(action);
     }),
     map((action: any) => {
-      return new CartActions.RemoveItemSuccess(action);
+      return new CartActions.InitCart();
     }),
   );
 }
