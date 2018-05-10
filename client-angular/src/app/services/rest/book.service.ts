@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Book } from '../../model/book';
-import { BOOKS } from '../../model/mock';
+import * as BookMock from '../../model/mock';
 import { of } from 'rxjs/observable/of';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable()
-export class BooksService {
+export class BookService {
   private booksUrl = 'api/books';
 
   constructor(private http: HttpClient) { }
@@ -14,6 +14,11 @@ export class BooksService {
   get(): Observable<Book[]> {
     return this.http.get<Book[]>(this.booksUrl);
     // return of(BOOKS);
+  }
+
+  getFullBook(id: number): Observable<Book> {
+    // return this.http.get<Book>(this.booksUrl + '/' + id);
+    return of(BookMock.BOOK_1);
   }
 
   getByIds(ids: number[]): Observable<Book[]> {

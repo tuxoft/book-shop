@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { ShopHeaderComponent } from './components/shop-header/shop-header.component';
 import { ShopMenuHorizontalComponent } from './components/shop-menu-horizontal/shop-menu-horizontal.component';
 import { HttpClientModule } from '@angular/common/http';
-import { BooksService } from './services/rest/books.service';
+import { BookService } from './services/rest/book.service';
 import { CartService } from './services/rest/cart.service';
 import { MegaMenuModule } from 'primeng/megamenu';
 import { MenubarModule } from 'primeng/menubar';
@@ -42,7 +42,7 @@ import { effects } from './effects/index';
       maxAge: 50,
     }),
   ],
-  providers: [BooksService, CartService],
+  providers: [BookService, CartService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

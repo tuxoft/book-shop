@@ -1,3 +1,9 @@
-<p>
-  book-detail works! BookId = {{bookId}}
-</p>
+<div class="book-detail-container container">
+  <div class="book-detail-img-container">
+    <img src="{{(book$ | async).coverUrl}}" class="book-detail-img">
+  </div>
+  <div class="book-detail-common-info">
+    <h1 class="book-title">{{(book$ | async).title}}</h1>
+    <a href="/catalog/book/author/{{(book$ | async).authors}}" class="book-author"></a>
+  </div>
+</div>

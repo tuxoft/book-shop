@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import { Book } from '../../../../model/book';
-import { BooksService } from '../../../../services/rest/books.service';
+import { BookService } from '../../../../services/rest/book.service';
 
 @Component({
   selector: 'books-simple-list',
@@ -12,7 +12,7 @@ import { BooksService } from '../../../../services/rest/books.service';
 export class BooksSimpleListComponent implements OnInit {
   books$: Observable<Book[]>;
 
-  constructor(private booksService: BooksService) { }
+  constructor(private booksService: BookService) { }
 
   ngOnInit(): void {
     this.books$ = this.booksService.get();
