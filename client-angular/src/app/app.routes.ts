@@ -13,6 +13,10 @@ export const routes: Routes = [
         path: 'cart',
         loadChildren: './modules/cart/cart.module#CartModule',
       },
+      {
+        path: 'catalog',
+        loadChildren: './modules/catalog/catalog.module#CatalogModule',
+      },
     ],
   },
 ];

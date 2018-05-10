@@ -7,6 +7,9 @@
   line-height: 30px;
   margin: 5px auto;
   font-size: 18px;
+  &:hover {
+    background-color: rgba(38,169,224,.1);
+  }
   .cart-items-checkbox {
     display: inline-block;
     align-self: center;
