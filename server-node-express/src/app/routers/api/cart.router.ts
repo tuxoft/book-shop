@@ -15,35 +15,36 @@ const cookieCartName = 'cart';
 const cookieMaxAge = 2147483647000;
 
 router.get('/', async (req, res, next) => {
-  const cartRepository = getCartRepository();
+  try {
+    const cartRepository = getCartRepository();
 
-  let cart = await cartRepository
-    .findOne({id: req.cookies[cookieCartName]})
-    .catch(err => next(err));
+    let cart = await cartRepository.findOne({ id: req.cookies[cookieCartName] });
 
-  if (!cart) {
-    cart = cartRepository.create();
+    if (!cart) {
+      cart = cartRepository.create();
+      await cartRepository.save(cart);
+      res.cookie(cookieCartName, cart.id, { maxAge: cookieMaxAge });
+    }
 
-    await cartRepository
-      .save(cart)
-      .catch(err => next(err));
+    res.send(cart);
 
-    res.cookie(cookieCartName, cart.id, { maxAge: cookieMaxAge });
+  } catch (err) {
+    next(err);
   }
-
-  res.send(cart);
 });
 
 router.post('/item', async (req, res, next) => {
-  const item = await getCartItemRepository()
-    .save(req.body)
-    .catch(err => next(err));
+  try {
+    const cartItemRepository = getCartItemRepository();
 
-  if (item) {
-    sendData(req, res, getCartItemRepository().findOne(item.id));
+    const item = await cartItemRepository.save(req.body);
+    sendData(req, res, next, cartItemRepository.findOne(item.id));
+
+  } catch (err) {
+    next(err);
   }
 });
 
-router.delete('/item', async (req, res) => {
-  sendData(req, res, getCartItemRepository().remove(req.body));
+router.delete('/item', (req, res, next) => {
+  sendData(req, res, next, getCartItemRepository().remove(req.body));
 });

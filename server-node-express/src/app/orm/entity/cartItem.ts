@@ -21,6 +21,6 @@ export class CartItemEntity {
   @ManyToOne(type => BookEntity, { eager: true })
   book: BookEntity;
 
-  @Column({default: 1})
+  @Column({ default: 1 })
   count: number;
 }
