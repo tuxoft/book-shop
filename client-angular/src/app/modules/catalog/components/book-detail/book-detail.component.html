@@ -1,9 +1,37 @@
-<div class="book-detail-container container">
+<div class="book-detail-container container standart-theme">
   <div class="book-detail-img-container">
     <img src="{{(book$ | async).coverUrl}}" class="book-detail-img">
   </div>
   <div class="book-detail-common-info">
     <h1 class="book-title">{{(book$ | async).title}}</h1>
-    <a href="/catalog/book/author/{{(book$ | async).authors}}" class="book-author"></a>
+    <a href="/catalog/book/author/{{bookAuthor}}"
+       class="book-author" *ngFor="let bookAuthor of (book$ | async).authorsString">
+      {{bookAuthor}}
+    </a>
+    <div class="book-features">
+      <ul class="book-feature-list">
+        <li class="book-feature-item">
+          <span>Издательство: </span>
+        </li>
+        <li class="book-feature-item">
+          <span>Год издания: </span>
+        </li>
+        <li class="book-feature-item">
+          <span>Количество страниц: </span>
+        </li>
+        <li class="book-feature-item">
+          <span>ISBN: </span>
+        </li>
+        <li class="book-feature-item">
+          <span>Тираж: </span>
+        </li>
+        <li class="book-feature-item">
+          <span>Формат: </span>
+        </li>
+        <li class="book-feature-item">
+          <span>Тип обложки: </span>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

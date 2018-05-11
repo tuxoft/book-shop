@@ -61,7 +61,7 @@ export interface Book {
   /**
    * авторы книги.
    */
-  authors?: BookAuthor[];
+  authors?: string[];
   /**
    * город издания.
    */
