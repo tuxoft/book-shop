@@ -9,19 +9,19 @@ export default router;
 
 const getBookRepository = () => getConnection().getRepository(BookEntity);
 
-router.get('/', (req, res) => {
-  sendData(req, res, getBookRepository().find());
+router.get('/', (req, res, next) => {
+  sendData(req, res, next, getBookRepository().find());
 });
 
-router.get('/bestsellers', (req, res) => {
-  sendData(req, res, getBookRepository().findByIds([11, 12, 21, 13, 14]));
+router.get('/bestsellers', (req, res, next) => {
+  sendData(req, res, next, getBookRepository().findByIds([11, 12, 21, 13, 14]));
 });
 
-router.get('/latests', (req, res) => {
-  sendData(req, res, getBookRepository().findByIds([9, 3, 7, 17, 24]));
+router.get('/latests', (req, res, next) => {
+  sendData(req, res, next, getBookRepository().findByIds([9, 3, 7, 17, 24]));
 });
 
-router.get('/:ids', (req, res) => {
+router.get('/:ids', (req, res, next) => {
   const ids: string[] = req.params.ids.split(',');
-  sendData(req, res, getBookRepository().findByIds(ids));
+  sendData(req, res, next, getBookRepository().findByIds(ids));
 });

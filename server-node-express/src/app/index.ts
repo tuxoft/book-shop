@@ -4,7 +4,7 @@ import * as cookieParser from 'cookie-parser';
 import * as bodyParser from 'body-parser';
 import * as path from 'path';
 import api from './routers/api';
-import errorHandler  from './utils/error-handler.util';
+import { errorHandler } from './utils/error.util';
 
 const app = express();
 

@@ -2,7 +2,7 @@ import { Column, Entity, Index, ManyToOne, PrimaryGeneratedColumn } from 'typeor
 import { CartEntity } from './cart';
 import { BookEntity } from './book';
 
-@Entity('cart-item')
+@Entity('carts-items')
 @Index(['cartId', 'bookId'], { unique: true })
 export class CartItemEntity {
 
@@ -21,6 +21,6 @@ export class CartItemEntity {
   @ManyToOne(type => BookEntity, { eager: true })
   book: BookEntity;
 
-  @Column({default: 1})
+  @Column({ default: 1 })
   count: number;
 }

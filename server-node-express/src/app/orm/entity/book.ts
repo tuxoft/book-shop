@@ -1,7 +1,7 @@
 import { Book } from '../../model/book';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('book')
+@Entity('books')
 export class BookEntity implements Book{
 
   @PrimaryGeneratedColumn()

@@ -1,6 +1,7 @@
 import * as express from 'express';
 import booksRouter from './books.router';
 import cartRouter from './cart.router';
+import categoriesRouter from './categories.router';
 
 const router = express.Router();
 
@@ -10,6 +11,7 @@ export default router;
 [
   { path: '/books', router: booksRouter },
   { path: '/cart', router: cartRouter },
+  { path: '/categories', router: categoriesRouter },
 
 ].forEach(e => router.use(e.path, e.router));
 
