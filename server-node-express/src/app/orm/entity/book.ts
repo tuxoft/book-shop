@@ -1,11 +1,13 @@
-import { Book } from '../../model/book';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('books')
-export class BookEntity implements Book{
+export class BookEntity {
 
   @PrimaryGeneratedColumn()
   id: number;
+
+  @Column()
+  articul: number;
 
   @Column()
   title: string;
@@ -20,5 +22,35 @@ export class BookEntity implements Book{
   coverUrl: string;
 
   @Column()
-  inStock: number;
+  stock: number;
+
+  @Column()
+  series: string;
+
+  @Column()
+  publisher: string;
+
+  @Column()
+  year: string;
+
+  @Column()
+  pages: number;
+
+  @Column()
+  isbn: string;
+
+  @Column()
+  dimension: string;
+
+  @Column()
+  weight: number;
+
+  @Column()
+  decor: string;
+
+  @Column()
+  restrictions: string;
+
+  @Column()
+  description: string;
 }

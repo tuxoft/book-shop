@@ -9,8 +9,18 @@ export default router;
 
 const getBookRepository = () => getConnection().getRepository(BookEntity);
 
-router.get('/', (req, res, next) => {
-  sendData(req, res, next, getBookRepository().find());
+router.get('/', async (req, res, next) => {
+  try {
+    const data = await getBookRepository().find({
+      select: ['id', 'title', 'price', 'authors', 'coverUrl'],
+    });
+
+    data.forEach(e => e.coverUrl = 'public/images/covers/preview' + e.coverUrl.substring(20));
+
+    res.send(data);
+  } catch (err) {
+    next(err);
+  }
 });
 
 router.get('/bestsellers', (req, res, next) => {
