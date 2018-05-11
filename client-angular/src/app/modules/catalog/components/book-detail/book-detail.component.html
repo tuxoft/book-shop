@@ -33,5 +33,31 @@
         </li>
       </ul>
     </div>
+    <div class="book-in-stock">
+      <span>В наличии: {{(book$ | async).inStock}}</span>
+    </div>
+    <div class="book-price">
+      <span>Цена: <b>{{(book$ | async).price}} р.</b></span>
+    </div>
+    <div class="add-to-cart-button-container">
+      <button pButton type="button" label="В корзину" (click)="addToCart()" *ngIf="!(inCart$ | async)"></button>
+      <button pButton type="button" label="В корзинe" class="ui-button-success" (click)="redirectToCart()" *ngIf="inCart$ | async"></button>
+    </div>
+  </div>
+</div>
+<div class="book-info-tabs container standart-theme">
+  <ul class="book-info-nav">
+    <li class="book-info-tab">
+      <a class="book-info-item" (click)="showAnnotation()"
+         [ngClass]="{ 'active-tab': annotationVisible() }">Описание</a>
+    </li>
+    <li class="book-info-tab">
+      <a class="book-info-item" (click)="showReview()"
+         [ngClass]="{ 'active-tab': reviewVisible()}">Отзывы</a>
+    </li>
+  </ul>
+  <div class="book-info-tab-data">
+    <div *ngIf="annotationVisible()">Описание</div>
+    <div *ngIf="reviewVisible()">Отзывы</div>
   </div>
 </div>

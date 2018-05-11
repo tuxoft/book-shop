@@ -7,7 +7,7 @@
   .book-detail-img-container {
     .book-detail-img {
       width: 100%;
-      height: 100%;
+      height: auto;
     }
   }
   .book-detail-common-info {
@@ -33,5 +33,53 @@
         list-style-type: none;
       }
     }
+    .add-to-cart-button-container {
+      margin: 15px 0;
+    }
+  }
+}
+
+.book-info-tabs {
+  margin: 30px auto;
+  .book-info-nav {
+    padding: 0;
+    list-style-type: none;
+    position: relative;
+    margin: 0 0 20px;
+    .book-info-tab {
+      display: inline-block;
+      .book-info-item {
+        display: block;
+        font-size: 18px;
+        font-weight: 700;
+        padding-bottom: 10px;
+        border-bottom: 3px solid transparent;
+        margin-right: 50px;
+        -webkit-transition: all .3s ease-out;
+        transition: all .3s ease-out;
+        text-decoration: none;
+        cursor: pointer;
+        color: #333;
+        &:hover {
+          color: #26a9e0;
+          border-bottom: 3px solid #26a9e0;
+        }
+      }
+      .active-tab {
+        color: #26a9e0;
+        border-bottom: 3px solid #26a9e0;
+      }
+    }
+    &:after {
+      content: '';
+      border-bottom: 1px solid #b3b3b3;
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 31px;
+    }
+  }
+  .book-info-tab-data {
+
   }
 }

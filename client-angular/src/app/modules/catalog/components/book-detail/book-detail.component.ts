@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BookService } from '../../../../services/rest/book.service';
 import { Observable } from 'rxjs/Observable';
 import { Book } from '../../../../model/book';
+import { Store } from '@ngrx/store';
+import { StoreState } from '../../../../store/reducers';
+import * as CartSelectors from '../../../../store/cart/cart.selectors';
 
 @Component({
   selector: 'app-book-detail',
@@ -13,11 +16,16 @@ export class BookDetailComponent implements OnInit {
 
   bookId: number;
   book$: Observable<Book>;
+  inCart$: Observable<boolean>;
+  activeTab: string = 'annotation';
 
-  constructor(route: ActivatedRoute, private bookService: BookService) {
+  constructor(route: ActivatedRoute,
+              private bookService: BookService,
+              private store: Store<StoreState>,
+              private router: Router) {
     this.bookId = route.snapshot.params['id'];
     this.book$ = this.bookService.getFullBook(this.bookId);
-    console.log('book-detail activated');
+    this.inCart$ = this.store.select(CartSelectors.isBookInCart(+this.bookId));
   }
 
   ngOnInit() {
@@ -30,5 +38,28 @@ export class BookDetailComponent implements OnInit {
           ? author
           : total.concat(', ', author),
         '');
+  }
+
+  addToCart() {
+  }
+
+  redirectToCart() {
+    this.router.navigate(['/cart']);
+  }
+
+  showAnnotation() {
+    this.activeTab = 'annotation';
+  }
+
+  showReview() {
+    this.activeTab = 'review';
+  }
+
+  annotationVisible() {
+    return this.activeTab === 'annotation';
+  }
+
+  reviewVisible() {
+    return this.activeTab === 'review';
   }
 }
