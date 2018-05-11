@@ -4,7 +4,7 @@ import { CategoryEntity } from '../../entity/category';
 export class CategoriesContent1525924638154 implements MigrationInterface {
 
   public async up(queryRunner: QueryRunner): Promise<any> {
-    await queryRunner.connection.createQueryBuilder().insert().into(CategoryEntity).values([
+    const tree = [
       { id: 0, name: 'Категории', parent: null },
       { id: 1, name: 'Книги', parent: 0 },
       { id: 2, name: 'Билингвы и книги на иностранных языках', parent: 1 },
@@ -306,9 +306,6 @@ export class CategoriesContent1525924638154 implements MigrationInterface {
       { id: 298, name: 'Дефектология и логопедия', parent: 294 },
       { id: 299, name: 'Другое', parent: 294 },
       { id: 300, name: 'Инфекционные болезни', parent: 294 },
-    ]).execute();
-
-    await queryRunner.connection.createQueryBuilder().insert().into(CategoryEntity).values([
       { id: 301, name: 'Кардиология', parent: 294 },
       { id: 302, name: 'Кожные и венерические болезни', parent: 294 },
       { id: 303, name: 'ЛОР. Оториноларингология', parent: 294 },
@@ -493,7 +490,22 @@ export class CategoriesContent1525924638154 implements MigrationInterface {
       { id: 483, name: 'Экономика', parent: 466 },
       { id: 484, name: 'Электронная коммерция', parent: 466 },
       { id: 485, name: 'Другое', parent: 274 },
-    ]).execute();
+    ];
+
+    const repo = queryRunner.connection.getTreeRepository(CategoryEntity);
+    let entities: CategoryEntity[] = [];
+
+    tree.forEach(t => {
+      const entity = repo.create({
+        id: t.id,
+        name: t.name,
+        parent: entities.find(e => e.id === t.parent)});
+      entities.push(entity);
+    });
+
+    for (let i = 0; i < entities.length; i++) {
+      await repo.save(entities[i]);
+    }
   }
 
   public async down(queryRunner: QueryRunner): Promise<any> {
