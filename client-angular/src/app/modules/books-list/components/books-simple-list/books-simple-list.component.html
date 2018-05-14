@@ -1,5 +1,8 @@
-<div class="book-list-container">
+<div class="book-list-container container">
   <div *ngFor="let book of books$ | async" class="book-list-item">
     <book-card [book]="book"></book-card>
   </div>
 </div>
+
+<book-carousel [books]="booksBestsellers"></book-carousel>
+<book-carousel [books]="booksLatests"></book-carousel>

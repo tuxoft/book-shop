@@ -1,0 +1,16 @@
+@import "../books-simple-list/books-simple-list.component.scss";
+
+.slider-control {
+  cursor: pointer;
+}
+
+.slider-container {
+  margin: 5em auto;
+  padding: 0;
+  background:#fff;
+}
+
+.slider-control .left,
+.slider-control .right {
+  margin: 30px 0;
+}

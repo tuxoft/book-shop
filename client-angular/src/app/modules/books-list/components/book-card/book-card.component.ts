@@ -11,7 +11,7 @@ import { Observable } from 'rxjs/Observable';
 @Component({
   selector: 'book-card',
   templateUrl: './book-card.component.html',
-  styleUrls: ['./book-card.component.css'],
+  styleUrls: ['./book-card.component.scss'],
 })
 export class BookCardComponent implements OnInit {
   @Input() book: Book;
@@ -26,7 +26,6 @@ export class BookCardComponent implements OnInit {
   }
 
   addToCart() {
-    console.log('added to cart');
     this.store.dispatch(new CartActions.AddToCart({
       book: this.book,
       count: 1,
