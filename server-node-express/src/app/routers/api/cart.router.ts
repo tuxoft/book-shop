@@ -41,8 +41,12 @@ router.post('/item', async (req, res, next) => {
   try {
     const cartItemRepository = getCartItemRepository();
 
-    const item = await cartItemRepository.save(req.body);
-    sendData(req, res, next, cartItemRepository.findOne(item.id));
+    let entity = await cartItemRepository.save(req.body);
+    entity = await cartItemRepository.findOne(entity.id);
+
+    setupCoverUrlLQ(entity.book);
+
+    res.send(entity);
 
   } catch (err) {
     next(err);
