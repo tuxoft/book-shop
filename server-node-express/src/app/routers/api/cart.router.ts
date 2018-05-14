@@ -1,9 +1,7 @@
 import * as express from 'express';
-import { sendData } from '../../utils/response.util';
 import { getConnection } from 'typeorm';
 import { CartEntity } from '../../orm/entity/cart';
 import { CartItemEntity } from '../../orm/entity/cartItem';
-import { setupCoverUrlLQ } from './books.router';
 
 const router = express.Router();
 
@@ -28,8 +26,6 @@ router.get('/', async (req, res, next) => {
       res.cookie(cookieCartName, cart.id, { maxAge: cookieMaxAge });
     }
 
-    cart.items.forEach(item => setupCoverUrlLQ(item.book));
-
     res.send(cart);
 
   } catch (err) {
@@ -37,22 +33,24 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-router.post('/item', async (req, res, next) => {
+router.post('/items', async (req, res, next) => {
   try {
-    const cartItemRepository = getCartItemRepository();
+    const savedItems = await getCartItemRepository().save(req.body);
 
-    let entity = await cartItemRepository.save(req.body);
-    entity = await cartItemRepository.findOne(entity.id);
-
-    setupCoverUrlLQ(entity.book);
-
-    res.send(entity);
+    res.send(savedItems);
 
   } catch (err) {
     next(err);
   }
 });
 
-router.delete('/item', (req, res, next) => {
-  sendData(req, res, next, getCartItemRepository().remove(req.body));
+router.delete('/items', (req, res, next) => {
+  try {
+    const deletedItems = getCartItemRepository().remove(req.body);
+
+    res.send(deletedItems);
+
+  } catch (err) {
+    next(err);
+  }
 });
