@@ -20,7 +20,7 @@ export class BooksSimpleListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.books$ = this.booksService.get();
+    // this.books$ = this.booksService.get();
     this.booksBestsellers$ = this.booksService.getBestsellers();
     this.booksBestsellers$.subscribe(books => this.booksBestsellers = books);
     this.booksLatests$ = this.booksService.getLatests();
