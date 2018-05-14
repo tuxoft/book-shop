@@ -1,8 +1,12 @@
-<div class="book-list-container container">
+<!-- <div class="book-list-container container">
   <div *ngFor="let book of books$ | async" class="book-list-item">
     <book-card [book]="book"></book-card>
   </div>
-</div>
+</div> -->
+<div class="container standart-theme">
+  <a href="/catalog/novelty/" class="slider-title">Новинки литературы</a>
+  <book-carousel [books]="booksLatests"></book-carousel>
 
-<book-carousel [books]="booksBestsellers"></book-carousel>
-<book-carousel [books]="booksLatests"></book-carousel>
+  <a href="/catalog/bestsellers/" class="slider-title">Бестселлеры</a>
+  <book-carousel [books]="booksBestsellers"></book-carousel>
+</div>
