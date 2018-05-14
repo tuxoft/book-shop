@@ -6,6 +6,7 @@ import { Book } from '../../../../model/book';
 import { Store } from '@ngrx/store';
 import { StoreState } from '../../../../store/reducers';
 import * as CartSelectors from '../../../../store/cart/cart.selectors';
+import * as CartActions from '../../../../store/cart/cart.actions';
 
 @Component({
   selector: 'app-book-detail',
@@ -24,7 +25,6 @@ export class BookDetailComponent implements OnInit {
               private bookService: BookService,
               private store: Store<StoreState>,
               private router: Router) {
-    console.log('Summon constructor');
     this.bookId = route.snapshot.params['id'];
     this.book$ = this.bookService.getFullBook(this.bookId);
     this.book$.subscribe(book => this.book = book);
@@ -44,6 +44,10 @@ export class BookDetailComponent implements OnInit {
   }
 
   addToCart() {
+    this.store.dispatch(new CartActions.AddToCart({
+      book: this.book,
+      count: 1,
+    }));
   }
 
   redirectToCart() {

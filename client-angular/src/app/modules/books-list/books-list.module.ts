@@ -5,12 +5,14 @@ import { BooksSimpleListComponent } from './components/books-simple-list/books-s
 import { RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/primeng';
 import { routes } from './books-list.routes';
+import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     ButtonModule,
+    Ng2CarouselamosModule,
   ],
   declarations: [
     BookCardComponent,

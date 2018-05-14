@@ -1,5 +1,30 @@
-<div class="book-list-container">
+<div class="book-list-container container">
   <div *ngFor="let book of books$ | async" class="book-list-item">
     <book-card [book]="book"></book-card>
   </div>
 </div>
+
+<div id="container" class="container">
+  <div
+    ng2-carouselamos
+    class="slides-wrapper"
+    [items]="booksBestsellers"
+    [width]="1300"
+    [$prev]="prev"
+    [$next]="next"
+    [$item]="item">
+</div>
+
+<ng-template #prev>
+  <img src="assets/images/left_arrow.png" class="slider-control" id="left" />
+</ng-template>
+<ng-template #next>
+  <img src="assets/images/right_arrow.png" class="slider-control" id="right" />
+</ng-template>
+<ng-template #item let-item let-i="index">
+  <div class="book-list-container">
+    <div class="book-list-item">
+      <book-card [book]="item"></book-card>
+    </div>
+  </div>
+</ng-template>
