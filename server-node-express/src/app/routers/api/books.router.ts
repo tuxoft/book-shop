@@ -10,9 +10,17 @@ const getBookRepository = () => getConnection().getRepository(BookEntity);
 
 const shortOption = { select: ['id', 'title', 'price', 'authors', 'coverUrl'] };
 
-const setupCoverUrl = (prefix: string, book: BookEntity) => book.coverUrl = prefix + book.coverUrl;
-const setupCoverUrlHQ = (book: BookEntity) => setupCoverUrl('public/images/covers/', book);
-const setupCoverUrlLQ = (book: BookEntity) => setupCoverUrl('public/images/covers/preview/', book);
+const setupCoverUrl = (prefix: string, book: BookEntity) => {
+  return book.coverUrl = prefix + book.coverUrl;
+};
+
+export const setupCoverUrlHQ = (book: BookEntity) => {
+  return setupCoverUrl('public/images/covers/', book);
+};
+
+export const setupCoverUrlLQ = (book: BookEntity) => {
+  return setupCoverUrl('public/images/covers/preview/', book);
+};
 
 router.get('/', async (req, res, next) => {
   try {

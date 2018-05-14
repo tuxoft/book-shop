@@ -3,6 +3,7 @@ import { sendData } from '../../utils/response.util';
 import { getConnection } from 'typeorm';
 import { CartEntity } from '../../orm/entity/cart';
 import { CartItemEntity } from '../../orm/entity/cartItem';
+import { setupCoverUrlLQ } from './books.router';
 
 const router = express.Router();
 
@@ -26,6 +27,8 @@ router.get('/', async (req, res, next) => {
       cart = await cartRepository.findOne(cart);
       res.cookie(cookieCartName, cart.id, { maxAge: cookieMaxAge });
     }
+
+    cart.items.forEach(item => setupCoverUrlLQ(item.book));
 
     res.send(cart);
 
