@@ -53,7 +53,7 @@ export interface Book {
   /**
    * в наличии.
    */
-  inStock?: number;
+  stock?: number;
   /**
    * издательство.
    */

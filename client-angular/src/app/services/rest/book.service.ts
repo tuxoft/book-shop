@@ -4,6 +4,7 @@ import { Book } from '../../model/book';
 import * as BookMock from '../../model/mock';
 import { of } from 'rxjs/observable/of';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class BookService {
@@ -17,8 +18,8 @@ export class BookService {
   }
 
   getFullBook(id: number): Observable<Book> {
-    // return this.http.get<Book>(this.booksUrl + '/' + id);
-    return of(BookMock.BOOK_1);
+    return this.http.get<Book[]>(this.booksUrl + '/' + id)
+      .pipe(map(books => books ? books[0] : {}));
   }
 
   getByIds(ids: number[]): Observable<Book[]> {
