@@ -13,6 +13,8 @@ export class BooksSimpleListComponent implements OnInit {
   books$: Observable<Book[]>;
   booksBestsellers$: Observable<Book[]>;
   booksBestsellers: Book[];
+  booksLatests$: Observable<Book[]>;
+  booksLatests: Book[];
 
   constructor(private booksService: BookService) {
   }
@@ -21,5 +23,7 @@ export class BooksSimpleListComponent implements OnInit {
     this.books$ = this.booksService.get();
     this.booksBestsellers$ = this.booksService.getBestsellers();
     this.booksBestsellers$.subscribe(books => this.booksBestsellers = books);
+    this.booksLatests$ = this.booksService.getLatests();
+    this.booksLatests$.subscribe(books => this.booksLatests = books);
   }
 }

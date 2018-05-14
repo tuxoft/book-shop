@@ -28,7 +28,8 @@ router.get('/', async (req, res, next) => {
 
 router.get('/bestsellers', async (req, res, next) => {
   try {
-    const data = await getBookRepository().findByIds([11, 12, 21, 13, 14], shortOption);
+    const data = await getBookRepository()
+      .findByIds([11, 12, 21, 13, 14, 10, 9, 8, 7, 6], shortOption);
 
     data.forEach(setupCoverUrlLQ);
 
@@ -40,7 +41,8 @@ router.get('/bestsellers', async (req, res, next) => {
 
 router.get('/latests', async (req, res, next) => {
   try {
-    const data = await getBookRepository().findByIds([9, 3, 7, 17, 24], shortOption);
+    const data = await getBookRepository()
+      .findByIds([9, 3, 7, 17, 24, 1, 2, 4, 5, 22], shortOption);
 
     data.forEach(setupCoverUrlLQ);
 
