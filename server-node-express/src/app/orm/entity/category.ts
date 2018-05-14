@@ -1,7 +1,7 @@
 import { Column, Entity, PrimaryColumn, Tree, TreeChildren, TreeParent } from 'typeorm';
 
 @Entity('categories')
-@Tree('nested-set')
+@Tree('materialized-path')
 export class CategoryEntity {
 
   @PrimaryColumn()

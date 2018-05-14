@@ -1,5 +1,4 @@
 import * as express from 'express';
-import { sendData } from '../../utils/response.util';
 import { getConnection } from 'typeorm';
 import { BookEntity } from '../../orm/entity/book';
 
@@ -9,13 +8,17 @@ export default router;
 
 const getBookRepository = () => getConnection().getRepository(BookEntity);
 
+const shortOption = { select: ['id', 'title', 'price', 'authors', 'coverUrl'] };
+
+const setupCoverUrl = (prefix: string, book: BookEntity) => book.coverUrl = prefix + book.coverUrl;
+const setupCoverUrlHQ = (book: BookEntity) => setupCoverUrl('public/images/covers/', book);
+const setupCoverUrlLQ = (book: BookEntity) => setupCoverUrl('public/images/covers/preview/', book);
+
 router.get('/', async (req, res, next) => {
   try {
-    const data = await getBookRepository().find({
-      select: ['id', 'title', 'price', 'authors', 'coverUrl'],
-    });
+    const data = await getBookRepository().find(shortOption);
 
-    data.forEach(e => e.coverUrl = 'public/images/covers/preview' + e.coverUrl.substring(20));
+    data.forEach(setupCoverUrlLQ);
 
     res.send(data);
   } catch (err) {
@@ -23,15 +26,40 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-router.get('/bestsellers', (req, res, next) => {
-  sendData(req, res, next, getBookRepository().findByIds([11, 12, 21, 13, 14]));
+router.get('/bestsellers', async (req, res, next) => {
+  try {
+    const data = await getBookRepository().findByIds([11, 12, 21, 13, 14], shortOption);
+
+    data.forEach(setupCoverUrlLQ);
+
+    res.send(data);
+  } catch (err) {
+    next(err);
+  }
 });
 
-router.get('/latests', (req, res, next) => {
-  sendData(req, res, next, getBookRepository().findByIds([9, 3, 7, 17, 24]));
+router.get('/latests', async (req, res, next) => {
+  try {
+    const data = await getBookRepository().findByIds([9, 3, 7, 17, 24], shortOption);
+
+    data.forEach(setupCoverUrlLQ);
+
+    res.send(data);
+  } catch (err) {
+    next(err);
+  }
 });
 
-router.get('/:ids', (req, res, next) => {
-  const ids: string[] = req.params.ids.split(',');
-  sendData(req, res, next, getBookRepository().findByIds(ids));
+router.get('/:ids', async (req, res, next) => {
+  try {
+    const ids: string[] = req.params.ids.split(',');
+    const data = await getBookRepository().findByIds(ids);
+
+    data.forEach(setupCoverUrlHQ);
+
+    res.send(data);
+
+  } catch (err) {
+    next(err);
+  }
 });
