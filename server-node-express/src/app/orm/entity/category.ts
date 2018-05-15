@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryColumn, Tree, TreeChildren, TreeParent } from 'typeorm';
+import { Column, Entity, ManyToMany, PrimaryColumn, Tree, TreeChildren, TreeParent } from 'typeorm';
+import { BookEntity } from './book';
 
 @Entity('categories')
 @Tree('materialized-path')
@@ -15,4 +16,7 @@ export class CategoryEntity {
 
   @TreeChildren()
   children: CategoryEntity[];
+
+  @ManyToMany(type => BookEntity, book => book.categories)
+  books: BookEntity[];
 }

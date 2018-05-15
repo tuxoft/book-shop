@@ -4,9 +4,8 @@ import { CategoryEntity } from '../../entity/category';
 export class CategoriesContent1525924638154 implements MigrationInterface {
 
   public async up(queryRunner: QueryRunner): Promise<any> {
-    const tree = [
-      { id: 0, name: 'Категории', parent: null },
-      { id: 1, name: 'Книги', parent: 0 },
+    const items = [
+      { id: 1, name: 'Книги', parent: null },
       { id: 2, name: 'Билингвы и книги на иностранных языках', parent: 1 },
       { id: 3, name: 'Билингвы', parent: 2 },
       { id: 4, name: 'Билингвы (английский язык)', parent: 3 },
@@ -504,7 +503,7 @@ export class CategoriesContent1525924638154 implements MigrationInterface {
       { id: 487, name: 'Монастыри. Храмы. Святыни', parent: 484 },
       { id: 488, name: 'Общие вопросы православия', parent: 484 },
       { id: 489, name: 'Православная художественная литература', parent: 484 },
-      { id: 490, name: 'Учебная, методическая литература и словари', parent: 1},
+      { id: 490, name: 'Учебная, методическая литература и словари', parent: 1 },
       { id: 491, name: 'Вспомогательные материалы для студентов', parent: 490 },
       { id: 492, name: 'Демонстрационные материалы', parent: 490 },
       { id: 493, name: 'Дополнительное образование для детей', parent: 490 },
@@ -523,7 +522,7 @@ export class CategoriesContent1525924638154 implements MigrationInterface {
       { id: 506, name: 'Портфолио дошкольника', parent: 498 },
       { id: 507, name: 'Сборники по подготовке к школе. Тесты', parent: 498 },
       { id: 508, name: 'Иностранные языки: грамматика и учебники', parent: 490 },
-      { id: 509, name: 'Английский язык', parent: 508},
+      { id: 509, name: 'Английский язык', parent: 508 },
       { id: 510, name: 'Другие языки', parent: 508 },
       { id: 511, name: 'Испанский язык', parent: 508 },
       { id: 512, name: 'Итальянский язык', parent: 508 },
@@ -879,13 +878,13 @@ export class CategoriesContent1525924638154 implements MigrationInterface {
     ];
 
     const repo = queryRunner.connection.getTreeRepository(CategoryEntity);
-    let entities: CategoryEntity[] = [];
+    const entities: CategoryEntity[] = [];
 
-    tree.forEach(t => {
+    items.forEach(t => {
       const entity = repo.create({
-        id: t.id,
-        name: t.name,
-        parent: entities.find(e => e.id === t.parent)});
+        ...t,
+        parent: entities.find(e => e.id === t.parent)
+      });
       entities.push(entity);
     });
 

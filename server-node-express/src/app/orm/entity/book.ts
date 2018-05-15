@@ -1,13 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { CategoryEntity } from './category';
 
 @Entity('books')
 export class BookEntity {
 
   @PrimaryGeneratedColumn()
   id: number;
-
-  @Column()
-  articul: number;
 
   @Column()
   title: string;
@@ -21,36 +19,43 @@ export class BookEntity {
   @Column()
   coverUrl: string;
 
-  @Column()
+  @Column({ select: false })
+  articul: number;
+
+  @Column({ select: false })
   stock: number;
 
-  @Column()
+  @Column({ select: false })
   series: string;
 
-  @Column()
+  @Column({ select: false })
   publisher: string;
 
-  @Column()
+  @Column({ select: false })
   year: string;
 
-  @Column()
+  @Column({ select: false })
   pages: number;
 
-  @Column()
+  @Column({ select: false })
   isbn: string;
 
-  @Column()
+  @Column({ select: false })
   dimension: string;
 
-  @Column()
+  @Column({ select: false })
   weight: number;
 
-  @Column()
+  @Column({ select: false })
   decor: string;
 
-  @Column()
+  @Column({ select: false })
   restrictions: string;
 
-  @Column()
+  @Column({ select: false })
   description: string;
+
+  @ManyToMany(type => CategoryEntity, category => category.books)
+  @JoinTable()
+  categories: CategoryEntity[];
 }

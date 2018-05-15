@@ -8,27 +8,15 @@ export default router;
 
 const getBookRepository = () => getConnection().getRepository(BookEntity);
 
-const shortOption = { select: ['id', 'title', 'price', 'authors', 'coverUrl'] };
-
-const setupCoverUrl = (prefix: string, book: BookEntity) => {
-  return book.coverUrl = prefix + book.coverUrl;
-};
-
-export const setupCoverUrlHQ = (book: BookEntity) => {
-  return setupCoverUrl('public/images/covers/', book);
-};
-
-export const setupCoverUrlLQ = (book: BookEntity) => {
-  return setupCoverUrl('public/images/covers/preview/', book);
-};
+const setupCoverUrlToHighResolution = (book: BookEntity) =>
+  book.coverUrl = book.coverUrl.replace('low-resolution', 'high-resolution');
 
 router.get('/', async (req, res, next) => {
   try {
-    const data = await getBookRepository().find(shortOption);
+    const books = await getBookRepository().find();
 
-    data.forEach(setupCoverUrlLQ);
+    res.send(books);
 
-    res.send(data);
   } catch (err) {
     next(err);
   }
@@ -36,12 +24,10 @@ router.get('/', async (req, res, next) => {
 
 router.get('/bestsellers', async (req, res, next) => {
   try {
-    const data = await getBookRepository()
-      .findByIds([11, 12, 21, 13, 14, 10, 9, 8, 7, 6], shortOption);
+    const books = await getBookRepository().findByIds([11, 12, 21, 13, 14, 10, 9, 8, 7, 6]);
 
-    data.forEach(setupCoverUrlLQ);
+    res.send(books);
 
-    res.send(data);
   } catch (err) {
     next(err);
   }
@@ -49,25 +35,29 @@ router.get('/bestsellers', async (req, res, next) => {
 
 router.get('/latests', async (req, res, next) => {
   try {
-    const data = await getBookRepository()
-      .findByIds([9, 3, 7, 17, 24, 1, 2, 4, 5, 22], shortOption);
+    const books = await getBookRepository().findByIds([9, 3, 7, 17, 24, 1, 2, 4, 5, 22]);
 
-    data.forEach(setupCoverUrlLQ);
+    res.send(books);
 
-    res.send(data);
   } catch (err) {
     next(err);
   }
 });
 
-router.get('/:ids', async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
   try {
-    const ids: string[] = req.params.ids.split(',');
-    const data = await getBookRepository().findByIds(ids);
+    const id: string = req.params.id;
 
-    data.forEach(setupCoverUrlHQ);
+    const book = await getBookRepository().findOne(id, {
+      select: [
+        'id', 'title', 'price', 'authors', 'coverUrl', 'articul', 'stock', 'series', 'publisher',
+        'year', 'pages', 'isbn', 'dimension', 'weight', 'decor', 'restrictions', 'description',
+      ],
+    });
 
-    res.send(data);
+    setupCoverUrlToHighResolution(book);
+
+    res.send(book);
 
   } catch (err) {
     next(err);
