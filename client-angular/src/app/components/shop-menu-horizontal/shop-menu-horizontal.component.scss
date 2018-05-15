@@ -1,5 +1,11 @@
 @import "../../../app.styles.scss";
 
+.nav-container {
+  border-bottom: 1px solid #000;
+  margin-bottom: 20px;
+  opacity: 1;
+}
+
 .nav-item:hover .catalog-list {
   visibility: visible;
   opacity: 1;

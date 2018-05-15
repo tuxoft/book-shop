@@ -5,13 +5,16 @@ import { RouterModule } from '@angular/router';
 import { routes } from './catalog.routes';
 import { CatalogComponent } from './components/catalog/catalog.component';
 import { ButtonModule } from 'primeng/primeng';
+import { CatalogBooksComponent } from './components/catalog-books/catalog-books.component';
+import { CarouselModule } from '../carousel/carousel.module';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     ButtonModule,
+    CarouselModule,
   ],
-  declarations: [BookDetailComponent, CatalogComponent],
+  declarations: [BookDetailComponent, CatalogComponent, CatalogBooksComponent],
 })
 export class CatalogModule { }

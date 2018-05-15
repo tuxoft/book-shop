@@ -1,1 +1,1 @@
-export { Ng2CarouselamosModule } from './ng2-carouselamos.module';
+export { CarouselModule } from './carousel.module';
