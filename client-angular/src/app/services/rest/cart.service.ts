@@ -9,7 +9,7 @@ import { OrderItem } from '../../model/order-item';
 @Injectable()
 export class CartService {
   private cartUrl = 'api/cart';
-  private cartItemUrl = 'api/cart/item';
+  private cartItemUrl = 'api/cart/items';
 
   constructor(private http: HttpClient) { }
 

@@ -44,7 +44,7 @@ export class CartEffects {
       });
     }),
     map((orderItem: OrderItem) => {
-      return new CartActions.AddToCartSuccess(orderItem);
+      return new CartActions.InitCart();
     }),
   );
 
