@@ -18,7 +18,11 @@
 .search-input {
   width: 80%;
   border-radius: 5px 0 0 5px;
-  height: 30px;
+  height: 40px;
+  font-size: 18px;
+  padding: 0 0 0 10px;
+  font-family: 'PT Sans', sans-serif;
+  border: none;
 }
 
 .search-container {
@@ -26,7 +30,14 @@
 }
 
 .search-button {
-  width: 30px;
+  height: 40px;
+  width: 60px;
+  border: 0;
+  border-radius: 0 5px 5px 0;
+  background-color: #1b75bb;
+  cursor: pointer;
+  color: #fff;
+  font-size: 20px;
 }
 
 .cart-label {
