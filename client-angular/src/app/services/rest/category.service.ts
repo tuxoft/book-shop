@@ -8,13 +8,18 @@ import { OrderItem } from '../../model/order-item';
 
 @Injectable()
 export class CategoryService {
-  private cartUrl = 'api/cart';
-  private cartItemUrl = 'api/cart/item';
+  private categoriesUrl = 'api/categories';
+  private categoriesRootUrl = '/api/categories/roots';
 
   constructor(private http: HttpClient) { }
 
   get(): Observable<Category[]> {
-    return this.http.get<Category[]>(this.cartUrl);
+    return this.http.get<Category[]>(this.categoriesUrl);
+    // return of(BOOKS.ca)
+  }
+
+  getRoot(): Observable<Category[]> {
+    return this.http.get<Category[]>(this.categoriesRootUrl);
     // return of(BOOKS.ca)
   }
 }

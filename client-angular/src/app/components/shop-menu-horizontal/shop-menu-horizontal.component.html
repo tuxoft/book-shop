@@ -2,10 +2,10 @@
 <div class="nav-container">
   <div class="container standart-theme">
     <ul class="nav-items">
-      <li class="nav-item nav-item_popup">
-        <a href="/catalog/books">Книги</a>
+      <li class="nav-item nav-item_popup" *ngFor="let item of rootItems">
+        <a href="/catalog/{{item.categoryUrl}}">{{item.name}}</a>
         <div class="catalog-list">
-          Художественная литература
+          {{item.name}}
         </div>
       </li>
     </ul>

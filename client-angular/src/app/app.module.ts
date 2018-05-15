@@ -19,6 +19,7 @@ import { routes } from './app.routes';
 import { ButtonModule } from 'primeng/primeng';
 import { EffectsModule } from '@ngrx/effects';
 import { effects } from './effects/index';
+import { CategoryService } from './services/rest/category.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { effects } from './effects/index';
       maxAge: 50,
     }),
   ],
-  providers: [BookService, CartService],
+  providers: [BookService, CartService, CategoryService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

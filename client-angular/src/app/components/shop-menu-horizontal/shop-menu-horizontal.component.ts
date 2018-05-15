@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuItem } from 'primeng/primeng';
+import { CategoryService } from '../../services/rest/category.service';
 
 @Component({
   selector: 'app-shop-menu-horizontal',
@@ -7,26 +7,12 @@ import { MenuItem } from 'primeng/primeng';
   styleUrls: ['./shop-menu-horizontal.component.scss'],
 })
 export class ShopMenuHorizontalComponent implements OnInit {
-  items: MenuItem[];
+  rootItems = [];
 
-  constructor() { }
+  constructor(private categoryService: CategoryService) { }
 
   ngOnInit() {
-    this.items = [
-      {
-        label: 'Каталог', icon: 'fa fa-bars',
-        items: [
-          {
-            label: 'Книги',
-            icon: 'fa fa-book',
-            routerLink: [''],
-          },
-          {
-            label: 'Журналы',
-          },
-        ],
-      },
-    ];
+    this.categoryService.getRoot().subscribe(items => this.rootItems = items);
   }
 
 }
