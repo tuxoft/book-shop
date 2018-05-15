@@ -1,0 +1,61 @@
+@import "../../../app.styles.scss";
+
+.nav-item:hover .catalog-list {
+  visibility: visible;
+  opacity: 1;
+}
+
+.catalog-list {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 36px;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.3);
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    // z-index: 101;
+}
+
+.nav-item:hover>a {
+    position: relative;
+    color: #26A9E0;
+}
+
+.nav-item_popup:hover>a {
+    color: #26A9E0;
+}
+.nav-item_popup>a {
+    font-weight: bold;
+}
+.nav-item>a {
+    font-size: 15px;
+    color: #000;
+    line-height: 33px;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    background-color: #fff;
+    padding: 0;
+    vertical-align: middle;
+}
+
+.nav-item_popup {
+    position: relative;
+}
+
+.nav-item {
+    display: inline-block;
+    padding: 0 20px 0 0;
+    height: 100%;
+}
+
+.nav-items {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: relative;
+    height: 35px;
+}

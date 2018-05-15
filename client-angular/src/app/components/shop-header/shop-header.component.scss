@@ -1,0 +1,42 @@
+@import "../../../app.styles.scss";
+
+.header-container {
+  background-color: #26A9E0;
+  height: 100px;
+}
+
+.header-inner-container {
+  padding: 15px 0;
+}
+
+.header-logo {
+  font-size: 30px;
+  padding: 10px;
+  color: white;
+}
+
+.search-input {
+  width: 80%;
+  border-radius: 5px 0 0 5px;
+  height: 30px;
+}
+
+.search-container {
+  padding: 10px;
+}
+
+.search-button {
+  width: 30px;
+}
+
+.cart-label {
+  width: auto;
+  margin-left: 5px;
+  color: white;
+}
+
+.cart-logo-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

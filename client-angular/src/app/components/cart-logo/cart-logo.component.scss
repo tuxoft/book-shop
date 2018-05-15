@@ -134,7 +134,8 @@
     position: relative;
     background: none;
     box-shadow: 0 2px 13px #2399e5;
-    background-color: #2399e5;
+    // background-color: #2399e5;
+    background-color: white;
     position: relative;
     top: -3px;
     cursor: pointer;
@@ -144,7 +145,8 @@
       left: -1px;
     }
     &:hover {
-      background-color: #0277BD;
+      // background-color: #0277BD;
+      background-color: white;
       box-shadow: 0 2px 13px #0277BD;
     }
     &:focus {
@@ -152,7 +154,8 @@
     }
     &:active {
       border-style: none;
-      background-color: #01579B;
+      background-color: grey;
+      // background-color: #01579B;
       box-shadow: 0 2px 13px #01579B;
     }
   }
