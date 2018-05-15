@@ -22,7 +22,10 @@ router.get('/', async (req, res, next) => {
 
 router.get('/roots', async (req, res, next) => {
   try {
-    const roots = await getCategoryTreeRepository().findRoots();
+    const roots = await getCategoryRepository().find({
+      select: ['id', 'name', 'route'],
+      where: {parent: null}
+    });
 
     res.send(roots);
 

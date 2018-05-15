@@ -5,7 +5,7 @@ export class CategoriesContent1525924638154 implements MigrationInterface {
 
   public async up(queryRunner: QueryRunner): Promise<any> {
     const items = [
-      { id: 1, name: 'Книги', parent: null },
+      { id: 1, name: 'Книги', parent: null, route: 'books' },
       { id: 2, name: 'Билингвы и книги на иностранных языках', parent: 1 },
       { id: 3, name: 'Билингвы', parent: 2 },
       { id: 4, name: 'Билингвы (английский язык)', parent: 3 },
@@ -857,12 +857,12 @@ export class CategoriesContent1525924638154 implements MigrationInterface {
       { id: 841, name: 'Зарубежное фэнтези', parent: 840 },
       { id: 842, name: 'Отечественное фэнтези', parent: 840 },
       { id: 843, name: 'Эпос и фольклор', parent: 781 },
-      { id: 844, name: 'Игры и игрушки', parent: null },
-      { id: 845, name: 'Мультимедия', parent: null },
+      { id: 844, name: 'Игры и игрушки', parent: null, route: 'toys' },
+      { id: 845, name: 'Мультимедия', parent: null, route: 'multimedia' },
       { id: 846, name: 'Аудио', parent: 845 },
       { id: 847, name: 'Видео', parent: 845 },
       { id: 848, name: 'Софт', parent: 845 },
-      { id: 849, name: 'Канцелярские товары', parent: null },
+      { id: 849, name: 'Канцелярские товары', parent: null, route: 'stationery' },
       { id: 850, name: 'Аксессуары для книг', parent: 849 },
       { id: 851, name: 'Глобусы', parent: 849 },
       { id: 852, name: 'Обложки для документов', parent: 849 },
@@ -872,7 +872,7 @@ export class CategoriesContent1525924638154 implements MigrationInterface {
       { id: 856, name: 'Принадлежности для черчения', parent: 849 },
       { id: 857, name: 'Рисование', parent: 849 },
       { id: 858, name: 'Товары для школы', parent: 849 },
-      { id: 860, name: 'Сувениры', parent: null },
+      { id: 860, name: 'Сувениры', parent: null, route: 'souvenirs' },
       { id: 861, name: 'Календари', parent: 860 },
       { id: 862, name: 'Сувенирная продукция', parent: 860 },
     ];

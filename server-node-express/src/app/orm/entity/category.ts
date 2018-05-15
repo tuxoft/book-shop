@@ -11,6 +11,9 @@ export class CategoryEntity {
   @Column()
   name: string;
 
+  @Column({nullable: true, unique: true, select: false})
+  route: string;
+
   @TreeParent()
   parent: CategoryEntity;
 
