@@ -1,6 +1,7 @@
 import * as express from 'express';
 import { getConnection } from 'typeorm';
 import { CategoryEntity } from '../../orm/entity/category';
+import { BookEntity } from '../../orm/entity/book';
 
 const router = express.Router();
 
@@ -8,6 +9,7 @@ export default router;
 
 const getCategoryRepository = () => getConnection().getRepository(CategoryEntity);
 const getCategoryTreeRepository = () => getConnection().getTreeRepository(CategoryEntity);
+const getBookRepository = () => getConnection().getRepository(BookEntity);
 
 router.get('/', async (req, res, next) => {
   try {
@@ -48,11 +50,18 @@ router.get('/:id', async (req, res, next) => {
 
 router.get('/:id/books', async (req, res, next) => {
   try {
-    const node = await getCategoryRepository().findOneOrFail(req.params.id, {
-      relations: ['books'],
-    });
+    const parent = await getCategoryRepository().findOneOrFail(req.params.id);
 
-    res.send(node.books);
+    const descendants = await getCategoryTreeRepository().findDescendants(parent);
+
+    const ids = descendants.map(e => e.id);
+
+    const books = await getBookRepository().createQueryBuilder('book')
+      .leftJoin('book.categories', 'category')
+      .where('category.id IN (:...ids)', {ids: ids})
+      .getMany();
+
+    res.send(books);
 
   } catch (err) {
     next(err);
