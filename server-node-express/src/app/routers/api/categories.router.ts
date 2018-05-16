@@ -58,7 +58,7 @@ router.get('/:id/books', async (req, res, next) => {
 
     const books = await getBookRepository().createQueryBuilder('book')
       .leftJoin('book.categories', 'category')
-      .where('category.id IN (100,101)')
+      .where('category.id IN (:...ids)', {ids: ids})
       .getMany();
 
     res.send(books);
