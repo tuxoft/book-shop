@@ -18,6 +18,11 @@ export class CategoryService {
     // return of(BOOKS.ca)
   }
 
+  getById(id: number): Observable<Category[]> {
+    return this.http.get<Category[]>(this.categoriesUrl + '/' + id + '/books');
+    // return of(BOOKS.ca)
+  }
+
   getRoot(): Observable<Category[]> {
     return this.http.get<Category[]>(this.categoriesRootUrl);
     // return of(BOOKS.ca)

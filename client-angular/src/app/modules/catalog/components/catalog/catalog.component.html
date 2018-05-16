@@ -1,3 +1,11 @@
-<p>
-  catalog works!
-</p>
+<div class="container standart-theme">
+  <!-- <app-product-wide-card [product]="product" *ngFor="let product of products">
+  </app-product-wide-card> -->
+  <div class="book-list-container">
+    <div class="book-list-item" *ngFor="let product of products">
+      <book-card [book]="product">
+      </book-card>
+    </div>
+  </div>
+  <span *ngIf="!products.length">Нет товаров в категории</span>
+</div>

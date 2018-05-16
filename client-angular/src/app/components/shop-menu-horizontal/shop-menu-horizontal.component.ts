@@ -7,13 +7,11 @@ import { CategoryService } from '../../services/rest/category.service';
   styleUrls: ['./shop-menu-horizontal.component.scss'],
 })
 export class ShopMenuHorizontalComponent implements OnInit {
-  // rootItems = [];
   menuItems = [];
 
   constructor(private categoryService: CategoryService) { }
 
   ngOnInit() {
-    // this.categoryService.getRoot().subscribe(items => this.rootItems = items);
     this.categoryService.get().subscribe(items => this.menuItems = items);
   }
 

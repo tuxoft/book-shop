@@ -6,15 +6,15 @@ import { CatalogBooksComponent } from './components/catalog-books/catalog-books.
 
 export const routes: Routes = [
   {
-    path: '',
-    component: CatalogComponent,
+    path: 'books',
+    component: CatalogBooksComponent,
   },
   {
     path: 'book/:id',
     component: BookDetailComponent,
   },
   {
-    path: 'books',
-    component: CatalogBooksComponent,
+    path: ':id',
+    component: CatalogComponent,
   },
 ];

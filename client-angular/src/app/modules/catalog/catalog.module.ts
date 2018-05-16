@@ -7,6 +7,7 @@ import { CatalogComponent } from './components/catalog/catalog.component';
 import { ButtonModule } from 'primeng/primeng';
 import { CatalogBooksComponent } from './components/catalog-books/catalog-books.component';
 import { CarouselModule } from '../carousel/carousel.module';
+import { ProductWideCardComponent } from './components/product-wide-card/product-wide-card.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,10 @@ import { CarouselModule } from '../carousel/carousel.module';
     ButtonModule,
     CarouselModule,
   ],
-  declarations: [BookDetailComponent, CatalogComponent, CatalogBooksComponent],
+  declarations: [
+    BookDetailComponent,
+    CatalogComponent,
+    CatalogBooksComponent,
+    ProductWideCardComponent],
 })
 export class CatalogModule { }

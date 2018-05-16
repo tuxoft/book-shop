@@ -8,8 +8,6 @@ import { ShopMenuHorizontalComponent } from './components/shop-menu-horizontal/s
 import { HttpClientModule } from '@angular/common/http';
 import { BookService } from './services/rest/book.service';
 import { CartService } from './services/rest/cart.service';
-import { MegaMenuModule } from 'primeng/megamenu';
-import { MenubarModule } from 'primeng/menubar';
 import { CartLogoComponent } from './components/cart-logo/cart-logo.component';
 import { StoreModule } from '@ngrx/store';
 import { storeReducers } from './store/reducers';
@@ -33,8 +31,6 @@ import { CategoryService } from './services/rest/category.service';
     RouterModule,
     BrowserModule,
     HttpClientModule,
-    MegaMenuModule,
-    MenubarModule,
     CheckboxModule,
     ButtonModule,
     StoreModule.forRoot(storeReducers),
