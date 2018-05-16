@@ -1,12 +1,12 @@
 import { Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { CartItemEntity } from './cartItem';
+import { CartItem } from './cartItem';
 
 @Entity('carts')
-export class CartEntity {
+export class Cart {
 
   @PrimaryGeneratedColumn('uuid')
   id: number;
 
-  @OneToMany(type => CartItemEntity, cartItem => cartItem.cart, { eager: true })
-  items: CartItemEntity[];
+  @OneToMany(type => CartItem, cartItem => cartItem.cart, { eager: true })
+  items: CartItem[];
 }

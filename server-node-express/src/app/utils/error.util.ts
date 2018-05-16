@@ -1,11 +1,15 @@
-import { sendError } from './response.util';
+import { sendBadRequest, sendError } from './response.util';
+import { EntityNotFoundError } from 'typeorm/error/EntityNotFoundError';
 
-export function errorHandler(err, req, res, next) {
+export function errorHandler(err: Error, req, res, next) {
 
   if (res.headersSent) {
     return next(err);
   }
 
-  sendError(err.message, res);
-  console.error(err.message);
+  if (err instanceof EntityNotFoundError) {
+    sendBadRequest(err, req, res);
+  } else {
+    sendError(err, req, res);
+  }
 }

@@ -1,15 +1,18 @@
 import * as express from 'express';
 import { getConnection } from 'typeorm';
-import { BookEntity } from '../../orm/entity/book';
+import { Book } from '../../orm/entity/book';
 
 const router = express.Router();
 
 export default router;
 
-const getBookRepository = () => getConnection().getRepository(BookEntity);
+const getBookRepository = () => getConnection().getRepository(Book);
 
-const setupCoverUrlToHighResolution = (book: BookEntity) =>
-  book.coverUrl = book.coverUrl.replace('low-resolution', 'high-resolution');
+const setupCoverUrlToHighResolution = (book: Book) => {
+  if (book && book.coverUrl) {
+    book.coverUrl = book.coverUrl.replace('low-resolution', 'high-resolution');
+  }
+};
 
 router.get('/', async (req, res, next) => {
   try {
@@ -48,7 +51,7 @@ router.get('/:id', async (req, res, next) => {
   try {
     const id: string = req.params.id;
 
-    const book = await getBookRepository().findOne(id, {
+    const book = await getBookRepository().findOneOrFail(id, {
       select: [
         'id', 'title', 'price', 'authors', 'coverUrl', 'articul', 'stock', 'series', 'publisher',
         'year', 'pages', 'isbn', 'dimension', 'weight', 'decor', 'restrictions', 'description',

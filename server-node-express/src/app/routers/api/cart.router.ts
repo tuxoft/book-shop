@@ -1,14 +1,14 @@
 import * as express from 'express';
 import { getConnection } from 'typeorm';
-import { CartEntity } from '../../orm/entity/cart';
-import { CartItemEntity } from '../../orm/entity/cartItem';
+import { Cart } from '../../orm/entity/cart';
+import { CartItem } from '../../orm/entity/cartItem';
 
 const router = express.Router();
 
 export default router;
 
-const getCartRepository = () => getConnection().getRepository(CartEntity);
-const getCartItemRepository = () => getConnection().getRepository(CartItemEntity);
+const getCartRepository = () => getConnection().getRepository(Cart);
+const getCartItemRepository = () => getConnection().getRepository(CartItem);
 
 const cookieCartName = 'cart';
 const cookieMaxAge = 2147483647000;
@@ -22,7 +22,7 @@ router.get('/', async (req, res, next) => {
     if (!cart) {
       cart = cartRepository.create();
       cart = await cartRepository.save(cart);
-      cart = await cartRepository.findOne(cart);
+      cart = await cartRepository.findOneOrFail(cart);
       res.cookie(cookieCartName, cart.id, { maxAge: cookieMaxAge });
     }
 
@@ -46,9 +46,9 @@ router.post('/items', async (req, res, next) => {
 
 router.delete('/items', (req, res, next) => {
   try {
-    const deletedItems = getCartItemRepository().remove(req.body);
+    const removedItems = getCartItemRepository().remove(req.body);
 
-    res.send(deletedItems);
+    res.send(removedItems);
 
   } catch (err) {
     next(err);

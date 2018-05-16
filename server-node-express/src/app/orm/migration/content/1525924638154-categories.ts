@@ -1,5 +1,5 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
-import { CategoryEntity } from '../../entity/category';
+import { Category } from '../../entity/category';
 
 export class CategoriesContent1525924638154 implements MigrationInterface {
 
@@ -877,8 +877,8 @@ export class CategoriesContent1525924638154 implements MigrationInterface {
       { id: 862, name: 'Сувенирная продукция', parent: 860 },
     ];
 
-    const repo = queryRunner.connection.getTreeRepository(CategoryEntity);
-    const entities: CategoryEntity[] = [];
+    const repo = queryRunner.connection.getTreeRepository(Category);
+    const entities: Category[] = [];
 
     items.forEach(t => {
       const entity = repo.create({

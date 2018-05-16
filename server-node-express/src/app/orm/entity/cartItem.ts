@@ -1,10 +1,10 @@
 import { Column, Entity, Index, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { CartEntity } from './cart';
-import { BookEntity } from './book';
+import { Cart } from './cart';
+import { Book } from './book';
 
 @Entity('cart-items')
 @Index(['cartId', 'bookId'], { unique: true })
-export class CartItemEntity {
+export class CartItem {
 
   @PrimaryGeneratedColumn()
   id: number;
@@ -12,14 +12,14 @@ export class CartItemEntity {
   @Column()
   cartId: number;
 
-  @ManyToOne(type => CartEntity, cart => cart.items)
-  cart: CartEntity;
+  @ManyToOne(type => Cart, cart => cart.items)
+  cart: Cart;
 
   @Column()
   bookId: number;
 
-  @ManyToOne(type => BookEntity, { eager: true })
-  book: BookEntity;
+  @ManyToOne(type => Book, { eager: true })
+  book: Book;
 
   @Column({ default: 1 })
   count: number;

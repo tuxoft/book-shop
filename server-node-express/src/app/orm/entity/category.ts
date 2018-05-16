@@ -1,9 +1,9 @@
 import { Column, Entity, ManyToMany, PrimaryColumn, Tree, TreeChildren, TreeParent } from 'typeorm';
-import { BookEntity } from './book';
+import { Book } from './book';
 
 @Entity('categories')
 @Tree('materialized-path')
-export class CategoryEntity {
+export class Category {
 
   @PrimaryColumn()
   id: number;
@@ -11,15 +11,15 @@ export class CategoryEntity {
   @Column()
   name: string;
 
-  @Column({nullable: true, unique: true, select: false})
+  @Column({ nullable: true, unique: true, select: false })
   route: string;
 
   @TreeParent()
-  parent: CategoryEntity;
+  parent: Category;
 
   @TreeChildren()
-  children: CategoryEntity[];
+  children: Category[];
 
-  @ManyToMany(type => BookEntity, book => book.categories)
-  books: BookEntity[];
+  @ManyToMany(type => Book, book => book.categories)
+  books: Book[];
 }

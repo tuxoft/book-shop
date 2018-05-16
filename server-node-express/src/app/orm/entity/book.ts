@@ -1,8 +1,8 @@
 import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { CategoryEntity } from './category';
+import { Category } from './category';
 
 @Entity('books')
-export class BookEntity {
+export class Book {
 
   @PrimaryGeneratedColumn()
   id: number;
@@ -55,7 +55,7 @@ export class BookEntity {
   @Column({ select: false })
   description: string;
 
-  @ManyToMany(type => CategoryEntity, category => category.books)
+  @ManyToMany(type => Category, category => category.books)
   @JoinTable()
-  categories: CategoryEntity[];
+  categories: Category[];
 }

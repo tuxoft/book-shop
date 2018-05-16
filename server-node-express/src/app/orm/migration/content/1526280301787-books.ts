@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
-import { BookEntity } from '../../entity/book';
-import { CategoryEntity } from '../../entity/category';
+import { Book } from '../../entity/book';
+import { Category } from '../../entity/category';
 
 export class books1526280301787 implements MigrationInterface {
 
@@ -561,8 +561,8 @@ export class books1526280301787 implements MigrationInterface {
       },
     ];
 
-    const booksRepo = queryRunner.connection.getRepository(BookEntity);
-    const categoriesRepo = queryRunner.connection.getRepository(CategoryEntity);
+    const booksRepo = queryRunner.connection.getRepository(Book);
+    const categoriesRepo = queryRunner.connection.getRepository(Category);
 
     for (let i = 0; i < items.length; i++) {
       const item = items[i];
