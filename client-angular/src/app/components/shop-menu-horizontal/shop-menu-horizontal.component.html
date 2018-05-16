@@ -3,16 +3,16 @@
   <div class="container standart-theme">
     <ul class="nav-items">
       <li class="nav-item nav-item_popup" *ngFor="let item of menuItems">
-        <a href="/catalog/{{item.route}}">{{item.name}}</a>
+        <a href="/catalog/{{item.id}}">{{item.name}}</a>
         <div class="catalog-list">
           <ul class="sub-nav-items">
             <li class="sub-nav-item" *ngFor="let subitem of item.children">
-              <a href="">{{subitem.name}}</a>
+              <a href="/catalog/{{subitem.id}}">{{subitem.name}}</a>
               <i class="fa fa-chevron-right menu-item-chevron" *ngIf="subitem.children.length"></i>
               <div class="sub-catalog-list" *ngIf="subitem.children.length">
                 <ul class="sub-sub-nav-items">
                   <li class="sub-sub-nav-item" *ngFor="let subsubitem of subitem.children">
-                    <a href="">{{subsubitem.name}}</a>
+                    <a href="/catalog/{{subsubitem.id}}">{{subsubitem.name}}</a>
                   </li>
                 </ul>
               </div>

@@ -26,7 +26,6 @@
     opacity: 1;
   }
   &:hover>a {
-    position: relative;
     color: #26A9E0;
   }
   .catalog-list {
@@ -51,7 +50,7 @@
       .sub-nav-item {
         padding: 10px;
         border: 1px solid #ddd;
-        // border-left: 2px solid #FFBA75;
+        border-left: 2px solid #26A9E0;
         border-bottom: none;
         display: flex;
         flex-direction: row;
@@ -79,33 +78,38 @@
           opacity: 1;
         }
         &:hover .menu-item-chevron {
-          display: none;
+          color: #26A9E0;
+          font-weight: bold;
         }
         .sub-catalog-list {
           opacity: 0;
           visibility: hidden;
           position: absolute;
-          top: 0;
+          // top: 0;
           left: 200px;
           background-color: #fff;
           box-shadow: 0 2px 2px 0 rgba(0,0,0,0.3);
           margin: 0;
-          padding: 20px;
+          padding: 10px;
           box-sizing: border-box;
           display: inline-block;
           z-index: 102;
-          width: 200px;
+          width: 600px;
           .sub-sub-nav-items {
             margin: 0;
             padding: 0;
             list-style: none;
             position: relative;
+            columns: 2;
+            -webkit-columns: 2;
+            -moz-columns: 2;
             .sub-sub-nav-item {
-              margin: 7px 0;
+              margin-bottom: 10px;
               &>a {
                 text-decoration: none;
                 font-size: 15px;
                 color: #000;
+                margin: 10px;
               }
               &:hover>a {
                 position: relative;
