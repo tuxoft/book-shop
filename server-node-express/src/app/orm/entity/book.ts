@@ -13,6 +13,9 @@ export class Book {
   @Column()
   price: number;
 
+  @Column()
+  inStock: number;
+
   @Column('simple-array')
   authors: string[];
 
@@ -23,10 +26,7 @@ export class Book {
   articul: number;
 
   @Column({ select: false })
-  stock: number;
-
-  @Column({ select: false })
-  series: string;
+  serie: string;
 
   @Column({ select: false })
   publisher: string;
@@ -35,10 +35,16 @@ export class Book {
   year: string;
 
   @Column({ select: false })
-  pages: number;
+  pageCount: number;
 
   @Column({ select: false })
   isbn: string;
+
+  @Column({ select: false })
+  udc: string;
+
+  @Column({ select: false })
+  bbk: string;
 
   @Column({ select: false })
   dimension: string;
