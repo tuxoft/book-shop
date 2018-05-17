@@ -19,10 +19,16 @@
             <span>Год издания: {{book.year}}</span>
           </li>
           <li class="book-feature-item">
-            <span>Количество страниц: {{book.pages}}</span>
+            <span>Количество страниц: {{book.pageCount}}</span>
           </li>
           <li class="book-feature-item">
             <span>ISBN: {{book.isbn}}</span>
+          </li>
+          <li class="book-feature-item">
+            <span>УДК: {{book.udc}}</span>
+          </li>
+          <li class="book-feature-item">
+            <span>ББК: {{book.bbk}}</span>
           </li>
           <li class="book-feature-item">
             <span>Тираж: </span>
@@ -36,7 +42,7 @@
         </ul>
       </div>
       <div class="book-in-stock">
-        <span>В наличии: {{book.stock}}</span>
+        <span>В наличии: {{book.inStock}}</span>
       </div>
       <div class="book-price">
         <span>Цена: <b>{{book.price}} р.</b></span>
