@@ -1,9 +1,12 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div class="shop-header">
-  <app-shop-header></app-shop-header>
+<div class="page-wrap">
+  <div class="main">
+    <div class="shop-header">
+      <app-shop-header></app-shop-header>
+    </div>
+    <div class="shop-menu">
+      <app-shop-menu-horizontal></app-shop-menu-horizontal>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+  <app-footer></app-footer>
 </div>
-<div class="shop-menu">
-  <app-shop-menu-horizontal></app-shop-menu-horizontal>
-</div>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
