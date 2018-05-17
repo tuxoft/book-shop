@@ -13,10 +13,13 @@
       <div class="book-features">
         <ul class="book-feature-list">
           <li class="book-feature-item">
+            <span>Книжная серия: {{book.bookSeries}}</span>
+          </li>
+          <li class="book-feature-item">
             <span>Издательство: {{book.publisher}}</span>
           </li>
           <li class="book-feature-item">
-            <span>Год издания: {{book.year}}</span>
+            <span>Год издания: {{book.publicationYear}}</span>
           </li>
           <li class="book-feature-item">
             <span>Количество страниц: {{book.pageCount}}</span>
@@ -31,13 +34,16 @@
             <span>ББК: {{book.bbk}}</span>
           </li>
           <li class="book-feature-item">
-            <span>Тираж: </span>
+            <span>Тираж: {{book.circulation}}</span>
           </li>
           <li class="book-feature-item">
             <span>Формат: {{book.dimensions}}</span>
           </li>
           <li class="book-feature-item">
-            <span>Тип обложки: {{book.decor}}</span>
+            <span>Тип обложки: {{book.coverType}}</span>
+          </li>
+          <li class="book-feature-item">
+            <span>Возрастное ограничение: {{book.ageLimit}}</span>
           </li>
         </ul>
       </div>

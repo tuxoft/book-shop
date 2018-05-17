@@ -26,13 +26,13 @@ export class Book {
   articul: number;
 
   @Column({ select: false })
-  serie: string;
+  bookSeries: string;
 
   @Column({ select: false })
   publisher: string;
 
   @Column({ select: false })
-  year: string;
+  publicationYear: string;
 
   @Column({ select: false })
   pageCount: number;
@@ -47,16 +47,19 @@ export class Book {
   bbk: string;
 
   @Column({ select: false })
+  circulation: number;
+
+  @Column({ select: false })
   dimensions: string;
 
   @Column({ select: false })
   weight: number;
 
   @Column({ select: false })
-  decor: string;
+  coverType: string;
 
   @Column({ select: false })
-  restrictions: string;
+  ageLimit: string;
 
   @Column({ select: false })
   description: string;
