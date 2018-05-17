@@ -18,6 +18,7 @@ import { ButtonModule } from 'primeng/primeng';
 import { EffectsModule } from '@ngrx/effects';
 import { effects } from './effects/index';
 import { CategoryService } from './services/rest/category.service';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { CategoryService } from './services/rest/category.service';
     ShopHeaderComponent,
     ShopMenuHorizontalComponent,
     CartLogoComponent,
+    FooterComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),

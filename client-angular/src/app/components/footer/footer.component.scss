@@ -1,0 +1,103 @@
+@import "../../../app.styles.scss";
+
+.footer {
+  margin-top: 25px;
+  padding-top: 35px;
+  background-color: #26a9e0;
+  font-size: 14px;
+  .footer-wrap {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    .footer-section {
+      width: 220px;
+      padding: 0 10px;
+      margin-bottom: 30px;
+      position: relative;
+      &:first-child {
+        padding-left: 80px;
+      }
+      .footer-section-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: #fff;
+        margin: 0 0 10px;
+        .books-icon {
+          vertical-align: bottom;
+          margin-right: 10px;
+          background-image: url('../../../assets/images/books-sprite.png');
+          background-repeat: no-repeat;
+          display: inline-block;
+          vertical-align: middle;
+          width: 22px;
+          height: 21px;
+          margin-right: 12px;
+        }
+        .books-icon-white {
+          background-position: -5px -5px;
+        }
+        .footer-cart-icon {
+          font-size: 24px;
+          margin-right: 10px;
+          display: inline-block;
+          vertical-align: middle;
+        }
+      }
+      .footer-list {
+        list-style: none;
+        padding: 7px 0 0;
+        margin: 0;
+        a {
+          font-size: 14px;
+          line-height: 18px;
+          text-decoration: none;
+          color: #fff;
+        }
+      }
+    }
+    .footer-section-subscribe {
+      padding: 0 10px;
+      width: 370px;
+      position: relative;
+      .subscribe-title {
+        padding: 5px 0 0;
+        margin: 0;
+        color: #fff;
+        font-size: 14px;
+        line-height: 20px;
+      }
+      .subscribe-form {
+        margin: 5px 0;
+        .subscribe-input {
+          padding: 0 10px;
+          box-sizing: border-box;
+          border: none;
+          border-radius: 3px;
+          font-size: 14px;
+          line-height: 35px;
+          display: inline-block;
+          width: 200px;
+        }
+        .subscribe-button {
+          display: inline-block;
+          margin-left: 5px;
+          background-color: #1b75bb;
+          color: #fff;
+          cursor: pointer;
+          padding: 0 10px;
+          box-sizing: border-box;
+          border: none;
+          border-radius: 3px;
+          font-size: 14px;
+          line-height: 35px;
+          justify-content: space-around;
+          box-shadow: none;
+          height: 35px;
+        }
+      }
+    }
+  }
+}
