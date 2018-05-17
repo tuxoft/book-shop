@@ -27,4 +27,9 @@ export class CategoryService {
     return this.http.get<Category[]>(this.categoriesRootUrl);
     // return of(BOOKS.ca)
   }
+
+  getPathForCategory(id: number): Observable<any[]> {
+    return this.http.get<any[]>(this.categoriesUrl + '/' + id + '/ancestors');
+    // return of(BOOKS.ca)
+  }
 }

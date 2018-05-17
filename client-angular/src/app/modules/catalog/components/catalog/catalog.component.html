@@ -1,6 +1,7 @@
 <div class="container standart-theme">
   <!-- <app-product-wide-card [product]="product" *ngFor="let product of products">
   </app-product-wide-card> -->
+  <app-breadcrumbs-menu [categoryId]="categoryId"></app-breadcrumbs-menu>
   <div class="book-list-container">
     <div class="book-list-item" *ngFor="let product of products">
       <book-card [book]="product">

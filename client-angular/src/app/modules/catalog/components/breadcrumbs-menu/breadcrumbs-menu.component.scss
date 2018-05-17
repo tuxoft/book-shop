@@ -1,0 +1,29 @@
+.breadcrumbs {
+  padding: 0;
+  list-style: none;
+  margin: 0 0 20px;
+  .breadcrumbs-item {
+    display: inline-block;
+    font-size: 12px;
+    &:not(:last-child) a {
+      color: #333;
+      text-decoration: underline;
+      cursor: pointer;
+      &::after {
+        content: '';
+        background-image: url('../../../../../assets/images/arrow.png');
+        background-repeat: no-repeat;
+        width: 20px;
+        height: 15px;
+        display: inline-block;
+        vertical-align: top;
+        background-position: 50% 50%;
+      }
+    }
+    &:last-child a {
+      text-decoration: none;
+      color: #333;
+      cursor: default;
+    }
+  }
+}
