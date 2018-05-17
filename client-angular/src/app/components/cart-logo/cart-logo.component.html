@@ -1,8 +1,13 @@
 <div class="preview standart-theme">
-  <button type="button" class="cart-button" (click)="redirectToCart()">
+  <!-- <button type="button" class="cart-button" (click)="redirectToCart()">
     <img src="../../../assets/cart_white.svg" alt="cart" class="cart-logo-svg"/>
     <div class="indicator">
       <span>{{numProducts$ | async}}</span>
     </div>
-  </button>
+  </button> -->
+  <a class="cart-logo-button" (click)="redirectToCart()">
+    <i class="fa fa-shopping-cart icon-cart"></i>
+    <span class="title">Корзина</span>
+    <span class="badge">{{numProducts$ | async}}</span>
+  </a>
 </div>
