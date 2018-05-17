@@ -16,11 +16,16 @@
       <app-cart-item [item]="cartItem" (checkedChange)="checkItem($event)" [checked]="isItemSelected(cartItem)"></app-cart-item>
     </div>
   </div>
-  <div class="cart-total">
-    <app-cart-total></app-cart-total>
+  <div class="cart-total-container">
+    <div class="cart-total">
+      <app-cart-total></app-cart-total>
+    </div>
+    <div class="clear"></div>
   </div>
 </div>
+
 <app-cart-footer-controls *ngIf="hasSelectedItems()" [selectedItems]="selectedItems" (clearSelections)="clearSelections()"></app-cart-footer-controls>
+
 <ng-template #emptyCart>
   <div class="cart-container standart-theme container">
     <div class="cart-header">

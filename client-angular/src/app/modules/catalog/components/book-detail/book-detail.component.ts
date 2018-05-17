@@ -20,6 +20,7 @@ export class BookDetailComponent implements OnInit {
   book: Book = {};
   inCart$: Observable<boolean>;
   activeTab: string = 'annotation';
+  categoryId: number = 1;
 
   constructor(route: ActivatedRoute,
               private bookService: BookService,
@@ -27,7 +28,14 @@ export class BookDetailComponent implements OnInit {
               private router: Router) {
     this.bookId = route.snapshot.params['id'];
     this.book$ = this.bookService.getFullBook(this.bookId);
-    this.book$.subscribe(book => this.book = book);
+    this.book$.subscribe((book) => {
+      this.book = book;
+      if (book.categories
+        && book.categories[0]
+        && book.categories[0].id) {
+        this.categoryId = book.categories[0].id;
+      }
+    });
     this.inCart$ = this.store.select(CartSelectors.isBookInCart(+this.bookId));
   }
 

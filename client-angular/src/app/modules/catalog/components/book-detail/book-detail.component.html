@@ -1,64 +1,66 @@
-<div class="book-detail-container container standart-theme">
-  <app-breadcrumbs-menu [categoryId]=""></app-breadcrumbs-menu>
-  <div class="book-detail-img-container">
-    <img src="{{book.coverUrl}}" class="book-detail-img">
+<div class="container standart-theme">
+  <app-breadcrumbs-menu [categoryId]="categoryId"></app-breadcrumbs-menu>
+  <div class="book-detail-container">
+    <div class="book-detail-img-container">
+      <img src="{{book.coverUrl}}" class="book-detail-img">
+    </div>
+    <div class="book-detail-common-info">
+      <h1 class="book-title">{{book.title}}</h1>
+      <a href="/catalog/book/author/{{bookAuthor}}"
+        class="book-author" *ngFor="let bookAuthor of book.authors">
+        {{bookAuthor}}
+      </a>
+      <div class="book-features">
+        <ul class="book-feature-list">
+          <li class="book-feature-item">
+            <span>Издательство: {{book.publisher}}</span>
+          </li>
+          <li class="book-feature-item">
+            <span>Год издания: {{book.year}}</span>
+          </li>
+          <li class="book-feature-item">
+            <span>Количество страниц: {{book.pages}}</span>
+          </li>
+          <li class="book-feature-item">
+            <span>ISBN: {{book.isbn}}</span>
+          </li>
+          <li class="book-feature-item">
+            <span>Тираж: </span>
+          </li>
+          <li class="book-feature-item">
+            <span>Формат: {{book.dimension}}</span>
+          </li>
+          <li class="book-feature-item">
+            <span>Тип обложки: {{book.decor}}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="book-in-stock">
+        <span>В наличии: {{book.stock}}</span>
+      </div>
+      <div class="book-price">
+        <span>Цена: <b>{{book.price}} р.</b></span>
+      </div>
+      <div class="add-to-cart-button-container">
+        <button pButton type="button" label="В корзину" (click)="addToCart()" *ngIf="!(inCart$ | async)"></button>
+        <button pButton type="button" label="В корзинe" class="ui-button-success" (click)="redirectToCart()" *ngIf="inCart$ | async"></button>
+      </div>
+    </div>
   </div>
-  <div class="book-detail-common-info">
-    <h1 class="book-title">{{book.title}}</h1>
-    <a href="/catalog/book/author/{{bookAuthor}}"
-       class="book-author" *ngFor="let bookAuthor of book.authors">
-      {{bookAuthor}}
-    </a>
-    <div class="book-features">
-      <ul class="book-feature-list">
-        <li class="book-feature-item">
-          <span>Издательство: {{book.publisher}}</span>
-        </li>
-        <li class="book-feature-item">
-          <span>Год издания: {{book.year}}</span>
-        </li>
-        <li class="book-feature-item">
-          <span>Количество страниц: {{book.pages}}</span>
-        </li>
-        <li class="book-feature-item">
-          <span>ISBN: {{book.isbn}}</span>
-        </li>
-        <li class="book-feature-item">
-          <span>Тираж: </span>
-        </li>
-        <li class="book-feature-item">
-          <span>Формат: {{book.dimension}}</span>
-        </li>
-        <li class="book-feature-item">
-          <span>Тип обложки: {{book.decor}}</span>
-        </li>
-      </ul>
+  <div class="book-info-tabs container standart-theme">
+    <ul class="book-info-nav">
+      <li class="book-info-tab">
+        <a class="book-info-item" (click)="showAnnotation()"
+          [ngClass]="{ 'active-tab': annotationVisible() }">Описание</a>
+      </li>
+      <li class="book-info-tab">
+        <a class="book-info-item" (click)="showReview()"
+          [ngClass]="{ 'active-tab': reviewVisible()}">Отзывы</a>
+      </li>
+    </ul>
+    <div class="book-info-tab-data">
+      <div *ngIf="annotationVisible()">{{book.description}}</div>
+      <div *ngIf="reviewVisible()">Отзывы</div>
     </div>
-    <div class="book-in-stock">
-      <span>В наличии: {{book.stock}}</span>
-    </div>
-    <div class="book-price">
-      <span>Цена: <b>{{book.price}} р.</b></span>
-    </div>
-    <div class="add-to-cart-button-container">
-      <button pButton type="button" label="В корзину" (click)="addToCart()" *ngIf="!(inCart$ | async)"></button>
-      <button pButton type="button" label="В корзинe" class="ui-button-success" (click)="redirectToCart()" *ngIf="inCart$ | async"></button>
-    </div>
-  </div>
-</div>
-<div class="book-info-tabs container standart-theme">
-  <ul class="book-info-nav">
-    <li class="book-info-tab">
-      <a class="book-info-item" (click)="showAnnotation()"
-         [ngClass]="{ 'active-tab': annotationVisible() }">Описание</a>
-    </li>
-    <li class="book-info-tab">
-      <a class="book-info-item" (click)="showReview()"
-         [ngClass]="{ 'active-tab': reviewVisible()}">Отзывы</a>
-    </li>
-  </ul>
-  <div class="book-info-tab-data">
-    <div *ngIf="annotationVisible()">{{book.description}}</div>
-    <div *ngIf="reviewVisible()">Отзывы</div>
   </div>
 </div>
