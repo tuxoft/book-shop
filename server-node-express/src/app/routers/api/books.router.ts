@@ -54,7 +54,7 @@ router.get('/:id', async (req, res, next) => {
     const book = await getBookRepository().findOneOrFail(id, {
       select: [
         'id', 'title', 'price', 'authors', 'coverUrl', 'articul', 'inStock', 'serie', 'publisher',
-        'year', 'pageCount', 'isbn', 'udc', 'bbk', 'dimension', 'weight', 'decor', 'restrictions',
+        'year', 'pageCount', 'isbn', 'udc', 'bbk', 'dimensions', 'weight', 'decor', 'restrictions',
         'description',
       ],
       relations: ['categories'],

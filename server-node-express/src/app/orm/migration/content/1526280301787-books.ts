@@ -21,7 +21,7 @@ export class books1526280301787 implements MigrationInterface {
         udc: '123xyz',
         bbk: 'qwe456',
         weight: 500,
-        dimension: '218x145x27 мм',
+        dimensions: '218x145x27 мм',
         decor: 'Твердая, частичная лакировка, без иллюстраций',
         restrictions: '16+',
         description: 'Новый роман лауреата премий "Большая книга" и "Ясная Поляна", автора бестселлера "Зулейха открывает глаза"!' +
@@ -49,7 +49,7 @@ export class books1526280301787 implements MigrationInterface {
         udc: '123xyz',
         bbk: 'qwe456',
         weight: 600,
-        dimension: '206x136x30 мм',
+        dimensions: '206x136x30 мм',
         decor: 'твердая, целлофанированная, без иллюстрация',
         restrictions: '16+',
         description: 'Прошло семь лет после Беды - вселенской катастрофы, погрузившей весь мир в бесконечную зиму. От могущественной империи, угодившей под удар кометы, уцелела только периферия и независимые племена вдоль внешних границ. В одном из этих племён, в нищей лесной деревне, подрастает маленький царевич, чудом спасённый в момент Беды. Родительский сын становится его старшим братом, лучшим другом, защитником и героем. Однако трагические обстоятельства разлучают мальчишек. Родной сын насильственно уведён из семьи. Маленький царевич решает посвятить свою жизнь поискам и возвращению пропавшего. Но не всё так просто! Уведённый юноша попадает в своего рода школу, где умный и харизматичный учитель принимается лепить из него тайного воина - изощрённого убийцу для негласных дел...' +
@@ -72,7 +72,7 @@ export class books1526280301787 implements MigrationInterface {
         udc: '123xyz',
         bbk: 'qwe456',
         weight: 333,
-        dimension: '111x222x33 мм',
+        dimensions: '111x222x33 мм',
         decor: 'твердая, целлофанированная, без иллюстраций',
         restrictions: '16+',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam accumsan ac lectus vitae venenatis. Quisque vitae posuere velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In fringilla porta est eget porta. Aenean volutpat libero faucibus nunc condimentum tincidunt. Suspendisse vel erat neque. Vestibulum at dolor vel turpis egestas varius in eu mi. Donec ut ultricies leo. Sed ex mauris, pharetra non urna ac, tristique sollicitudin purus. Proin in laoreet magna. Suspendisse nec porta lacus, id semper purus. Aliquam hendrerit ex a porttitor porta.' +
@@ -97,7 +97,7 @@ export class books1526280301787 implements MigrationInterface {
         udc: '123xyz',
         bbk: 'qwe456',
         weight: 333,
-        dimension: '111x222x33 мм',
+        dimensions: '111x222x33 мм',
         decor: 'твердая, целлофанированная, без иллюстраций',
         restrictions: '16+',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam accumsan ac lectus vitae venenatis. Quisque vitae posuere velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In fringilla porta est eget porta. Aenean volutpat libero faucibus nunc condimentum tincidunt. Suspendisse vel erat neque. Vestibulum at dolor vel turpis egestas varius in eu mi. Donec ut ultricies leo. Sed ex mauris, pharetra non urna ac, tristique sollicitudin purus. Proin in laoreet magna. Suspendisse nec porta lacus, id semper purus. Aliquam hendrerit ex a porttitor porta.' +
@@ -122,7 +122,7 @@ export class books1526280301787 implements MigrationInterface {
         udc: '123xyz',
         bbk: 'qwe456',
         weight: 333,
-        dimension: '111x222x33 мм',
+        dimensions: '111x222x33 мм',
         decor: 'твердая, целлофанированная, без иллюстраций',
         restrictions: '16+',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam accumsan ac lectus vitae venenatis. Quisque vitae posuere velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In fringilla porta est eget porta. Aenean volutpat libero faucibus nunc condimentum tincidunt. Suspendisse vel erat neque. Vestibulum at dolor vel turpis egestas varius in eu mi. Donec ut ultricies leo. Sed ex mauris, pharetra non urna ac, tristique sollicitudin purus. Proin in laoreet magna. Suspendisse nec porta lacus, id semper purus. Aliquam hendrerit ex a porttitor porta.' +
@@ -147,7 +147,7 @@ export class books1526280301787 implements MigrationInterface {
         udc: '123xyz',
         bbk: 'qwe456',
         weight: 333,
-        dimension: '111x222x33 мм',
+        dimensions: '111x222x33 мм',
         decor: 'твердая, целлофанированная, без иллюстраций',
         restrictions: '16+',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam accumsan ac lectus vitae venenatis. Quisque vitae posuere velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In fringilla porta est eget porta. Aenean volutpat libero faucibus nunc condimentum tincidunt. Suspendisse vel erat neque. Vestibulum at dolor vel turpis egestas varius in eu mi. Donec ut ultricies leo. Sed ex mauris, pharetra non urna ac, tristique sollicitudin purus. Proin in laoreet magna. Suspendisse nec porta lacus, id semper purus. Aliquam hendrerit ex a porttitor porta.' +
@@ -172,7 +172,7 @@ export class books1526280301787 implements MigrationInterface {
         udc: '123xyz',
         bbk: 'qwe456',
         weight: 333,
-        dimension: '111x222x33 мм',
+        dimensions: '111x222x33 мм',
         decor: 'твердая, целлофанированная, без иллюстраций',
         restrictions: '16+',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam accumsan ac lectus vitae venenatis. Quisque vitae posuere velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In fringilla porta est eget porta. Aenean volutpat libero faucibus nunc condimentum tincidunt. Suspendisse vel erat neque. Vestibulum at dolor vel turpis egestas varius in eu mi. Donec ut ultricies leo. Sed ex mauris, pharetra non urna ac, tristique sollicitudin purus. Proin in laoreet magna. Suspendisse nec porta lacus, id semper purus. Aliquam hendrerit ex a porttitor porta.' +
@@ -197,7 +197,7 @@ export class books1526280301787 implements MigrationInterface {
         udc: '123xyz',
         bbk: 'qwe456',
         weight: 333,
-        dimension: '111x222x33 мм',
+        dimensions: '111x222x33 мм',
         decor: 'твердая, целлофанированная, без иллюстраций',
         restrictions: '16+',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam accumsan ac lectus vitae venenatis. Quisque vitae posuere velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In fringilla porta est eget porta. Aenean volutpat libero faucibus nunc condimentum tincidunt. Suspendisse vel erat neque. Vestibulum at dolor vel turpis egestas varius in eu mi. Donec ut ultricies leo. Sed ex mauris, pharetra non urna ac, tristique sollicitudin purus. Proin in laoreet magna. Suspendisse nec porta lacus, id semper purus. Aliquam hendrerit ex a porttitor porta.' +
@@ -222,7 +222,7 @@ export class books1526280301787 implements MigrationInterface {
         udc: '123xyz',
         bbk: 'qwe456',
         weight: 333,
-        dimension: '111x222x33 мм',
+        dimensions: '111x222x33 мм',
         decor: 'твердая, целлофанированная, без иллюстраций',
         restrictions: '16+',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam accumsan ac lectus vitae venenatis. Quisque vitae posuere velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In fringilla porta est eget porta. Aenean volutpat libero faucibus nunc condimentum tincidunt. Suspendisse vel erat neque. Vestibulum at dolor vel turpis egestas varius in eu mi. Donec ut ultricies leo. Sed ex mauris, pharetra non urna ac, tristique sollicitudin purus. Proin in laoreet magna. Suspendisse nec porta lacus, id semper purus. Aliquam hendrerit ex a porttitor porta.' +
@@ -247,7 +247,7 @@ export class books1526280301787 implements MigrationInterface {
         udc: '123xyz',
         bbk: 'qwe456',
         weight: 333,
-        dimension: '111x222x33 мм',
+        dimensions: '111x222x33 мм',
         decor: 'твердая, целлофанированная, без иллюстраций',
         restrictions: '16+',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam accumsan ac lectus vitae venenatis. Quisque vitae posuere velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In fringilla porta est eget porta. Aenean volutpat libero faucibus nunc condimentum tincidunt. Suspendisse vel erat neque. Vestibulum at dolor vel turpis egestas varius in eu mi. Donec ut ultricies leo. Sed ex mauris, pharetra non urna ac, tristique sollicitudin purus. Proin in laoreet magna. Suspendisse nec porta lacus, id semper purus. Aliquam hendrerit ex a porttitor porta.' +
@@ -272,7 +272,7 @@ export class books1526280301787 implements MigrationInterface {
         udc: '123xyz',
         bbk: 'qwe456',
         weight: 333,
-        dimension: '111x222x33 мм',
+        dimensions: '111x222x33 мм',
         decor: 'твердая, целлофанированная, без иллюстраций',
         restrictions: '16+',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam accumsan ac lectus vitae venenatis. Quisque vitae posuere velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In fringilla porta est eget porta. Aenean volutpat libero faucibus nunc condimentum tincidunt. Suspendisse vel erat neque. Vestibulum at dolor vel turpis egestas varius in eu mi. Donec ut ultricies leo. Sed ex mauris, pharetra non urna ac, tristique sollicitudin purus. Proin in laoreet magna. Suspendisse nec porta lacus, id semper purus. Aliquam hendrerit ex a porttitor porta.' +
@@ -297,7 +297,7 @@ export class books1526280301787 implements MigrationInterface {
         udc: '123xyz',
         bbk: 'qwe456',
         weight: 333,
-        dimension: '111x222x33 мм',
+        dimensions: '111x222x33 мм',
         decor: 'твердая, целлофанированная, без иллюстраций',
         restrictions: '16+',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam accumsan ac lectus vitae venenatis. Quisque vitae posuere velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In fringilla porta est eget porta. Aenean volutpat libero faucibus nunc condimentum tincidunt. Suspendisse vel erat neque. Vestibulum at dolor vel turpis egestas varius in eu mi. Donec ut ultricies leo. Sed ex mauris, pharetra non urna ac, tristique sollicitudin purus. Proin in laoreet magna. Suspendisse nec porta lacus, id semper purus. Aliquam hendrerit ex a porttitor porta.' +
@@ -322,7 +322,7 @@ export class books1526280301787 implements MigrationInterface {
         udc: '123xyz',
         bbk: 'qwe456',
         weight: 333,
-        dimension: '111x222x33 мм',
+        dimensions: '111x222x33 мм',
         decor: 'твердая, целлофанированная, без иллюстраций',
         restrictions: '16+',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam accumsan ac lectus vitae venenatis. Quisque vitae posuere velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In fringilla porta est eget porta. Aenean volutpat libero faucibus nunc condimentum tincidunt. Suspendisse vel erat neque. Vestibulum at dolor vel turpis egestas varius in eu mi. Donec ut ultricies leo. Sed ex mauris, pharetra non urna ac, tristique sollicitudin purus. Proin in laoreet magna. Suspendisse nec porta lacus, id semper purus. Aliquam hendrerit ex a porttitor porta.' +
@@ -347,7 +347,7 @@ export class books1526280301787 implements MigrationInterface {
         udc: '123xyz',
         bbk: 'qwe456',
         weight: 333,
-        dimension: '111x222x33 мм',
+        dimensions: '111x222x33 мм',
         decor: 'твердая, целлофанированная, без иллюстраций',
         restrictions: '16+',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam accumsan ac lectus vitae venenatis. Quisque vitae posuere velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In fringilla porta est eget porta. Aenean volutpat libero faucibus nunc condimentum tincidunt. Suspendisse vel erat neque. Vestibulum at dolor vel turpis egestas varius in eu mi. Donec ut ultricies leo. Sed ex mauris, pharetra non urna ac, tristique sollicitudin purus. Proin in laoreet magna. Suspendisse nec porta lacus, id semper purus. Aliquam hendrerit ex a porttitor porta.' +
@@ -372,7 +372,7 @@ export class books1526280301787 implements MigrationInterface {
         udc: '123xyz',
         bbk: 'qwe456',
         weight: 333,
-        dimension: '111x222x33 мм',
+        dimensions: '111x222x33 мм',
         decor: 'твердая, целлофанированная, без иллюстраций',
         restrictions: '16+',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam accumsan ac lectus vitae venenatis. Quisque vitae posuere velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In fringilla porta est eget porta. Aenean volutpat libero faucibus nunc condimentum tincidunt. Suspendisse vel erat neque. Vestibulum at dolor vel turpis egestas varius in eu mi. Donec ut ultricies leo. Sed ex mauris, pharetra non urna ac, tristique sollicitudin purus. Proin in laoreet magna. Suspendisse nec porta lacus, id semper purus. Aliquam hendrerit ex a porttitor porta.' +
@@ -397,7 +397,7 @@ export class books1526280301787 implements MigrationInterface {
         udc: '123xyz',
         bbk: 'qwe456',
         weight: 333,
-        dimension: '111x222x33 мм',
+        dimensions: '111x222x33 мм',
         decor: 'твердая, целлофанированная, без иллюстраций',
         restrictions: '16+',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam accumsan ac lectus vitae venenatis. Quisque vitae posuere velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In fringilla porta est eget porta. Aenean volutpat libero faucibus nunc condimentum tincidunt. Suspendisse vel erat neque. Vestibulum at dolor vel turpis egestas varius in eu mi. Donec ut ultricies leo. Sed ex mauris, pharetra non urna ac, tristique sollicitudin purus. Proin in laoreet magna. Suspendisse nec porta lacus, id semper purus. Aliquam hendrerit ex a porttitor porta.' +
@@ -422,7 +422,7 @@ export class books1526280301787 implements MigrationInterface {
         udc: '123xyz',
         bbk: 'qwe456',
         weight: 333,
-        dimension: '111x222x33 мм',
+        dimensions: '111x222x33 мм',
         decor: 'твердая, целлофанированная, без иллюстраций',
         restrictions: '16+',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam accumsan ac lectus vitae venenatis. Quisque vitae posuere velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In fringilla porta est eget porta. Aenean volutpat libero faucibus nunc condimentum tincidunt. Suspendisse vel erat neque. Vestibulum at dolor vel turpis egestas varius in eu mi. Donec ut ultricies leo. Sed ex mauris, pharetra non urna ac, tristique sollicitudin purus. Proin in laoreet magna. Suspendisse nec porta lacus, id semper purus. Aliquam hendrerit ex a porttitor porta.' +
@@ -447,7 +447,7 @@ export class books1526280301787 implements MigrationInterface {
         udc: '123xyz',
         bbk: 'qwe456',
         weight: 333,
-        dimension: '111x222x33 мм',
+        dimensions: '111x222x33 мм',
         decor: 'твердая, целлофанированная, без иллюстраций',
         restrictions: '16+',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam accumsan ac lectus vitae venenatis. Quisque vitae posuere velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In fringilla porta est eget porta. Aenean volutpat libero faucibus nunc condimentum tincidunt. Suspendisse vel erat neque. Vestibulum at dolor vel turpis egestas varius in eu mi. Donec ut ultricies leo. Sed ex mauris, pharetra non urna ac, tristique sollicitudin purus. Proin in laoreet magna. Suspendisse nec porta lacus, id semper purus. Aliquam hendrerit ex a porttitor porta.' +
@@ -472,7 +472,7 @@ export class books1526280301787 implements MigrationInterface {
         udc: '123xyz',
         bbk: 'qwe456',
         weight: 333,
-        dimension: '111x222x33 мм',
+        dimensions: '111x222x33 мм',
         decor: 'твердая, целлофанированная, без иллюстраций',
         restrictions: '16+',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam accumsan ac lectus vitae venenatis. Quisque vitae posuere velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In fringilla porta est eget porta. Aenean volutpat libero faucibus nunc condimentum tincidunt. Suspendisse vel erat neque. Vestibulum at dolor vel turpis egestas varius in eu mi. Donec ut ultricies leo. Sed ex mauris, pharetra non urna ac, tristique sollicitudin purus. Proin in laoreet magna. Suspendisse nec porta lacus, id semper purus. Aliquam hendrerit ex a porttitor porta.' +
@@ -497,7 +497,7 @@ export class books1526280301787 implements MigrationInterface {
         udc: '123xyz',
         bbk: 'qwe456',
         weight: 333,
-        dimension: '111x222x33 мм',
+        dimensions: '111x222x33 мм',
         decor: 'твердая, целлофанированная, без иллюстраций',
         restrictions: '16+',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam accumsan ac lectus vitae venenatis. Quisque vitae posuere velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In fringilla porta est eget porta. Aenean volutpat libero faucibus nunc condimentum tincidunt. Suspendisse vel erat neque. Vestibulum at dolor vel turpis egestas varius in eu mi. Donec ut ultricies leo. Sed ex mauris, pharetra non urna ac, tristique sollicitudin purus. Proin in laoreet magna. Suspendisse nec porta lacus, id semper purus. Aliquam hendrerit ex a porttitor porta.' +
@@ -522,7 +522,7 @@ export class books1526280301787 implements MigrationInterface {
         udc: '123xyz',
         bbk: 'qwe456',
         weight: 333,
-        dimension: '111x222x33 мм',
+        dimensions: '111x222x33 мм',
         decor: 'твердая, целлофанированная, без иллюстраций',
         restrictions: '16+',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam accumsan ac lectus vitae venenatis. Quisque vitae posuere velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In fringilla porta est eget porta. Aenean volutpat libero faucibus nunc condimentum tincidunt. Suspendisse vel erat neque. Vestibulum at dolor vel turpis egestas varius in eu mi. Donec ut ultricies leo. Sed ex mauris, pharetra non urna ac, tristique sollicitudin purus. Proin in laoreet magna. Suspendisse nec porta lacus, id semper purus. Aliquam hendrerit ex a porttitor porta.' +
@@ -547,7 +547,7 @@ export class books1526280301787 implements MigrationInterface {
         udc: '123xyz',
         bbk: 'qwe456',
         weight: 333,
-        dimension: '111x222x33 мм',
+        dimensions: '111x222x33 мм',
         decor: 'твердая, целлофанированная, без иллюстраций',
         restrictions: '16+',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam accumsan ac lectus vitae venenatis. Quisque vitae posuere velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In fringilla porta est eget porta. Aenean volutpat libero faucibus nunc condimentum tincidunt. Suspendisse vel erat neque. Vestibulum at dolor vel turpis egestas varius in eu mi. Donec ut ultricies leo. Sed ex mauris, pharetra non urna ac, tristique sollicitudin purus. Proin in laoreet magna. Suspendisse nec porta lacus, id semper purus. Aliquam hendrerit ex a porttitor porta.' +
@@ -572,7 +572,7 @@ export class books1526280301787 implements MigrationInterface {
         udc: '123xyz',
         bbk: 'qwe456',
         weight: 333,
-        dimension: '111x222x33 мм',
+        dimensions: '111x222x33 мм',
         decor: 'твердая, целлофанированная, без иллюстраций',
         restrictions: '16+',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam accumsan ac lectus vitae venenatis. Quisque vitae posuere velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In fringilla porta est eget porta. Aenean volutpat libero faucibus nunc condimentum tincidunt. Suspendisse vel erat neque. Vestibulum at dolor vel turpis egestas varius in eu mi. Donec ut ultricies leo. Sed ex mauris, pharetra non urna ac, tristique sollicitudin purus. Proin in laoreet magna. Suspendisse nec porta lacus, id semper purus. Aliquam hendrerit ex a porttitor porta.' +
@@ -597,7 +597,7 @@ export class books1526280301787 implements MigrationInterface {
         udc: '123xyz',
         bbk: 'qwe456',
         weight: 333,
-        dimension: '111x222x33 мм',
+        dimensions: '111x222x33 мм',
         decor: 'твердая, целлофанированная, без иллюстраций',
         restrictions: '16+',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam accumsan ac lectus vitae venenatis. Quisque vitae posuere velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In fringilla porta est eget porta. Aenean volutpat libero faucibus nunc condimentum tincidunt. Suspendisse vel erat neque. Vestibulum at dolor vel turpis egestas varius in eu mi. Donec ut ultricies leo. Sed ex mauris, pharetra non urna ac, tristique sollicitudin purus. Proin in laoreet magna. Suspendisse nec porta lacus, id semper purus. Aliquam hendrerit ex a porttitor porta.' +

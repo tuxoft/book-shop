@@ -47,7 +47,7 @@ export class Book {
   bbk: string;
 
   @Column({ select: false })
-  dimension: string;
+  dimensions: string;
 
   @Column({ select: false })
   weight: number;
