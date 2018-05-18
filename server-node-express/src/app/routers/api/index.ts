@@ -1,5 +1,6 @@
 import * as express from 'express';
 import booksRouter from './books.router';
+import authorsRouter from './authors.router';
 import cartRouter from './cart.router';
 import categoriesRouter from './categories.router';
 
@@ -10,6 +11,7 @@ export default router;
 // В этот массив добавляем новые API-ресурсы
 [
   { path: '/books', router: booksRouter },
+  { path: '/authors', router: authorsRouter },
   { path: '/cart', router: cartRouter },
   { path: '/categories', router: categoriesRouter },
 

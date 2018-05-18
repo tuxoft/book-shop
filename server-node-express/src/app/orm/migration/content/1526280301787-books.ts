@@ -1,15 +1,16 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 import { Book } from '../../entity/book';
 import { Category } from '../../entity/category';
+import { Author } from '../../entity/author';
 
-export class books1526280301787 implements MigrationInterface {
+export class Books1526280301787 implements MigrationInterface {
 
   public async up(queryRunner: QueryRunner): Promise<any> {
     const items = [
       {
         articul: 638117,
         title: 'Дети мои.',
-        authors: ['Яхина Г.Т.'],
+        authors: [2],
         price: 468.00,
         inStock: 653,
         coverUrl: 'public/images/covers/low-resolution/149c59e99c8a0a444ef6eaf9d860172d.jpg',
@@ -38,7 +39,7 @@ export class books1526280301787 implements MigrationInterface {
       {
         articul: 497411,
         title: 'Братья. Книга 2. Царский витязь. Том 1.',
-        authors: ['Семенова М.С.'],
+        authors: [3],
         price: 336.00,
         inStock: 65,
         coverUrl: 'public/images/covers/low-resolution/d44ac4f99e682662692ac0fd794868ad.jpg',
@@ -62,7 +63,7 @@ export class books1526280301787 implements MigrationInterface {
       {
         articul: 123456,
         title: 'Чисто женская тема! Что должна знать каждая дама о своем здоровье.',
-        authors: ['Макарова Е.А.'],
+        authors: [4],
         price: 430.00,
         inStock: 11,
         coverUrl: 'public/images/covers/low-resolution/7171a82862d1d4f7b6742bf6cf4593af.jpg',
@@ -88,7 +89,7 @@ export class books1526280301787 implements MigrationInterface {
       {
         articul: 123456,
         title: 'Огонь и ярость',
-        authors: ['Вольф М.К.'],
+        authors: [5],
         price: 626.26,
         inStock: 10,
         coverUrl: 'public/images/covers/low-resolution/34873331c7e3ce02d73256cd557b2e3a.jpg',
@@ -114,7 +115,7 @@ export class books1526280301787 implements MigrationInterface {
       {
         articul: 123456,
         title: 'Русская пятерка',
-        authors: ['Гейв К.Р.'],
+        authors: [6],
         price: 317.00,
         inStock: 9,
         coverUrl: 'public/images/covers/low-resolution/287d89e6785281199c80c3974b2440a8.jpg',
@@ -140,7 +141,7 @@ export class books1526280301787 implements MigrationInterface {
       {
         articul: 123456,
         title: 'Эльфика. Другая я. Снежные сказки о любви, надежде и сбывающихся мечтах',
-        authors: ['Семина И.Л', 'Кулибова Н.А.'],
+        authors: [7, 8],
         price: 237.00,
         inStock: 5,
         coverUrl: 'public/images/covers/low-resolution/8175db6f1ab560fd34251d38aff8e17b.jpg',
@@ -166,7 +167,7 @@ export class books1526280301787 implements MigrationInterface {
       {
         articul: 123456,
         title: 'One-Punch Man. Книги 1-2',
-        authors: ['One', 'Мурата Ю.'],
+        authors: [9, 10],
         price: 373.00,
         inStock: 6,
         coverUrl: 'public/images/covers/low-resolution/f701c318216a1ec5310ece8bb28476a3.jpg',
@@ -192,7 +193,7 @@ export class books1526280301787 implements MigrationInterface {
       {
         articul: 123456,
         title: 'Пустая могила',
-        authors: ['Страуд Дж.'],
+        authors: [11],
         price: 256.00,
         inStock: 6,
         coverUrl: 'public/images/covers/low-resolution/b9374b36b38a9e28f8d5aa528e857aa5.jpg',
@@ -218,7 +219,7 @@ export class books1526280301787 implements MigrationInterface {
       {
         articul: 123456,
         title: 'Death Note. Black Edition. Книга 4',
-        authors: ['Цугуми Ооба', 'Такэси Обата'],
+        authors: [12, 13],
         price: 540.00,
         inStock: 6,
         coverUrl: 'public/images/covers/low-resolution/3f9e851ae18ebe11abf74de98bbe3ef5.jpg',
@@ -244,7 +245,7 @@ export class books1526280301787 implements MigrationInterface {
       {
         articul: 123456,
         title: 'The Sandman. Песочный человек. Книга 8. У Конца Миров',
-        authors: ['Гейман Н.'],
+        authors: [14],
         price: 685.00,
         inStock: 6,
         coverUrl: 'public/images/covers/low-resolution/1c90f5de8f1b4b747da5bf7f229509c6.jpg',
@@ -270,7 +271,7 @@ export class books1526280301787 implements MigrationInterface {
       {
         articul: 123456,
         title: 'До встречи с тобой',
-        authors: ['Мойес Дж.'],
+        authors: [15],
         price: 264.00,
         inStock: 6,
         coverUrl: 'public/images/covers/low-resolution/3f8acc234e8fa61062de8701d35195d1.jpg',
@@ -296,7 +297,7 @@ export class books1526280301787 implements MigrationInterface {
       {
         articul: 123456,
         title: 'Потерянное озеро',
-        authors: ['Аллен С.'],
+        authors: [16],
         price: 243.00,
         inStock: 6,
         coverUrl: 'public/images/covers/low-resolution/31ab1fdbe004a8c4e88d05033498ee1d.jpg',
@@ -322,7 +323,7 @@ export class books1526280301787 implements MigrationInterface {
       {
         articul: 123456,
         title: 'Тень и кость',
-        authors: ['Бардуго Л.'],
+        authors: [17],
         price: 253.00,
         inStock: 6,
         coverUrl: 'public/images/covers/low-resolution/4fc61875a25aed5da72cfda3c4a0257d.jpg',
@@ -348,7 +349,7 @@ export class books1526280301787 implements MigrationInterface {
       {
         articul: 123456,
         title: 'Девушка в тумане',
-        authors: ['Карризи Д.'],
+        authors: [18],
         price: 296.00,
         inStock: 6,
         coverUrl: 'public/images/covers/low-resolution/2c5c4d36757d7bdc0643398e5b9922d7.jpg',
@@ -374,7 +375,7 @@ export class books1526280301787 implements MigrationInterface {
       {
         articul: 123456,
         title: 'Женщина в окне',
-        authors: ['Финн А. Дж.'],
+        authors: [19],
         price: 296.00,
         inStock: 6,
         coverUrl: 'public/images/covers/low-resolution/790a2f15a2e8e4571bf00620b63852ea.jpg',
@@ -400,7 +401,7 @@ export class books1526280301787 implements MigrationInterface {
       {
         articul: 123456,
         title: 'Несбывшийся ребенок',
-        authors: ['Чиджи К.'],
+        authors: [20],
         price: 269.00,
         inStock: 6,
         coverUrl: 'public/images/covers/low-resolution/834f32737525cff163d0d8c4a48ae521.jpg',
@@ -426,7 +427,7 @@ export class books1526280301787 implements MigrationInterface {
       {
         articul: 123456,
         title: 'Разрешаю себя ненавидеть',
-        authors: ['Колесникова Ю.'],
+        authors: [21],
         price: 189.00,
         inStock: 6,
         coverUrl: 'public/images/covers/low-resolution/1493538039f9512df8ebfd66ef11bf03.jpg',
@@ -452,7 +453,7 @@ export class books1526280301787 implements MigrationInterface {
       {
         articul: 123456,
         title: 'Записки анестезиолога',
-        authors: ['Иванов А.'],
+        authors: [22],
         price: 202.00,
         inStock: 6,
         coverUrl: 'public/images/covers/low-resolution/f8eb6a86e6c48011107c3770e383186b.jpg',
@@ -478,7 +479,7 @@ export class books1526280301787 implements MigrationInterface {
       {
         articul: 123456,
         title: 'Метро 2035: Красный вариант',
-        authors: ['Недоруб С.'],
+        authors: [23],
         price: 344.00,
         inStock: 6,
         coverUrl: 'public/images/covers/low-resolution/731dc65bd3d643652848aa2225a352d3.jpg',
@@ -504,7 +505,7 @@ export class books1526280301787 implements MigrationInterface {
       {
         articul: 123456,
         title: 'Экслибриум. Том 6. Бумажный порез',
-        authors: ['Девова Н.'],
+        authors: [24],
         price: 297.00,
         inStock: 6,
         coverUrl: 'public/images/covers/low-resolution/804f9efd0cd268469c4dc4ccc17924a8.jpg',
@@ -530,7 +531,7 @@ export class books1526280301787 implements MigrationInterface {
       {
         articul: 123456,
         title: 'Желтые розы для актрисы',
-        authors: ['Соболева Л.'],
+        authors: [25],
         price: 202.00,
         inStock: 6,
         coverUrl: 'public/images/covers/low-resolution/1f1ca9f4f0fd9210a54aa8ba8678b513.jpg',
@@ -556,7 +557,7 @@ export class books1526280301787 implements MigrationInterface {
       {
         articul: 123456,
         title: 'Кристалл Авроры',
-        authors: ['Берсенева А.'],
+        authors: [26],
         price: 242.00,
         inStock: 6,
         coverUrl: 'public/images/covers/low-resolution/640a59a2063f1652debe1b91e4703d80.jpg',
@@ -582,7 +583,7 @@ export class books1526280301787 implements MigrationInterface {
       {
         articul: 123456,
         title: 'Возвращение',
-        authors: ['Зурков Д.', 'Черепнев И.'],
+        authors: [27, 28],
         price: 202.00,
         inStock: 6,
         coverUrl: 'public/images/covers/low-resolution/479ac939897512bef141c8e9feb15a12.jpg',
@@ -608,7 +609,7 @@ export class books1526280301787 implements MigrationInterface {
       {
         articul: 123456,
         title: 'Легенды Bubble. Черный Пес. Свое время',
-        authors: ['Волков А.'],
+        authors: [29],
         price: 237.00,
         inStock: 6,
         coverUrl: 'public/images/covers/low-resolution/79cae30cbfd4b333dc5b4446b6fa9f07.jpg',
@@ -634,12 +635,14 @@ export class books1526280301787 implements MigrationInterface {
     ];
 
     const booksRepo = queryRunner.connection.getRepository(Book);
+    const authorsRepo = queryRunner.connection.getRepository(Author);
     const categoriesRepo = queryRunner.connection.getRepository(Category);
 
     for (let i = 0; i < items.length; i++) {
       const item = items[i];
       const book = booksRepo.create({
         ...item,
+        authors: await authorsRepo.findByIds(item.authors),
         categories: await categoriesRepo.findByIds(item.categories)
       });
       await booksRepo.save(book);

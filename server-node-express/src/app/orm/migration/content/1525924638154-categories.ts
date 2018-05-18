@@ -1,7 +1,7 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 import { Category } from '../../entity/category';
 
-export class CategoriesContent1525924638154 implements MigrationInterface {
+export class Categories1525924638154 implements MigrationInterface {
 
   public async up(queryRunner: QueryRunner): Promise<any> {
     const items = [

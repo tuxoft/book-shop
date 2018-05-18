@@ -1,5 +1,6 @@
 import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Category } from './category';
+import { Author } from './author';
 
 @Entity('books')
 export class Book {
@@ -16,8 +17,9 @@ export class Book {
   @Column()
   inStock: number;
 
-  @Column('simple-array')
-  authors: string[];
+  @ManyToMany(type => Author, author => author.books)
+  @JoinTable()
+  authors: Author[];
 
   @Column()
   coverUrl: string;

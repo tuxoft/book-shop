@@ -53,11 +53,11 @@ router.get('/:id', async (req, res, next) => {
 
     const book = await getBookRepository().findOneOrFail(id, {
       select: [
-        'id', 'title', 'price', 'authors', 'coverUrl', 'articul', 'inStock', 'bookSeries',
+        'id', 'title', 'price', 'coverUrl', 'articul', 'inStock', 'bookSeries',
         'publisher', 'publicationYear', 'pageCount', 'isbn', 'udc', 'bbk', 'circulation',
         'dimensions', 'weight', 'coverType', 'ageLimit', 'description',
       ],
-      relations: ['categories'],
+      relations: ['authors', 'categories'],
     });
 
     setupCoverUrlToHighResolution(book);
