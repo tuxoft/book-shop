@@ -7,6 +7,8 @@ import { StoreState } from '../../../../store/reducers';
 import { OrderItem } from '../../../../model/order-item';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import { NameService } from '../../../../services/common/name.service';
+import { Author } from '../../../../model/author';
 
 @Component({
   selector: 'book-card',
@@ -18,7 +20,9 @@ export class BookCardComponent implements OnInit {
 
   $inCart: Observable<boolean>;
 
-  constructor(private store: Store<StoreState>, private router: Router) {
+  constructor(private store: Store<StoreState>,
+              private router: Router,
+              private nameService: NameService) {
   }
 
   ngOnInit(): void {
@@ -36,13 +40,8 @@ export class BookCardComponent implements OnInit {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  getAuthorsAsString(authors: string[]): string {
-    return authors
-      .reduce(
-        (total, author) => total === ''
-          ? author
-          : total.concat(', ', author),
-        '');
+  getSurnameAndInitials(author: Author): string {
+    return this.nameService.getSurnameAndInitials(author);
   }
 
   redirectToCart() {

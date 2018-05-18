@@ -8,6 +8,8 @@ import { Store } from '@ngrx/store';
 import { StoreState } from '../../../../store/reducers';
 import * as CartSelectors from '../../../../store/cart/cart.selectors';
 import * as CartActions from '../../../../store/cart/cart.actions';
+import { Author } from '../../../../model/author';
+import { NameService } from '../../../../services/common/name.service';
 
 @Component({
   selector: 'app-book-detail',
@@ -27,7 +29,8 @@ export class BookDetailComponent implements OnInit {
   constructor(route: ActivatedRoute,
               private bookService: BookService,
               private store: Store<StoreState>,
-              private router: Router) {
+              private router: Router,
+              private nameService: NameService) {
     this.bookId = route.snapshot.params['id'];
     this.book$ = this.bookService.getFullBook(this.bookId);
     this.book$.subscribe((book) => {
@@ -52,6 +55,10 @@ export class BookDetailComponent implements OnInit {
           ? author
           : total.concat(', ', author),
         '');
+  }
+
+  getSurnameAndInitials(author: Author): string {
+    return this.nameService.getSurnameAndInitials(author);
   }
 
   addToCart() {

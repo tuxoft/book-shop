@@ -8,7 +8,7 @@
       <h1 class="book-title">{{book.title}}</h1>
       <a href="/catalog/book/author/{{bookAuthor}}"
         class="book-author" *ngFor="let bookAuthor of book.authors">
-        {{bookAuthor}}
+        {{getSurnameAndInitials(bookAuthor)}}
       </a>
       <div class="book-features">
         <ul class="book-feature-list">

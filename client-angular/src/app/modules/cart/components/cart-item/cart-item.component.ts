@@ -4,6 +4,8 @@ import { Validators } from '@angular/forms';
 import * as CartActions from '../../../../store/cart/cart.actions';
 import { Store } from '@ngrx/store';
 import { StoreState } from '../../../../store/reducers';
+import { NameService } from '../../../../services/common/name.service';
+import { Author } from '../../../../model/author';
 
 @Component({
   selector: 'app-cart-item',
@@ -25,7 +27,7 @@ export class CartItemComponent implements OnInit {
 
   validationShow: boolean;
 
-  constructor(private store: Store<StoreState>) { }
+  constructor(private store: Store<StoreState>, private nameService: NameService) { }
 
   ngOnInit() {
     this.countItem = this.item.count;
@@ -34,13 +36,8 @@ export class CartItemComponent implements OnInit {
     }
   }
 
-  getAuthorsAsString(authors: string[]): string {
-    return authors
-      .reduce(
-        (total, author) => total === ''
-          ? author
-          : total.concat(', ', author),
-        '');
+  getAuthorsAsString(authors: Author[]): string {
+    return this.nameService.getAuthorsAsString(authors);
   }
 
   decrementCount() {

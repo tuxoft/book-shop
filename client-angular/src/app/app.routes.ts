@@ -17,6 +17,10 @@ export const routes: Routes = [
         path: 'catalog',
         loadChildren: './modules/catalog/catalog.module#CatalogModule',
       },
+      {
+        path: 'admin',
+        loadChildren: './modules/admin/admin.module#AdminModule',
+      },
     ],
   },
 ];

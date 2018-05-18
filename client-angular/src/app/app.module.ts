@@ -19,6 +19,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { effects } from './effects/index';
 import { CategoryService } from './services/rest/category.service';
 import { FooterComponent } from './components/footer/footer.component';
+import { NameService } from './services/common/name.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { FooterComponent } from './components/footer/footer.component';
       maxAge: 50,
     }),
   ],
-  providers: [BookService, CartService, CategoryService],
+  providers: [BookService, CartService, CategoryService, NameService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

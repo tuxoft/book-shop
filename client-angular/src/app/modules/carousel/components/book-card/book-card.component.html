@@ -6,7 +6,7 @@
   </div>
   <div class="book-title">{{(book.title.length > 40 ? (book.title | slice:0:30) + '...' : book.title)}}</div>
   <div *ngFor="let author of book.authors">
-    {{author}}
+    {{getSurnameAndInitials(author)}}
   </div>
   <div class="book-price">Цена: {{book.price}}</div>
   <div class="add-to-cart-button-container">
