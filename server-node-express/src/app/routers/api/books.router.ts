@@ -25,6 +25,17 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+router.post('/', async (req, res, next) => {
+  try {
+    const savedBooks = await getBookRepository().save(req.body);
+
+    res.send(savedBooks);
+
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.get('/bestsellers', async (req, res, next) => {
   try {
     const books = await getBookRepository().findByIds([11, 12, 21, 13, 14, 10, 9, 8, 7, 6]);
