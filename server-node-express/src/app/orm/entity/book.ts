@@ -17,7 +17,7 @@ export class Book {
   @Column()
   inStock: number;
 
-  @ManyToMany(type => Author, author => author.books)
+  @ManyToMany(type => Author, author => author.books, {eager: true})
   @JoinTable()
   authors: Author[];
 

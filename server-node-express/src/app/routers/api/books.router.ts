@@ -16,7 +16,7 @@ const setupCoverUrlToHighResolution = (book: Book) => {
 
 router.get('/', async (req, res, next) => {
   try {
-    const books = await getBookRepository().find({relations: ['authors']});
+    const books = await getBookRepository().find();
 
     res.send(books);
 
@@ -38,8 +38,7 @@ router.post('/', async (req, res, next) => {
 
 router.get('/bestsellers', async (req, res, next) => {
   try {
-    const books = await getBookRepository().findByIds([11, 12, 21, 13, 14, 10, 9, 8, 7, 6],
-      {relations: ['authors']});
+    const books = await getBookRepository().findByIds([11, 12, 21, 13, 14, 10, 9, 8, 7, 6]);
 
     res.send(books);
 
@@ -50,8 +49,7 @@ router.get('/bestsellers', async (req, res, next) => {
 
 router.get('/latests', async (req, res, next) => {
   try {
-    const books = await getBookRepository().findByIds([9, 3, 7, 17, 24, 1, 2, 4, 5, 22],
-      {relations: ['authors']});
+    const books = await getBookRepository().findByIds([9, 3, 7, 17, 24, 1, 2, 4, 5, 22]);
 
     res.send(books);
 
@@ -70,7 +68,7 @@ router.get('/:id', async (req, res, next) => {
         'publisher', 'publicationYear', 'pageCount', 'isbn', 'udc', 'bbk', 'circulation',
         'dimensions', 'weight', 'coverType', 'ageLimit', 'description',
       ],
-      relations: ['authors', 'categories'],
+      relations: ['categories'],
     });
 
     setupCoverUrlToHighResolution(book);
