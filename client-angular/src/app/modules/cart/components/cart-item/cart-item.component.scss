@@ -72,6 +72,11 @@
       }
       .cart-items-count-input {
         width: 40px;
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
       }
     }
     .count-validation-violation {

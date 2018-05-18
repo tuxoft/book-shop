@@ -59,4 +59,16 @@ export class CartEffects {
       return new CartActions.InitCart();
     }),
   );
+
+  @Effect()
+  onChangeCountItem$ = this.actions$.pipe(
+    ofType(CartActions.CHANGE_ITEM_COUNT),
+    map(toPayload),
+    mergeMap((action: any) => {
+      return this.cartService.addToCart(action);
+    }),
+    map((action: any) => {
+      return new CartActions.InitCart();
+    }),
+  );
 }

@@ -24,7 +24,7 @@
       <div class="cart-items-count-change-control" (click)="decrementCount()">
         -
       </div>
-      <input type="text" pInputText [(ngModel)]="countItem" class="cart-items-count-input" (input)="changeCountItem($event)" />
+      <input type="number" pInputText [value]="countItem" class="cart-items-count-input" (input)="changeCountItem($event)" (blur)="refreshCountItem()"/>
       <div class="cart-items-count-change-control" (click)="incrementCount()">
         +
       </div>

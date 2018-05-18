@@ -71,4 +71,8 @@ export class CartPageComponent implements OnInit {
       this.clearSelections();
     }
   }
+
+  custom(index, item) {
+    return index;
+  }
 }

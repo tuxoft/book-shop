@@ -12,7 +12,7 @@
     <div class="cart-items-header-total">Сумма</div>
   </div>
   <div class="cart-items">
-    <div *ngFor="let cartItem of cartItems$ | async" class="cart-item">
+    <div *ngFor="let cartItem of cartItems$ | async; trackBy: custom" class="cart-item">
       <app-cart-item [item]="cartItem" (checkedChange)="checkItem($event)" [checked]="isItemSelected(cartItem)"></app-cart-item>
     </div>
   </div>

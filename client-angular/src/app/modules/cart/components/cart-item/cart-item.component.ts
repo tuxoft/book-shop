@@ -72,6 +72,7 @@ export class CartItemComponent implements OnInit {
       $event.target.value = this.item.book.inStock;
       this.validationShow = true;
     }
+    this.countItem = $event.target.value;
     const newItem = this.item;
     newItem.count = +$event.target.value;
     this.store.dispatch(new CartActions.ChangeItemCount(newItem));
