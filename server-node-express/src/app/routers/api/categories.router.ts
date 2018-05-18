@@ -69,7 +69,7 @@ router.get('/:id/books', async (req, res, next) => {
     const ids = descendants.map(e => e.id);
 
     const books = await getBookRepository().createQueryBuilder('book')
-      .leftJoinAndSelect("book.authors", "author")
+      .leftJoinAndSelect('book.authors', 'author')
       .leftJoin('book.categories', 'category')
       .where('category.id IN (:...ids)', { ids })
       .getMany();

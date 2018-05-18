@@ -1,6 +1,8 @@
-import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Category } from './category';
 import { Author } from './author';
+import { Publisher } from './publisher';
+import { BookSeries } from './bookSeries';
 
 @Entity('books')
 export class Book {
@@ -17,7 +19,7 @@ export class Book {
   @Column()
   inStock: number;
 
-  @ManyToMany(type => Author, author => author.books, {eager: true})
+  @ManyToMany(type => Author, author => author.books, { eager: true })
   @JoinTable()
   authors: Author[];
 
@@ -27,11 +29,11 @@ export class Book {
   @Column({ select: false })
   articul: number;
 
-  @Column({ select: false })
-  bookSeries: string;
+  @ManyToOne(type => BookSeries, bookSeries => bookSeries.books)
+  bookSeries: BookSeries;
 
-  @Column({ select: false })
-  publisher: string;
+  @ManyToOne(type => Publisher, publisher => publisher.books)
+  publisher: Publisher;
 
   @Column({ select: false })
   publicationYear: string;
