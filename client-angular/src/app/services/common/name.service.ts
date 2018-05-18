@@ -8,7 +8,7 @@ export class NameService {
 
   getSurnameAndInitials(author: Author): string {
     if (author && author.name) {
-      return author.name.last + ' '
+      return (author.name.last ? author.name.last + ' ' : '')
         + (author.name.first ? author.name.first.substring(0, 1) + '. ' : '')
         + (author.name.middle ? author.name.middle.substring(0, 1) + '.' : '');
     }
