@@ -5,6 +5,7 @@ import cartRouter from './cart.router';
 import categoriesRouter from './categories.router';
 import publishersRouter from './publishers.router';
 import bookSeriesRouter from './bookSeries.router';
+import selectionsRouter from './selections.router';
 
 const router = express.Router();
 
@@ -18,6 +19,7 @@ export default router;
   { path: '/categories', router: categoriesRouter },
   { path: '/publishers', router: publishersRouter },
   { path: '/bookSeries', router: bookSeriesRouter },
+  { path: '/selections', router: selectionsRouter },
 
 ].forEach(e => router.use(e.path, e.router));
 
