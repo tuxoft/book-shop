@@ -25,15 +25,15 @@ export interface Book {
   /**
    * международный стандартный книжный номер.
    */
-  ISBN?: string;
+  isbn?: string;
   /**
    * индекс Универсальной десятичной классификации.
    */
-  UDC?: string;
+  udc?: string;
   /**
    * индекс Библиотечно - библиографической классификации.
    */
-  BBK?: string;
+  bbk?: string;
   /**
    * авторский знак.
    */
@@ -50,6 +50,31 @@ export interface Book {
    * цена.
    */
   price?: number;
+
+  /**
+   * тип обложки.
+   */
+  coverType?: string;
+  /**
+   * формат.
+   */
+  dimensions?: string;
+  /**
+   * число страниц.
+   */
+  pageCount?: number;
+  /**
+   * вес.
+   */
+  weight?: number;
+  /**
+   * Артикул.
+   */
+  articul?: string;
+  /**
+   * Возрастное ограничение.
+   */
+  ageLimit?: string;
   /**
    * в наличии.
    */

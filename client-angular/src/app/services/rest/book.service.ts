@@ -36,4 +36,8 @@ export class BookService {
     const url = `${this.booksUrl}/latests`;
     return this.http.get<Book[]>(url);
   }
+
+  updateBook(book: Book): Observable<Book> {
+    return this.http.post(this.booksUrl, book);
+  }
 }

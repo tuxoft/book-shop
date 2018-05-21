@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BookService } from '../../../../services/rest/book.service';
 import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
 import { Book } from '../../../../model/book';
 import { Store } from '@ngrx/store';
 import { StoreState } from '../../../../store/reducers';
@@ -24,7 +23,6 @@ export class BookDetailComponent implements OnInit {
   inCart$: Observable<boolean>;
   activeTab: string = 'annotation';
   categoryId: number;
-  categoryId$: Observable<number>;
 
   constructor(route: ActivatedRoute,
               private bookService: BookService,
@@ -39,7 +37,6 @@ export class BookDetailComponent implements OnInit {
         && book.categories[0]
         && book.categories[0].id) {
         this.categoryId = book.categories[0].id;
-        this.categoryId$ = of(book.categories[0].id);
       }
     });
     this.inCart$ = this.store.select(CartSelectors.isBookInCart(+this.bookId));
