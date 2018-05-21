@@ -46,6 +46,7 @@ export class CartItemComponent implements OnInit {
       const newItem = this.item;
       newItem.count = this.countItem;
       this.store.dispatch(new CartActions.ChangeItemCount(newItem));
+      this.validationShow = false;
     }
   }
 
@@ -55,6 +56,7 @@ export class CartItemComponent implements OnInit {
       const newItem = this.item;
       newItem.count = this.countItem;
       this.store.dispatch(new CartActions.ChangeItemCount(newItem));
+      this.validationShow = false;
     } else {
       this.validationShow = true;
     }
@@ -68,6 +70,8 @@ export class CartItemComponent implements OnInit {
     if (value > this.item.book.inStock) {
       $event.target.value = this.item.book.inStock;
       this.validationShow = true;
+    } else {
+      this.validationShow = false;
     }
     this.countItem = $event.target.value;
     const newItem = this.item;
