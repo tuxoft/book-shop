@@ -6,6 +6,7 @@ import categoriesRouter from './categories.router';
 import publishersRouter from './publishers.router';
 import bookSeriesRouter from './bookSeries.router';
 import selectionsRouter from './selections.router';
+import searchRouter from './search.router';
 
 const router = express.Router();
 
@@ -20,6 +21,7 @@ export default router;
   { path: '/publishers', router: publishersRouter },
   { path: '/bookSeries', router: bookSeriesRouter },
   { path: '/selections', router: selectionsRouter },
+  { path: '/search', router: searchRouter },
 
 ].forEach(e => router.use(e.path, e.router));
 

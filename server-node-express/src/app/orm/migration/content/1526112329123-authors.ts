@@ -67,13 +67,13 @@ export class Authors1526112329123 implements MigrationInterface {
     }, {
       id: 10,
       name: {
-        first: 'Ю.',
+        first: 'Руслан',
         last: 'Мурата',
       },
     }, {
       id: 11,
       name: {
-        first: 'Дж.',
+        first: 'Людмила',
         last: 'Страуд',
       },
     }, {
