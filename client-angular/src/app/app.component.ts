@@ -3,6 +3,9 @@ import { CartService } from './services/rest/cart.service';
 import { StoreState } from './store/reducers';
 import * as CartActions from './store/cart/cart.actions';
 import { Store } from '@ngrx/store';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { Title } from '@angular/platform-browser';
+import { filter, map, mergeMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +15,27 @@ import { Store } from '@ngrx/store';
 export class AppComponent implements OnInit {
   title = 'app';
 
-  constructor(private cartService: CartService, private store: Store<StoreState>) { }
+  constructor(
+    private cartService: CartService,
+    private store: Store<StoreState>,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private titleService: Title) {}
 
   ngOnInit() {
     console.log('Once generated!');
     this.store.dispatch(new CartActions.InitCart());
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd),
+      map(() => this.activatedRoute),
+      map((route) => {
+        let tempRoute = route;
+        while (tempRoute.firstChild) tempRoute = tempRoute.firstChild;
+
+        return tempRoute;
+      }),
+      filter(route => route.outlet === 'primary'),
+      mergeMap(route => route.data))
+      .subscribe(event => this.titleService.setTitle(event['title']));
   }
 }

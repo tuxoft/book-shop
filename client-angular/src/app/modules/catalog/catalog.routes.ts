@@ -8,13 +8,22 @@ export const routes: Routes = [
   {
     path: 'books',
     component: CatalogBooksComponent,
+    data: {
+      title: 'Каталог - книги',
+    },
   },
   {
     path: 'book/:id',
     component: BookDetailComponent,
+    data: {
+      title: 'Книга',
+    },
   },
   {
     path: ':id',
     component: CatalogComponent,
+    data: {
+      title: 'Каталог',
+    },
   },
 ];
