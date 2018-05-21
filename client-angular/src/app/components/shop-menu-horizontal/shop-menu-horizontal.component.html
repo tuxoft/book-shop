@@ -1,7 +1,7 @@
 <div class="nav-container">
   <div class="container standart-theme">
-    <ul class="nav-items">
-      <li class="nav-item nav-item_popup" *ngFor="let item of menuItems">
+    <ul class="nav-items" [ngClass]="{'invisible': !menuVisible()}">
+      <li class="nav-item nav-item_popup" *ngFor="let item of menuItems" (mouseenter)="expandMenu()">
         <a (click)="navigate(item.id)">{{item.name}}</a>
         <div class="catalog-list">
           <ul class="sub-nav-items">

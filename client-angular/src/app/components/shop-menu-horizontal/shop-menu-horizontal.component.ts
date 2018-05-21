@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class ShopMenuHorizontalComponent implements OnInit {
   menuItems = [];
+  isMenuVisible: boolean = true;
 
   constructor(private categoryService: CategoryService, private route: Router) { }
 
@@ -19,9 +20,21 @@ export class ShopMenuHorizontalComponent implements OnInit {
   navigate(id: number) {
     if (id) {
       this.route.navigate(['/catalog/' + id]);
-
+      this.toggleMenu();
       return;
     }
     this.route.navigate(['/']);
+  }
+
+  toggleMenu() {
+    this.isMenuVisible = false;
+  }
+
+  expandMenu() {
+    this.isMenuVisible = true;
+  }
+
+  menuVisible() {
+    return this.isMenuVisible;
   }
 }

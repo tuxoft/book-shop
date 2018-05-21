@@ -6,6 +6,31 @@
   opacity: 1;
 }
 
+.nav-items {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: relative;
+  height: 35px;
+}
+
+.nav-items.invisible {
+  .nav-item {
+    &:hover .catalog-list {
+      visibility: hidden;
+    }
+    .catalog-list {
+      .sub-nav-items {
+        .sub-nav-item {
+          &:hover .sub-catalog-list {
+            visibility: hidden;
+          }
+        }
+      }
+    }
+  }
+}
+
 .nav-item {
   display: inline-block;
   padding: 0 20px 0 0;
@@ -135,12 +160,4 @@
   &>a {
     font-weight: bold;
   }
-}
-
-.nav-items {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    position: relative;
-    height: 35px;
 }
