@@ -20,6 +20,7 @@
     background-color: #fff;
     padding: 0;
     vertical-align: middle;
+    cursor: pointer;
   }
   &:hover .catalog-list {
     visibility: visible;
@@ -42,6 +43,9 @@
     display: inline-block;
     z-index: 101;
     width: 200px;
+    a {
+      cursor: pointer;
+    }
     .sub-nav-items {
       margin: 0;
       padding: 0;

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CategoryService } from '../../../../services/rest/category.service';
 import { take } from 'rxjs/operators/take';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-breadcrumbs-menu',
@@ -28,9 +29,18 @@ export class BreadcrumbsMenuComponent implements OnInit {
 
   categoryPath = [];
 
-  constructor(private categoryService: CategoryService) { }
+  constructor(private categoryService: CategoryService, private route: Router) { }
 
   ngOnInit() {
+  }
+
+  navigate(id: number) {
+    if (id) {
+      this.route.navigate(['/catalog/' + id]);
+
+      return;
+    }
+    this.route.navigate(['/']);
   }
 
 }

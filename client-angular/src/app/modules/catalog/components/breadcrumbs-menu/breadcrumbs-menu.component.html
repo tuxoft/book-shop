@@ -1,8 +1,8 @@
 <ul class="breadcrumbs">
   <li class="breadcrumbs-item">
-    <a href="/">Главная</a>
+    <a (click)="navigate()">Главная</a>
   </li>
   <li class="breadcrumbs-item" *ngFor="let item of categoryPath">
-    <a href="/catalog/{{item.id}}">{{item.name}}</a>
+    <a (click)="navigate(item.id)">{{item.name}}</a>
   </li>
 </ul>

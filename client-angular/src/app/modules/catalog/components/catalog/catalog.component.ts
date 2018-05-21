@@ -14,7 +14,10 @@ export class CatalogComponent implements OnInit {
 
   constructor(route: ActivatedRoute, private categoryService: CategoryService) {
     this.categoryId = route.snapshot.params['id'];
-    this.categoryService.getById(this.categoryId).subscribe(items => this.products = items);
+    route.params.subscribe((value) => {
+      this.categoryId = route.snapshot.params['id'];
+      this.categoryService.getById(this.categoryId).subscribe(items => this.products = items);
+    });
   }
 
   ngOnInit() {

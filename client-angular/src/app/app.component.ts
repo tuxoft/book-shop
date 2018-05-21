@@ -23,7 +23,6 @@ export class AppComponent implements OnInit {
     private titleService: Title) {}
 
   ngOnInit() {
-    console.log('Once generated!');
     this.store.dispatch(new CartActions.InitCart());
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd),
