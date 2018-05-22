@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Book } from '../../model/book';
-import * as BookMock from '../../model/mock';
-import { of } from 'rxjs/observable/of';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 

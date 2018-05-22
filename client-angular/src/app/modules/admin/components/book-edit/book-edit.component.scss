@@ -4,10 +4,16 @@ h1 {
   font-size: 20px;
 }
 
-.form-control {
+.form-control,
+.ui-autocomplete-multiple-container,
+.ui-autocomplete {
   display: block;
   margin: 5px 0;
   width: 100%;
+}
+
+.ui-autocomplete-input {
+  width: 50%;
 }
 
 /* Navigation link styles */
@@ -30,7 +36,6 @@ nav a:hover {
 nav a.active {
   color: #039be5;
 }
-
 
 /*
 Copyright 2017-2018 Google Inc. All Rights Reserved.

@@ -2,6 +2,7 @@
   <h1>
     Редактирование книги
   </h1>
+
   <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
     <button pButton type="submit"
             [disabled]="bookForm.pristine" class="ui-button-success" label="Сохранить"></button> &nbsp;
@@ -17,10 +18,29 @@
                         (completeMethod)="searchAuthors($event)"
                         [multiple]="true"
                         [immutable]="false"
+                        styleClass="formControl"
                         field="fullname"></p-autoComplete>
       </label>
+      <label class="center-block">Издательство:
+        <p-autoComplete formControlName="publisher"
+                        [suggestions]="publisherSearchResult"
+                        (completeMethod)="searchPublisher($event)"
+                        [immutable]="false"
+                        styleClass="formControl"
+                        [dropdown]="true"
+                        field="name"></p-autoComplete>
+      </label>
+      <label class="center-block">Серия книг:
+        <p-autoComplete formControlName="bookSeries"
+                        [suggestions]="bookSeriesSearchResult"
+                        (completeMethod)="searchBookSeries($event)"
+                        [immutable]="false"
+                        styleClass="formControl"
+                        [dropdown]="true"
+                        field="name"></p-autoComplete>
+      </label>
       <label class="center-block">BBK:
-        <input pInputText class="form-control" formControlName="bbk">
+        <input pInputText class="form-control" formControlName="bbk" (click)="showNotif()">
       </label>
       <label class="center-block">ISBN:
         <input pInputText class="form-control" formControlName="isbn">
