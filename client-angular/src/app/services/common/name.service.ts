@@ -28,4 +28,13 @@ export class NameService {
 
     return '';
   }
+
+  getFullname(author: Author): string {
+    if (author && author.name) {
+      return author.name.last + ' '
+        + author.name.first + ' '
+        + author.name.middle;
+    }
+    return '';
+  }
 }

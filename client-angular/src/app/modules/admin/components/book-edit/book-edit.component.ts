@@ -6,6 +6,9 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { Book } from '../../../../model/book';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { Author } from '../../../../model/author';
+import { AuthorService } from '../../../../services/rest/author.service';
+import { NameService } from '../../../../services/common/name.service';
 
 @Component({
   selector: 'app-book-edit',
@@ -20,12 +23,19 @@ export class BookEditComponent implements OnInit, OnChanges {
   categoryId: number;
   categoryId$: Observable<number>;
   bookForm: FormGroup;
+  authors$: Observable<Author[]>;
+  authors: Author[];
+  authorsWithFullname: any[];
+  authorsSearchResult: any[];
 
   constructor(route: ActivatedRoute,
               private bookService: BookService,
+              private authorService: AuthorService,
               private store: Store<StoreState>,
-              private fb: FormBuilder) {
+              private fb: FormBuilder,
+              private nameService: NameService) {
     this.bookId = route.snapshot.params['id'];
+
     this.book$ = this.bookService.getFullBook(this.bookId);
     this.book$.subscribe((book) => {
       this.book = book;
@@ -36,14 +46,28 @@ export class BookEditComponent implements OnInit, OnChanges {
       }
       this.rebuildForm();
     });
+
+    this.authors$ = this.authorService.get();
+    this.authors$.subscribe((authors) => {
+      this.authors = authors;
+      this.authorsWithFullname = authors.map(author =>
+        Object.assign(author, { fullname: this.nameService.getFullname(author) }));
+    });
     this.createForm();
   }
 
   ngOnInit() {
   }
 
+  searchAuthors(event) {
+    // this.authorService.get().subscribe((authors) => {
+    this.authorsSearchResult = this.authorsWithFullname
+      .filter(author => author.fullname.indexOf(event.query) > -1);
+  }
+
   createForm() {
     this.bookForm = this.fb.group({
+      authors: [],
       bbk: '',
       title: '',
       isbn: '',
@@ -66,8 +90,11 @@ export class BookEditComponent implements OnInit, OnChanges {
   }
 
   rebuildForm() {
+    debugger;
     this.bookForm.reset({
       title: this.book.title,
+      authors: this.book.authors.map(author =>
+        Object.assign(author, { fullname: this.nameService.getFullname(author) })),
       bbk: this.book.bbk,
       udc: this.book.udc,
       isbn: this.book.isbn,
@@ -96,6 +123,10 @@ export class BookEditComponent implements OnInit, OnChanges {
     const saveBook: Book = {
       ...this.book,
       title: formModel.title,
+      authors: formModel.authors.map((author) => {
+        delete author.fullname;
+        return author;
+      }),
       bbk: formModel.bbk,
       udc: formModel.udc,
       isbn: formModel.isbn,

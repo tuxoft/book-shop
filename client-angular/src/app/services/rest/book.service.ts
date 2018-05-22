@@ -14,12 +14,10 @@ export class BookService {
 
   get(): Observable<Book[]> {
     return this.http.get<Book[]>(this.booksUrl);
-    // return of(BOOKS);
   }
 
   getFullBook(id: number): Observable<Book> {
     return this.http.get<Book>(this.booksUrl + '/' + id);
-      // .pipe(map(books => books ? books[0] : {}));
   }
 
   getByIds(ids: number[]): Observable<Book[]> {

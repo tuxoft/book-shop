@@ -20,6 +20,7 @@ import { effects } from './effects/index';
 import { CategoryService } from './services/rest/category.service';
 import { FooterComponent } from './components/footer/footer.component';
 import { NameService } from './services/common/name.service';
+import { AuthorService } from './services/rest/author.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { NameService } from './services/common/name.service';
       maxAge: 50,
     }),
   ],
-  providers: [BookService, CartService, CategoryService, NameService],
+  providers: [BookService, CartService, CategoryService, NameService, AuthorService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

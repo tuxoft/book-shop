@@ -6,6 +6,7 @@ import { routes } from './admin.routes';
 import { BookCreateComponent } from './components/book-create/book-create.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule, InputTextModule } from 'primeng/primeng';
+import { AutoCompleteModule } from 'primeng/autocomplete';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { ButtonModule, InputTextModule } from 'primeng/primeng';
     ReactiveFormsModule,
     ButtonModule,
     InputTextModule,
+    AutoCompleteModule,
   ],
   declarations: [BookEditComponent, BookCreateComponent],
 })

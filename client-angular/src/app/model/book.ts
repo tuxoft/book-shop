@@ -4,6 +4,7 @@ import { Category } from './category';
 import { City } from './city';
 import { Language } from './language';
 import { Publisher } from './publisher';
+import { Author } from './author';
 
 /**
  * Описывает интерфейс с полными данными о книге.
@@ -86,7 +87,7 @@ export interface Book {
   /**
    * авторы книги.
    */
-  authors?: string[];
+  authors?: Author[];
   /**
    * город издания.
    */
@@ -107,9 +108,4 @@ export interface Book {
    * URL обложки книги.
    */
   coverUrl?: string;
-
-  /**
-   * авторы книги в виде строки.
-   */
-  authorsString?: string[];
 }

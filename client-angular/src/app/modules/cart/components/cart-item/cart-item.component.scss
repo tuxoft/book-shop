@@ -70,14 +70,9 @@
         -moz-user-select:none;
         user-select:none;
       }
-      .cart-items-count-input {
-        width: 40px;
-        &::-webkit-outer-spin-button,
-        &::-webkit-inner-spin-button {
-          -webkit-appearance: none;
-          margin: 0;
-        }
-      }
+    }
+    .cart-items-count-input {
+      width: 40px;
     }
     .count-validation-violation {
       font-size: 12px;
