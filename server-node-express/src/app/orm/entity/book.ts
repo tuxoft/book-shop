@@ -3,20 +3,25 @@ import { Category } from './category';
 import { Author } from './author';
 import { Publisher } from './publisher';
 import { BookSeries } from './bookSeries';
+import { IsInt, IsISBN } from 'class-validator';
+import { isIntMessage, isIsbnMessage } from '../../utils/validation.util';
 
 @Entity('books')
 export class Book {
 
   @PrimaryGeneratedColumn()
+  @IsInt({ message: isIntMessage })
   id: number;
 
   @Column()
   title: string;
 
   @Column()
+  @IsInt({ message: isIntMessage })
   price: number;
 
   @Column()
+  @IsInt({ message: isIntMessage })
   inStock: number;
 
   @ManyToMany(type => Author, author => author.books, { eager: true })
@@ -27,6 +32,7 @@ export class Book {
   coverUrl: string;
 
   @Column({ select: false })
+  @IsInt({ message: isIntMessage })
   articul: number;
 
   @ManyToOne(type => BookSeries, bookSeries => bookSeries.books)
@@ -39,9 +45,11 @@ export class Book {
   publicationYear: string;
 
   @Column({ select: false })
+  @IsInt({ message: isIntMessage })
   pageCount: number;
 
   @Column({ select: false })
+  @IsISBN(undefined, { message: isIsbnMessage })
   isbn: string;
 
   @Column({ select: false })
@@ -51,12 +59,14 @@ export class Book {
   bbk: string;
 
   @Column({ select: false })
+  @IsInt({ message: isIntMessage })
   circulation: number;
 
   @Column({ select: false })
   dimensions: string;
 
   @Column({ select: false })
+  @IsInt({ message: isIntMessage })
   weight: number;
 
   @Column({ select: false })

@@ -2,6 +2,7 @@ import * as express from 'express';
 import { getConnection } from 'typeorm';
 import { Book } from '../../orm/entity/book';
 import { EntityNotFoundError } from 'typeorm/error/EntityNotFoundError';
+import { transformAndValidate } from 'class-transformer-validator';
 
 const router = express.Router();
 
@@ -28,7 +29,14 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    const savedBooks = await getBookRepository().save(req.body);
+    const books = await transformAndValidate(Book, req.body, {
+      validator: {
+        validationError: { target: false },
+        forbidUnknownValues: true,
+      },
+    });
+
+    const savedBooks = await getBookRepository().save(books);
 
     res.send(savedBooks);
 
