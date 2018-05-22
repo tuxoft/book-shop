@@ -1,15 +1,25 @@
-import { sendBadRequest, sendError } from './response.util';
+import { sendBadRequest, sendServerError, sendValidationError } from './response.util';
 import { EntityNotFoundError } from 'typeorm/error/EntityNotFoundError';
+import { validator } from './validation.util';
+import { ValidationError } from 'class-validator';
 
-export function errorHandler(err: Error, req, res, next) {
+export function errorHandler(err, req, res, next) {
 
   if (res.headersSent) {
-    return next(err);
-  }
 
-  if (err instanceof EntityNotFoundError) {
+    next(err);
+
+  } else if (validator.isInstance(err, EntityNotFoundError)) {
+
     sendBadRequest(err, req, res);
+
+  } else if (validator.isArray(err) && validator.isInstance(err[0], ValidationError)) {
+
+    sendValidationError(err, req, res);
+
   } else {
-    sendError(err, req, res);
+
+    sendServerError(err, req, res);
+
   }
 }
