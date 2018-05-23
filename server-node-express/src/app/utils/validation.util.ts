@@ -9,3 +9,7 @@ export const isIntMessage = (args: ValidationArguments) => {
 export const isIsbnMessage = (args: ValidationArguments) => {
   return `не соответствует формату ISBN`;
 };
+
+export const isNotEmptyMessage = (args: ValidationArguments) => {
+  return `не может быть пустым`;
+};

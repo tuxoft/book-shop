@@ -1,6 +1,8 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Book } from './book';
 import { BookSeries } from './bookSeries';
+import { IsNotEmpty } from 'class-validator';
+import { isNotEmptyMessage } from '../../utils/validation.util';
 
 @Entity('publishers')
 export class Publisher {
@@ -9,6 +11,7 @@ export class Publisher {
   id: number;
 
   @Column()
+  @IsNotEmpty({ message: isNotEmptyMessage })
   name: string;
 
   @OneToMany(type => Book, book => book.publisher)

@@ -3,17 +3,17 @@ import { Category } from './category';
 import { Author } from './author';
 import { Publisher } from './publisher';
 import { BookSeries } from './bookSeries';
-import { IsInt, IsISBN } from 'class-validator';
-import { isIntMessage, isIsbnMessage } from '../../utils/validation.util';
+import { IsInt, IsISBN, IsNotEmpty } from 'class-validator';
+import { isIntMessage, isIsbnMessage, isNotEmptyMessage } from '../../utils/validation.util';
 
 @Entity('books')
 export class Book {
 
   @PrimaryGeneratedColumn()
-  @IsInt({ message: isIntMessage })
   id: number;
 
   @Column()
+  @IsNotEmpty({ message: isNotEmptyMessage })
   title: string;
 
   @Column()

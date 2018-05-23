@@ -32,7 +32,6 @@ router.post('/', async (req, res, next) => {
     const books = await transformAndValidate(Book, req.body, {
       validator: {
         validationError: { target: false },
-        forbidUnknownValues: true,
       },
     });
 

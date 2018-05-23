@@ -1,6 +1,7 @@
 import * as express from 'express';
 import { getConnection } from 'typeorm';
 import { Selection } from '../../orm/entity/selection';
+import { transformAndValidate } from 'class-transformer-validator';
 
 const router = express.Router();
 
@@ -13,6 +14,23 @@ router.get('/', async (req, res, next) => {
     const selection = await getSelectionRepository().find();
 
     res.send(selection);
+
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.post('/', async (req, res, next) => {
+  try {
+    const selections = await transformAndValidate(Selection, req.body, {
+      validator: {
+        validationError: { target: false },
+      },
+    });
+
+    const savedSelections = await getSelectionRepository().save(selections);
+
+    res.send(savedSelections);
 
   } catch (err) {
     next(err);

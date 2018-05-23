@@ -1,5 +1,7 @@
 import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Book } from './book';
+import { IsNotEmpty } from 'class-validator';
+import { isNotEmptyMessage } from '../../utils/validation.util';
 
 @Entity('selections')
 export class Selection {
@@ -8,6 +10,7 @@ export class Selection {
   id: number;
 
   @Column()
+  @IsNotEmpty({ message: isNotEmptyMessage })
   name: string;
 
   @Column()
