@@ -4,13 +4,13 @@
     <div class="header-menu">
       <app-header-menu></app-header-menu>
     </div>
-    <div class="shop-header">
+    <div class="shop-header"  *ngIf="!isAdminPanel()">
       <app-shop-header></app-shop-header>
     </div>
-    <div class="shop-menu">
+    <div class="shop-menu" *ngIf="!isAdminPanel()">
       <app-shop-menu-horizontal></app-shop-menu-horizontal>
     </div>
     <router-outlet></router-outlet>
   </div>
-  <app-footer></app-footer>
+  <app-footer *ngIf="!isAdminPanel()"></app-footer>
 </div>

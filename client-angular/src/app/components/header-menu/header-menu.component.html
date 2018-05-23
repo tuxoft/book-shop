@@ -1,5 +1,6 @@
 <div class="header-container standart-theme">
   <div class="container">
-    header-menu works!
+    <a (click)="redirectToAdminPanel()" class="menu-item" *ngIf="!isAdminPanel()">Панель администрирования</a>
+    <a (click)="redirectToMain()" class="menu-item" *ngIf="isAdminPanel()">На главную</a>
   </div>
 </div>

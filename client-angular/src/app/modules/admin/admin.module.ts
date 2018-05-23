@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule, InputTextModule } from 'primeng/primeng';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { TreeTableModule } from 'primeng/treetable';
+import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,6 @@ import { TreeTableModule } from 'primeng/treetable';
     AutoCompleteModule,
     TreeTableModule,
   ],
-  declarations: [BookEditComponent, BookCreateComponent],
+  declarations: [BookEditComponent, BookCreateComponent, AdminPanelComponent],
 })
 export class AdminModule { }

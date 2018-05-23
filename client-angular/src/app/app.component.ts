@@ -37,4 +37,8 @@ export class AppComponent implements OnInit {
       mergeMap(route => route.data))
       .subscribe(event => this.titleService.setTitle(event['title']));
   }
+
+  isAdminPanel(): boolean {
+    return this.router.url.indexOf('/admin') === 0;
+  }
 }
