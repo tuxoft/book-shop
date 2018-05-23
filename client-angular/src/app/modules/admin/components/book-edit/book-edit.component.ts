@@ -4,6 +4,7 @@ import { BookService } from '../../../../services/rest/book.service';
 import { StoreState } from '../../../../store/reducers';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/zip';
 import { Book } from '../../../../model/book';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Author } from '../../../../model/author';
@@ -14,6 +15,9 @@ import { Publisher } from '../../../../model/publisher';
 import { PublisherService } from '../../../../services/rest/publisher.service';
 import { BookSeriesService } from '../../../../services/rest/book-series.service';
 import { BookSeries } from '../../../../model/book-series';
+import { TreeNode } from 'primeng/api';
+import { CategoryService } from '../../../../services/rest/category.service';
+import { Category } from '../../../../model/category';
 
 @Component({
   selector: 'app-book-edit',
@@ -39,6 +43,10 @@ export class BookEditComponent implements OnInit, OnChanges {
   bookSeries: BookSeries[];
   bookSeries$: Observable<BookSeries[]>;
   bookSeriesSearchResult: BookSeries[];
+  categories$: Observable<Category[]>;
+  categories: Category[];
+  categoryNodes: TreeNode[];
+  selectedCategoryNodes: TreeNode[];
 
   constructor(route: ActivatedRoute,
               private bookService: BookService,
@@ -48,7 +56,8 @@ export class BookEditComponent implements OnInit, OnChanges {
               private nameService: NameService,
               private notificationService: NotificationsService,
               private publisherService: PublisherService,
-              private bookSeriesService: BookSeriesService) {
+              private bookSeriesService: BookSeriesService,
+              private categoryService: CategoryService) {
     this.bookId = route.snapshot.params['id'];
 
     this.book$ = this.bookService.getFullBook(this.bookId);
@@ -79,10 +88,79 @@ export class BookEditComponent implements OnInit, OnChanges {
       this.bookSeries = bookSeries;
     });
 
+    this.categories$ = this.categoryService.get();
+
+    Observable
+      .zip(
+        this.book$, this.categories$,
+        (book: Book, categories: Category[]) => { return { book, categories };)
+      .subscribe((pair) => {
+        this.categories = pair.categories;
+        this.categoryNodes = this.categories.map(category => this.mapTreeNodes(category, null));
+        this.selectedCategoryNodes = pair.book.categories
+          .map((category) => {
+            let result = null;
+            this.categoryNodes.some((node) => {
+              result = this.findInTreeNode(node, category.id);
+              if (result) {
+                if (node.data.id !== category.id) {
+                  node.partialSelected = true;
+                  node.expanded = true;
+                }
+                return true;
+              }
+              return false;
+            });
+
+            return result;
+          });
+      });
+
     this.createForm();
   }
 
   ngOnInit() {
+  }
+
+  mapTreeNodes(category: Category, parent: TreeNode): TreeNode {
+    const node = {} as TreeNode;
+    node.data = {
+      id: category.id,
+      name: category.name,
+    };
+
+    if (category.children && category.children.length) {
+      node.children = category.children.map(category => this.mapTreeNodes(category, node));
+    } else {
+      node.children = [];
+    }
+
+    node.parent = parent;
+    return node;
+  }
+
+  findInTreeNode(node: TreeNode, id: number): TreeNode {
+    if (node.data.id === id) {
+      return node;
+    }
+
+    if (node.children && node.children.length) {
+      let result = null;
+      node.children.some((node) => {
+        result = this.findInTreeNode(node, id);
+        if (result) {
+          if (node.data.id !== id) {
+            node.partialSelected = true;
+            node.expanded = true;
+          }
+          return true;
+        }
+        return false;
+      });
+      return result;
+    }
+
+    return null;
   }
 
   searchAuthors(event) {
@@ -100,11 +178,16 @@ export class BookEditComponent implements OnInit, OnChanges {
       .filter(bookSeries => bookSeries.name.indexOf(event.query) > -1);
   }
 
+  nodeSelect(event) {
+    this.bookForm.markAsDirty();
+  }
+
   createForm() {
     this.bookForm = this.fb.group({
       authors: [],
       publisher: [{}, Validators.required],
       bookSeries: {},
+      categories: [],
       bbk: '',
       title: '',
       isbn: '',
@@ -133,6 +216,7 @@ export class BookEditComponent implements OnInit, OnChanges {
         Object.assign(author, { fullname: this.nameService.getFullname(author) })),
       publisher: this.book.publisher,
       bookSeries: this.book.bookSeries,
+      categories: [],
       bbk: this.book.bbk,
       udc: this.book.udc,
       isbn: this.book.isbn,
@@ -189,6 +273,7 @@ export class BookEditComponent implements OnInit, OnChanges {
       bbk: formModel.bbk,
       publisher: formModel.publisher,
       bookSeries: formModel.bookSeries,
+      categories: this.selectedCategoryNodes.map((node) => { return { id: node.data.id }; }),
       udc: formModel.udc,
       isbn: formModel.isbn,
       circulation: formModel.circulation,

@@ -7,6 +7,7 @@ import { BookCreateComponent } from './components/book-create/book-create.compon
 import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule, InputTextModule } from 'primeng/primeng';
 import { AutoCompleteModule } from 'primeng/autocomplete';
+import { TreeTableModule } from 'primeng/treetable';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
     ButtonModule,
     InputTextModule,
     AutoCompleteModule,
+    TreeTableModule,
   ],
   declarations: [BookEditComponent, BookCreateComponent],
 })

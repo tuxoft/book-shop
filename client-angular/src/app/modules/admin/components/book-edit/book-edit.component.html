@@ -39,6 +39,19 @@
                         [dropdown]="true"
                         field="name"></p-autoComplete>
       </label>
+      <label class="center-block">Категории:
+        <!-- <p-treeTable formControlName="categories" -->
+          <p-treeTable
+                     selectionMode="checkbox"
+                     [value]="categoryNodes"
+                     styleClass="formControl"
+                     [(selection)]="selectedCategoryNodes"
+                     (onNodeSelect)="nodeSelect($event)"
+                     (onNodeUnselect)="nodeSelect($event)"
+                     field="name">
+          <p-column field="name" header="Выбор категорий"></p-column>
+        </p-treeTable>
+      </label>
       <label class="center-block">BBK:
         <input pInputText class="form-control" formControlName="bbk" (click)="showNotif()">
       </label>

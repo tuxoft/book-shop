@@ -3,5 +3,7 @@
  */
 export interface Category {
   id?: number;
-  text?: string;
+  name?: string;
+  parent?: Category;
+  children?: Category[];
 }
