@@ -1,6 +1,6 @@
 <div class="book-card standart-theme">
   <div class="book-cover-img">
-    <a href="/catalog/book/{{book.id}}">
+    <a (click)="redirectToBookDetail(book.id)">
       <img src="{{book.coverUrl}}" />
     </a>
   </div>

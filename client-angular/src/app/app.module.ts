@@ -26,6 +26,7 @@ import { NotificationsService } from './services/common/notification.service';
 import { NotificationComponent } from './components/notification/notification.component';
 import { PublisherService } from './services/rest/publisher.service';
 import { BookSeriesService } from './services/rest/book-series.service';
+import { HeaderMenuComponent } from './components/header-menu/header-menu.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { BookSeriesService } from './services/rest/book-series.service';
     CartLogoComponent,
     FooterComponent,
     NotificationComponent,
+    HeaderMenuComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),

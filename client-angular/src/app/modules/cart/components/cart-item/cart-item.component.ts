@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import { StoreState } from '../../../../store/reducers';
 import { NameService } from '../../../../services/common/name.service';
 import { Author } from '../../../../model/author';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart-item',
@@ -27,7 +28,9 @@ export class CartItemComponent implements OnInit {
 
   validationShow: boolean;
 
-  constructor(private store: Store<StoreState>, private nameService: NameService) { }
+  constructor(private store: Store<StoreState>,
+              private nameService: NameService,
+              private router: Router) { }
 
   ngOnInit() {
     this.countItem = this.item.count;
@@ -84,5 +87,9 @@ export class CartItemComponent implements OnInit {
       item: this.item,
       checked: this.checked,
     });
+  }
+
+  redirectToBookDetail(id: number) {
+    this.router.navigate(['/catalog/book/' + id]);
   }
 }

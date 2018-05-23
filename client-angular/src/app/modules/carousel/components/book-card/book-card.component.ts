@@ -47,4 +47,8 @@ export class BookCardComponent implements OnInit {
   redirectToCart() {
     this.router.navigate(['/cart']);
   }
+
+  redirectToBookDetail(id: number) {
+    this.router.navigate(['/catalog/book/' + id]);
+  }
 }

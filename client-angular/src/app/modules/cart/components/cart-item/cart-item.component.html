@@ -4,7 +4,7 @@
   </div>
   <div class="cart-items-product">
     <div class="cart-items-product-img-container">
-      <a href="/catalog/book/{{item.book.id}}">
+      <a (click)="redirectToBookDetail(item.book.id)">
         <img src="{{item.book.coverUrl}}" class="cart-items-product-img" />
       </a>
     </div>

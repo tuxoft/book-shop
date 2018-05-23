@@ -93,7 +93,7 @@ export class BookEditComponent implements OnInit, OnChanges {
     Observable
       .zip(
         this.book$, this.categories$,
-        (book: Book, categories: Category[]) => { return { book, categories };)
+        (book: Book, categories: Category[]) => { return { book, categories };})
       .subscribe((pair) => {
         this.categories = pair.categories;
         this.categoryNodes = this.categories.map(category => this.mapTreeNodes(category, null));
@@ -241,7 +241,7 @@ export class BookEditComponent implements OnInit, OnChanges {
       },
       (error) => {
         let errorMsg = '';
-        if (error && error.error) {
+        if (error && error.error && error.status === 422) {
           errorMsg = error.error.reduce(
             (prevValue, curValue) => {
               return prevValue + Object.values(curValue.constraints)
@@ -252,6 +252,10 @@ export class BookEditComponent implements OnInit, OnChanges {
                   '');
             },
             '');
+        }
+
+        if (error && error.error && error.status === 500) {
+          errorMsg = error.error;
         }
         this.notificationService.notify('error', '',
                                         'Произошла ошибка при сохранении книги:' + errorMsg);

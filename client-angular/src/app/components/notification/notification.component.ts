@@ -20,10 +20,8 @@ export class NotificationComponent implements OnInit, OnDestroy {
   }
 
   subscribeToNotifications() {
-    debugger;
     this.subscription = this.notificationsService.notificationChange
       .subscribe((notification) => {
-        debugger;
         this.messages = [];
         this.messages.push(notification);
       });

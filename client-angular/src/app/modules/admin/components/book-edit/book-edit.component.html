@@ -9,10 +9,10 @@
     <button pButton type="button" (click)="revert()"
             [disabled]="bookForm.pristine" class="ui-button-danger" label="Отмена"></button>
     <div class="form-group">
-      <label class="center-block">Название:
+      <label class="field-label">Название:
         <input pInputText class="form-control" formControlName="title">
       </label>
-      <label class="center-block">Авторы:
+      <label class="field-label">Авторы:
         <p-autoComplete formControlName="authors"
                         [suggestions]="authorsSearchResult"
                         (completeMethod)="searchAuthors($event)"
@@ -21,7 +21,7 @@
                         styleClass="formControl"
                         field="fullname"></p-autoComplete>
       </label>
-      <label class="center-block">Издательство:
+      <label class="field-label">Издательство:
         <p-autoComplete formControlName="publisher"
                         [suggestions]="publisherSearchResult"
                         (completeMethod)="searchPublisher($event)"
@@ -30,7 +30,7 @@
                         [dropdown]="true"
                         field="name"></p-autoComplete>
       </label>
-      <label class="center-block">Серия книг:
+      <label class="field-label">Серия книг:
         <p-autoComplete formControlName="bookSeries"
                         [suggestions]="bookSeriesSearchResult"
                         (completeMethod)="searchBookSeries($event)"
@@ -39,7 +39,7 @@
                         [dropdown]="true"
                         field="name"></p-autoComplete>
       </label>
-      <label class="center-block">Категории:
+      <label class="field-label">Категории:
         <!-- <p-treeTable formControlName="categories" -->
           <p-treeTable
                      selectionMode="checkbox"
@@ -52,43 +52,43 @@
           <p-column field="name" header="Выбор категорий"></p-column>
         </p-treeTable>
       </label>
-      <label class="center-block">BBK:
+      <label class="field-label">BBK:
         <input pInputText class="form-control" formControlName="bbk" (click)="showNotif()">
       </label>
-      <label class="center-block">ISBN:
+      <label class="field-label">ISBN:
         <input pInputText class="form-control" formControlName="isbn">
       </label>
-      <label class="center-block">UDC:
+      <label class="field-label">UDC:
         <input pInputText class="form-control" formControlName="udc">
       </label>
-      <label class="center-block">Тираж:
+      <label class="field-label">Тираж:
         <input type="number" pInputText class="form-control" formControlName="circulation">
       </label>
-      <label class="center-block">Тип обложки:
+      <label class="field-label">Тип обложки:
         <input pInputText class="form-control" formControlName="coverType">
       </label>
-      <label class="center-block">Формат:
+      <label class="field-label">Формат:
         <input pInputText class="form-control" formControlName="dimensions">
       </label>
-      <label class="center-block">В наличии:
+      <label class="field-label">В наличии:
         <input type="number" pInputText class="form-control" formControlName="inStock">
       </label>
-      <label class="center-block">Количество страниц:
+      <label class="field-label">Количество страниц:
         <input type="number" pInputText class="form-control" formControlName="pageCount">
       </label>
-      <label class="center-block">Цена:
+      <label class="field-label">Цена:
         <input type="number" pInputText class="form-control" formControlName="price">
       </label>
-      <label class="center-block">Вес:
+      <label class="field-label">Вес:
         <input type="number" pInputText class="form-control" formControlName="weight">
       </label>
-      <label class="center-block">Год издания:
+      <label class="field-label">Год издания:
         <input pInputText class="form-control" formControlName="publicationYear">
       </label>
-      <label class="center-block">Артикул:
+      <label class="field-label">Артикул:
         <input type="number" pInputText class="form-control" formControlName="articul">
       </label>
-      <label class="center-block">Возрастное ограничение:
+      <label class="field-label">Возрастное ограничение:
         <input pInputText class="form-control" formControlName="ageLimit">
       </label>
     </div>
