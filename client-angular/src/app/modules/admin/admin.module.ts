@@ -9,6 +9,7 @@ import { ButtonModule, InputTextModule } from 'primeng/primeng';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { TreeTableModule } from 'primeng/treetable';
 import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
+import { AdminMenuComponent } from './components/admin-menu/admin-menu.component';
 
 @NgModule({
   imports: [
@@ -20,6 +21,6 @@ import { AdminPanelComponent } from './components/admin-panel/admin-panel.compon
     AutoCompleteModule,
     TreeTableModule,
   ],
-  declarations: [BookEditComponent, BookCreateComponent, AdminPanelComponent],
+  declarations: [BookEditComponent, BookCreateComponent, AdminPanelComponent, AdminMenuComponent],
 })
 export class AdminModule { }

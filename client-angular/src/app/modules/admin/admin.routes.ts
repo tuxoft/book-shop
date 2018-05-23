@@ -10,16 +10,18 @@ export const routes: Routes = [
     data: {
       title: 'Административная панель',
     },
-  },
-  {
-    path: 'book/edit/:id',
-    component: BookEditComponent,
-    data: {
-      title: 'Редактирование книги',
-    },
-  },
-  {
-    path: 'book/create',
-    component: BookCreateComponent,
+    children: [
+      {
+        path: 'book/edit/:id',
+        component: BookEditComponent,
+        data: {
+          title: 'Редактирование книги',
+        },
+      },
+      {
+        path: 'book/create',
+        component: BookCreateComponent,
+      },
+    ],
   },
 ];

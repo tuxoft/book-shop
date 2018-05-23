@@ -1,5 +1,12 @@
 <div class="admin-panel-container standart-theme">
   <div class="container">
-    admin-panel works!
+    <div class="ui-g">
+      <div class="menu ui-g-2">
+        <app-admin-menu></app-admin-menu>
+      </div>
+      <div class="admin-content ui-g-10">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
   </div>
 </div>
