@@ -27,6 +27,13 @@ export const routes: Routes = [
           title: 'Каталог',
         },
       },
+      {
+        path: 'search',
+        loadChildren: '../search/search.module#SearchModule',
+        data: {
+          title: 'Поиск книг',
+        },
+      },
     ],
   },
 ];
