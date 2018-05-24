@@ -15,16 +15,12 @@ export class BookListComponent implements OnInit {
 
   books$: Observable<Book[]>;
 
-  books: Book[];
-
   constructor(private bookService: BookService,
               private nameService: NameService,
               private notificationService: NotificationsService) { }
 
   ngOnInit() {
     this.books$ = this.bookService.get();
-
-    this.books$.subscribe(books => this.books = books);
   }
 
   getAuthorsAsString(authors: Author[]): string {

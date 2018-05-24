@@ -12,4 +12,7 @@ export class ShopHeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  search(event: any) {
+    const query = event.target.value;
+  }
 }

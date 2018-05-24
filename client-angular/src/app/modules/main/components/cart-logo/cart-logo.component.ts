@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { StoreState } from '../../store/reducers';
+import { StoreState } from '../../../../store/reducers';
 import { Observable } from 'rxjs/Observable';
-import * as CartSelectors from '../../store/cart/cart.selectors';
+import * as CartSelectors from '../../../../store/cart/cart.selectors';
 import { Router } from '@angular/router';
 
 @Component({
