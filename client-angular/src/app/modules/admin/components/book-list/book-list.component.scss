@@ -1,1 +1,12 @@
 @import "../../../../../app.styles.scss";
+
+.edit-controls {
+  text-align: center;
+  i {
+    cursor: pointer;
+    color: green;
+  }
+  .delete-control {
+    color: red;
+  }
+}

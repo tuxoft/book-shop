@@ -6,6 +6,7 @@ $countWidth: 150px;
 $weightWidth: 100px;
 $totalWidth: 80px;
 $checkboxWidth: 20px;
+$mainColor: #26A9E0;
 
 @mixin respond-to($media) {
   @if $media == handhelds {
