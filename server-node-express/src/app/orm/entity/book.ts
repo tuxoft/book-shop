@@ -38,17 +38,17 @@ export class Book {
   @ManyToOne(type => BookSeries, bookSeries => bookSeries.books)
   bookSeries: BookSeries;
 
-  @ManyToOne(type => Publisher, publisher => publisher.books)
+  @ManyToOne(type => Publisher, publisher => publisher.books, { eager: true })
   publisher: Publisher;
 
-  @Column({ select: false })
+  @Column()
   publicationYear: string;
 
   @Column({ select: false })
   @IsInt({ message: isIntMessage })
   pageCount: number;
 
-  @Column({ select: false })
+  @Column()
   @IsISBN(undefined, { message: isIsbnMessage })
   isbn: string;
 
