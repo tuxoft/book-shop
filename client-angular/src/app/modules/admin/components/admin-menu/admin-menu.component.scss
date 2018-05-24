@@ -1,0 +1,17 @@
+@import "../../../../../app.styles.scss";
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  justify-content: space-between;
+  .menu-item {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-left: 2px solid #26A9E0;
+    // border-bottom: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

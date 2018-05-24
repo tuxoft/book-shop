@@ -1,0 +1,31 @@
+<div>
+  <p-table [value]="books">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Название</th>
+            <th>Авторы</th>
+            <th>Издательство</th>
+            <th>Год издания</th>
+            <th>ISBN</th>
+            <th>Остаток</th>
+            <th>Цена</th>
+            <th></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-book>
+        <tr>
+            <td>{{book.title}}</td>
+            <td>{{getAuthorsAsString(book.authors)}}</td>
+            <td>{{book.publisher ? book.publisher.name: ''}}</td>
+            <td>{{book.publicationYear}}</td>
+            <td>{{book.isbn}}</td>
+            <td>{{book.inStock}}</td>
+            <td>{{book.price}} р.</td>
+            <td>
+              <i class="fa fa-edit"></i>
+              <i class="fa fa-trash"></i>
+            </td>
+        </tr>
+    </ng-template>
+  </p-table>
+</div>
