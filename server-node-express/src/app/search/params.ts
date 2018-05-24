@@ -39,8 +39,15 @@ export function getParamsForMappingBooks() {
     type: DocumentType.Book,
     body: {
       properties: {
-        title: { type: "text" },
-        authors: { type: "nested" },
+        title: {
+          type: 'text',
+          analyzer: 'russian'
+        },
+        price: {
+          'type': 'scaled_float',
+          'scaling_factor': 100
+        },
+        authors: { type: 'nested' },
       }
     }
   }
