@@ -44,9 +44,9 @@ router.post('/items', async (req, res, next) => {
   }
 });
 
-router.delete('/items', (req, res, next) => {
+router.delete('/items', async (req, res, next) => {
   try {
-    const removedItems = getCartItemRepository().remove(req.body);
+    const removedItems = await getCartItemRepository().remove(req.body);
 
     res.send(removedItems);
 

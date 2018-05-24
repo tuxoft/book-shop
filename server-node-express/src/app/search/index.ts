@@ -3,7 +3,7 @@ import { getConnection } from 'typeorm';
 import { Book } from '../orm/entity/book';
 
 export function init() {
-  es.isAvailable(15, true)
+  es.isAvailable(5, true)
     .catch(() => console.log('Can not connect to elasticsearch server'))
     .then(reCreateIndex)
     .then(fillIndex)
