@@ -31,10 +31,6 @@ import { HeaderMenuComponent } from './components/header-menu/header-menu.compon
 @NgModule({
   declarations: [
     AppComponent,
-    ShopHeaderComponent,
-    ShopMenuHorizontalComponent,
-    CartLogoComponent,
-    FooterComponent,
     NotificationComponent,
     HeaderMenuComponent,
   ],
