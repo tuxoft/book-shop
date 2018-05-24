@@ -11,7 +11,9 @@ enum DocumentType {
 function getDocumentType(object): DocumentType {
   if (object instanceof Book) {
     return DocumentType.Book;
-  } else if (object instanceof Author) {
+  }
+
+  if (object instanceof Author) {
     return DocumentType.Author;
   }
 
@@ -20,8 +22,8 @@ function getDocumentType(object): DocumentType {
 
 export function getParamsForIndex() {
   return {
-    index: indexName
-  }
+    index: indexName,
+  };
 }
 
 export function getParamsForAddDocument(object) {
@@ -29,8 +31,25 @@ export function getParamsForAddDocument(object) {
     index: indexName,
     type: getDocumentType(object),
     id: object.id,
-    body: object
-  }
+    body: object,
+  };
+}
+
+export function getParamsForSettings() {
+  return {
+    index: indexName,
+    body: {
+      analysis: {
+        normalizer: {
+          ignore_case: {
+            type: 'custom',
+            char_filter: [],
+            filter: ['lowercase', 'asciifolding'],
+          },
+        },
+      },
+    },
+  };
 }
 
 export function getParamsForMappingBooks() {
@@ -41,16 +60,36 @@ export function getParamsForMappingBooks() {
       properties: {
         title: {
           type: 'text',
-          analyzer: 'russian'
+          analyzer: 'russian',
         },
         price: {
-          'type': 'scaled_float',
-          'scaling_factor': 100
+          type: 'scaled_float',
+          scaling_factor: 100,
         },
-        authors: { type: 'nested' },
-      }
-    }
-  }
+        authors: {
+          type: 'nested',
+          properties: {
+            name: {
+              properties: {
+                first: {
+                  type: 'keyword',
+                  normalizer: 'ignore_case',
+                },
+                last: {
+                  type: 'keyword',
+                  normalizer: 'ignore_case',
+                },
+                middle: {
+                  type: 'keyword',
+                  normalizer: 'ignore_case',
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  };
 }
 
 export function getParamsForSearchBooks(text: string) {
@@ -62,8 +101,8 @@ export function getParamsForSearchBooks(text: string) {
         bool: {
           should: [{
             match: {
-              title: text
-            }
+              title: text,
+            },
           }, {
             nested: {
               path: 'authors',
@@ -76,13 +115,13 @@ export function getParamsForSearchBooks(text: string) {
                   fields: [
                     'authors.name.last^3',
                     'authors.name.first^2',
-                    'authors.name.middle^1.5']
-                }
-              }
-            }
-          }]
+                    'authors.name.middle^1.5'],
+                },
+              },
+            },
+          }],
         },
-      }
-    }
-  }
+      },
+    },
+  };
 }
