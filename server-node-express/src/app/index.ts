@@ -29,5 +29,5 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use(keycloak.middleware({
   logout: '/logout',
 }));
-app.use('/api', /*keycloak.protect(), */api);
+app.use('/api', keycloak.protect(), api);
 app.use(errorHandler);
