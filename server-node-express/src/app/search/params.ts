@@ -40,11 +40,28 @@ export function getParamsForSettings() {
     index: indexName,
     body: {
       analysis: {
+        char_filter: {
+          remove_whitespace: {
+            type: "pattern_replace",
+            pattern: ' ',
+            replacement: '',
+          },
+          remove_dash: {
+            type: "pattern_replace",
+            pattern: '-',
+            replacement: '',
+          },
+        },
         normalizer: {
           ignore_case: {
             type: 'custom',
             char_filter: [],
             filter: ['lowercase', 'asciifolding'],
+          },
+          isbn: {
+            type: 'custom',
+            char_filter: ['remove_whitespace', 'remove_dash'],
+            filter: [],
           },
         },
       },
@@ -61,6 +78,10 @@ export function getParamsForMappingBooks() {
         title: {
           type: 'text',
           analyzer: 'russian',
+        },
+        isbn: {
+          type: 'keyword',
+          normalizer: 'isbn',
         },
         price: {
           type: 'scaled_float',
@@ -92,7 +113,7 @@ export function getParamsForMappingBooks() {
   };
 }
 
-export function getParamsForSearchBooks(text: string) {
+export function getParamsForSearchBooks(searchText: string) {
   return {
     index: indexName,
     type: DocumentType.Book,
@@ -101,7 +122,11 @@ export function getParamsForSearchBooks(text: string) {
         bool: {
           should: [{
             match: {
-              title: text,
+              title: searchText,
+            },
+          }, {
+            match: {
+              isbn: searchText,
             },
           }, {
             nested: {
@@ -109,7 +134,7 @@ export function getParamsForSearchBooks(text: string) {
               score_mode: 'sum',
               query: {
                 multi_match: {
-                  query: text,
+                  query: searchText,
                   type: 'cross_fields',
                   boost: 0.3,
                   fields: [
