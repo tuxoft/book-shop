@@ -80,7 +80,8 @@ router.get('/:id', async (req, res, next) => {
       .leftJoinAndSelect('b.categories', 'category')
       .leftJoinAndSelect('b.publisher', 'publisher')
       .leftJoinAndSelect('b.bookSeries', 'bookSeries')
-      .where('b.id = :id', { id }).getOne();
+      .where('b.id = :id', { id })
+      .getOne();
 
     if (!book) {
       next(new EntityNotFoundError(Book, id));

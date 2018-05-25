@@ -11,7 +11,7 @@ export function init() {
     .catch((err) => {
       console.log('Error occured while creating search index for elasticsearch server');
       console.log(err);
-    })
+    });
 }
 
 export async function search(text: string) {
@@ -24,17 +24,21 @@ async function reCreateIndex() {
   }
 
   await es.createIndex();
+
+  await es.closeIndex();
+  await es.indexSettings();
+  await es.openIndex();
+
+  await es.indexMapping();
 }
 
 async function fillIndex() {
-  await es.indexMapping();
-
   const books = await getConnection().getRepository(Book).find();
 
   const promises: Promise<any>[] = [];
-  books.forEach(book => {
+  books.forEach((book) => {
     const indexed = es.addDocument(book);
-    promises.push(indexed)
+    promises.push(indexed);
   });
 
   await Promise.all(promises);
