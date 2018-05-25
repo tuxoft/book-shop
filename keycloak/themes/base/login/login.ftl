@@ -3,10 +3,10 @@
     <#if section = "title">
         ${msg("loginTitle",(realm.displayName!''))}
     <#elseif section = "header">
-        ${msg("loginTitleHtml",(realm.displayNameHtml!''))?no_esc}
+        ${msg("loginTitleHtml",(realm.displayNameHtml!''))}
     <#elseif section = "form">
         <#if realm.password>
-            <form id="kc-form-login" class="${properties.kcFormClass!}" onsubmit="login.disabled = true; return true;" action="${url.loginAction}" method="post">
+            <form id="kc-form-login" class="${properties.kcFormClass!}" action="${url.loginAction}" method="post">
                 <div class="${properties.kcFormGroupClass!}">
                     <div class="${properties.kcLabelWrapperClass!}">
                         <label for="username" class="${properties.kcLabelClass!}"><#if !realm.loginWithEmailAllowed>${msg("username")}<#elseif !realm.registrationEmailAsUsername>${msg("usernameOrEmail")}<#else>${msg("email")}</#if></label>
@@ -14,9 +14,9 @@
 
                     <div class="${properties.kcInputWrapperClass!}">
                         <#if usernameEditDisabled??>
-                            <input tabindex="1" id="username" class="${properties.kcInputClass!}" name="username" value="${(login.username!'')}" type="text" disabled />
+                            <input tabindex="1" id="username" class="${properties.kcInputClass!}" name="username" value="${(login.username!'')?html}" type="text" disabled />
                         <#else>
-                            <input tabindex="1" id="username" class="${properties.kcInputClass!}" name="username" value="${(login.username!'')}" type="text" autofocus autocomplete="off" />
+                            <input tabindex="1" id="username" class="${properties.kcInputClass!}" name="username" value="${(login.username!'')?html}" type="text" autofocus autocomplete="off" />
                         </#if>
                     </div>
                 </div>

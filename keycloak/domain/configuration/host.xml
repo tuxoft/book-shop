@@ -111,7 +111,7 @@
             <expose-expression-model/>
             <remoting-connector/>
         </subsystem>
-        <subsystem xmlns="urn:wildfly:elytron:1.2" final-providers="combined-providers" disallowed-providers="OracleUcrypto">
+        <subsystem xmlns="urn:wildfly:elytron:1.0" final-providers="combined-providers" disallowed-providers="OracleUcrypto">
             <providers>
                 <aggregate-providers name="combined-providers">
                     <providers name="elytron"/>
@@ -137,14 +137,15 @@
                 </properties-realm>
             </security-realms>
             <mappers>
-                <simple-permission-mapper name="default-permission-mapper" mapping-mode="first">
-                    <permission-mapping>
-                        <principal name="anonymous"/>
-                    </permission-mapping>
-                    <permission-mapping match-all="true">
+                <logical-permission-mapper name="default-permission-mapper" logical-operation="unless" left="constant-permission-mapper" right="anonymous-permission-mapper"/>
+                <simple-permission-mapper name="anonymous-permission-mapper">
+                    <permission-mapping principals="anonymous">
                         <permission class-name="org.wildfly.security.auth.permission.LoginPermission"/>
                     </permission-mapping>
                 </simple-permission-mapper>
+                <constant-permission-mapper name="constant-permission-mapper">
+                    <permission class-name="org.wildfly.security.auth.permission.LoginPermission"/>
+                </constant-permission-mapper>
                 <constant-realm-mapper name="local" realm-name="local"/>
                 <simple-role-decoder name="groups-to-roles" attribute="groups"/>
                 <constant-role-mapper name="super-user-mapper">

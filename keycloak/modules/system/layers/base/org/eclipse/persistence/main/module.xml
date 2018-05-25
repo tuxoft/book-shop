@@ -29,7 +29,7 @@
     </properties>
 
     <resources>
-        <resource-root path="jipijapa-eclipselink-11.0.0.Final.jar"/>
+        <resource-root path="jipijapa-eclipselink-11.0.0.CR1.jar"/>
     </resources>
 
     <dependencies>

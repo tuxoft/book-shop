@@ -133,7 +133,7 @@
       <licenses>
         <license>
           <name>Eclipse Public License 1.0</name>
-          <url>http://repository.jboss.org/licenses/epl-1.0.txt</url>
+          <url>http://www.eclipse.org/legal/epl-v10.html</url>
           <distribution>repo</distribution>
         </license>
       </licenses>
@@ -371,13 +371,8 @@
       <version>1.0.1.Final</version>
       <licenses>
         <license>
-          <name>Common Development and Distribution License 1.1</name>
-          <url>https://javaee.github.io/glassfish/LICENSE</url>
-          <distribution>repo</distribution>
-        </license>
-        <license>
-          <name>GNU General Public License, Version 2 with the Classpath Exception</name>
-          <url>http://repository.jboss.org/licenses/gpl-2.0-ce.txt</url>
+          <name>Apache License 2.0</name>
+          <url>http://www.apache.org/licenses/LICENSE-2.0</url>
           <distribution>repo</distribution>
         </license>
       </licenses>
@@ -438,7 +433,7 @@
     <dependency>
       <groupId>org.wildfly</groupId>
       <artifactId>wildfly-clustering-common</artifactId>
-      <version>11.0.0.Final</version>
+      <version>11.0.0.CR1</version>
       <licenses>
         <license>
           <name>GNU Lesser General Public License v2.1 or later</name>
@@ -450,7 +445,7 @@
     <dependency>
       <groupId>org.wildfly</groupId>
       <artifactId>wildfly-clustering-service</artifactId>
-      <version>11.0.0.Final</version>
+      <version>11.0.0.CR1</version>
       <licenses>
         <license>
           <name>GNU Lesser General Public License v2.1 or later</name>
@@ -462,7 +457,7 @@
     <dependency>
       <groupId>org.wildfly</groupId>
       <artifactId>wildfly-ee</artifactId>
-      <version>11.0.0.Final</version>
+      <version>11.0.0.CR1</version>
       <licenses>
         <license>
           <name>GNU Lesser General Public License v2.1 or later</name>
@@ -474,7 +469,7 @@
     <dependency>
       <groupId>org.wildfly</groupId>
       <artifactId>wildfly-naming</artifactId>
-      <version>11.0.0.Final</version>
+      <version>11.0.0.CR1</version>
       <licenses>
         <license>
           <name>GNU Lesser General Public License v2.1 or later</name>
@@ -486,7 +481,7 @@
     <dependency>
       <groupId>org.wildfly</groupId>
       <artifactId>wildfly-naming-client</artifactId>
-      <version>1.0.7.Final</version>
+      <version>1.0.1.Final</version>
       <licenses>
         <license>
           <name>Apache License 2.0</name>
@@ -498,7 +493,7 @@
     <dependency>
       <groupId>org.wildfly</groupId>
       <artifactId>wildfly-security</artifactId>
-      <version>11.0.0.Final</version>
+      <version>11.0.0.CR1</version>
       <licenses>
         <license>
           <name>GNU Lesser General Public License v2.1 or later</name>
@@ -510,7 +505,7 @@
     <dependency>
       <groupId>org.wildfly</groupId>
       <artifactId>wildfly-undertow</artifactId>
-      <version>11.0.0.Final</version>
+      <version>11.0.0.CR1</version>
       <licenses>
         <license>
           <name>GNU Lesser General Public License v2.1 or later</name>
@@ -522,7 +517,7 @@
     <dependency>
       <groupId>org.wildfly</groupId>
       <artifactId>wildfly-web-common</artifactId>
-      <version>11.0.0.Final</version>
+      <version>11.0.0.CR1</version>
       <licenses>
         <license>
           <name>GNU Lesser General Public License v2.1 or later</name>
@@ -534,7 +529,7 @@
     <dependency>
       <groupId>org.wildfly.core</groupId>
       <artifactId>wildfly-core-feature-pack</artifactId>
-      <version>3.0.8.Final</version>
+      <version>3.0.1.Final</version>
       <licenses>
         <license>
           <name>GNU Lesser General Public License v2.1 or later</name>
@@ -551,7 +546,7 @@
     <dependency>
       <groupId>org.wildfly.core</groupId>
       <artifactId>wildfly-elytron-integration</artifactId>
-      <version>3.0.8.Final</version>
+      <version>3.0.1.Final</version>
       <licenses>
         <license>
           <name>GNU Lesser General Public License v2.1 or later</name>
@@ -568,7 +563,7 @@
     <dependency>
       <groupId>org.wildfly.wildfly-http-client</groupId>
       <artifactId>wildfly-http-client-common</artifactId>
-      <version>1.0.8.Final</version>
+      <version>1.0.1.Final</version>
       <licenses>
         <license>
           <name>Apache License 2.0</name>
@@ -580,7 +575,7 @@
     <dependency>
       <groupId>org.wildfly.wildfly-http-client</groupId>
       <artifactId>wildfly-http-naming-client</artifactId>
-      <version>1.0.8.Final</version>
+      <version>1.0.1.Final</version>
       <licenses>
         <license>
           <name>Apache License 2.0</name>

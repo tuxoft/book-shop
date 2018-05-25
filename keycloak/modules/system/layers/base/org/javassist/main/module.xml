@@ -28,7 +28,7 @@
     </properties>
 
     <resources>
-        <resource-root path="javassist-3.20.0-GA.jar"/>
+        <resource-root path="javassist-3.18.1-GA.jar"/>
     </resources>
 
     <dependencies>

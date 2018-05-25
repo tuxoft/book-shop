@@ -21,7 +21,7 @@
     </properties>
 
     <resources>
-        <resource-root path="keycloak-sssd-federation-3.4.3.Final.jar"/>
+        <resource-root path="keycloak-sssd-federation-3.4.0.Final.jar"/>
         <resource-root path="/usr/share/java/jna.jar"/>
     </resources>
 

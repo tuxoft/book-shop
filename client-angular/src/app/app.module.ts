@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -25,6 +25,8 @@ import { BookSeriesService } from './services/rest/book-series.service';
 import { HeaderMenuComponent } from './components/header-menu/header-menu.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SearchService } from './services/rest/search.service';
+import { KeycloakService, KeycloakAngularModule } from 'keycloak-angular';
+import { initializer } from './utils/app-init';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,7 @@ import { SearchService } from './services/rest/search.service';
     StoreDevtoolsModule.instrument({
       maxAge: 50,
     }),
+    KeycloakAngularModule,
   ],
   providers: [
     BookService,
@@ -57,6 +60,12 @@ import { SearchService } from './services/rest/search.service';
     PublisherService,
     BookSeriesService,
     SearchService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializer,
+      multi: true,
+      deps: [KeycloakService],
+    },
   ],
   bootstrap: [AppComponent],
 })

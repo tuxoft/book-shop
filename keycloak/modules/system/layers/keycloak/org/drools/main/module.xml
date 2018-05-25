@@ -20,8 +20,8 @@
         <property name="jboss.api" value="private"/>
     </properties>
     <resources>
-        <resource-root path="drools-core-6.5.0.Final.jar"/>
-        <resource-root path="drools-compiler-6.5.0.Final.jar"/>
+        <resource-root path="drools-core-6.4.0.Final.jar"/>
+        <resource-root path="drools-compiler-6.4.0.Final.jar"/>
     </resources>
     <dependencies>
         <module name="javax.activation.api"/>

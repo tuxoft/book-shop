@@ -20,4 +20,4 @@ if [ "x$RESOLVED_NAME" = "x" ]; then
 fi
 
 DIRNAME=`dirname "$RESOLVED_NAME"`
-java $KC_OPTS -cp $DIRNAME/client/keycloak-admin-cli-3.4.3.Final.jar org.keycloak.client.admin.cli.KcAdmMain "$@"
+java $KC_OPTS -cp $DIRNAME/client/keycloak-admin-cli-3.4.0.Final.jar org.keycloak.client.admin.cli.KcAdmMain "$@"

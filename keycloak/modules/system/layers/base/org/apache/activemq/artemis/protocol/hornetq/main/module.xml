@@ -24,7 +24,7 @@
 
 <module xmlns="urn:jboss:module:1.5" name="org.apache.activemq.artemis.protocol.hornetq">
     <resources>
-        <resource-root path="artemis-hornetq-protocol-1.5.5.jbossorg-008.jar"/>
+        <resource-root path="artemis-hornetq-protocol-1.5.5.jbossorg-007.jar"/>
     </resources>
 
     <dependencies>

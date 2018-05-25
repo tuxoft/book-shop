@@ -35,7 +35,7 @@
     </exports>
 
     <resources>
-        <resource-root path="wildfly-jdr-11.0.0.Final.jar"/>
+        <resource-root path="wildfly-jdr-11.0.0.CR1.jar"/>
         <resource-root path="resources"/>
     </resources>
 

@@ -1,4 +1,4 @@
-module.controller('RoleMembersCtrl', function($scope, realm, role, RoleMembership, Dialog, Notifications, $location, RealmRoleRemover) {
+module.controller('RoleMembersCtrl', function($scope, realm, role, RoleMembership) {
     $scope.realm = realm;
     $scope.page = 0;
     $scope.role = role;
@@ -10,10 +10,7 @@ module.controller('RoleMembersCtrl', function($scope, realm, role, RoleMembershi
         first : 0
     }
 
-    $scope.remove = function() {
-        RealmRoleRemover.remove($scope.role, realm, Dialog, $location, Notifications);
-    };
-    
+
     $scope.firstPage = function() {
         $scope.query.first = 0;
         $scope.searchQuery();

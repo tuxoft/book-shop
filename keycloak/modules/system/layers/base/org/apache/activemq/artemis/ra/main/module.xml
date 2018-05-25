@@ -28,7 +28,7 @@
     </properties>
 
     <resources>
-        <resource-root path="artemis-ra-1.5.5.jbossorg-008.jar"/>
+        <resource-root path="artemis-ra-1.5.5.jbossorg-007.jar"/>
     </resources>
 
     <dependencies>

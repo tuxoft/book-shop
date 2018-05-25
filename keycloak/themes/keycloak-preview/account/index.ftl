@@ -11,12 +11,12 @@
             
             <#if referrer??>
                 var referrer = '${referrer}';
-                var referrer_uri = '${referrer_uri}';
+                var referrer_uri = '${referrer_uri?html}';
             </#if>
         
             <#if msg??>
                 var locale = '${locale}';
-                var l18n_msg = JSON.parse('${msg?no_esc}');
+                var l18n_msg = JSON.parse('${msg}');
             </#if>
         </script>
 

@@ -24,7 +24,7 @@
 
 <module xmlns="urn:jboss:module:1.5" name="org.jboss.remoting">
     <resources>
-        <resource-root path="jboss-remoting-5.0.5.Final.jar"/>
+        <resource-root path="jboss-remoting-5.0.0.Final.jar"/>
     </resources>
 
     <dependencies>

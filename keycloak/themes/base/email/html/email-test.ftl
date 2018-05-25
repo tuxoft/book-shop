@@ -1,5 +1,5 @@
 <html>
 <body>
-${msg("emailTestBodyHtml",realmName)?no_esc}
+${msg("emailTestBodyHtml",realmName)}
 </body>
 </html>

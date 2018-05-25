@@ -434,10 +434,10 @@ module.controller('ClientCertificateImportCtrl', function($scope, $location, $ht
                 //fileFormDataName: myFile,
                 /* customize how data is added to formData. See #40#issuecomment-28612000 for example */
                 //formDataAppender: function(formData, key, val){}
-            }).then(function(data, status, headers) {
+            }).success(function(data, status, headers) {
                 Notifications.success("Keystore uploaded successfully.");
                 $location.url(redirectLocation);
-            })
+            });
             //.then(success, error, progress);
         }
     };
@@ -762,14 +762,7 @@ module.controller('ClientListCtrl', function($scope, realm, Client, serverInfo, 
     };
 
     $scope.exportClient = function(client) {
-        var clientCopy = angular.copy(client);
-        delete clientCopy.id;
-
-        for (var i = 0; i < clientCopy.protocolMappers.length; i++) {
-            delete clientCopy.protocolMappers[i].id;
-        }
-
-        saveAs(new Blob([angular.toJson(clientCopy, 4)], { type: 'application/json' }), clientCopy.clientId + '.json');
+        saveAs(new Blob([angular.toJson(client, 4)], { type: 'application/json' }), client.clientId + '.json');
     }
 });
 
@@ -2065,7 +2058,7 @@ module.controller('ClientTemplateProtocolMapperListCtrl', function($scope, realm
     updateMappers();
 });
 
-module.controller('ClientTemplateProtocolMapperCtrl', function($scope, realm, serverInfo, template, mapper, clients, ClientTemplateProtocolMapper, Notifications, Dialog, $location, $route) {
+module.controller('ClientTemplateProtocolMapperCtrl', function($scope, realm, serverInfo, template, mapper, clients, ClientTemplateProtocolMapper, Notifications, Dialog, $location) {
     $scope.realm = realm;
     $scope.clients = clients;
 
@@ -2106,7 +2099,9 @@ module.controller('ClientTemplateProtocolMapperCtrl', function($scope, realm, se
             template: template.id,
             id : mapper.id
         }, $scope.model.mapper, function() {
-            $route.reload();
+            $scope.model.changed = false;
+            mapper = angular.copy($scope.mapper);
+            $location.url("/realms/" + realm.realm + '/client-templates/' + template.id + "/mappers/" + $scope.model.mapper.id);
             Notifications.success("Your changes have been saved.");
         });
     };

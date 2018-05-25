@@ -5,4 +5,4 @@ if "%OS%" == "Windows_NT" (
 ) else (
   set DIRNAME=.\
 )
-java %KC_OPTS% -cp %DIRNAME%\client\keycloak-client-registration-cli-3.4.3.Final.jar org.keycloak.client.registration.cli.KcRegMain %*
+java %KC_OPTS% -cp %DIRNAME%\client\keycloak-client-registration-cli-3.4.0.Final.jar org.keycloak.client.registration.cli.KcRegMain %*

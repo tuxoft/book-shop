@@ -21,7 +21,7 @@
     </properties>
 
     <resources>
-        <resource-root path="freemarker-2.3.26-incubating.jar"/>
+        <resource-root path="freemarker-2.3.23.jar"/>
     </resources>
 
     <dependencies>

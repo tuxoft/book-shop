@@ -26,13 +26,12 @@
 
     <exports>
         <exclude path="org/wildfly/extension/elytron/ElytronExtension"/>
-        <exclude path="org/wildfly/extension/elytron/ElytronSubsystemTransformers"/>
         <exclude path="org/wildfly/extension/elytron/_private"/>
         <exclude path="org/wildfly/extension/elytron/capabilities/_private"/>
     </exports>
 
     <resources>
-        <resource-root path="wildfly-elytron-integration-3.0.8.Final.jar"/>
+        <resource-root path="wildfly-elytron-integration-3.0.1.Final.jar"/>
     </resources>
 
     <dependencies>

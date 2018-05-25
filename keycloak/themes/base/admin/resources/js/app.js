@@ -195,9 +195,6 @@ module.config([ '$routeProvider', function($routeProvider) {
         .when('/realms/:realm/token-settings', {
             templateUrl : resourceUrl + '/partials/realm-tokens.html',
             resolve : {
-                serverInfo : function(ServerInfoLoader) {
-                    return ServerInfoLoader();
-                },
                 realm : function(RealmLoader) {
                     return RealmLoader();
                 }
@@ -2955,15 +2952,4 @@ module.filter('startFrom', function () {
         }
         return [];
     };
-});
-
-
-module.directive('kcPassword', function ($compile, Notifications) {
-    return {
-        restrict: 'A',
-        link: function ($scope, elem, attr, ctrl) {
-            elem.addClass("password-conceal");
-            elem.attr("type","text");
-        }
-    }
 });

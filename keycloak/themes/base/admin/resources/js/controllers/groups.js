@@ -21,12 +21,12 @@ module.controller('GroupListCtrl', function($scope, $route, $q, realm, Groups, G
         var first = ($scope.currentPage * $scope.pageSize) - $scope.pageSize;
         console.log('first:' + first);
         var queryParams = {
-            realm : realm.realm,
+            realm : realm.id,
             first : first,
             max : $scope.pageSize
         };
         var countParams = {
-            realm : realm.realm,
+            realm : realm.id,
             top : 'true'
         };
 
@@ -54,7 +54,6 @@ module.controller('GroupListCtrl', function($scope, $route, $q, realm, Groups, G
         });
 
         var promiseCount = $q.defer();
-        console.log('countParams: realm[' + countParams.realm);
         GroupsCount.query(countParams, function(entry) {
             promiseCount.resolve(entry);
         }, function() {

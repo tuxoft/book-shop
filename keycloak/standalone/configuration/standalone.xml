@@ -223,8 +223,6 @@
                 <local-cache name="sessions"/>
                 <local-cache name="authenticationSessions"/>
                 <local-cache name="offlineSessions"/>
-                <local-cache name="clientSessions"/>
-                <local-cache name="offlineClientSessions"/>
                 <local-cache name="loginFailures"/>
                 <local-cache name="work"/>
                 <local-cache name="authorization">
@@ -319,7 +317,7 @@
                 </maximum-set>
             </deployment-permissions>
         </subsystem>
-        <subsystem xmlns="urn:wildfly:elytron:1.2" final-providers="combined-providers" disallowed-providers="OracleUcrypto">
+        <subsystem xmlns="urn:wildfly:elytron:1.0" final-providers="combined-providers" disallowed-providers="OracleUcrypto">
             <providers>
                 <aggregate-providers name="combined-providers">
                     <providers name="elytron"/>
@@ -353,20 +351,18 @@
                 </properties-realm>
             </security-realms>
             <mappers>
-                <simple-permission-mapper name="default-permission-mapper" mapping-mode="first">
-                    <permission-mapping>
-                        <principal name="anonymous"/>
-                        <permission class-name="org.wildfly.extension.batch.jberet.deployment.BatchPermission" module="org.wildfly.extension.batch.jberet" target-name="*"/>
-                        <permission class-name="org.wildfly.transaction.client.RemoteTransactionPermission" module="org.wildfly.transaction.client"/>
-                        <permission class-name="org.jboss.ejb.client.RemoteEJBPermission" module="org.jboss.ejb-client"/>
-                    </permission-mapping>
-                    <permission-mapping match-all="true">
+                <logical-permission-mapper name="default-permission-mapper" logical-operation="unless" left="constant-permission-mapper" right="anonymous-permission-mapper"/>
+                <simple-permission-mapper name="anonymous-permission-mapper">
+                    <permission-mapping principals="anonymous">
                         <permission class-name="org.wildfly.security.auth.permission.LoginPermission"/>
-                        <permission class-name="org.wildfly.extension.batch.jberet.deployment.BatchPermission" module="org.wildfly.extension.batch.jberet" target-name="*"/>
-                        <permission class-name="org.wildfly.transaction.client.RemoteTransactionPermission" module="org.wildfly.transaction.client"/>
-                        <permission class-name="org.jboss.ejb.client.RemoteEJBPermission" module="org.jboss.ejb-client"/>
                     </permission-mapping>
                 </simple-permission-mapper>
+                <constant-permission-mapper name="constant-permission-mapper">
+                    <permission class-name="org.wildfly.security.auth.permission.LoginPermission"/>
+                    <permission class-name="org.wildfly.extension.batch.jberet.deployment.BatchPermission" module="org.wildfly.extension.batch.jberet" target-name="*"/>
+                    <permission class-name="org.wildfly.transaction.client.RemoteTransactionPermission" module="org.wildfly.transaction.client"/>
+                    <permission class-name="org.jboss.ejb.client.RemoteEJBPermission" module="org.jboss.ejb-client"/>
+                </constant-permission-mapper>
                 <constant-realm-mapper name="local" realm-name="local"/>
                 <simple-role-decoder name="groups-to-roles" attribute="groups"/>
                 <constant-role-mapper name="super-user-mapper">
@@ -543,10 +539,6 @@
                         <property name="minTimeBetweenRequests" value="10"/>
                     </properties>
                 </provider>
-            </spi>
-            <spi name="x509cert-lookup">
-                <default-provider>${keycloak.x509cert.lookup.provider:default}</default-provider>
-                <provider name="default" enabled="true"/>
             </spi>
         </subsystem>
     </profile>
