@@ -7,12 +7,14 @@ import { ShopHeaderComponent } from './components/shop-header/shop-header.compon
 import { ShopMenuHorizontalComponent } from './components/shop-menu-horizontal/shop-menu-horizontal.component';
 import { CartLogoComponent } from './components/cart-logo/cart-logo.component';
 import { FormsModule } from '@angular/forms';
+import { CarouselModule } from '../carousel/carousel.module';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
+    CarouselModule,
   ],
   declarations: [
     MainComponent,

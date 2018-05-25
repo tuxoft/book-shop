@@ -8,7 +8,6 @@ import { ButtonModule } from 'primeng/primeng';
 import { CatalogBooksComponent } from './components/catalog-books/catalog-books.component';
 import { CarouselModule } from '../carousel/carousel.module';
 import { ProductWideCardComponent } from './components/product-wide-card/product-wide-card.component';
-import { BreadcrumbsMenuComponent } from './components/breadcrumbs-menu/breadcrumbs-menu.component';
 
 @NgModule({
   imports: [
@@ -21,7 +20,6 @@ import { BreadcrumbsMenuComponent } from './components/breadcrumbs-menu/breadcru
     BookDetailComponent,
     CatalogComponent,
     CatalogBooksComponent,
-    ProductWideCardComponent,
-    BreadcrumbsMenuComponent],
+    ProductWideCardComponent],
 })
 export class CatalogModule { }

@@ -3,6 +3,7 @@
     <a (click)="navigate()">Главная</a>
   </li>
   <li class="breadcrumbs-item" *ngFor="let item of categoryPath">
-    <a (click)="navigate(item.id)">{{item.name}}</a>
+    <a (click)="navigate(item.id)" *ngIf="!isSearchResults(item)">{{item.name}}</a>
+    <a *ngIf="isSearchResults(item)">Результат поиска</a>
   </li>
 </ul>

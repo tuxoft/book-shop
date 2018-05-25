@@ -1,5 +1,12 @@
 <div class="search-page standart-theme">
   <div class="container">
-    search-page works!
+    <app-breadcrumbs-menu [categoryId]="categoryId"></app-breadcrumbs-menu>
+    <div class="book-list-container">
+      <div class="book-list-item" *ngFor="let product of (searchResults$ | async)">
+        <book-card [book]="product">
+        </book-card>
+      </div>
+    </div>
+    <span *ngIf="(searchResults$ | async)?.length==0">По вашему запросу книг не найдено</span>
   </div>
 </div>

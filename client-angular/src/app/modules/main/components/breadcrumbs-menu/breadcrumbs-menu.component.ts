@@ -17,17 +17,18 @@ export class BreadcrumbsMenuComponent implements OnInit {
     return this._categoryId;
   }
 
+  categoryPath = [];
+
   @Input()
   set categoryId(categoryId: number) {
-    console.log('value changed');
     this._categoryId = categoryId;
-    if (this._categoryId) {
+    if (this._categoryId && (this._categoryId !== -1)) {
       this.categoryService.getPathForCategory(this._categoryId).pipe(take(1))
         .subscribe(categoryPath => this.categoryPath = categoryPath);
+    } else if (this._categoryId === -1) {
+      this.categoryPath = [-1];
     }
   }
-
-  categoryPath = [];
 
   constructor(private categoryService: CategoryService, private route: Router) { }
 
@@ -43,4 +44,7 @@ export class BreadcrumbsMenuComponent implements OnInit {
     this.route.navigate(['/']);
   }
 
+  isSearchResults(id: number) {
+    return id === -1;
+  }
 }

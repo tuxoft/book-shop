@@ -24,6 +24,7 @@ import { PublisherService } from './services/rest/publisher.service';
 import { BookSeriesService } from './services/rest/book-series.service';
 import { HeaderMenuComponent } from './components/header-menu/header-menu.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { SearchService } from './services/rest/search.service';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { FooterComponent } from './components/footer/footer.component';
     NotificationsService,
     PublisherService,
     BookSeriesService,
+    SearchService,
   ],
   bootstrap: [AppComponent],
 })
