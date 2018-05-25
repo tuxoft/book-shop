@@ -15,9 +15,3 @@ export function sendValidationError(
 
   res.status(422).send(err);
 }
-
-export function sendServerError(err: Error, req: express.Request, res: express.Response) {
-  const message = `Server Internal Error: ${req.originalUrl} => ${err.stack}`;
-  res.status(500).send(escape(message));
-  console.error(message);
-}
