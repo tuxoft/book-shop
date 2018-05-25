@@ -1,4 +1,4 @@
-@import "../../../../../app.styles.scss";
+@import "../../../app.styles.scss";
 
 .footer {
   margin-top: 25px;
@@ -28,7 +28,7 @@
         .books-icon {
           vertical-align: bottom;
           margin-right: 10px;
-          background-image: url('../../../../../assets/images/books-sprite.png');
+          background-image: url('../../../assets/images/books-sprite.png');
           background-repeat: no-repeat;
           display: inline-block;
           vertical-align: middle;

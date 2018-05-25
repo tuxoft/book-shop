@@ -6,19 +6,19 @@ import { routes } from './main.routes';
 import { ShopHeaderComponent } from './components/shop-header/shop-header.component';
 import { ShopMenuHorizontalComponent } from './components/shop-menu-horizontal/shop-menu-horizontal.component';
 import { CartLogoComponent } from './components/cart-logo/cart-logo.component';
-import { FooterComponent } from './components/footer/footer.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    FormsModule,
   ],
   declarations: [
     MainComponent,
     ShopHeaderComponent,
     ShopMenuHorizontalComponent,
     CartLogoComponent,
-    FooterComponent,
   ],
 })
 export class MainModule { }

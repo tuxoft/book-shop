@@ -23,12 +23,14 @@ import { NotificationComponent } from './components/notification/notification.co
 import { PublisherService } from './services/rest/publisher.service';
 import { BookSeriesService } from './services/rest/book-series.service';
 import { HeaderMenuComponent } from './components/header-menu/header-menu.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotificationComponent,
     HeaderMenuComponent,
+    FooterComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),

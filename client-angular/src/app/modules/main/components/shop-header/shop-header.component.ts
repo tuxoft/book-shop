@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 export class ShopHeaderComponent implements OnInit {
 
+  searchValue: string;
+
   constructor(private router: Router) { }
 
   ngOnInit() {

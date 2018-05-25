@@ -7,8 +7,11 @@
       </div>
       <div class="ui-g-8 ui-fluid search-container">
         <div class="ui-inputgroup">
-          <input #search type="text" pInputText placeholder="Поиск..." class="search-input" (input)="search($event)" name="q">
-          <button class="ui-button-secondary search-button" (click)="goToSearch(search.value)">
+          <input type="text" pInputText placeholder="Поиск..." class="search-input"
+                 [(ngModel)]="searchValue"
+                 (input)="search($event)"
+                 (keyup.enter)="goToSearch(searchValue)">
+          <button class="ui-button-secondary search-button" (click)="goToSearch(searchValue)">
             <i class="fa fa-search"></i>
           </button>
         </div>
