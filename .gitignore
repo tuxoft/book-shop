@@ -7,4 +7,5 @@ elasticsearch/logs/**
 elasticsearch/data/**
 keycloak/standalone/log/**
 keycloak/standalone/data/**
+keycloak/standalone/tmp/**
 keycloak/standalone/configuration/standalone_xml_history/**
