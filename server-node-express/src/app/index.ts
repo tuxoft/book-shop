@@ -1,6 +1,7 @@
 import * as express from 'express';
 import * as session from 'express-session';
 import * as Keycloak from 'keycloak-connect';
+import * as cors from 'cors';
 import * as compression from 'compression';
 import * as cookieParser from 'cookie-parser';
 import * as bodyParser from 'body-parser';
@@ -15,6 +16,7 @@ const keycloak = new Keycloak({ store: memoryStore });
 
 export default app;
 
+app.use(cors());
 app.use(session({
   secret: 'He73Gh3k$8',
   resave: false,
