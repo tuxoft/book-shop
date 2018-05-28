@@ -28,8 +28,8 @@ app.use(compression());
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use('/public', express.static(path.join(__dirname, 'public')));
-app.use(keycloak.middleware({
-  logout: '/logout',
-}));
-app.use('/api', keycloak.protect(), api);
+// app.use(keycloak.middleware({
+//   logout: '/logout',
+// }));
+app.use('/api', /*keycloak.protect(),*/ api);
 app.use(errorHandler);

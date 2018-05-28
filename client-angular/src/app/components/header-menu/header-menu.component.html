@@ -2,6 +2,7 @@
   <div class="container">
     <a (click)="redirectToAdminPanel()" class="menu-item" *ngIf="!isAdminPanel()">Панель администрирования</a>
     <a (click)="redirectToMain()" class="menu-item" *ngIf="isAdminPanel()">На главную</a>
-    <a (click)="logout()" class="menu-item pull-right">Выйти</a>
+    <a (click)="login()" class="menu-item pull-right" *ngIf="!(isLoggedIn() | async)">Войти</a>
+    <a (click)="logout()" class="menu-item pull-right" *ngIf="isLoggedIn() | async">Выйти</a>
   </div>
 </div>
