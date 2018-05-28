@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { KeycloakService } from 'keycloak-angular';
 
 @Component({
   selector: 'app-header-menu',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderMenuComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private keycloakService: KeycloakService) { }
 
   ngOnInit() {
   }
@@ -22,5 +23,9 @@ export class HeaderMenuComponent implements OnInit {
   }
   redirectToMain() {
     this.router.navigate(['/']);
+  }
+
+  logout() {
+    this.keycloakService.logout();
   }
 }

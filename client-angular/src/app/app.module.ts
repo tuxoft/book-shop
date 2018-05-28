@@ -27,6 +27,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SearchService } from './services/rest/search.service';
 import { KeycloakService, KeycloakAngularModule } from 'keycloak-angular';
 import { initializer } from './utils/app-init';
+import { AppAuthGuard } from './services/auth/auth-guard';
 
 @NgModule({
   declarations: [
