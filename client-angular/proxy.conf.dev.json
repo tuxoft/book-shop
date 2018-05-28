@@ -8,7 +8,7 @@
     "secure": false
   },
   "/auth": {
-    "target": "http://0.0.0.0:8080",
+    "target": "http://0.0.0.0:8080/auth",
     "secure": false
   }
 }

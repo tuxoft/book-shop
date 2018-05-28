@@ -19,7 +19,7 @@ app.use(session({
   secret: 'He73Gh3k$8',
   resave: false,
   saveUninitialized: true,
-  store: memoryStore
+  store: memoryStore,
 }));
 
 app.use(compression());
