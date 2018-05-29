@@ -63,6 +63,7 @@ import { AuthService } from './services/auth/auth-service';
     BookSeriesService,
     SearchService,
     AuthService,
+    AppAuthGuard,
     {
       provide: APP_INITIALIZER,
       useFactory: initializer,
