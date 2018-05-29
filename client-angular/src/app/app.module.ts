@@ -3,7 +3,7 @@ import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BookService } from './services/rest/book.service';
 import { CartService } from './services/rest/cart.service';
 import { StoreModule } from '@ngrx/store';
@@ -28,6 +28,7 @@ import { SearchService } from './services/rest/search.service';
 import { KeycloakService, KeycloakAngularModule } from 'keycloak-angular';
 import { initializer } from './utils/app-init';
 import { AppAuthGuard } from './services/auth/auth-guard';
+import { TokenInterceptor } from './services/auth/token-interceptor';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,6 @@ import { AppAuthGuard } from './services/auth/auth-guard';
   ],
   imports: [
     RouterModule.forRoot(routes),
-    RouterModule,
     BrowserModule,
     HttpClientModule,
     CheckboxModule,
@@ -66,6 +66,11 @@ import { AppAuthGuard } from './services/auth/auth-guard';
       useFactory: initializer,
       multi: true,
       deps: [KeycloakService],
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
     },
   ],
   bootstrap: [AppComponent],

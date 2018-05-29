@@ -24,15 +24,34 @@ export class HeaderMenuComponent implements OnInit {
     return this.router.url.indexOf('/admin') === 0;
   }
 
+  isAvailableAdminPanel() {
+    try {
+      if (this.keycloakService.getUserRoles()
+        .find((value, index, obj) =>
+        { return value === 'Content manager'; })) {
+        return !this.isAdminPanel();
+      }
+
+      return false;
+    } catch (e) {
+      return false;
+    }
+  }
+
   redirectToAdminPanel() {
     this.router.navigate(['/admin']);
   }
+
   redirectToMain() {
     this.router.navigate(['/']);
   }
 
   isLoggedIn(): Observable<boolean> {
     return this.isLogged;
+  }
+
+  getUserName(): string {
+    return this.keycloakService.getUsername();
   }
 
   logout() {

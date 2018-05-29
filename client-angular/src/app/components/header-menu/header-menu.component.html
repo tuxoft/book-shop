@@ -1,8 +1,9 @@
 <div class="header-container standart-theme">
   <div class="container">
-    <a (click)="redirectToAdminPanel()" class="menu-item" *ngIf="!isAdminPanel()">Панель администрирования</a>
+    <a (click)="redirectToAdminPanel()" class="menu-item" *ngIf="(isLoggedIn() | async) && isAvailableAdminPanel()">Панель администрирования</a>
     <a (click)="redirectToMain()" class="menu-item" *ngIf="isAdminPanel()">На главную</a>
     <a (click)="login()" class="menu-item pull-right" *ngIf="!(isLoggedIn() | async)">Войти</a>
     <a (click)="logout()" class="menu-item pull-right" *ngIf="isLoggedIn() | async">Выйти</a>
+    <a class="menu-item pull-right" *ngIf="(isLoggedIn() | async)">{{getUserName()}}</a>
   </div>
 </div>
