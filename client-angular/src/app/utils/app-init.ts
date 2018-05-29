@@ -8,7 +8,8 @@ export function initializer(keycloak: KeycloakService): () => Promise<any> {
           config: 'assets/keycloak.json',
           initOptions: { onLoad: 'check-sso' , checkLoginIframe: false },
           bearerExcludedUrls: [
-            '^(?!/admin.*$).*',
+            '^(/api.*$).*',
+            '^(api.*$).*',
           ],
         });
         resolve();
