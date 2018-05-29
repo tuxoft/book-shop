@@ -45,7 +45,7 @@ router.post('/', async (req, res, next) => {
   }
 });
 
-router.get('/bestsellers', keycloak.protect(), async (req, res, next) => {
+router.get('/bestsellers', async (req, res, next) => {
   try {
     const books = await getBookRepository().findByIds([11, 12, 21, 13, 14, 10, 9, 8, 7, 6]);
 

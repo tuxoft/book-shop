@@ -7,6 +7,7 @@ import publishersRouter from './publishers.router';
 import bookSeriesRouter from './bookSeries.router';
 import selectionsRouter from './selections.router';
 import searchRouter from './search.router';
+import { protect } from '../../secure/index';
 
 const router = express.Router();
 
@@ -14,16 +15,23 @@ export default router;
 
 // В этот массив добавляем новые API-ресурсы
 [
-  { path: '/books', router: booksRouter },
-  { path: '/authors', router: authorsRouter },
-  { path: '/cart', router: cartRouter },
-  { path: '/categories', router: categoriesRouter },
-  { path: '/publishers', router: publishersRouter },
-  { path: '/bookSeries', router: bookSeriesRouter },
-  { path: '/selections', router: selectionsRouter },
-  { path: '/search', router: searchRouter },
+  { path: '/books', router: booksRouter, protect: true },
+  { path: '/authors', router: authorsRouter, protect: true },
+  { path: '/cart', router: cartRouter, protect: false },
+  { path: '/categories', router: categoriesRouter, protect: true },
+  { path: '/publishers', router: publishersRouter, protect: true },
+  { path: '/bookSeries', router: bookSeriesRouter, protect: true },
+  { path: '/selections', router: selectionsRouter, protect: true },
+  { path: '/search', router: searchRouter, protect: true },
 
-].forEach(e => router.use(e.path, e.router));
+].forEach(e => {
+  if (e.protect) {
+    router.post(e.path + '*', protect.contentManager);
+    router.delete(e.path + '*', protect.contentManager);
+  }
+
+  router.use(e.path, e.router)
+});
 
 // Для всех API-ресурсов устанавливаем
 // Content-Type: application/json
