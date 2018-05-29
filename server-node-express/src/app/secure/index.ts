@@ -10,4 +10,4 @@ export const session = expressSession({
   store: memoryStore,
 });
 
-export const keycloak = new KeycloakConnect({ store: memoryStore });
+export const keycloak = new KeycloakConnect({ scope: 'openid' });
