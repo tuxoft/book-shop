@@ -15,13 +15,10 @@ export class HeaderMenuComponent implements OnInit {
               private keycloakService: KeycloakService,
               private authService: AuthService) { }
 
-  // isLogged: boolean = false;
   isLogged: Observable<boolean>;
 
   ngOnInit() {
-    this.isLogged = // Observable.fromPromise(this.keycloakService.isLoggedIn()
-      // .then(result => result));
-      this.authService.isAuthorized$;
+    this.isLogged = this.authService.isAuthorized$;
   }
 
   isAdminPanel(): boolean {
@@ -43,7 +40,7 @@ export class HeaderMenuComponent implements OnInit {
   }
 
   redirectToAdminPanel() {
-    this.router.navigate(['/admin']);
+    this.router.navigate(['/admin/books']);
   }
 
   redirectToMain() {
