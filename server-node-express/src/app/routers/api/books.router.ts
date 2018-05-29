@@ -3,6 +3,7 @@ import { getConnection } from 'typeorm';
 import { Book } from '../../orm/entity/book';
 import { EntityNotFoundError } from 'typeorm/error/EntityNotFoundError';
 import { transformAndValidate } from 'class-transformer-validator';
+import { keycloak } from '../../secure/index';
 
 const router = express.Router();
 
@@ -44,7 +45,7 @@ router.post('/', async (req, res, next) => {
   }
 });
 
-router.get('/bestsellers', async (req, res, next) => {
+router.get('/bestsellers', keycloak.protect(), async (req, res, next) => {
   try {
     const books = await getBookRepository().findByIds([11, 12, 21, 13, 14, 10, 9, 8, 7, 6]);
 

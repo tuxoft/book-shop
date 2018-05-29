@@ -42,12 +42,12 @@ export function getParamsForSettings() {
       analysis: {
         char_filter: {
           remove_whitespace: {
-            type: "pattern_replace",
+            type: 'pattern_replace',
             pattern: ' ',
             replacement: '',
           },
           remove_dash: {
-            type: "pattern_replace",
+            type: 'pattern_replace',
             pattern: '-',
             replacement: '',
           },

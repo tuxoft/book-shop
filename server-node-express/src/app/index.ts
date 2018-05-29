@@ -1,6 +1,4 @@
 import * as express from 'express';
-import * as session from 'express-session';
-import * as Keycloak from 'keycloak-connect';
 import * as cors from 'cors';
 import * as compression from 'compression';
 import * as cookieParser from 'cookie-parser';
@@ -8,28 +6,16 @@ import * as bodyParser from 'body-parser';
 import * as path from 'path';
 import api from './routers/api';
 import { errorHandler } from './utils/error.util';
+import { keycloak, session } from './secure/index';
 
-const app = express();
-const memoryStore = new session.MemoryStore();
+export const server = express();
 
-const keycloak = new Keycloak({ store: memoryStore });
-
-export default app;
-
-app.use(cors());
-app.use(session({
-  secret: 'He73Gh3k$8',
-  resave: false,
-  saveUninitialized: true,
-  store: memoryStore,
-}));
-
-app.use(compression());
-app.use(cookieParser());
-app.use(bodyParser.json());
-app.use('/public', express.static(path.join(__dirname, 'public')));
-// app.use(keycloak.middleware({
-//   logout: '/logout',
-// }));
-app.use('/api', /*keycloak.protect(),*/ api);
-app.use(errorHandler);
+server.use(cors());
+server.use(session);
+server.use(compression());
+server.use(cookieParser());
+server.use(bodyParser.json());
+server.use('/public', express.static(path.join(__dirname, 'public')));
+server.use(keycloak.middleware());
+server.use('/api', api);
+server.use(errorHandler);

@@ -1,9 +1,9 @@
 import { createConnection } from 'typeorm';
-import app from './app';
+import * as app from './app';
 import 'reflect-metadata';
 import * as search from './app/search/index';
 
-const httpServer = app.listen(8000, async () => {
+const httpServer = app.server.listen(8000, async () => {
   try {
     console.log('Server started!');
 
