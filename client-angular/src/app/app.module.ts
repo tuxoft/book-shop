@@ -29,6 +29,7 @@ import { KeycloakService, KeycloakAngularModule } from 'keycloak-angular';
 import { initializer } from './utils/app-init';
 import { AppAuthGuard } from './services/auth/auth-guard';
 import { TokenInterceptor } from './services/auth/token-interceptor';
+import { AuthService } from './services/auth/auth-service';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { TokenInterceptor } from './services/auth/token-interceptor';
     PublisherService,
     BookSeriesService,
     SearchService,
+    AuthService,
     {
       provide: APP_INITIALIZER,
       useFactory: initializer,

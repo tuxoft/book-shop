@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { KeycloakService } from 'keycloak-angular';
 import { Observable } from 'rxjs';
+import { AuthService } from '../../services/auth/auth-service';
 
 @Component({
   selector: 'app-header-menu',
@@ -10,14 +11,17 @@ import { Observable } from 'rxjs';
 })
 export class HeaderMenuComponent implements OnInit {
 
-  constructor(private router: Router, private keycloakService: KeycloakService) { }
+  constructor(private router: Router,
+              private keycloakService: KeycloakService,
+              private authService: AuthService) { }
 
   // isLogged: boolean = false;
   isLogged: Observable<boolean>;
 
   ngOnInit() {
-    this.isLogged = Observable.fromPromise(this.keycloakService.isLoggedIn()
-      .then(result => result));
+    this.isLogged = // Observable.fromPromise(this.keycloakService.isLoggedIn()
+      // .then(result => result));
+      this.authService.isAuthorized$;
   }
 
   isAdminPanel(): boolean {
