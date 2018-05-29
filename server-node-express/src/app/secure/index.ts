@@ -11,3 +11,9 @@ export const session = expressSession({
 });
 
 export const keycloak = new KeycloakConnect({ scope: 'openid' });
+
+export const protect = {
+  everybody: () => {},
+  logged: keycloak.protect(),
+  contentManager: keycloak.protect('realm:Content manager')
+};
