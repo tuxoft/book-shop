@@ -51,3 +51,14 @@ router.get('/:id', async (req, res, next) => {
     next(err);
   }
 });
+
+router.delete('/:id', async (req, res, next) => {
+  try {
+    const removed = await getAuthorRepository().remove({ id: req.params.id });
+
+    res.send(removed);
+
+  } catch (err) {
+    next(err);
+  }
+});
