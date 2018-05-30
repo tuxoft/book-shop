@@ -7,6 +7,7 @@ import publishersRouter from './publishers.router';
 import bookSeriesRouter from './bookSeries.router';
 import selectionsRouter from './selections.router';
 import searchRouter from './search.router';
+import userRouter from './user.router';
 import { protect } from '../../secure/index';
 
 const router = express.Router();
@@ -23,6 +24,7 @@ export default router;
   { path: '/bookSeries', router: bookSeriesRouter, protect: true },
   { path: '/selections', router: selectionsRouter, protect: true },
   { path: '/search', router: searchRouter, protect: true },
+  { path: '/user', router: userRouter, protect: false },
 
 ].forEach((e) => {
   if (e.protect) {
