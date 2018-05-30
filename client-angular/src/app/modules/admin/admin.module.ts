@@ -12,6 +12,7 @@ import { AdminPanelComponent } from './components/admin-panel/admin-panel.compon
 import { AdminMenuComponent } from './components/admin-menu/admin-menu.component';
 import { BookListComponent } from './components/book-list/book-list.component';
 import { TableModule } from 'primeng/table';
+import { AuthorListComponent } from './components/author-list/author-list.component';
 
 @NgModule({
   imports: [
@@ -31,6 +32,7 @@ import { TableModule } from 'primeng/table';
     AdminPanelComponent,
     AdminMenuComponent,
     BookListComponent,
+    AuthorListComponent,
   ],
 })
 export class AdminModule { }

@@ -4,6 +4,7 @@ import { BookCreateComponent } from './components/book-create/book-create.compon
 import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 import { BookListComponent } from './components/book-list/book-list.component';
 import { AppAuthGuard } from '../../services/auth/auth-guard';
+import { AuthorListComponent } from './components/author-list/author-list.component';
 
 export const routes: Routes = [
   {
@@ -36,6 +37,14 @@ export const routes: Routes = [
         component: BookCreateComponent,
         data: {
           title: 'Создание книги',
+          roles: ['Content manager'],
+        },
+      },
+      {
+        path: 'authors',
+        component: AuthorListComponent,
+        data: {
+          title: 'Список авторов',
           roles: ['Content manager'],
         },
       },
