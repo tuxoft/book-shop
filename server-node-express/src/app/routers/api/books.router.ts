@@ -3,7 +3,7 @@ import { getConnection } from 'typeorm';
 import { Book } from '../../orm/entity/book';
 import { EntityNotFoundError } from 'typeorm/error/EntityNotFoundError';
 import { transformAndValidate } from 'class-transformer-validator';
-import { keycloak } from '../../secure/index';
+import { plainToClass } from 'class-transformer';
 
 const router = express.Router();
 
@@ -100,7 +100,8 @@ router.get('/:id', async (req, res, next) => {
 
 router.delete('/:id', async (req, res, next) => {
   try {
-    const removed = await getBookRepository().remove({ id: req.params.id });
+    const book = plainToClass(Book, { id: req.params.id });
+    const removed = await getBookRepository().remove(book);
 
     res.send(removed);
 

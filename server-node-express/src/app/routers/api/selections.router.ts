@@ -2,6 +2,7 @@ import * as express from 'express';
 import { getConnection } from 'typeorm';
 import { Selection } from '../../orm/entity/selection';
 import { transformAndValidate } from 'class-transformer-validator';
+import { plainToClass } from 'class-transformer';
 
 const router = express.Router();
 
@@ -44,6 +45,18 @@ router.get('/:id', async (req, res, next) => {
     const author = await getSelectionRepository().findOneOrFail(id);
 
     res.send(author);
+
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.delete('/:id', async (req, res, next) => {
+  try {
+    const selection = plainToClass(Selection, { id: req.params.id });
+    const removed = await getSelectionRepository().remove(selection);
+
+    res.send(removed);
 
   } catch (err) {
     next(err);

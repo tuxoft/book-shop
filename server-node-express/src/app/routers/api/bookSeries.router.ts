@@ -2,6 +2,7 @@ import * as express from 'express';
 import { getConnection } from 'typeorm';
 import { BookSeries } from '../../orm/entity/bookSeries';
 import { transformAndValidate } from 'class-transformer-validator';
+import { plainToClass } from 'class-transformer';
 
 const router = express.Router();
 
@@ -46,6 +47,18 @@ router.get('/:id', async (req, res, next) => {
     });
 
     res.send(bookSeries);
+
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.delete('/:id', async (req, res, next) => {
+  try {
+    const bookSeries = plainToClass(BookSeries, { id: req.params.id });
+    const removed = await getBookSeriesRepository().remove(bookSeries);
+
+    res.send(removed);
 
   } catch (err) {
     next(err);
