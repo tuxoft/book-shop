@@ -2,6 +2,7 @@ import * as express from 'express';
 import { getConnection } from 'typeorm';
 import { Author } from '../../orm/entity/author';
 import { transformAndValidate } from 'class-transformer-validator';
+import { plainToClass } from 'class-transformer';
 
 const router = express.Router();
 
@@ -54,7 +55,8 @@ router.get('/:id', async (req, res, next) => {
 
 router.delete('/:id', async (req, res, next) => {
   try {
-    const removed = await getAuthorRepository().remove({ id: req.params.id });
+    const author = plainToClass(Author, { id: req.params.id });
+    const removed = await getAuthorRepository().remove(author);
 
     res.send(removed);
 
