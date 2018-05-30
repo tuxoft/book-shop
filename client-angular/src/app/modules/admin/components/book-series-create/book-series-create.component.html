@@ -1,0 +1,17 @@
+<div class="standart-theme">
+  <h1>
+    Создание книжной серии
+  </h1>
+
+  <form [formGroup]="bookSeriesForm" (ngSubmit)="onSubmit()">
+    <button pButton type="submit"
+            [disabled]="bookSeriesForm.pristine" class="ui-button-success" label="Сохранить"></button> &nbsp;
+    <button pButton type="button" (click)="revert()"
+            [disabled]="bookSeriesForm.pristine" class="ui-button-danger" label="Отмена"></button>
+    <div class="form-group">
+      <label class="field-label">Название:
+        <input pInputText class="form-control" formControlName="name">
+      </label>
+    </div>
+  </form>
+</div>

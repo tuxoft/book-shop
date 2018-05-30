@@ -1,0 +1,17 @@
+@import "../../../../../app.styles.scss";
+
+h1 {
+  font-size: 20px;
+}
+
+.form-control,
+.ui-autocomplete-multiple-container,
+.ui-autocomplete {
+  display: block;
+  margin: 5px 0;
+  width: 100%;
+}
+
+.ui-autocomplete-input {
+  width: 50%;
+}

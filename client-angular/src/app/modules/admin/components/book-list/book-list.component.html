@@ -7,10 +7,11 @@
     </ng-template>
     <ng-template pTemplate="header">
       <tr>
+        <th style="width:5%">Id</th>
         <th style="width:20%">Название</th>
         <th style="width:15%">Авторы</th>
         <th style="width:15%">Издательство</th>
-        <th style="width:20%">ISBN</th>
+        <th style="width:15%">ISBN</th>
         <th style="width:7%">Год издания</th>
         <th style="width:8%">Остаток</th>
         <th style="width:8%">Цена</th>
@@ -19,6 +20,7 @@
     </ng-template>
     <ng-template pTemplate="body" let-book>
       <tr>
+        <td>{{book.id}}</td>
         <td>{{book.title}}</td>
         <td>{{getAuthorsAsString(book.authors)}}</td>
         <td>{{book.publisher ? book.publisher.name: ''}}</td>

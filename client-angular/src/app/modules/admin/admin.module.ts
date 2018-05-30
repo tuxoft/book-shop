@@ -13,6 +13,14 @@ import { AdminMenuComponent } from './components/admin-menu/admin-menu.component
 import { BookListComponent } from './components/book-list/book-list.component';
 import { TableModule } from 'primeng/table';
 import { AuthorListComponent } from './components/author-list/author-list.component';
+import { AuthorEditComponent } from './components/author-edit/author-edit.component';
+import { AuthorCreateComponent } from './components/author-create/author-create.component';
+import { PublisherListComponent } from './components/publisher-list/publisher-list.component';
+import { PublisherEditComponent } from './components/publisher-edit/publisher-edit.component';
+import { PublisherCreateComponent } from './components/publisher-create/publisher-create.component';
+import { BookSeriesListComponent } from './components/book-series-list/book-series-list.component';
+import { BookSeriesEditComponent } from './components/book-series-edit/book-series-edit.component';
+import { BookSeriesCreateComponent } from './components/book-series-create/book-series-create.component';
 
 @NgModule({
   imports: [
@@ -33,6 +41,14 @@ import { AuthorListComponent } from './components/author-list/author-list.compon
     AdminMenuComponent,
     BookListComponent,
     AuthorListComponent,
+    AuthorEditComponent,
+    AuthorCreateComponent,
+    PublisherListComponent,
+    PublisherEditComponent,
+    PublisherCreateComponent,
+    BookSeriesListComponent,
+    BookSeriesEditComponent,
+    BookSeriesCreateComponent,
   ],
 })
 export class AdminModule { }

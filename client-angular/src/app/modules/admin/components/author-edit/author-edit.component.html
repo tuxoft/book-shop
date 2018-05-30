@@ -1,0 +1,24 @@
+<div class="standart-theme">
+  <h1>
+    Редактирование книги
+  </h1>
+
+  <form [formGroup]="authorForm" (ngSubmit)="onSubmit()">
+    <button pButton type="submit"
+            [disabled]="authorForm.pristine" class="ui-button-success" label="Сохранить"></button> &nbsp;
+    <button pButton type="button" (click)="revert()"
+            [disabled]="authorForm.pristine" class="ui-button-danger" label="Отмена"></button>
+    <div class="form-group">
+
+      <label class="field-label">Фамилия:
+        <input pInputText class="form-control" formControlName="lastName">
+      </label>
+      <label class="field-label">Имя:
+        <input pInputText class="form-control" formControlName="firstName">
+      </label>
+      <label class="field-label">Отчество:
+        <input pInputText class="form-control" formControlName="middleName">
+      </label>
+    </div>
+  </form>
+</div>

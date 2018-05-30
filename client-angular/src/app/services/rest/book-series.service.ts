@@ -16,4 +16,12 @@ export class BookSeriesService {
   getById(id: number): Observable<BookSeries> {
     return this.http.get<BookSeries>(this.bookSeriesUrl + '/' + id);
   }
+
+  updateBookSeries(bookSeries: BookSeries): Observable<any> {
+    return this.http.post(this.bookSeriesUrl, bookSeries);
+  }
+
+  deleteBookSeries(id: number): Observable<any> {
+    return this.http.delete(this.bookSeriesUrl + '/' + id);
+  }
 }

@@ -7,21 +7,21 @@
     </ng-template>
     <ng-template pTemplate="header">
       <tr>
-        <th>Фамилия</th>
-        <th>Имя</th>
-        <th>Отчество</th>
-        <th></th>
+        <th style="width:30%">Фамилия</th>
+        <th style="width:30%">Имя</th>
+        <th style="width:30%">Отчество</th>
+        <th style="width:10%"></th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-author>
       <tr>
-        <td>{{author.lastName}}</td>
-        <td>{{author.firstName}}</td>
-        <td>{{author.middleName}}</td>
+        <td>{{author.name.last}}</td>
+        <td>{{author.name.first}}</td>
+        <td>{{author.name.middle}}</td>
         <td class="edit-controls">
           <i class="fa fa-edit" routerLink="/admin/author/edit/{{author.id}}"></i>
           &nbsp;
-          <i class="fa fa-trash delete-control" (click)="deleteBook(author.id)"></i>
+          <i class="fa fa-trash delete-control" (click)="deleteAuthor(author.id)"></i>
         </td>
       </tr>
     </ng-template>

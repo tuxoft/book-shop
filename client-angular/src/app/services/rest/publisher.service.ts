@@ -16,4 +16,12 @@ export class PublisherService {
   getById(id: number): Observable<Publisher> {
     return this.http.get<Publisher>(this.publisherUrl + '/' + id);
   }
+
+  updatePublisher(publisher: Publisher): Observable<any> {
+    return this.http.post(this.publisherUrl, publisher);
+  }
+
+  deletePublisher(id: number): Observable<any> {
+    return this.http.delete(this.publisherUrl + '/' + id);
+  }
 }
