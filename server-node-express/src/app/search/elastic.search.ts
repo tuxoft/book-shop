@@ -1,7 +1,8 @@
 import * as es from 'elasticsearch';
 import {
-  getParamsForAddDocument,
+  getParamsForDeleteDocument,
   getParamsForIndex,
+  getParamsForIndexDocument,
   getParamsForMappingBooks,
   getParamsForSearchBooks,
   getParamsForSettings,
@@ -13,6 +14,16 @@ const config = {
 };
 
 const client = new es.Client(config);
+
+let ready: boolean = false;
+
+export function indexReady() {
+  ready = true;
+}
+
+export function isIndexReady() {
+  return ready;
+}
 
 export function createIndex() {
   return client.indices.create(getParamsForIndex());
@@ -42,8 +53,12 @@ export function indexSettings() {
   return client.indices.putSettings(getParamsForSettings());
 }
 
-export function addDocument(object) {
-  return client.index(getParamsForAddDocument(object));
+export function indexDocument(object) {
+  return client.index(getParamsForIndexDocument(object));
+}
+
+export function deleteDocument(object) {
+  return client.delete(getParamsForDeleteDocument(object));
 }
 
 export function searchDocument(text: string) {

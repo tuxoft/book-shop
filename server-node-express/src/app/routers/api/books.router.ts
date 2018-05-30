@@ -1,15 +1,13 @@
 import * as express from 'express';
-import { getConnection } from 'typeorm';
 import { Book } from '../../orm/entity/book';
 import { EntityNotFoundError } from 'typeorm/error/EntityNotFoundError';
 import { transformAndValidate } from 'class-transformer-validator';
+import { getBookRepository } from '../../orm/repository/index';
 import { plainToClass } from 'class-transformer';
 
 const router = express.Router();
 
 export default router;
-
-const getBookRepository = () => getConnection().getRepository(Book);
 
 const setupCoverUrlToHighResolution = (book: Book) => {
   if (book && book.coverUrl) {
