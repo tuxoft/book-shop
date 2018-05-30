@@ -1,15 +1,13 @@
 import * as express from 'express';
-import { getConnection } from 'typeorm';
-import { Category } from '../../orm/entity/category';
-import { Book } from '../../orm/entity/book';
+import {
+  getBookRepository,
+  getCategoryRepository,
+  getCategoryTreeRepository,
+} from '../../orm/repository/index';
 
 const router = express.Router();
 
 export default router;
-
-const getCategoryRepository = () => getConnection().getRepository(Category);
-const getCategoryTreeRepository = () => getConnection().getTreeRepository(Category);
-const getBookRepository = () => getConnection().getRepository(Book);
 
 router.get('/', async (req, res, next) => {
   try {

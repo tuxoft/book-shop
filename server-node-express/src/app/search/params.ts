@@ -26,12 +26,20 @@ export function getParamsForIndex() {
   };
 }
 
-export function getParamsForAddDocument(object) {
+export function getParamsForIndexDocument(object) {
   return {
     index: indexName,
     type: getDocumentType(object),
     id: object.id,
     body: object,
+  };
+}
+
+export function getParamsForDeleteDocument(object) {
+  return {
+    index: indexName,
+    type: getDocumentType(object),
+    id: object.id,
   };
 }
 

@@ -3,6 +3,7 @@ import { Book } from '../../entity/book';
 import { Category } from '../../entity/category';
 import { Author } from '../../entity/author';
 import { Publisher } from '../../entity/publisher';
+import { BookSeries } from '../../entity/bookSeries';
 
 export class Books1526280301787 implements MigrationInterface {
 
@@ -680,20 +681,23 @@ export class Books1526280301787 implements MigrationInterface {
       },
     ];
 
-    const booksRepo = queryRunner.connection.getRepository(Book);
-    const authorsRepo = queryRunner.connection.getRepository(Author);
-    const categoriesRepo = queryRunner.connection.getRepository(Category);
-    const publishersRepo = queryRunner.connection.getRepository(Publisher);
+    const bookRepo = queryRunner.connection.getRepository(Book);
+    const authorRepo = queryRunner.connection.getRepository(Author);
+    const categoryRepo = queryRunner.connection.getRepository(Category);
+    const publisherRepo = queryRunner.connection.getRepository(Publisher);
+    const bookSeriesRepo = queryRunner.connection.getRepository(BookSeries);
 
     for (let i = 0; i < items.length; i++) {
       const item = items[i];
-      const book = booksRepo.create({
+      const book = bookRepo.create({
         ...item,
-        authors: await authorsRepo.findByIds(item.authors),
-        categories: await categoriesRepo.findByIds(item.categories),
-        //publisher: await publishersRepo.find(item.publisher)
+        authors: await authorRepo.findByIds(item.authors),
+        categories: await categoryRepo.findByIds(item.categories),
+        publisher: await publisherRepo.findOne(item.publisher),
+        bookSeries: await bookSeriesRepo.findOne(item.bookSeries),
+
       });
-      await booksRepo.save(book);
+      await bookRepo.save(book);
     }
   }
 

@@ -1,14 +1,12 @@
 import * as express from 'express';
-import { getConnection } from 'typeorm';
 import { Author } from '../../orm/entity/author';
 import { transformAndValidate } from 'class-transformer-validator';
+import { getAuthorRepository } from '../../orm/repository/index';
 import { plainToClass } from 'class-transformer';
 
 const router = express.Router();
 
 export default router;
-
-const getAuthorRepository = () => getConnection().getRepository(Author);
 
 router.get('/', async (req, res, next) => {
   try {

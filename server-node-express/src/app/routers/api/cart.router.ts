@@ -1,14 +1,9 @@
 import * as express from 'express';
-import { getConnection } from 'typeorm';
-import { Cart } from '../../orm/entity/cart';
-import { CartItem } from '../../orm/entity/cartItem';
+import { getCartItemRepository, getCartRepository } from '../../orm/repository/index';
 
 const router = express.Router();
 
 export default router;
-
-const getCartRepository = () => getConnection().getRepository(Cart);
-const getCartItemRepository = () => getConnection().getRepository(CartItem);
 
 const cookieCartName = 'cart';
 const cookieMaxAge = 2147483647000;

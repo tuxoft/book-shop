@@ -1,6 +1,7 @@
 import * as es from './elastic.search';
 import { getConnection } from 'typeorm';
 import { Book } from '../orm/entity/book';
+import { EntitySubscriber } from '../orm/subscriber/book.elasticsearch.subscriber';
 
 export function init() {
   es.isAvailable(10, true)
@@ -37,9 +38,10 @@ async function fillIndex() {
 
   const promises: Promise<any>[] = [];
   books.forEach((book) => {
-    const indexed = es.addDocument(book);
+    const indexed = es.indexDocument(book);
     promises.push(indexed);
   });
 
-  await Promise.all(promises);
+  await Promise.all(promises)
+    .then(() => es.indexReady());
 }

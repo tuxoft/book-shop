@@ -1,14 +1,12 @@
 import * as express from 'express';
-import { getConnection } from 'typeorm';
 import { Selection } from '../../orm/entity/selection';
 import { transformAndValidate } from 'class-transformer-validator';
+import { getSelectionRepository } from '../../orm/repository/index';
 import { plainToClass } from 'class-transformer';
 
 const router = express.Router();
 
 export default router;
-
-const getSelectionRepository = () => getConnection().getRepository(Selection);
 
 router.get('/', async (req, res, next) => {
   try {

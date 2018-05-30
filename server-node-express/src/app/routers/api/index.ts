@@ -24,13 +24,13 @@ export default router;
   { path: '/selections', router: selectionsRouter, protect: true },
   { path: '/search', router: searchRouter, protect: true },
 
-].forEach(e => {
+].forEach((e) => {
   if (e.protect) {
     router.post(e.path + '*', protect.contentManager);
     router.delete(e.path + '*', protect.contentManager);
   }
 
-  router.use(e.path, e.router)
+  router.use(e.path, e.router);
 });
 
 // Для всех API-ресурсов устанавливаем
