@@ -56,7 +56,7 @@ router.get('/:id', async (req, res, next) => {
 router.delete('/:id', async (req, res, next) => {
   try {
     const publisher = plainToClass(Publisher, { id: req.params.id });
-    const removed = await getAuthorRepository().remove(publisher);
+    const removed = await getPublishersRepository().remove(publisher);
 
     res.send(removed);
 

@@ -54,7 +54,7 @@ router.get('/:id', async (req, res, next) => {
 router.delete('/:id', async (req, res, next) => {
   try {
     const selection = plainToClass(Selection, { id: req.params.id });
-    const removed = await getAuthorRepository().remove(selection);
+    const removed = await getSelectionRepository().remove(selection);
 
     res.send(removed);
 
