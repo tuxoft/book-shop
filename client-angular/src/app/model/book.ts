@@ -18,7 +18,11 @@ export interface Book {
    * название книги.
    */
   title?: string;
-  subtitle?: string;
+
+  /**
+   * описание книги.
+   */
+  description?: string;
   /**
    * номер издания.
    */

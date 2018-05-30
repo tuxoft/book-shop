@@ -12,6 +12,9 @@
       <label class="field-label">Название:
         <input pInputText class="form-control" formControlName="title">
       </label>
+      <label class="field-label">Описание:
+        <textarea pInputTextarea class="form-control" formControlName="description"></textarea>
+      </label>
       <label class="field-label">Авторы:
         <p-autoComplete formControlName="authors"
                         [suggestions]="authorsSearchResult"

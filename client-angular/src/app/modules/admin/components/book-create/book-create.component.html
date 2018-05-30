@@ -1,3 +1,99 @@
-<p>
-  book-create works!
-</p>
+<div class="standart-theme">
+  <h1>
+    Создание книги
+  </h1>
+
+  <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+    <button pButton type="submit"
+            [disabled]="bookForm.pristine" class="ui-button-success" label="Сохранить"></button> &nbsp;
+    <button pButton type="button" (click)="revert()"
+            [disabled]="bookForm.pristine" class="ui-button-danger" label="Отмена"></button>
+    <div class="form-group">
+      <label class="field-label">Название:
+        <input pInputText class="form-control" formControlName="title">
+      </label>
+      <label class="field-label">Описание:
+        <textarea pInputTextarea class="form-control" formControlName="description"></textarea>
+      </label>
+      <label class="field-label">Авторы:
+        <p-autoComplete formControlName="authors"
+                        [suggestions]="authorsSearchResult"
+                        (completeMethod)="searchAuthors($event)"
+                        [multiple]="true"
+                        [immutable]="false"
+                        styleClass="formControl"
+                        field="fullname"></p-autoComplete>
+      </label>
+      <label class="field-label">Издательство:
+        <p-autoComplete formControlName="publisher"
+                        [suggestions]="publisherSearchResult"
+                        (completeMethod)="searchPublisher($event)"
+                        [immutable]="false"
+                        styleClass="formControl"
+                        [dropdown]="true"
+                        field="name"></p-autoComplete>
+      </label>
+      <label class="field-label">Серия книг:
+        <p-autoComplete formControlName="bookSeries"
+                        [suggestions]="bookSeriesSearchResult"
+                        (completeMethod)="searchBookSeries($event)"
+                        [immutable]="false"
+                        styleClass="formControl"
+                        [dropdown]="true"
+                        field="name"></p-autoComplete>
+      </label>
+      <label class="field-label">Категории:
+        <!-- <p-treeTable formControlName="categories" -->
+          <p-treeTable
+                     selectionMode="checkbox"
+                     [value]="categoryNodes"
+                     styleClass="formControl"
+                     [(selection)]="selectedCategoryNodes"
+                     (onNodeSelect)="nodeSelect($event)"
+                     (onNodeUnselect)="nodeSelect($event)"
+                     field="name">
+          <p-column field="name" header="Выбор категорий"></p-column>
+        </p-treeTable>
+      </label>
+      <label class="field-label">BBK:
+        <input pInputText class="form-control" formControlName="bbk">
+      </label>
+      <label class="field-label">ISBN:
+        <input pInputText class="form-control" formControlName="isbn">
+      </label>
+      <label class="field-label">UDC:
+        <input pInputText class="form-control" formControlName="udc">
+      </label>
+      <label class="field-label">Тираж:
+        <input type="number" pInputText class="form-control" formControlName="circulation">
+      </label>
+      <label class="field-label">Тип обложки:
+        <input pInputText class="form-control" formControlName="coverType">
+      </label>
+      <label class="field-label">Формат:
+        <input pInputText class="form-control" formControlName="dimensions">
+      </label>
+      <label class="field-label">В наличии:
+        <input type="number" pInputText class="form-control" formControlName="inStock">
+      </label>
+      <label class="field-label">Количество страниц:
+        <input type="number" pInputText class="form-control" formControlName="pageCount">
+      </label>
+      <label class="field-label">Цена:
+        <input type="number" pInputText class="form-control" formControlName="price">
+      </label>
+      <label class="field-label">Вес:
+        <input type="number" pInputText class="form-control" formControlName="weight">
+      </label>
+      <label class="field-label">Год издания:
+        <input pInputText class="form-control" formControlName="publicationYear">
+      </label>
+      <label class="field-label">Артикул:
+        <input type="number" pInputText class="form-control" formControlName="articul">
+      </label>
+      <label class="field-label">Возрастное ограничение:
+        <input pInputText class="form-control" formControlName="ageLimit">
+      </label>
+    </div>
+  </form>
+</div>

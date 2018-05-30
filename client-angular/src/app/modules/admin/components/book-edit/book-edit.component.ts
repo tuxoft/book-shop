@@ -202,6 +202,7 @@ export class BookEditComponent implements OnInit, OnChanges {
       publicationYear: '',
       articul: '',
       ageLimit: '',
+      description: '',
     });
   }
 
@@ -230,6 +231,7 @@ export class BookEditComponent implements OnInit, OnChanges {
       publicationYear: this.book.publicationYear,
       articul: this.book.articul,
       ageLimit: this.book.ageLimit,
+      description: this.book.description,
     });
   }
 
@@ -290,6 +292,7 @@ export class BookEditComponent implements OnInit, OnChanges {
       publicationYear: formModel.publicationYear,
       articul: formModel.articul,
       ageLimit: formModel.ageLimit,
+      description: formModel.description,
     };
 
     return saveBook;

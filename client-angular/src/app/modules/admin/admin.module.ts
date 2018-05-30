@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { routes } from './admin.routes';
 import { BookCreateComponent } from './components/book-create/book-create.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ButtonModule, InputTextModule } from 'primeng/primeng';
+import { ButtonModule, InputTextModule, InputTextareaModule } from 'primeng/primeng';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { TreeTableModule } from 'primeng/treetable';
 import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
@@ -20,6 +20,7 @@ import { TableModule } from 'primeng/table';
     ReactiveFormsModule,
     ButtonModule,
     InputTextModule,
+    InputTextareaModule,
     AutoCompleteModule,
     TreeTableModule,
     TableModule,
