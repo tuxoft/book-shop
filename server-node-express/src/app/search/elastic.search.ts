@@ -87,7 +87,7 @@ export async function isAvailable(retryCount: number = 0, logging: boolean = fal
         await (new Promise(res => setTimeout(res, 1000)));
       } else {
         log(prefix + 'unavailable');
-        throw(err);
+        throw err ;
       }
     }
   } while (attempt < retryCount);

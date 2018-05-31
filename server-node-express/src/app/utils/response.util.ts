@@ -15,3 +15,7 @@ export function sendValidationError(
 
   res.status(422).send(err);
 }
+
+export function sendForbidden(err: Error, req: express.Request, res: express.Response) {
+  res.status(403).send(escape(err.message));
+}

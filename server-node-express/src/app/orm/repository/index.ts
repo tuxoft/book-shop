@@ -7,6 +7,7 @@ import { CartItem } from '../entity/cartItem';
 import { Category } from '../entity/category';
 import { Selection } from '../entity/selection';
 import { Publisher } from '../entity/publisher';
+import { User } from '../entity/user';
 
 export const getBookRepository = () => getConnection().getRepository(Book);
 
@@ -25,3 +26,5 @@ export const getCategoryTreeRepository = () => getConnection().getTreeRepository
 export const getPublisherRepository = () => getConnection().getRepository(Publisher);
 
 export const getSelectionRepository = () => getConnection().getRepository(Selection);
+
+export const getUserRepository = () => getConnection().getRepository(User);
