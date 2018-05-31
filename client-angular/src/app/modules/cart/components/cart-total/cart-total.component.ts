@@ -3,6 +3,7 @@ import { OrderItem } from '../../../../model/models';
 import * as CartSelectors from '../../../../store/cart/cart.selectors';
 import { Store } from '@ngrx/store';
 import { StoreState } from '../../../../store/reducers';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart-total',
@@ -11,7 +12,7 @@ import { StoreState } from '../../../../store/reducers';
 })
 export class CartTotalComponent implements OnInit {
 
-  constructor(private store: Store<StoreState>) { }
+  constructor(private store: Store<StoreState>, private router: Router) { }
 
   totalSum: number = 0;
   discountSum: number = 0;
@@ -32,7 +33,7 @@ export class CartTotalComponent implements OnInit {
     });
   }
 
-  purchase() {
-    console.log('purchased!');
+  redirectToOrder() {
+    this.router.navigate(['/order']);
   }
 }

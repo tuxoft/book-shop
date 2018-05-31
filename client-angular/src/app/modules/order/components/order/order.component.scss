@@ -1,0 +1,63 @@
+@import "../../../../../app.styles.scss";
+
+.order-header {
+  color: $mainColor;
+  font-size: 24px;
+  margin: 0 0 20px;
+}
+
+.form-control,
+.ui-autocomplete-multiple-container,
+.ui-autocomplete {
+  display: block;
+  margin: 5px 0;
+  width: 100%;
+}
+
+.ui-autocomplete-input {
+  width: 50%;
+}
+
+.order-button {
+  margin-top: 10px;
+}
+
+.titlebox {
+  height: 70px;
+  margin: 15px 0;
+  box-sizing: border-box;
+  font-size: 0;
+  .titlebox-icon {
+    border: 1px solid $mainColor;
+    background-color: $mainColor;
+    color: #fff;
+    display: inline-block;
+    font-weight: 700;
+    text-align: center;
+    line-height: 68px;
+    vertical-align: top;
+    width: 60px;
+    font-size: 28px;
+  }
+  .titlebox-content {
+    background-color: rgba(38,169,224,.1);
+    border-color: $mainColor;
+    box-shadow: inset 0 0 0 1px $mainColor;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 530px;
+    padding: 0 20px;
+    border-left: none;
+    font-size: 14px;
+    height: 70px;
+    box-sizing: border-box;
+    border: 1px solid $mainColor;
+    font-size: 22px;
+    color: $mainColor;
+    font-weight: 500;
+    i {
+      display: inline-block;
+    }
+  }
+}

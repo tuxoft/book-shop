@@ -21,6 +21,13 @@ export const routes: Routes = [
         },
       },
       {
+        path: 'order',
+        loadChildren: '../order/order.module#OrderModule',
+        data: {
+          title: 'Оформление заказа',
+        },
+      },
+      {
         path: 'catalog',
         loadChildren: '../catalog/catalog.module#CatalogModule',
         data: {
