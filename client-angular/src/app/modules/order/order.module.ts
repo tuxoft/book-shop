@@ -5,6 +5,7 @@ import { routes } from './order.routes';
 import { OrderComponent } from './components/order/order.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule, InputTextModule, InputMaskModule } from 'primeng/primeng';
+import { OrderTotalComponent } from './components/order-total/order-total.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { ButtonModule, InputTextModule, InputMaskModule } from 'primeng/primeng'
     InputTextModule,
     InputMaskModule,
   ],
-  declarations: [OrderComponent],
+  declarations: [OrderComponent, OrderTotalComponent],
 })
 export class OrderModule { }

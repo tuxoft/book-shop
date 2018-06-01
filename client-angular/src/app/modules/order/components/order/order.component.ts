@@ -25,8 +25,11 @@ export class OrderComponent implements OnInit {
       firstName: ['', Validators. required],
       middleName: '',
       email: ['', Validators.email],
-      phoneNumber: ['', Validators.pattern(new RegExp(`^((\\+7|7|8)+([0-9]){10})$`))],
-      index: '',
+      phoneNumber: ['', Validators.pattern(new RegExp(`^(([0-9]){10})$`))],
+      country: ['', Validators.required],
+      city: ['', Validators.required],
+      street: ['', Validators.required],
+      index: ['', Validators.required],
     });
   }
 

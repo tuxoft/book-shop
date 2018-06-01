@@ -59,5 +59,20 @@
     i {
       display: inline-block;
     }
+    span {
+      margin-left: 10px;
+    }
+  }
+}
+
+.order-info {
+  width: 590px;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: rgba(38,169,224,.1);
+  .order-info-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
   }
 }

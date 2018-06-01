@@ -1,0 +1,13 @@
+<div class="order-total-items">
+  <div class="order-total-item">Количество товаров:</div>
+  <div class="order-total-item">Общая сумма:</div>
+  <div class="order-total-item" *ngIf="discountSum">Сумма скидки:</div>
+  <div class="order-total-item-bold">Итого без доставки:</div>
+</div>
+
+<div class="order-total-items-values">
+  <div class="order-total-item">{{itemsCount}}</div>
+  <div class="order-total-item">{{totalSum}} ₽</div>
+  <div class="order-total-item" *ngIf="discountSum">{{discountSum}} ₽</div>
+  <div class="order-total-item-bold">{{totalWithoutDelivery}} ₽</div>
+</div>

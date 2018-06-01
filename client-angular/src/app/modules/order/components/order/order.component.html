@@ -28,14 +28,14 @@
     </label>
     <label class="field-label">Телефон:
       <p-inputMask class="form-control"
-                   mask="9(999) 999-9999"
-                   placeholder="8(999) 999-9999"
+                   mask="+7(999) 999-9999"
+                   placeholder="+7(999) 999-9999"
                    formControlName="phoneNumber"
                    autocomplete="tel"
                    unmask="true">
       </p-inputMask>
     </label>
-    <div class="contact-info titlebox">
+    <div class="shipping-info titlebox">
       <div class="titlebox-icon">
         <span>2</span>
       </div>
@@ -56,8 +56,23 @@
       <input pInputText class="form-control" formControlName="street" autocomplete="shipping street-address">
     </label>
     <label class="field-label">Почтовый индекс:
-      <input pInputText class="form-control" formControlName="index" autocomplete="shipping postal-code">
+      <input pInputText class="form-control" type="number" formControlName="index" autocomplete="shipping postal-code">
     </label>
+    <div class="payment-info titlebox">
+      <div class="titlebox-icon">
+        <span>3</span>
+      </div>
+      <div class="titlebox-content">
+        <div>
+          <i class="fa fa-credit-card"></i>
+          <span>Оплата</span>
+        </div>
+      </div>
+    </div>
+    <div class="order-info">
+      <div class="order-info-title">Детали заказа</div>
+      <app-order-total></app-order-total>
+    </div>
     <button pButton type="submit"
             [disabled]="orderForm.pristine || !orderForm.valid"
             class="ui-button-success order-button"
