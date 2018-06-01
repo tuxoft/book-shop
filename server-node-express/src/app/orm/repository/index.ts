@@ -8,6 +8,8 @@ import { Category } from '../entity/category';
 import { Selection } from '../entity/selection';
 import { Publisher } from '../entity/publisher';
 import { User } from '../entity/user';
+import { Order } from '../entity/order';
+import { OrderItem } from '../entity/orderItem';
 
 export const getBookRepository = () => getConnection().getRepository(Book);
 
@@ -28,3 +30,7 @@ export const getPublisherRepository = () => getConnection().getRepository(Publis
 export const getSelectionRepository = () => getConnection().getRepository(Selection);
 
 export const getUserRepository = () => getConnection().getRepository(User);
+
+export const getOrderRepository = () => getConnection().getRepository(Order);
+
+export const getOrderItemRepository = () => getConnection().getRepository(OrderItem);

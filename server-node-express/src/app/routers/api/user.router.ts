@@ -5,12 +5,13 @@ import { getUserRepository } from '../../orm/repository/index';
 import { EntityNotFoundError } from 'typeorm/error/EntityNotFoundError';
 import { validator } from '../../utils/validation.util';
 import { getCartOrCreateIfNotExists } from './cart.router';
+import { User } from '../../orm/entity/user';
 
 const router = express.Router();
 
 export default router;
 
-export async function getUserOrCreateIfNotExists(uuid: string) {
+export async function getUserOrCreateIfNotExists(uuid: string): Promise<User> {
   if (validator.isUUID(uuid)) {
     const userRepository = getUserRepository();
     try {

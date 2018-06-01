@@ -1,25 +1,26 @@
 import * as express from 'express';
+import { UnauthorizedAccessSecurityError } from '../errors/security.errors';
 
 export function getUserContent(req: express.Request) {
   try {
     return req.kauth.grant.access_token.content;
   } catch (err) {
-    return;
+    throw new UnauthorizedAccessSecurityError();
   }
 }
 
 export function getUserUUID(req: express.Request) {
+  return getUserContent(req).sub;
+}
+
+export function getUserUUIDOrNull(req: express.Request) {
   try {
-    return getUserContent(req).sub;
+    return getUserUUID(req);
   } catch (err) {
-    return;
+    return null;
   }
 }
 
 export function getUserPrefferedName(req: express.Request) {
-  try {
-    return getUserContent(req).preferred_username;
-  } catch (err) {
-    return;
-  }
+  return getUserContent(req).preferred_username;
 }

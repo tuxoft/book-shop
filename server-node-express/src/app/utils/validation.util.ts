@@ -13,3 +13,11 @@ export const isIsbnMessage = (args: ValidationArguments) => {
 export const isNotEmptyMessage = (args: ValidationArguments) => {
   return `не может быть пустым`;
 };
+
+export const isEmailMessage = (args: ValidationArguments) => {
+  return `не соответствует адресу электронной почты`;
+};
+
+export const isMobilePhoneMessage = (args: ValidationArguments) => {
+  return `не соответствует номеру мобильного телефона`;
+};
