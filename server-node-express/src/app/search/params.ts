@@ -17,7 +17,7 @@ function getDocumentType(object): DocumentType {
     return DocumentType.Author;
   }
 
-  throw Error('Can not map entity to document type');
+  throw new Error('Can not map entity to document type');
 }
 
 export function getParamsForIndex() {

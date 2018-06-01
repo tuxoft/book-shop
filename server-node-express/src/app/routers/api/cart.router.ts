@@ -1,24 +1,98 @@
 import * as express from 'express';
-import { getCartItemRepository, getCartRepository } from '../../orm/repository/index';
+import {
+  getCartItemRepository,
+  getCartRepository,
+  getUserRepository
+} from '../../orm/repository/index';
+import { validator } from '../../utils/validation.util';
+import { EntityNotFoundError } from 'typeorm/error/EntityNotFoundError';
+import { getUserUUID } from '../../utils/authentication.util';
+import { UnauthorizedAccessError } from '../../errors/UnauthorizedAccessError';
 
 const router = express.Router();
 
 export default router;
 
-const cookieCartName = 'cart';
+const cookieCartUUID = 'cartUUID';
 const cookieMaxAge = 2147483647000;
 
-router.get('/', async (req, res, next) => {
+export async function getCartOrCreateIfNotExists(uuid?: string) {
+  const cartRepository = getCartRepository();
   try {
-    const cartRepository = getCartRepository();
+    return await cartRepository.findOneOrFail({ id: uuid });
+  } catch (err) {
+    if (validator.isInstance(err, EntityNotFoundError)) {
+      const newCart = cartRepository.create();
+      if (validator.isNotEmpty(uuid)) {
+        if (!validator.isUUID(uuid)) {
+          throw new RangeError('Parameter uuid must be UUID');
+        }
+        newCart.id = uuid;
+      }
+      await cartRepository.save(newCart);
+      return await cartRepository.findOneOrFail({ id: newCart.id });
+    }
+    throw err;
+  }
+}
 
-    let cart = await cartRepository.findOne({ id: req.cookies[cookieCartName] });
+async function getUserCart(userCartUUID: string, tempCartUUID?: string) {
+  if (tempCartUUID) {
+    const tempCart = await getCartRepository().findOne({ id: tempCartUUID });
+    if (tempCart) {
+      const userCart = await getCartOrCreateIfNotExists(userCartUUID);
 
-    if (!cart) {
-      cart = cartRepository.create();
-      cart = await cartRepository.save(cart);
-      cart = await cartRepository.findOneOrFail(cart);
-      res.cookie(cookieCartName, cart.id, { maxAge: cookieMaxAge });
+      const cartItemRepository = getCartItemRepository();
+      for (let i = 0; i < tempCart.items.length; i++) {
+        const tempCartItem = tempCart.items[i];
+        tempCartItem.cart = userCart;
+        try {
+          await cartItemRepository.save(tempCartItem);
+        } catch (err) {
+          console.log(err);
+        }
+      }
+
+      try {
+        await getCartRepository().delete(tempCart);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  }
+  return await getCartOrCreateIfNotExists(userCartUUID);
+}
+
+async function getTempCart(tempCartUUID?: string) {
+  const tempCart = await getCartOrCreateIfNotExists(tempCartUUID);
+
+  // Если временная карточка на самом деле оказалась карточкой пользователя - сгенерировать ошибку,
+  // т.к. это попытка несанкционированного доступа
+  const user = await getUserRepository().findOne({ id: tempCart.id });
+  if (user) {
+    throw new UnauthorizedAccessError();
+  }
+
+  return tempCart;
+}
+
+router.get('/', async (req, res, next) => {
+  const userCartUUID = getUserUUID(req);
+  const tempCartUUID = req.cookies[cookieCartUUID];
+
+  try {
+    let cart = null;
+
+    if (userCartUUID) {
+      cart = await getUserCart(userCartUUID, tempCartUUID);
+      if (tempCartUUID) {
+        res.clearCookie(cookieCartUUID);
+      }
+    } else {
+      cart = await getTempCart(tempCartUUID);
+      if (tempCartUUID !== cart.id) {
+        res.cookie(cookieCartUUID, cart.id, { maxAge: cookieMaxAge });
+      }
     }
 
     res.send(cart);
