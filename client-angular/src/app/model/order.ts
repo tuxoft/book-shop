@@ -1,3 +1,7 @@
+import { Name } from './name';
+import { Address } from './address';
+import { OrderItem } from './order-item';
+
 /**
  * Заказ
  */
@@ -10,42 +14,51 @@ export interface Order {
    * признак удаления
    */
   deleted?: boolean;
+
   /**
    * имя получателя заказа
    */
-  firstName?: string;
-  /**
-   * фамилия получателя заказа
-   */
-  lastName?: string;
+  addresseeName?: Name;
+
   /**
    * email получателя заказа
    */
   email?: string;
+
   /**
    * телефон получателя заказа
    */
   phoneNumber?: string;
+
   /**
    * адрес получателя заказа
    */
-  shippingAddress?: string;
+  shippingAddress?: Address;
+
   /**
    * способ оплаты заказа
    */
   paymentMethod?: string;
+
   /**
    * скидка
    */
   discount?: number;
+
   /**
    * итоговая стоимость
    */
   totalCost?: number;
+
   /**
    * Статус заказа
    */
   status?: Order.StatusEnum;
+
+  /**
+   * Позиции заказа
+   */
+  items?: OrderItem[];
 }
 export namespace Order {
   export type StatusEnum = 'payd' | 'shipping' | 'delivery' | 'unpaid';

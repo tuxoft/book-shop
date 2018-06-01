@@ -30,6 +30,7 @@ import { initializer } from './utils/app-init';
 import { AppAuthGuard } from './services/auth/auth-guard';
 import { TokenInterceptor } from './services/auth/token-interceptor';
 import { AuthService } from './services/auth/auth-service';
+import { UserService } from './services/rest/user.service';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { AuthService } from './services/auth/auth-service';
     BookSeriesService,
     SearchService,
     AuthService,
+    UserService,
     AppAuthGuard,
     {
       provide: APP_INITIALIZER,
