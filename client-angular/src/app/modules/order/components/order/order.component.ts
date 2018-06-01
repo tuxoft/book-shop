@@ -76,18 +76,20 @@ export class OrderComponent implements OnInit {
 
     const saveOrder: Order = {
       ...this.order,
-      addresseeName: {
-        first: formModel.firstName,
-        middle: formModel.middleName,
-        last: formModel.lastName,
-      },
-      email: formModel.email,
-      phoneNumber: formModel.phoneNumber,
-      shippingAddress: {
-        country: formModel.country,
-        city: formModel.city,
-        street: formModel.street,
-        index: formModel.index,
+      recipient: {
+        name: {
+          first: formModel.firstName,
+          middle: formModel.middleName,
+          last: formModel.lastName,
+        },
+        email: formModel.email,
+        phoneNumber: formModel.phoneNumber,
+        address: {
+          country: formModel.country,
+          city: formModel.city,
+          street: formModel.street,
+          postalIndex: formModel.index,
+        },
       },
     };
 

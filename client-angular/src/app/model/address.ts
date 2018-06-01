@@ -20,5 +20,5 @@ export interface Address {
   /**
    * почтовый индекс
    */
-  index?: string;
+  postalIndex?: string;
 }

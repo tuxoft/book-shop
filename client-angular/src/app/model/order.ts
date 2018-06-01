@@ -1,6 +1,7 @@
 import { Name } from './name';
 import { Address } from './address';
 import { OrderItem } from './order-item';
+import { Recipient } from './recipient';
 
 /**
  * Заказ
@@ -16,24 +17,9 @@ export interface Order {
   deleted?: boolean;
 
   /**
-   * имя получателя заказа
+   * Информация об адресате
    */
-  addresseeName?: Name;
-
-  /**
-   * email получателя заказа
-   */
-  email?: string;
-
-  /**
-   * телефон получателя заказа
-   */
-  phoneNumber?: string;
-
-  /**
-   * адрес получателя заказа
-   */
-  shippingAddress?: Address;
+  recipient?: Recipient;
 
   /**
    * способ оплаты заказа
