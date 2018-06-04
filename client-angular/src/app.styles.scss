@@ -38,13 +38,9 @@ $mainColor: #26A9E0;
   font-family: 'PT Sans', sans-serif !important;
 }
 
-body {
+body, html {
   margin: 0;
-  height: 100%;
-}
-
-html {
-  height: 100%;
+  // height: 100%;
 }
 
 .btn-normal {
