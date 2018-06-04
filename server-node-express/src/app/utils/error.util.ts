@@ -1,12 +1,27 @@
-import { sendBadRequest, sendForbidden, sendValidationError } from './response.util';
+import {
+  sendBadRequest,
+  sendBusinessLogicError,
+  sendForbidden,
+  sendValidationError,
+} from './response.util';
 import { EntityNotFoundError } from 'typeorm/error/EntityNotFoundError';
 import { validator } from './validation.util';
 import { ValidationError } from 'class-validator';
-import { UnauthorizedAccessError } from '../errors/UnauthorizedAccessError';
+import { SecurityError } from '../errors/security.errors';
+import { ClientError } from '../errors/client.errors';
+import { BusinessLogicError } from '../errors/businesslogic.errors';
 
 export function errorHandler(err, req, res, next) {
 
-  if (validator.isInstance(err, EntityNotFoundError)) {
+  if (validator.isInstance(err, SecurityError)) {
+
+    sendForbidden(err, req, res);
+
+  } else if (validator.isInstance(err, EntityNotFoundError)) {
+
+    sendBadRequest(err, req, res);
+
+  } else if (validator.isInstance(err, ClientError)) {
 
     sendBadRequest(err, req, res);
 
@@ -14,9 +29,9 @@ export function errorHandler(err, req, res, next) {
 
     sendValidationError(err, req, res);
 
-  } else if (validator.isInstance(err, UnauthorizedAccessError)) {
+  } else if (validator.isInstance(err, BusinessLogicError)) {
 
-    sendForbidden(err, req, res);
+    sendBusinessLogicError(err, req, res);
 
   } else {
 

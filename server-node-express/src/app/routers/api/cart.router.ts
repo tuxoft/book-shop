@@ -2,12 +2,12 @@ import * as express from 'express';
 import {
   getCartItemRepository,
   getCartRepository,
-  getUserRepository
+  getUserRepository,
 } from '../../orm/repository/index';
 import { validator } from '../../utils/validation.util';
 import { EntityNotFoundError } from 'typeorm/error/EntityNotFoundError';
-import { getUserUUID } from '../../utils/authentication.util';
-import { UnauthorizedAccessError } from '../../errors/UnauthorizedAccessError';
+import { getUserUUIDOrNull } from '../../utils/authentication.util';
+import { UnauthorizedAccessSecurityError } from '../../errors/security.errors';
 
 const router = express.Router();
 
@@ -36,14 +36,14 @@ export async function getCartOrCreateIfNotExists(uuid?: string) {
   }
 }
 
-async function getUserCart(userCartUUID: string, tempCartUUID?: string) {
+export async function getUserCart(userCartUUID: string, tempCartUUID?: string) {
   if (tempCartUUID) {
     const tempCart = await getCartRepository().findOne({ id: tempCartUUID });
     if (tempCart) {
       const userCart = await getCartOrCreateIfNotExists(userCartUUID);
 
       const cartItemRepository = getCartItemRepository();
-      for (let i = 0; i < tempCart.items.length; i++) {
+      for (let i = 0; i < tempCart.items.length; i += 1) {
         const tempCartItem = tempCart.items[i];
         tempCartItem.cart = userCart;
         try {
@@ -70,14 +70,14 @@ async function getTempCart(tempCartUUID?: string) {
   // т.к. это попытка несанкционированного доступа
   const user = await getUserRepository().findOne({ id: tempCart.id });
   if (user) {
-    throw new UnauthorizedAccessError();
+    throw new UnauthorizedAccessSecurityError();
   }
 
   return tempCart;
 }
 
 router.get('/', async (req, res, next) => {
-  const userCartUUID = getUserUUID(req);
+  const userCartUUID = getUserUUIDOrNull(req);
   const tempCartUUID = req.cookies[cookieCartUUID];
 
   try {
