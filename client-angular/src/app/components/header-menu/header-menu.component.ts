@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { KeycloakService } from 'keycloak-angular';
 import { Observable } from 'rxjs';
@@ -16,6 +16,9 @@ export class HeaderMenuComponent implements OnInit {
               private authService: AuthService) { }
 
   isLogged: Observable<boolean>;
+
+  @ViewChild('op')
+  overlayPanel;
 
   ngOnInit() {
     this.isLogged = this.authService.isAuthorized$;
@@ -45,6 +48,16 @@ export class HeaderMenuComponent implements OnInit {
 
   redirectToMain() {
     this.router.navigate(['/']);
+  }
+
+  redirectToProfile() {
+    this.router.navigate(['/profile/info']);
+    this.overlayPanel.hide();
+  }
+
+  redirectToOrders() {
+    this.router.navigate(['/profile/orders']);
+    this.overlayPanel.hide();
   }
 
   isLoggedIn(): Observable<boolean> {

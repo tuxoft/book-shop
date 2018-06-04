@@ -2,8 +2,21 @@
   <div class="container">
     <a (click)="redirectToAdminPanel()" class="menu-item" *ngIf="(isLoggedIn() | async) && isAvailableAdminPanel()">Панель администрирования</a>
     <a (click)="redirectToMain()" class="menu-item" *ngIf="isAdminPanel()">На главную</a>
-    <a (click)="login()" class="menu-item pull-right" *ngIf="!(isLoggedIn() | async)">Войти</a>
-    <a (click)="logout()" class="menu-item pull-right" *ngIf="isLoggedIn() | async">Выйти</a>
-    <a class="menu-item pull-right" *ngIf="(isLoggedIn() | async)">{{getUserName()}}</a>
+    <a (click)="login()" class="menu-item pull-right" *ngIf="!(isLoggedIn() | async)"><i class="fa fa-user"></i>&nbsp;Войти</a>
+    <a (click)="op.toggle($event)" class="menu-item pull-right" *ngIf="isLoggedIn() | async">Меню <i class="fa fa-chevron-down"></i></a>
+    <a class="menu-item pull-right" *ngIf="(isLoggedIn() | async)"><i class="fa fa-user"></i>&nbsp;{{getUserName()}}</a>
   </div>
 </div>
+<p-overlayPanel #op>
+  <ul class="sub-nav-items">
+    <li class="sub-nav-item" (click)="redirectToProfile()">
+      <a>Мой профиль</a>
+    </li>
+    <li class="sub-nav-item" (click)="redirectToOrders()">
+      <a>Мои заказы</a>
+    </li>
+    <li class="sub-nav-item" (click)="logout()">
+      <a>Выйти</a>
+    </li>
+  </ul>
+</p-overlayPanel>

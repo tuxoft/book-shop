@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -31,6 +32,7 @@ import { AppAuthGuard } from './services/auth/auth-guard';
 import { TokenInterceptor } from './services/auth/token-interceptor';
 import { AuthService } from './services/auth/auth-service';
 import { UserService } from './services/rest/user.service';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,8 @@ import { UserService } from './services/rest/user.service';
     CheckboxModule,
     ButtonModule,
     GrowlModule,
+    OverlayPanelModule,
+    BrowserAnimationsModule,
     StoreModule.forRoot(storeReducers),
     EffectsModule.forRoot(effects),
     StoreDevtoolsModule.instrument({

@@ -41,6 +41,13 @@ export const routes: Routes = [
           title: 'Поиск книг',
         },
       },
+      {
+        path: 'profile',
+        loadChildren: '../profile/profile.module#ProfileModule',
+        data: {
+          title: 'Мой профиль',
+        },
+      },
     ],
   },
 ];
