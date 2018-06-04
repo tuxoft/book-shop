@@ -14,8 +14,11 @@ export class BookSeries {
   @IsNotEmpty({ message: isNotEmptyMessage })
   name: string;
 
+  @Column()
+  publisherId: number;
+
   @ManyToOne(type => Publisher, publisher => publisher.bookSeries)
-  publisher: Publisher;
+  publisher?: Publisher;
 
   @OneToMany(type => Book, book => book.bookSeries)
   books?: Book[];

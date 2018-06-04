@@ -5,7 +5,7 @@ import { BookSeries } from '../../entity/bookSeries';
 export class Authors1526112329123 implements MigrationInterface {
 
   public async up(queryRunner: QueryRunner): Promise<any> {
-    const publishers = [
+    const publishers: Publisher[] = [
       { id: 1, name: 'Эксмо' },
       { id: 2, name: 'АСТ' },
       { id: 3, name: 'Редакция Елены Шубиной' },
@@ -13,14 +13,14 @@ export class Authors1526112329123 implements MigrationInterface {
       { id: 5, name: 'Какой-то издатель' },
     ];
 
-    const bookSeries = [
-      { id: 1, name: 'Классика', publisher: 1 },
-      { id: 2, name: 'Классика для школьников', publisher: 2 },
-      { id: 3, name: 'Проза Гузель Яхиной', publisher: 3 },
-      { id: 4, name: 'Миры Марии Семеновой', publisher: 4 },
-      { id: 5, name: 'Какая-то серия', publisher: 5 },
-      { id: 6, name: 'Еще Какая-то серия', publisher: 5 },
-      { id: 7, name: 'Ну и еще одна серия', publisher: 5 },
+    const bookSeries: BookSeries[] = [
+      { id: 1, name: 'Классика', publisherId: 1 },
+      { id: 2, name: 'Классика для школьников', publisherId: 2 },
+      { id: 3, name: 'Проза Гузель Яхиной', publisherId: 3 },
+      { id: 4, name: 'Миры Марии Семеновой', publisherId: 4 },
+      { id: 5, name: 'Какая-то серия', publisherId: 5 },
+      { id: 6, name: 'Еще Какая-то серия', publisherId: 5 },
+      { id: 7, name: 'Ну и еще одна серия', publisherId: 5 },
     ];
 
     const publisherRepo = queryRunner.connection.getRepository(Publisher);
@@ -35,7 +35,7 @@ export class Authors1526112329123 implements MigrationInterface {
     for (let i = 0; i < bookSeries.length; i++) {
       const item = bookSeries[i];
       const bookSeriesEntity = bookSeriesRepo.create(item);
-      bookSeriesEntity.publisher = await publisherRepo.findOne(item.publisher);
+      bookSeriesEntity.publisher = await publisherRepo.findOne(item.publisherId);
       await bookSeriesRepo.save(bookSeriesEntity);
     }
   }

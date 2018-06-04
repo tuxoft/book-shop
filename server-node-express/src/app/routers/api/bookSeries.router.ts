@@ -21,15 +21,15 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    const bookSeries = await transformAndValidate(BookSeries, req.body, {
+    const bookSeries: BookSeries = await transformAndValidate(BookSeries, <Object>req.body, {
       validator: {
         validationError: { target: false },
       },
     });
 
-    const savedBookSeries = await getBookSeriesRepository().save(bookSeries);
+    await getBookSeriesRepository().save(bookSeries);
 
-    res.send(savedBookSeries);
+    res.send(bookSeries);
 
   } catch (err) {
     next(err);
@@ -54,9 +54,9 @@ router.get('/:id', async (req, res, next) => {
 router.delete('/:id', async (req, res, next) => {
   try {
     const bookSeries = plainToClass(BookSeries, { id: req.params.id });
-    const removed = await getBookSeriesRepository().remove(bookSeries);
+    await getBookSeriesRepository().remove(bookSeries);
 
-    res.send(removed);
+    res.send(bookSeries);
 
   } catch (err) {
     next(err);

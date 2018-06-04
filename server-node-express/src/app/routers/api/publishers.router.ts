@@ -21,15 +21,15 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    const publishers = await transformAndValidate(Publisher, req.body, {
+    const publisher: Publisher = await transformAndValidate(Publisher, <Object>req.body, {
       validator: {
         validationError: { target: false },
       },
     });
 
-    const savedBooks = await getPublisherRepository().save(publishers);
+    await getPublisherRepository().save(publisher);
 
-    res.send(savedBooks);
+    res.send(publisher);
 
   } catch (err) {
     next(err);
@@ -54,9 +54,9 @@ router.get('/:id', async (req, res, next) => {
 router.delete('/:id', async (req, res, next) => {
   try {
     const publisher = plainToClass(Publisher, { id: req.params.id });
-    const removed = await getPublisherRepository().remove(publisher);
+    await getPublisherRepository().remove(publisher);
 
-    res.send(removed);
+    res.send(publisher);
 
   } catch (err) {
     next(err);

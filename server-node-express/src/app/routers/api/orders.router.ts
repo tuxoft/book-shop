@@ -36,7 +36,7 @@ router.post('/', keycloak.protect(), async (req, res, next) => {
       return;
     }
 
-    const order = await transformAndValidate(Order, req.body, {
+    const order: Order = await transformAndValidate(Order, <Object>req.body, {
       validator: {
         validationError: { target: false },
       },

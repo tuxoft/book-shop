@@ -21,15 +21,15 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    const selections = await transformAndValidate(Selection, req.body, {
+    const selection: Selection = await transformAndValidate(Selection, <Object>req.body, {
       validator: {
         validationError: { target: false },
       },
     });
 
-    const savedSelections = await getSelectionRepository().save(selections);
+    await getSelectionRepository().save(selection);
 
-    res.send(savedSelections);
+    res.send(selection);
 
   } catch (err) {
     next(err);
@@ -40,9 +40,9 @@ router.get('/:id', async (req, res, next) => {
   try {
     const id: string = req.params.id;
 
-    const author = await getSelectionRepository().findOneOrFail(id);
+    const selection = await getSelectionRepository().findOneOrFail(id);
 
-    res.send(author);
+    res.send(selection);
 
   } catch (err) {
     next(err);
@@ -52,9 +52,9 @@ router.get('/:id', async (req, res, next) => {
 router.delete('/:id', async (req, res, next) => {
   try {
     const selection = plainToClass(Selection, { id: req.params.id });
-    const removed = await getSelectionRepository().remove(selection);
+    await getSelectionRepository().remove(selection);
 
-    res.send(removed);
+    res.send(selection);
 
   } catch (err) {
     next(err);

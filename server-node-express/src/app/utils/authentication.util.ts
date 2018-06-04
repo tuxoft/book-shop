@@ -3,14 +3,14 @@ import { UnauthorizedAccessSecurityError } from '../errors/security.errors';
 
 export function getUserContent(req: express.Request) {
   try {
-    return req.kauth.grant.access_token.content;
+    return req['kauth']['grant']['access_token']['content'];
   } catch (err) {
     throw new UnauthorizedAccessSecurityError();
   }
 }
 
 export function getUserUUID(req: express.Request) {
-  return getUserContent(req).sub;
+  return getUserContent(req)['sub'];
 }
 
 export function getUserUUIDOrNull(req: express.Request) {
@@ -22,5 +22,5 @@ export function getUserUUIDOrNull(req: express.Request) {
 }
 
 export function getUserPrefferedName(req: express.Request) {
-  return getUserContent(req).preferred_username;
+  return getUserContent(req)['preferred_username'];
 }

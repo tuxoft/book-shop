@@ -1,7 +1,6 @@
 import * as es from './elastic.search';
 import { getConnection } from 'typeorm';
 import { Book } from '../orm/entity/book';
-import { EntitySubscriber } from '../orm/subscriber/book.elasticsearch.subscriber';
 
 export function init() {
   es.isAvailable(10, true)

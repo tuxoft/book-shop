@@ -12,14 +12,17 @@ export class Category {
   name: string;
 
   @Column({ nullable: true, unique: true, select: false })
-  route: string;
+  route?: string;
+
+  @Column({ nullable: true })
+  parentId: number;
 
   @TreeParent()
-  parent: Category;
+  parent?: Category;
 
   @TreeChildren()
-  children: Category[];
+  children?: Category[];
 
   @ManyToMany(type => Book, book => book.categories)
-  books: Book[];
+  books?: Book[];
 }
