@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, UrlSegment, Router, NavigationEnd } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
 import { filter, map } from 'rxjs/operators';
 
 @Component({
@@ -11,7 +10,6 @@ import { filter, map } from 'rxjs/operators';
 export class ProfilePageComponent implements OnInit {
 
   url: string;
-  urlSubscription: Observable<string>;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
     this.router.events.pipe(
