@@ -1,6 +1,12 @@
 import * as express from 'express';
 import { keycloak } from '../../secure/index';
-import { getUserUUID } from '../../utils/authentication.util';
+import {
+  getUserEmail,
+  getUserFamilyName,
+  getUserGivenName,
+  getUserPrefferedUsername,
+  getUserUUID,
+} from '../../utils/authentication.util';
 import { getUserRepository } from '../../orm/repository/index';
 import { EntityNotFoundError } from 'typeorm/error/EntityNotFoundError';
 import { validator } from '../../utils/validation.util';
@@ -32,7 +38,14 @@ export async function getUserOrCreateIfNotExists(uuid: string): Promise<User> {
 
 router.get('/', keycloak.protect(), async (req, res, next) => {
   try {
-    res.send(await getUserOrCreateIfNotExists(getUserUUID(req)));
+    const user = await getUserOrCreateIfNotExists(getUserUUID(req));
+    user.userName = getUserPrefferedUsername(req);
+    user.firstName = getUserGivenName(req);
+    user.lastName = getUserFamilyName(req);
+    user.email = getUserEmail(req);
+
+    res.send(user);
+
   } catch (err) {
     next(err);
   }

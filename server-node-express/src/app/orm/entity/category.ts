@@ -14,9 +14,6 @@ export class Category {
   @Column({ nullable: true, unique: true, select: false })
   route?: string;
 
-  @Column({ nullable: true })
-  parentId: number;
-
   @TreeParent()
   parent?: Category;
 

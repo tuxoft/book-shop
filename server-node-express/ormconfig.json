@@ -4,13 +4,16 @@
   "synchronize": true,
   "logging": ["error"],
   "entities": [
-    "src/app/orm/entity/**/*.ts"
+    "src/app/orm/entity/**/*.ts",
+    "app/orm/entity/**/*.js"
   ],
   "migrations": [
-    "src/app/orm/migration/**/*.ts"
+    "src/app/orm/migration/**/*.ts",
+    "app/orm/migration/**/*.js"
   ],
   "subscribers": [
-    "src/app/orm/subscriber/**/*.ts"
+    "src/app/orm/subscriber/**/*.ts",
+    "app/orm/subscriber/**/*.js"
   ],
   "cli": {
     "entitiesDir": "src/app/orm/entity",
