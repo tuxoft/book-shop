@@ -13,6 +13,6 @@ gulp.task('copyFiles', function () {
   ]).pipe(gulp.dest('./target/'));
 
   gulp.src([
-    './src/app/public/**/*.*'
-  ]).pipe(gulp.dest('./target/app/public/'));
+    './storage/**/*.*'
+  ]).pipe(gulp.dest('./target/storage/'));
 });

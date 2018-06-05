@@ -1,8 +1,7 @@
 .idea
-node_modules
-dist
-target
 .vscode
+node_modules
+target
 elasticsearch/logs/**
 elasticsearch/data/**
 keycloak/standalone/log/**

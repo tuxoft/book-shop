@@ -7,7 +7,7 @@
     "target": "http://0.0.0.0:8000",
     "secure": false
   },
-  "/public": {
+  "/files": {
     "target": "http://0.0.0.0:8000",
     "secure": false
   },

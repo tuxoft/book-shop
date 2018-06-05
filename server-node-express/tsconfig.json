@@ -15,7 +15,7 @@
     "inlineSources": true,
     "noImplicitAny": false,
     "rootDir": "./src",
-    "outDir": "./target"
+    "outDir": "./target/src"
   },
   "exclude": [
     "node_modules",

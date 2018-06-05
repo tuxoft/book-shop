@@ -39,3 +39,14 @@ export function errorHandler(err, req, res, next) {
 
   }
 }
+
+export function error2BusinessLogicError(err, req, res, next) {
+  let businessLogicError;
+
+  if (err.code === 'LIMIT_FILE_SIZE') {
+    console.log(err);
+    businessLogicError = new BusinessLogicError('Слишком большой файл');
+  }
+
+  next(businessLogicError ? businessLogicError : err);
+}
