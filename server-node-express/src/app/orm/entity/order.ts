@@ -1,4 +1,11 @@
-import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn
+} from 'typeorm';
 import { User } from './user';
 import { Recipient } from './recipient';
 import { Type } from 'class-transformer';
@@ -11,6 +18,9 @@ export class Order {
 
   @PrimaryGeneratedColumn()
   id: number;
+
+  @CreateDateColumn()
+  createdDate: Date;
 
   @ManyToOne(type => User, user => user.orders)
   user: User;
