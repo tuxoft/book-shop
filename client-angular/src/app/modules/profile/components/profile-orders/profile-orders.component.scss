@@ -1,1 +1,21 @@
 @import "../../../../../app.styles.scss";
+
+.orders-header {
+  color: $mainColor;
+  font-size: 24px;
+  .header-title {
+    margin-left: 5px;
+  }
+}
+
+.info-order-link {
+  display: block;
+  margin-bottom: 15px;
+  font-size: 12px;
+  color: gray;
+  background: #fff;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+}

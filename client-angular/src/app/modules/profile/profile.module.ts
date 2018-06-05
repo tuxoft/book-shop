@@ -6,11 +6,13 @@ import { ProfileInfoComponent } from './components/profile-info/profile-info.com
 import { ProfileMenuComponent } from './components/profile-menu/profile-menu.component';
 import { RouterModule } from '@angular/router';
 import { routes } from './profile.routes';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    TableModule,
   ],
   declarations: [
     ProfilePageComponent,

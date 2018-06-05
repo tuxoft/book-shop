@@ -10,12 +10,31 @@
     margin: 0;
     padding: 0;
     .profile-menu-list-item {
-      font-weight: 700;
+      font-weight: 400;
       color: #333;
       text-decoration: none;
       font-size: 16px;
       padding: 5px 0;
       cursor: pointer;
+      .active-item {
+        font-weight: 700;
+        color: #333;
+        .profile-icon {
+          color: #333 !important;
+        }
+      }
+      &:hover {
+        font-weight: 700;
+        color: #333;
+        .profile-menu-link {
+          .profile-icon {
+            color: #333;
+          }
+        }
+      }
+      &:last-of-type {
+        padding-left: 30px;
+      }
       .profile-menu-link {
         display: flex;
         -webkit-box-align: center;

@@ -1,1 +1,9 @@
 @import "../../../../../app.styles.scss";
+
+.profile-page-container {
+  display: flex;
+}
+.profile-menu {
+  min-width: 250px;
+  margin-right: 15px;
+}

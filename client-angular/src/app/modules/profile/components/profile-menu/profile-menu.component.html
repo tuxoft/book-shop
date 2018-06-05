@@ -1,13 +1,13 @@
 <div class="profile-menu">
   <ul class="profile-menu-list">
     <li class="profile-menu-list-item">
-      <a class="profile-menu-link">
+      <a class="profile-menu-link" [ngClass]="{'active-item': isActiveInfo()}" routerLink="/profile/info">
         <i class="fa fa-user fa-fw profile-icon"></i>
         <span>Мой профиль</span>
       </a>
     </li>
     <li class="profile-menu-list-item">
-      <a class="profile-menu-link">
+      <a class="profile-menu-link" [ngClass]="{'active-item': isActiveOrders()}" routerLink="/profile/orders">
         <i class="fa fa-shopping-cart fa-fw profile-icon"></i>
         <span>Заказы</span>
       </a>

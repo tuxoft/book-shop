@@ -1,9 +1,9 @@
 <div class="container standart-theme">
-  <div class="ui-g">
-    <div class="ui-g-3">
-      <app-profile-menu></app-profile-menu>
+  <div class="profile-page-container">
+    <div class="profile-menu">
+      <app-profile-menu [activePath]="url"></app-profile-menu>
     </div>
-    <div class="ui-g-9">
+    <div class="profile-detail">
       <router-outlet></router-outlet>
     </div>
   </div>
