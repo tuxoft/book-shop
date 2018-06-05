@@ -6,9 +6,13 @@ gulp.task('hello', function () {
 
 gulp.task('copyFiles', function () {
 
-  gulp.src('./keycloak.json')
-    .pipe(gulp.dest('./target/'));
+  gulp.src([
+    './package.json',
+    './ormconfig.json',
+    './keycloak.json'
+  ]).pipe(gulp.dest('./target/'));
 
-  gulp.src('./src/app/public/**/*.*')
-    .pipe(gulp.dest('./target/app/public/'));
+  gulp.src([
+    './src/app/public/**/*.*'
+  ]).pipe(gulp.dest('./target/app/public/'));
 });
