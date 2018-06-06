@@ -1,1 +1,23 @@
 @import "../../../../../app.styles.scss";
+
+.profile-header {
+  font-size: 24px;
+  color: $mainColor;
+}
+
+.profile-subheader {
+  font-size: 22px;
+  color: $mainColor;
+}
+
+.info-order-link {
+  display: block;
+  margin-bottom: 15px;
+  font-size: 12px;
+  color: gray;
+  background: #fff;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+}

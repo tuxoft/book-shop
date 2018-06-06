@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { Order } from '../../model/order';
+import { User } from '../../model/user';
 
 @Injectable()
 export class UserService {
@@ -16,5 +17,9 @@ export class UserService {
 
   getOrders(): Observable<Order[]> {
     return this.http.get<Order[]>(this.orderUrl);
+  }
+
+  getUser(): Observable<User> {
+    return this.http.get<User>(this.userUrl);
   }
 }

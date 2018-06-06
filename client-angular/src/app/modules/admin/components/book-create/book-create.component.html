@@ -43,9 +43,7 @@
                         field="name"></p-autoComplete>
       </label>
       <label class="field-label">Категории:
-        <!-- <p-treeTable formControlName="categories" -->
-          <p-treeTable
-                     selectionMode="checkbox"
+        <p-treeTable selectionMode="checkbox"
                      [value]="categoryNodes"
                      styleClass="formControl"
                      [(selection)]="selectedCategoryNodes"

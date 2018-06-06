@@ -1,3 +1,36 @@
-<div>
-  profile-info works!
+<div class="profile standart-theme">
+  <h1 class="profile-header">
+    <i class="fa fa-user"></i>
+    Мой профиль
+  </h1>
+  <h2 class="profile-subheader">
+    <i class="fa fa-id-badge"></i>
+    Личные данные
+  </h2>
+  <h2 class="profile-subheader">
+    <i class="fa fa-shoppping-cart"></i>
+    Активные заказы
+  </h2>
+  <p-table [value]="orders$ | async" *ngIf="(orders$ | async)?.length !== 0">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width:25%">Заказ №</th>
+        <th style="width:25%">Статус</th>
+        <th style="width:25%">К оплате</th>
+        <th style="width:25%"></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-order>
+      <tr>
+        <td>{{order.id}}</td>
+        <td>{{order.status}}</td>
+        <td>{{order.total}}</td>
+        <td class="edit-controls">
+          <a class="info-order-link" (click)="cancelOrder(order.id)">Отменить заказ</a>
+          <a class="info-order-link" routerLink="/profile/order/detail/{{order.id}}">Подробнее</a>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <span *ngIf="(orders$ | async)?.length === 0">Нет активных заказов</span>
 </div>

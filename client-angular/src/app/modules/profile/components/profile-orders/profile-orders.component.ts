@@ -11,10 +11,11 @@ import { UserService } from '../../../../services/rest/user.service';
 export class ProfileOrdersComponent implements OnInit {
 
   orders$: Observable<Order[]>;
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {
+    this.orders$ = this.userService.getOrders();
+  }
 
   ngOnInit() {
-    this.orders$ = this.userService.getOrders();
   }
 
   cancelOrder(orderId: number) {

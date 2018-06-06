@@ -3,7 +3,7 @@
     <i class="fa fa-shopping-cart"></i>
     <span class="header-title">Заказы</span>
   </h1>
-  <p-table [value]="orders$ | async">
+  <p-table [value]="orders$ | async" *ngIf="(orders$ | async)?.length !== 0">
     <ng-template pTemplate="header">
       <tr>
         <th style="width:25%">Заказ №</th>
@@ -24,4 +24,5 @@
       </tr>
     </ng-template>
   </p-table>
+  <span *ngIf="(orders$ | async)?.length === 0">Нет активных заказов</span>
 </div>
