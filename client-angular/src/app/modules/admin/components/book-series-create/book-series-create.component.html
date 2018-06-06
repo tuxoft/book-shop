@@ -12,6 +12,16 @@
       <label class="field-label">Название:
         <input pInputText class="form-control" formControlName="name">
       </label>
+
+      <label class="field-label">Издательство:
+        <p-autoComplete formControlName="publisher"
+                        [suggestions]="publisherSearchResult"
+                        (completeMethod)="searchPublisher($event)"
+                        [immutable]="false"
+                        styleClass="formControl"
+                        [dropdown]="true"
+                        field="name"></p-autoComplete>
+      </label>
     </div>
   </form>
 </div>

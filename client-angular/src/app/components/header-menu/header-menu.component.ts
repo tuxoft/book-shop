@@ -69,7 +69,7 @@ export class HeaderMenuComponent implements OnInit {
   }
 
   logout() {
-    this.keycloakService.logout();
+    this.keycloakService.logout(window.location.origin);
   }
 
   login() {

@@ -1,8 +1,11 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { BookSeries } from '../../../../model/book-series';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BookSeriesService } from '../../../../services/rest/book-series.service';
 import { NotificationsService } from '../../../../services/common/notification.service';
+import { Publisher } from '../../../../model/publisher';
+import { Observable } from 'rxjs';
+import { PublisherService } from '../../../../services/rest/publisher.service';
 
 @Component({
   selector: 'app-book-series-create',
@@ -14,20 +17,33 @@ export class BookSeriesCreateComponent implements OnInit {
 
   bookSeries: BookSeries = {};
   bookSeriesForm: FormGroup;
+  publisher$: Observable<Publisher[]>;
+  publishers: Publisher[];
+  publisherSearchResult: Publisher[];
 
   constructor(private bookSeriesService: BookSeriesService,
               private fb: FormBuilder,
-              private notificationService: NotificationsService) {
-
+              private notificationService: NotificationsService,
+              private publisherService: PublisherService) {
+    this.publisher$ = this.publisherService.get();
+    this.publisher$.subscribe((publisher) => {
+      this.publishers = publisher;
+    });
     this.createForm();
   }
 
   ngOnInit() {
   }
 
+  searchPublisher(event) {
+    this.publisherSearchResult = this.publishers
+      .filter(publisher => publisher.name.indexOf(event.query) > -1);
+  }
+
   createForm() {
     this.bookSeriesForm = this.fb.group({
       name: '',
+      publisher: [{}, Validators.required],
     });
   }
 
@@ -38,6 +54,7 @@ export class BookSeriesCreateComponent implements OnInit {
   rebuildForm() {
     this.bookSeriesForm.reset({
       name: this.bookSeries.name,
+      publisher: this.bookSeries.publisher,
     });
   }
 
@@ -79,6 +96,7 @@ export class BookSeriesCreateComponent implements OnInit {
     const saveBookSeries: BookSeries = {
       ...this.bookSeries,
       name: formModel.name,
+      publisher: formModel.publisher,
     };
 
     return saveBookSeries;

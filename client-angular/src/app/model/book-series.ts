@@ -1,3 +1,5 @@
+import { Publisher } from './models';
+
 /**
  * серия книг
  */
@@ -14,6 +16,10 @@ export interface BookSeries {
    * название серии книг
    */
   name?: string;
+  /**
+   * издательство
+   */
+  publisher?: Publisher;
   /**
    * описание серии книг
    */

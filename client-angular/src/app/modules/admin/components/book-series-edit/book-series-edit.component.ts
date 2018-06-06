@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Observable } from 'rxjs';
-import { BookSeries } from '../../../../model/models';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { BookSeries, Publisher } from '../../../../model/models';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { BookSeriesService } from '../../../../services/rest/book-series.service';
 import { NotificationsService } from '../../../../services/common/notification.service';
+import { PublisherService } from '../../../../services/rest/publisher.service';
 
 @Component({
   selector: 'app-book-series-edit',
@@ -18,11 +19,20 @@ export class BookSeriesEditComponent implements OnInit {
   bookSeries$: Observable<BookSeries>;
   bookSeries: BookSeries = {};
   bookSeriesForm: FormGroup;
+  publisher$: Observable<Publisher[]>;
+  publishers: Publisher[];
+  publisherSearchResult: Publisher[];
 
   constructor(route: ActivatedRoute,
               private bookSeriesService: BookSeriesService,
               private fb: FormBuilder,
-              private notificationService: NotificationsService) {
+              private notificationService: NotificationsService,
+              private publisherService: PublisherService) {
+    this.publisher$ = this.publisherService.get();
+    this.publisher$.subscribe((publisher) => {
+      this.publishers = publisher;
+    });
+
     this.bookSeriesId = route.snapshot.params['id'];
 
     this.bookSeries$ = this.bookSeriesService.getById(this.bookSeriesId);
@@ -37,9 +47,15 @@ export class BookSeriesEditComponent implements OnInit {
   ngOnInit() {
   }
 
+  searchPublisher(event) {
+    this.publisherSearchResult = this.publishers
+      .filter(publisher => publisher.name.indexOf(event.query) > -1);
+  }
+
   createForm() {
     this.bookSeriesForm = this.fb.group({
       name: '',
+      publisher: [{}, Validators.required],
     });
   }
 
@@ -50,6 +66,7 @@ export class BookSeriesEditComponent implements OnInit {
   rebuildForm() {
     this.bookSeriesForm.reset({
       name: this.bookSeries.name,
+      publisher: this.bookSeries.publisher,
     });
   }
 
@@ -91,6 +108,7 @@ export class BookSeriesEditComponent implements OnInit {
     const saveBookSeries: BookSeries = {
       ...this.bookSeries,
       name: formModel.name,
+      publisher: formModel.publisher,
     };
 
     return saveBookSeries;

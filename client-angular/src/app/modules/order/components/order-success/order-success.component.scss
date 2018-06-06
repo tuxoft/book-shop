@@ -3,4 +3,30 @@
 .order-success-wrap {
   margin-top: 170px;
   text-align: center;
+  .order-success {
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 16px;
+    text-align: left;
+    .order-success-icon {
+      background-image: url('../../../../../assets/images/ok.png');
+      background-repeat: no-repeat;
+      margin-right: 20px;
+      height: 91px;
+      width: 98px;
+    }
+    .order-success-main {
+      .order-success-title {
+        font-size: 21px;
+        font-weight: 700;
+        color: #26a9e0;
+        margin: 10px 0;
+      }
+      .order-success-info {
+        font-size: 16px;
+      }
+    }
+  }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { KeycloakService } from 'keycloak-angular';
 
 @Component({
   selector: 'app-profile-menu',
@@ -18,7 +19,7 @@ export class ProfileMenuComponent implements OnInit {
     this._activePath = activePath;
   }
 
-  constructor() { }
+  constructor(private keycloakService: KeycloakService) { }
 
   ngOnInit() {
   }
@@ -31,4 +32,7 @@ export class ProfileMenuComponent implements OnInit {
     return this._activePath === 'info';
   }
 
+  logout() {
+    this.keycloakService.logout(window.location.origin);
+  }
 }
