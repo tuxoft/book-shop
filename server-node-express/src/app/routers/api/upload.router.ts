@@ -32,14 +32,14 @@ router.post('/cover', upload.single('cover'), async (req, res, next) => {
   try {
     const filename = generateFilenameWithOriginalExtension(req.file.originalname);
 
-    const urls = await Promise.all([
+    await Promise.all([
       convertImageAndSave(req.file.buffer, filename, ImageResolution.LOW),
       convertImageAndSave(req.file.buffer, filename, ImageResolution.HIGH),
     ]);
 
     // Нужно вернуть клиенту url "маленькой" картинки (ImageResolution.LOW),
     // т.к. в БД должны содержаться url "маленьких" картинок
-    res.send(JSON.stringify(urls[0]));
+    res.send(JSON.stringify(filename));
 
   } catch (err) {
     next(err);
@@ -61,7 +61,7 @@ function convertImageAndSave(src: string | Buffer,
     .then(image => image.resize(params.width, Jimp.AUTO).quality(quality))
     .then(image => new Promise(
       (res, rej) => image.write(`${params.path}/${filename}`, (err, ret) =>
-          err ? rej(err) : res(`${params.uri}/${filename}`),
+        err ? rej(err) : res(`${params.uri}/${filename}`),
       ),
     ));
 }
@@ -71,13 +71,13 @@ function getParamsForImageResolution(resolution: ImageResolution) {
     case ImageResolution.HIGH:
       return {
         uri: '/files/covers/high-resolution',
-        path:'./storage/files/covers/high-resolution',
+        path: './storage/files/covers/high-resolution',
         width: 512,
       };
     case ImageResolution.LOW:
       return {
         uri: '/files/covers/low-resolution',
-        path:'./storage/files/covers/low-resolution',
+        path: './storage/files/covers/low-resolution',
         width: 140,
       };
     default:

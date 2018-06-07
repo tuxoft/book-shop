@@ -1,4 +1,12 @@
-import { Column, Entity, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  AfterLoad,
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Category } from './category';
 import { Author } from './author';
 import { Publisher } from './publisher';
@@ -29,6 +37,9 @@ export class Book {
   authors: Author[];
 
   @Column()
+  cover: string;
+
+  // Вычислимое поле
   coverUrl: string;
 
   @Column({ select: false })
@@ -81,4 +92,9 @@ export class Book {
   @ManyToMany(type => Category, category => category.books)
   @JoinTable()
   categories: Category[];
+
+  @AfterLoad()
+  afterLoad() {
+    this.coverUrl = this.cover ? `files/covers/low-resolution/${this.cover}` : undefined;
+  }
 }

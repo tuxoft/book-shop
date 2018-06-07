@@ -10,9 +10,7 @@ const router = express.Router();
 export default router;
 
 const setupCoverUrlToHighResolution = (book: Book) => {
-  if (book && book.coverUrl) {
-    book.coverUrl = book.coverUrl.replace('low-resolution', 'high-resolution');
-  }
+  book.coverUrl = book.cover ? `files/covers/high-resolution/${book.cover}` : undefined;
 };
 
 router.get('/', async (req, res, next) => {
@@ -71,7 +69,7 @@ router.get('/:id', async (req, res, next) => {
 
     const book = await getBookRepository().createQueryBuilder('b')
       .select([
-        'b.id', 'b.title', 'b.price', 'b.coverUrl', 'b.articul', 'b.inStock',
+        'b.id', 'b.title', 'b.price', 'b.cover', 'b.articul', 'b.inStock',
         'b.publicationYear', 'b.pageCount', 'b.isbn', 'b.udc', 'b.bbk',
         'b.circulation', 'b.dimensions', 'b.weight', 'b.coverType', 'b.ageLimit', 'b.description',
       ])
