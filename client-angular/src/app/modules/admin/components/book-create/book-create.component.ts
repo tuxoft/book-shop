@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, OnChanges, ViewEncapsulation, ViewChild } from '@angular/core';
 import { BookService } from '../../../../services/rest/book.service';
 import { StoreState } from '../../../../store/reducers';
 import { Store } from '@ngrx/store';
@@ -17,6 +17,7 @@ import { BookSeries } from '../../../../model/book-series';
 import { TreeNode } from 'primeng/api';
 import { CategoryService } from '../../../../services/rest/category.service';
 import { Category } from '../../../../model/category';
+import { UploadService } from '../../../../services/rest/upload.service';
 
 @Component({
   selector: 'app-book-create',
@@ -25,6 +26,8 @@ import { Category } from '../../../../model/category';
   encapsulation: ViewEncapsulation.None,
 })
 export class BookCreateComponent implements OnInit {
+  @ViewChild('fileUploader')
+  fileUploader: any;
 
   bookId: number;
   book: Book = {};
@@ -45,6 +48,8 @@ export class BookCreateComponent implements OnInit {
   categories: Category[];
   categoryNodes: TreeNode[];
   selectedCategoryNodes: TreeNode[];
+  fileToUpload: File = null;
+  fileUrl: string;
 
   constructor(private bookService: BookService,
               private authorService: AuthorService,
@@ -54,7 +59,8 @@ export class BookCreateComponent implements OnInit {
               private notificationService: NotificationsService,
               private publisherService: PublisherService,
               private bookSeriesService: BookSeriesService,
-              private categoryService: CategoryService) {
+              private categoryService: CategoryService,
+              private fileUploadService: UploadService) {
 
     this.authors$ = this.authorService.get();
     this.authors$.subscribe((authors) => {
@@ -80,6 +86,26 @@ export class BookCreateComponent implements OnInit {
     });
 
     this.createForm();
+  }
+
+  uploadedFiles: any[] = [];
+
+  uploadFileToActivity($event: any) {
+    this.fileUploadService.postFile($event.files[0]).subscribe(
+      (data) => {
+        this.notificationService.notify('success', '', 'Обложка успешно загружена');
+        this.bookForm.patchValue({
+          coverUrl: data,
+        });
+        this.bookForm.markAsDirty();
+        this.uploadedFiles.push($event.files[0]);
+        this.fileUrl = data;
+
+        return data;
+      },
+      (error) => {
+        this.notificationService.notify('error', '', 'Произошла ошибка при загрузке');
+      });
   }
 
   ngOnInit() {
@@ -195,9 +221,15 @@ export class BookCreateComponent implements OnInit {
       publicationYear: this.book.publicationYear,
       articul: this.book.articul,
       ageLimit: this.book.ageLimit,
-      coverUrl: '',
+      coverUrl: this.book.coverUrl,
       description: this.book.description,
     });
+    this.clearUploads();
+  }
+
+  clearUploads() {
+    this.uploadedFiles = [];
+    this.fileUploader.clear();
   }
 
   onSubmit() {

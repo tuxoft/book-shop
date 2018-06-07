@@ -1,8 +1,6 @@
-import { Component, OnInit, OnChanges, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, OnChanges, ViewEncapsulation, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BookService } from '../../../../services/rest/book.service';
-import { StoreState } from '../../../../store/reducers';
-import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/zip';
 import { Book } from '../../../../model/book';
@@ -18,6 +16,8 @@ import { BookSeries } from '../../../../model/book-series';
 import { TreeNode } from 'primeng/api';
 import { CategoryService } from '../../../../services/rest/category.service';
 import { Category } from '../../../../model/category';
+import { UploadService } from '../../../../services/rest/upload.service';
+import { AUTOCOMPLETE_VALUE_ACCESSOR } from 'primeng/primeng';
 
 @Component({
   selector: 'app-book-edit',
@@ -26,6 +26,9 @@ import { Category } from '../../../../model/category';
   encapsulation: ViewEncapsulation.None,
 })
 export class BookEditComponent implements OnInit, OnChanges {
+
+  @ViewChild('fileUploader')
+  fileUploader: any;
 
   bookId: number;
   book$: Observable<Book>;
@@ -47,17 +50,19 @@ export class BookEditComponent implements OnInit, OnChanges {
   categories: Category[];
   categoryNodes: TreeNode[];
   selectedCategoryNodes: TreeNode[];
+  fileToUpload: File = null;
+  fileUrl: string;
 
   constructor(route: ActivatedRoute,
               private bookService: BookService,
               private authorService: AuthorService,
-              private store: Store<StoreState>,
               private fb: FormBuilder,
               private nameService: NameService,
               private notificationService: NotificationsService,
               private publisherService: PublisherService,
               private bookSeriesService: BookSeriesService,
-              private categoryService: CategoryService) {
+              private categoryService: CategoryService,
+              private fileUploadService: UploadService) {
     this.bookId = route.snapshot.params['id'];
 
     this.book$ = this.bookService.getFullBook(this.bookId);
@@ -117,6 +122,26 @@ export class BookEditComponent implements OnInit, OnChanges {
       });
 
     this.createForm();
+  }
+
+  uploadedFiles: any[] = [];
+
+  uploadFileToActivity($event: any) {
+    this.fileUploadService.postFile($event.files[0]).subscribe(
+      (data) => {
+        this.notificationService.notify('success', '', 'Обложка успешно загружена');
+        this.bookForm.patchValue({
+          coverUrl: data,
+        });
+        this.bookForm.markAsDirty();
+        this.uploadedFiles.push($event.files[0]);
+        this.fileUrl = data;
+
+        return data;
+      },
+      (error) => {
+        this.notificationService.notify('error', '', 'Произошла ошибка при загрузке');
+      });
   }
 
   ngOnInit() {
@@ -203,6 +228,7 @@ export class BookEditComponent implements OnInit, OnChanges {
       articul: '',
       ageLimit: '',
       description: '',
+      coverUrl: '',
     });
   }
 
@@ -232,7 +258,14 @@ export class BookEditComponent implements OnInit, OnChanges {
       articul: this.book.articul,
       ageLimit: this.book.ageLimit,
       description: this.book.description,
+      coverUrl: this.book.coverUrl,
     });
+    this.clearUploads();
+  }
+
+  clearUploads() {
+    this.uploadedFiles = [];
+    this.fileUploader.clear();
   }
 
   onSubmit() {
@@ -293,6 +326,7 @@ export class BookEditComponent implements OnInit, OnChanges {
       articul: formModel.articul,
       ageLimit: formModel.ageLimit,
       description: formModel.description,
+      coverUrl: formModel.coverUrl,
     };
 
     return saveBook;

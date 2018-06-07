@@ -9,6 +9,19 @@
     <button pButton type="button" (click)="revert()"
             [disabled]="bookForm.pristine" class="ui-button-danger" label="Отмена"></button>
     <div class="form-group">
+      <label class="field-label">Редактирование обложки:
+        <p-fileUpload #fileUploader name="demo[]" customUpload="true" auto="true" (onRemove)="clearUploads()"
+                      (uploadHandler)="uploadFileToActivity($event)" previewWidth="140"
+                      accept="image/*.jpg" maxFileSize="1000000" showCancelButton="false"
+                      chooseLabel="Загрузить новую обложку" uploadLabel="Загрузить" cancelLabel="Отмена">
+          <ng-template pTemplate="content">
+            <img *ngIf="!(uploadedFiles.length)" src="{{book.coverUrl}}">
+            <div *ngIf="(uploadedFiles.length)">
+              Для применения изменений необходимо нажать Сохранить.
+            </div>
+          </ng-template>
+        </p-fileUpload>
+      </label>
       <label class="field-label">Название:
         <input pInputText class="form-control" formControlName="title">
       </label>
@@ -43,9 +56,7 @@
                         field="name"></p-autoComplete>
       </label>
       <label class="field-label">Категории:
-        <!-- <p-treeTable formControlName="categories" -->
-          <p-treeTable
-                     selectionMode="checkbox"
+        <p-treeTable selectionMode="checkbox"
                      [value]="categoryNodes"
                      styleClass="formControl"
                      [(selection)]="selectedCategoryNodes"

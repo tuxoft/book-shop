@@ -21,6 +21,8 @@ import { PublisherCreateComponent } from './components/publisher-create/publishe
 import { BookSeriesListComponent } from './components/book-series-list/book-series-list.component';
 import { BookSeriesEditComponent } from './components/book-series-edit/book-series-edit.component';
 import { BookSeriesCreateComponent } from './components/book-series-create/book-series-create.component';
+import { UploadService } from '../../services/rest/upload.service';
+import { FileUploadModule } from 'primeng/fileupload';
 
 @NgModule({
   imports: [
@@ -33,6 +35,7 @@ import { BookSeriesCreateComponent } from './components/book-series-create/book-
     AutoCompleteModule,
     TreeTableModule,
     TableModule,
+    FileUploadModule,
   ],
   declarations: [
     BookEditComponent,
@@ -49,6 +52,9 @@ import { BookSeriesCreateComponent } from './components/book-series-create/book-
     BookSeriesListComponent,
     BookSeriesEditComponent,
     BookSeriesCreateComponent,
+  ],
+  providers: [
+    UploadService,
   ],
 })
 export class AdminModule { }

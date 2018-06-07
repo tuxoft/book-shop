@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../../services/rest/user.service';
-import { KeycloakService } from 'keycloak-angular';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../../../../model/user';
 import { Order } from '../../../../model/order';
@@ -16,7 +15,7 @@ export class ProfileInfoComponent implements OnInit {
   user: User = {};
   orders$: Observable<Order[]>;
 
-  constructor(private userService: UserService, private keycloakService: KeycloakService) {
+  constructor(private userService: UserService) {
     this.user$ = this.userService.getUser();
     this.user$.subscribe((user) => {
       this.user = user;
