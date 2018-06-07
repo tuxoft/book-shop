@@ -32,14 +32,15 @@ router.post('/cover', upload.single('cover'), async (req, res, next) => {
   try {
     const filename = generateFilenameWithOriginalExtension(req.file.originalname);
 
-    await Promise.all([
+    const urls = await Promise.all([
       convertImageAndSave(req.file.buffer, filename, ImageResolution.LOW),
       convertImageAndSave(req.file.buffer, filename, ImageResolution.HIGH),
     ]);
 
-    // Нужно вернуть клиенту url "маленькой" картинки (ImageResolution.LOW),
-    // т.к. в БД должны содержаться url "маленьких" картинок
-    res.send(JSON.stringify(filename));
+    res.send({
+      cover: filename,
+      coverUrl: urls[1]
+    });
 
   } catch (err) {
     next(err);
