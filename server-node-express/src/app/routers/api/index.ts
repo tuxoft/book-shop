@@ -26,9 +26,9 @@ export default router;
   { path: '/bookSeries', router: bookSeriesRouter, protect: true },
   { path: '/selections', router: selectionsRouter, protect: true },
   { path: '/search', router: searchRouter, protect: true },
-  { path: '/user', router: userRouter, protect: false },
+  { path: '/user', router: userRouter, protect: true },
   { path: '/user/orders', router: ordersRouter, protect: false },
-  { path: '/upload', router: uploadRouter, protect: false },
+  { path: '/upload', router: uploadRouter, protect: true },
 
 ].forEach((e) => {
   if (e.protect) {
