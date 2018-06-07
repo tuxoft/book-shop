@@ -7,6 +7,7 @@ import { ProfileMenuComponent } from './components/profile-menu/profile-menu.com
 import { RouterModule } from '@angular/router';
 import { routes } from './profile.routes';
 import { TableModule } from 'primeng/table';
+import { ProfileOrderDetailComponent } from './components/profile-order-detail/profile-order-detail.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { TableModule } from 'primeng/table';
     ProfileOrdersComponent,
     ProfileInfoComponent,
     ProfileMenuComponent,
+    ProfileOrderDetailComponent,
   ],
 })
 export class ProfileModule { }

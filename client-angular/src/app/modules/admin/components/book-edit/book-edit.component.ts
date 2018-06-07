@@ -131,7 +131,7 @@ export class BookEditComponent implements OnInit, OnChanges {
       (data) => {
         this.notificationService.notify('success', '', 'Обложка успешно загружена');
         this.bookForm.patchValue({
-          coverUrl: data,
+          cover: data,
         });
         this.bookForm.markAsDirty();
         this.uploadedFiles.push($event.files[0]);
@@ -228,7 +228,7 @@ export class BookEditComponent implements OnInit, OnChanges {
       articul: '',
       ageLimit: '',
       description: '',
-      coverUrl: '',
+      cover: '',
     });
   }
 
@@ -258,7 +258,7 @@ export class BookEditComponent implements OnInit, OnChanges {
       articul: this.book.articul,
       ageLimit: this.book.ageLimit,
       description: this.book.description,
-      coverUrl: this.book.coverUrl,
+      cover: this.book.cover,
     });
     this.clearUploads();
   }
@@ -326,7 +326,7 @@ export class BookEditComponent implements OnInit, OnChanges {
       articul: formModel.articul,
       ageLimit: formModel.ageLimit,
       description: formModel.description,
-      coverUrl: formModel.coverUrl,
+      cover: formModel.cover,
     };
 
     return saveBook;

@@ -112,4 +112,8 @@ export interface Book {
    * URL обложки книги.
    */
   coverUrl?: string;
+  /**
+   * URL обложки книги.
+   */
+  cover?: string;
 }

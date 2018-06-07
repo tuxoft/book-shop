@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, ViewEncapsulation, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
 import { BookService } from '../../../../services/rest/book.service';
 import { StoreState } from '../../../../store/reducers';
 import { Store } from '@ngrx/store';
@@ -95,7 +95,7 @@ export class BookCreateComponent implements OnInit {
       (data) => {
         this.notificationService.notify('success', '', 'Обложка успешно загружена');
         this.bookForm.patchValue({
-          coverUrl: data,
+          cover: data,
         });
         this.bookForm.markAsDirty();
         this.uploadedFiles.push($event.files[0]);
@@ -191,7 +191,7 @@ export class BookCreateComponent implements OnInit {
       publicationYear: '',
       articul: '',
       ageLimit: '',
-      coverUrl: '',
+      cover: '',
       description: '',
     });
   }
@@ -221,7 +221,7 @@ export class BookCreateComponent implements OnInit {
       publicationYear: this.book.publicationYear,
       articul: this.book.articul,
       ageLimit: this.book.ageLimit,
-      coverUrl: this.book.coverUrl,
+      cover: this.book.cover,
       description: this.book.description,
     });
     this.clearUploads();
@@ -289,7 +289,7 @@ export class BookCreateComponent implements OnInit {
       publicationYear: formModel.publicationYear,
       articul: formModel.articul,
       ageLimit: formModel.ageLimit,
-      coverUrl: formModel.coverUrl,
+      cover: formModel.cover,
       description: formModel.description,
     };
 
