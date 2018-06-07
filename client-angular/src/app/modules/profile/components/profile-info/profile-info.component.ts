@@ -13,7 +13,7 @@ import { Order } from '../../../../model/order';
 export class ProfileInfoComponent implements OnInit {
 
   user$: Observable<User>;
-  user: User;
+  user: User = {};
   orders$: Observable<Order[]>;
 
   constructor(private userService: UserService, private keycloakService: KeycloakService) {

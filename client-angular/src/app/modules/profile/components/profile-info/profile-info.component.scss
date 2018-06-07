@@ -21,3 +21,18 @@
   cursor: pointer;
   text-decoration: underline;
 }
+
+.personal-data-container {
+  margin-left: 12px;
+  .short-personal-label {
+    color: gray;
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 12px;
+  }
+
+  .short-personal-content {
+    font-size: 15px;
+    color: #333;
+  }
+}

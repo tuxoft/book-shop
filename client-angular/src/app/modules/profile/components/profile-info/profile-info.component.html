@@ -4,11 +4,37 @@
     Мой профиль
   </h1>
   <h2 class="profile-subheader">
-    <i class="fa fa-id-badge"></i>
+    <i class="fa fa-fw fa-id-badge"></i>
     Личные данные
   </h2>
+  <div class="personal-data-container">
+    <div class="short-personal-label" *ngIf="user.userName">
+      Логин
+    </div>
+    <div class="short-personal-content">
+      {{user.userName}}
+    </div>
+    <div class="short-personal-label" *ngIf="user.firstName">
+      Имя
+    </div>
+    <div class="short-personal-content">
+      {{user.firstName}}
+    </div>
+    <div class="short-personal-label" *ngIf="user.lastName">
+      Фамилия
+    </div>
+    <div class="short-personal-content">
+      {{user.lastName}}
+    </div>
+    <div class="short-personal-label" *ngIf="user.email">
+      Эл. почта
+    </div>
+    <div class="short-personal-content">
+      {{user.email}}
+    </div>
+  </div>
   <h2 class="profile-subheader">
-    <i class="fa fa-shoppping-cart"></i>
+    <i class="fa fa-fw fa-shopping-cart"></i>
     Активные заказы
   </h2>
   <p-table [value]="orders$ | async" *ngIf="(orders$ | async)?.length !== 0">
