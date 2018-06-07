@@ -39,7 +39,7 @@ router.post('/cover', upload.single('cover'), async (req, res, next) => {
 
     // Нужно вернуть клиенту url "маленькой" картинки (ImageResolution.LOW),
     // т.к. в БД должны содержаться url "маленьких" картинок
-    res.send(urls[0]);
+    res.send(JSON.stringify(urls[0]));
 
   } catch (err) {
     next(err);
