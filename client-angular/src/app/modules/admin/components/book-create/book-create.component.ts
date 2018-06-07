@@ -95,11 +95,11 @@ export class BookCreateComponent implements OnInit {
       (data) => {
         this.notificationService.notify('success', '', 'Обложка успешно загружена');
         this.bookForm.patchValue({
-          cover: data,
+          cover: data.cover,
         });
         this.bookForm.markAsDirty();
         this.uploadedFiles.push($event.files[0]);
-        this.fileUrl = data;
+        this.fileUrl = data.cover;
 
         return data;
       },
