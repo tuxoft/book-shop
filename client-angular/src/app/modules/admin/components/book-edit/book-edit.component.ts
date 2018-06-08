@@ -17,7 +17,6 @@ import { TreeNode } from 'primeng/api';
 import { CategoryService } from '../../../../services/rest/category.service';
 import { Category } from '../../../../model/category';
 import { UploadService } from '../../../../services/rest/upload.service';
-import { AUTOCOMPLETE_VALUE_ACCESSOR } from 'primeng/primeng';
 
 @Component({
   selector: 'app-book-edit',
@@ -51,7 +50,6 @@ export class BookEditComponent implements OnInit, OnChanges {
   categoryNodes: TreeNode[];
   selectedCategoryNodes: TreeNode[];
   fileToUpload: File = null;
-  fileUrl: string;
 
   constructor(route: ActivatedRoute,
               private bookService: BookService,
@@ -132,10 +130,10 @@ export class BookEditComponent implements OnInit, OnChanges {
         this.notificationService.notify('success', '', 'Обложка успешно загружена');
         this.bookForm.patchValue({
           cover: data.cover,
+          coverUrl: data.coverUrl,
         });
         this.bookForm.markAsDirty();
         this.uploadedFiles.push($event.files[0]);
-        this.fileUrl = data.cover;
 
         return data;
       },
@@ -229,6 +227,7 @@ export class BookEditComponent implements OnInit, OnChanges {
       ageLimit: '',
       description: '',
       cover: '',
+      coverUrl: '',
     });
   }
 
@@ -259,6 +258,7 @@ export class BookEditComponent implements OnInit, OnChanges {
       ageLimit: this.book.ageLimit,
       description: this.book.description,
       cover: this.book.cover,
+      coverUrl: this.book.coverUrl,
     });
     this.clearUploads();
   }
@@ -327,6 +327,7 @@ export class BookEditComponent implements OnInit, OnChanges {
       ageLimit: formModel.ageLimit,
       description: formModel.description,
       cover: formModel.cover,
+      coverUrl: formModel.coverUrl,
     };
 
     return saveBook;

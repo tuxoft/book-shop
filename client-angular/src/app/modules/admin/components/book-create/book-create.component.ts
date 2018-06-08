@@ -49,11 +49,9 @@ export class BookCreateComponent implements OnInit {
   categoryNodes: TreeNode[];
   selectedCategoryNodes: TreeNode[];
   fileToUpload: File = null;
-  fileUrl: string;
 
   constructor(private bookService: BookService,
               private authorService: AuthorService,
-              private store: Store<StoreState>,
               private fb: FormBuilder,
               private nameService: NameService,
               private notificationService: NotificationsService,
@@ -96,10 +94,10 @@ export class BookCreateComponent implements OnInit {
         this.notificationService.notify('success', '', 'Обложка успешно загружена');
         this.bookForm.patchValue({
           cover: data.cover,
+          coverUrl: data.coverUrl,
         });
         this.bookForm.markAsDirty();
         this.uploadedFiles.push($event.files[0]);
-        this.fileUrl = data.cover;
 
         return data;
       },
@@ -192,6 +190,7 @@ export class BookCreateComponent implements OnInit {
       articul: '',
       ageLimit: '',
       cover: '',
+      coverUrl: '',
       description: '',
     });
   }
@@ -222,6 +221,7 @@ export class BookCreateComponent implements OnInit {
       articul: this.book.articul,
       ageLimit: this.book.ageLimit,
       cover: this.book.cover,
+      coverUrl: this.book.coverUrl,
       description: this.book.description,
     });
     this.clearUploads();
@@ -290,6 +290,7 @@ export class BookCreateComponent implements OnInit {
       articul: formModel.articul,
       ageLimit: formModel.ageLimit,
       cover: formModel.cover,
+      coverUrl: formModel.coverUrl,
       description: formModel.description,
     };
 
