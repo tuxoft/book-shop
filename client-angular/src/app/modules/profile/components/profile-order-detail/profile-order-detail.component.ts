@@ -3,6 +3,8 @@ import { UserService } from '../../../../services/rest/user.service';
 import { Observable } from 'rxjs';
 import { Order } from '../../../../model/order';
 import { ActivatedRoute } from '@angular/router';
+import { NameService } from '../../../../services/common/name.service';
+import { Author } from '../../../../model/author';
 
 @Component({
   selector: 'app-profile-order-detail',
@@ -16,7 +18,9 @@ export class ProfileOrderDetailComponent implements OnInit {
 
   order: Order = {};
 
-  constructor(private userService: UserService, private acivatedRoute: ActivatedRoute) {
+  constructor(private userService: UserService,
+              private acivatedRoute: ActivatedRoute,
+              private nameService: NameService) {
     this.orderId = this.acivatedRoute.snapshot.params['id'];
     this.order$ = this.userService.getOrderById(this.orderId);
     this.order$.subscribe((order) => {
@@ -27,4 +31,7 @@ export class ProfileOrderDetailComponent implements OnInit {
   ngOnInit() {
   }
 
+  getFullname(author: Author) {
+    return this.nameService.getFullname(author);
+  }
 }
