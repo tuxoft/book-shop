@@ -39,7 +39,7 @@ router.post('/cover', upload.single('cover'), async (req, res, next) => {
 
     res.send({
       cover: filename,
-      coverUrl: urls[1]
+      coverUrl: urls[1],
     });
 
   } catch (err) {
