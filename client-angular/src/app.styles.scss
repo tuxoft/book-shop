@@ -7,6 +7,9 @@ $weightWidth: 100px;
 $totalWidth: 80px;
 $checkboxWidth: 20px;
 $mainColor: #26A9E0;
+$orderProductWidthSmall: 300px;
+$orderProductWidthLarge: 660px;
+
 
 @mixin respond-to($media) {
   @if $media == handhelds {
@@ -79,4 +82,18 @@ input[type=number]::-webkit-inner-spin-button {
   border-color: #fff;
   box-shadow: 0 0 5px 0 rgba(0,0,0,.3);
   vertical-align: top;
+}
+
+h1 {
+  font-size: 24px;
+  margin: 0 0 20px;
+}
+
+h2 {
+  font-size: 21px;
+  margin: 0 0 1.2em;
+}
+
+.main-color {
+  color: $mainColor;
 }

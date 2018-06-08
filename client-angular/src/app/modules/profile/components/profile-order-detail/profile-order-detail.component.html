@@ -1,3 +1,10 @@
-<p>
-  profile-order-detail works!
-</p>
+<div>
+  <h1 class="main-color">Заказ №{{orderId}}</h1>
+  <app-order-items [items]="order.items ? order.items : []"></app-order-items>
+  <div class="order-total-container">
+    <div class="order-total">
+      <app-order-total [orderItems]="order.items ? order.items : []"></app-order-total>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>

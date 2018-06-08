@@ -1,5 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { OrderItem } from '../../../../model/models';
+import { Component, OnInit } from '@angular/core';
 import * as CartSelectors from '../../../../store/cart/cart.selectors';
 import { Store } from '@ngrx/store';
 import { StoreState } from '../../../../store/reducers';

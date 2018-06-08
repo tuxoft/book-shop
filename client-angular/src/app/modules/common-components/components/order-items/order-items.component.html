@@ -1,0 +1,36 @@
+<div class="order-items-header">
+  <div class="order-items-header-product">Товар</div>
+  <div class="order-items-header-count">Количество</div>
+  <div class="order-items-header-weight">Вес</div>
+  <div class="order-items-header-total">Сумма</div>
+</div>
+<div class="order-items-container">
+  <div *ngFor="let orderItem of items" class="order-item">
+    <div class="order-items">
+      <div class="order-items-product">
+        <div class="order-items-product-img-container">
+          <a routerLink="/catalog/book/{{orderItem.book.id}}">
+            <img src="{{orderItem.book.coverUrl}}" class="order-items-product-img" />
+          </a>
+        </div>
+        <div class="order-items-product-title-container">
+          <div class="order-items-product-title">
+            <span class="order-items-product-book-title">
+              {{orderItem.book.title}}
+            </span>
+            <span>
+              {{getAuthorsAsString(orderItem.book.authors)}}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="order-items-count">
+        {{orderItem.count}}
+      </div>
+      <div class="order-items-weight"></div>
+      <div class="order-items-total">
+        {{orderItem.book.price * orderItem.count}} ₽
+      </div>
+    </div>
+  </div>
+</div>

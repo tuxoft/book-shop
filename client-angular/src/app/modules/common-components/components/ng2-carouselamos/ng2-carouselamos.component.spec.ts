@@ -6,7 +6,7 @@ import {
 
 import { By } from '@angular/platform-browser';
 
-import { CarouselModule } from '../../';
+import { CommonComponentsModule } from '../../';
 import { Ng2Carouselamos } from './ng2-carouselamos.component';
 
 describe('Ng2Carouselamos', () => {
@@ -18,7 +18,7 @@ describe('Ng2Carouselamos', () => {
   beforeEach(
     async(() => {
       TestBed.configureTestingModule({
-        imports: [CarouselModule],
+        imports: [CommonComponentsModule],
       }).compileComponents().then(() => { /* Don't do anything */ });
     }),
   );

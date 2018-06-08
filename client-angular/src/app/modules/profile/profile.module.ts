@@ -8,12 +8,14 @@ import { RouterModule } from '@angular/router';
 import { routes } from './profile.routes';
 import { TableModule } from 'primeng/table';
 import { ProfileOrderDetailComponent } from './components/profile-order-detail/profile-order-detail.component';
+import { CommonComponentsModule } from '../common-components';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     TableModule,
+    CommonComponentsModule,
   ],
   declarations: [
     ProfilePageComponent,

@@ -4,6 +4,11 @@ import { Order } from '../../../../model/order';
 import { UserService } from '../../../../services/rest/user.service';
 import { NotificationsService } from '../../../../services/common/notification.service';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { StoreState } from '../../../../store/reducers';
+import * as CartSelectors from '../../../../../app/store/cart/cart.selectors';
+import { Observable } from 'rxjs';
+import { OrderItem } from '../../../../model/models';
 
 @Component({
   selector: 'app-order',
@@ -13,11 +18,15 @@ import { Router } from '@angular/router';
 })
 export class OrderComponent implements OnInit {
 
+  orderItems$: Observable<OrderItem[]>;
+
   constructor(private fb: FormBuilder,
               private userService: UserService,
               private notificationService: NotificationsService,
-              private router: Router) {
+              private router: Router,
+              private store: Store<StoreState>) {
     this.createForm();
+    this.orderItems$ = this.store.select(CartSelectors.getCartOrderItems);
   }
 
   orderForm: FormGroup;

@@ -19,6 +19,10 @@ export class UserService {
     return this.http.get<Order[]>(this.orderUrl);
   }
 
+  getOrderById(orderId: number): Observable<Order> {
+    return this.http.get<Order>(this.orderUrl + '/' + orderId);
+  }
+
   getUser(): Observable<User> {
     return this.http.get<User>(this.userUrl);
   }

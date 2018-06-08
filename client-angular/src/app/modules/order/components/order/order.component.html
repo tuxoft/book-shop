@@ -71,7 +71,7 @@
     </div>
     <div class="order-info">
       <div class="order-info-title">Детали заказа</div>
-      <app-order-total></app-order-total>
+      <app-order-total [orderItems]="orderItems$ | async"></app-order-total>
     </div>
     <button pButton type="submit"
             [disabled]="orderForm.pristine || !orderForm.valid"

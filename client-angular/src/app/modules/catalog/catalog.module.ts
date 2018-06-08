@@ -6,7 +6,7 @@ import { routes } from './catalog.routes';
 import { CatalogComponent } from './components/catalog/catalog.component';
 import { ButtonModule } from 'primeng/primeng';
 import { CatalogBooksComponent } from './components/catalog-books/catalog-books.component';
-import { CarouselModule } from '../carousel/carousel.module';
+import { CommonComponentsModule } from '../common-components/common-components.module';
 import { ProductWideCardComponent } from './components/product-wide-card/product-wide-card.component';
 
 @NgModule({
@@ -14,7 +14,7 @@ import { ProductWideCardComponent } from './components/product-wide-card/product
     CommonModule,
     RouterModule.forChild(routes),
     ButtonModule,
-    CarouselModule,
+    CommonComponentsModule,
   ],
   declarations: [
     BookDetailComponent,

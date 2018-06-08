@@ -3,6 +3,7 @@ import { ProfilePageComponent } from './components/profile-page/profile-page.com
 import { ProfileOrdersComponent } from './components/profile-orders/profile-orders.component';
 import { ProfileInfoComponent } from './components/profile-info/profile-info.component';
 import { AppAuthGuard } from '../../services/auth/auth-guard';
+import { ProfileOrderDetailComponent } from './components/profile-order-detail/profile-order-detail.component';
 
 export const routes: Routes = [
   {
@@ -17,6 +18,10 @@ export const routes: Routes = [
       {
         path: 'info',
         component: ProfileInfoComponent,
+      },
+      {
+        path: 'order/detail/:id',
+        component: ProfileOrderDetailComponent,
       },
     ],
   },

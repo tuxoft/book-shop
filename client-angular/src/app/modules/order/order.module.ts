@@ -5,8 +5,8 @@ import { routes } from './order.routes';
 import { OrderComponent } from './components/order/order.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule, InputTextModule, InputMaskModule } from 'primeng/primeng';
-import { OrderTotalComponent } from './components/order-total/order-total.component';
 import { OrderSuccessComponent } from './components/order-success/order-success.component';
+import { CommonComponentsModule } from '../common-components';
 
 @NgModule({
   imports: [
@@ -16,7 +16,8 @@ import { OrderSuccessComponent } from './components/order-success/order-success.
     ButtonModule,
     InputTextModule,
     InputMaskModule,
+    CommonComponentsModule,
   ],
-  declarations: [OrderComponent, OrderTotalComponent, OrderSuccessComponent],
+  declarations: [OrderComponent, OrderSuccessComponent],
 })
 export class OrderModule { }
