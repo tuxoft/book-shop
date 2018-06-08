@@ -11,6 +11,7 @@ import { Order } from '../../orm/entity/order';
 import { getUserOrCreateIfNotExists } from './user.router';
 import { ArrayNotSupportedClientError } from '../../errors/client.errors';
 import { BusinessLogicError } from '../../errors/businesslogic.errors';
+import { UnauthorizedAccessSecurityError } from '../../errors/security.errors';
 
 const router = express.Router();
 
@@ -23,6 +24,25 @@ router.get('/', keycloak.protect(), async (req, res, next) => {
     const orders = await getOrderRepository().find({ where: { user: { id: userUUID } } });
 
     res.send(orders);
+
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get('/:id', keycloak.protect(), async (req, res, next) => {
+  try {
+    const orderId: string = req.params.id;
+    const userUUID = getUserUUID(req);
+
+    const order = await getOrderRepository().findOneOrFail(orderId);
+
+    if (order.userId !== userUUID) {
+      next(new UnauthorizedAccessSecurityError());
+      return;
+    }
+
+    res.send(order);
 
   } catch (err) {
     next(err);
