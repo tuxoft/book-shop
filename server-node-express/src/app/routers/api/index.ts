@@ -3,6 +3,7 @@ import booksRouter from './books.router';
 import authorsRouter from './authors.router';
 import cartRouter from './cart.router';
 import categoriesRouter from './categories.router';
+import checkoutRouter from './checkout.router';
 import publishersRouter from './publishers.router';
 import bookSeriesRouter from './bookSeries.router';
 import selectionsRouter from './selections.router';
@@ -22,6 +23,7 @@ export default router;
   { path: '/authors', router: authorsRouter, protect: true },
   { path: '/cart', router: cartRouter, protect: false },
   { path: '/categories', router: categoriesRouter, protect: true },
+  { path: '/checkout', router: checkoutRouter, protect: false },
   { path: '/publishers', router: publishersRouter, protect: true },
   { path: '/bookSeries', router: bookSeriesRouter, protect: true },
   { path: '/selections', router: selectionsRouter, protect: true },
