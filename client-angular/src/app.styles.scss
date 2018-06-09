@@ -10,7 +10,6 @@ $mainColor: #26A9E0;
 $orderProductWidthSmall: 300px;
 $orderProductWidthLarge: 660px;
 
-
 @mixin respond-to($media) {
   @if $media == handhelds {
     @media only screen and (max-width: $small) {
@@ -32,7 +31,7 @@ $orderProductWidthLarge: 660px;
 .container {
   margin: 0 auto;
   width: $small;
-  @include respond-to(handhelds) { width: $small ;}
+  @include respond-to(handhelds) { width: $small; }
   @include respond-to(medium-screens) { width: $small; }
   @include respond-to(wide-screens) { width: $large - 60; }
 }
@@ -43,7 +42,6 @@ $orderProductWidthLarge: 660px;
 
 body, html {
   margin: 0;
-  // height: 100%;
 }
 
 .btn-normal {
@@ -91,9 +89,22 @@ h1 {
 
 h2 {
   font-size: 21px;
-  margin: 0 0 1.2em;
+  margin: 0 0 15px;
 }
 
 .main-color {
   color: $mainColor;
+}
+
+.pull-right {
+  float: right;
+}
+
+.small-button {
+  font-size: 15px;
+}
+
+.large-button {
+  font-size: 17px;
+  font-weight: 700;
 }

@@ -1,39 +1,58 @@
 <div>
-  <h1 class="main-color">Заказ №{{orderId}}</h1>
+  <h1 class="main-color">Заказ №{{orderId}}
+    <div class="pull-right small-button">
+      <button pButton type="button"
+              class="ui-button-secondary"
+              label="Отменить заказ"></button>
+    </div>
+  </h1>
   <h2 class="main-color"><i class="fa fa-fw fa-phone"></i> Контактные данные</h2>
-  <div class="short-personal-content">{{getFullname(order.recipient)}}</div>
+  <div class="personal-data-container">
+    <div class="short-personal-content">{{getFullname(order.recipient)}}</div>
+  </div>
   <div class="personal-data-container">
     <div class="personal-data-block">
       <div class="short-personal-label">Электронная почта</div>
-      <div class="short-personal-content">{{order.recipient.email}}</div>
+      <div class="short-personal-content">{{order.recipient ? order.recipient.email : ''}}</div>
     </div>
     <div class="personal-data-block">
       <div class="short-personal-label">Телефон</div>
-      <div class="short-personal-content">{{order.recipient.phoneNumber}}</div>
+      <div class="short-personal-content">{{order.recipient ? order.recipient.phoneNumber : ''}}</div>
     </div>
   </div>
   <h2 class="main-color"><i class="fa fa-fw fa-truck"></i> Доставка</h2>
   <div class="personal-data-container">
     <div class="personal-data-block">
       <div class="short-personal-label">Страна</div>
-      <div class="short-personal-content">{{order.recipient.address.country}}</div>
+      <div class="short-personal-content">{{order.recipient ? order.recipient.address.country : ''}}</div>
     </div>
     <div class="personal-data-block">
       <div class="short-personal-label">Город</div>
-      <div class="short-personal-content">{{order.recipient.address.city}}</div>
+      <div class="short-personal-content">{{order.recipient ? order.recipient.address.city : ''}}</div>
+    </div>
+    <div class="personal-data-block">
+      <div class="short-personal-label">Адрес</div>
+      <div class="short-personal-content">{{order.recipient ? order.recipient.address.street : ''}}</div>
     </div>
     <div class="personal-data-block">
       <div class="short-personal-label">Индекс</div>
-      <div class="short-personal-content">{{order.recipient.address.postalIndex}}</div>
-    </div>
-  </div>
-  <div class="personal-data-container">
-    <div class="personal-data-block">
-      <div class="short-personal-label">Адрес</div>
-      <div class="short-personal-content">{{order.recipient.address.street}}</div>
+      <div class="short-personal-content">{{order.recipient ? order.recipient.address.postalIndex: ''}}</div>
     </div>
   </div>
   <h2 class="main-color"><i class="fa fa-fw fa-credit-card"></i> Оплата</h2>
+    <div class="personal-data-container">
+      <div class="personal-data-block">
+        <div class="short-personal-label">Способ оплаты</div>
+        <div class="short-personal-content">Банковской картой</div>
+      </div>
+      <div class="personal-data-block">
+        <div class="short-personal-label">Итого</div>
+        <div class="short-personal-content">{{order.total}} ₽</div>
+      </div>
+      <div class="personal-data-block large-button">
+        <button pButton type="button" class="ui-button-success" label="Оплатить заказ"></button>
+      </div>
+    </div>
   <h2 class="main-color"><i class="fa fa-fw fa-shopping-cart"></i> Состав заказа</h2>
   <app-order-items [items]="order.items ? order.items : []"></app-order-items>
   <div class="order-total-container">

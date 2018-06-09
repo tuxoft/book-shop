@@ -17,7 +17,8 @@
 }
 .personal-data-container {
   display: flex;
-  margin: 10px 5px;
+  margin-left: 10px;
+  margin-bottom: 10px;
   .personal-data-block {
     width: 220px;
     .short-personal-label {
@@ -25,7 +26,6 @@
       font-size: 12px;
       font-weight: 400;
     }
-
     .short-personal-content {
       font-size: 15px;
       color: #333;
@@ -33,3 +33,7 @@
   }
 }
 
+.short-personal-content {
+  font-size: 15px;
+  color: #333;
+}
