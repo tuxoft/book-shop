@@ -1,7 +1,7 @@
 import { createConnection } from 'typeorm';
 import * as app from './app';
 import 'reflect-metadata';
-import * as search from './app/search/index';
+import * as elasticsearch from './app/elasticsearch';
 
 const httpServer = app.server.listen(8000, async () => {
   try {
@@ -13,7 +13,7 @@ const httpServer = app.server.listen(8000, async () => {
     await connection.runMigrations();
     console.log('Database migrations complete!');
 
-    search.init();
+    elasticsearch.init();
 
   } catch (err) {
     httpServer.close(() => {

@@ -1,51 +1,17 @@
+import { Indexer } from './indexer';
 import { Book } from '../orm/entity/book';
-import { Author } from '../orm/entity/author';
+import { getBookRepository } from '../orm/repository/index';
+import { IndexParams, IndexParamsBody } from './index.params';
 
-const indexName = 'bookshop';
+class BookIndexer extends Indexer<Book> {
 
-enum DocumentType {
-  Book = 'book',
-  Author = 'author',
-}
-
-function getDocumentType(object): DocumentType {
-  if (object instanceof Book) {
-    return DocumentType.Book;
+  getDocumentsForIndexing(): Promise<Book[]> {
+    return getBookRepository().find();
   }
-
-  if (object instanceof Author) {
-    return DocumentType.Author;
-  }
-
-  throw new Error('Can not map entity to document type');
 }
 
-export function getParamsForIndex() {
-  return {
-    index: indexName,
-  };
-}
-
-export function getParamsForIndexDocument(object) {
-  return {
-    index: indexName,
-    type: getDocumentType(object),
-    id: object.id,
-    body: object,
-  };
-}
-
-export function getParamsForDeleteDocument(object) {
-  return {
-    index: indexName,
-    type: getDocumentType(object),
-    id: object.id,
-  };
-}
-
-export function getParamsForSettings() {
-  return {
-    index: indexName,
+const bookIndexParams: IndexParams<Book> = new IndexParams(Book, {
+  getSettingsBody: (): IndexParamsBody => ({
     body: {
       analysis: {
         char_filter: {
@@ -74,13 +40,9 @@ export function getParamsForSettings() {
         },
       },
     },
-  };
-}
+  }),
 
-export function getParamsForMappingBooks() {
-  return {
-    index: indexName,
-    type: DocumentType.Book,
+  getMappingBody: (): IndexParamsBody => ({
     body: {
       properties: {
         title: {
@@ -118,13 +80,9 @@ export function getParamsForMappingBooks() {
         },
       },
     },
-  };
-}
+  }),
 
-export function getParamsForSearchBooks(searchText: string) {
-  return {
-    index: indexName,
-    type: DocumentType.Book,
+  getSearchBody: (searchText: string): IndexParamsBody => ({
     body: {
       query: {
         bool: {
@@ -156,5 +114,11 @@ export function getParamsForSearchBooks(searchText: string) {
         },
       },
     },
-  };
-}
+  }),
+
+  getSuggestBody: (searchText: string): IndexParamsBody => ({
+    body: {},
+  }),
+});
+
+export const bookIndexer = new BookIndexer(bookIndexParams);
