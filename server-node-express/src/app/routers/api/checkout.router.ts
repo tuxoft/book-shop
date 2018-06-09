@@ -1,10 +1,15 @@
 import * as express from 'express';
 import * as yandexCheckout from 'yandex-checkout';
 
-const userId = 1;
+const shopId = 1;
 const secretKey = 2;
 
-const yandex = yandexCheckout(userId, secretKey);
+const yandex = yandexCheckout(
+  {
+    shopId,
+    secretKey,
+    timeout: 20000,
+  });
 
 const router = express.Router();
 
