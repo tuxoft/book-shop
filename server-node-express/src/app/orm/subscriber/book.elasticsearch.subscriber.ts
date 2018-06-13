@@ -1,46 +1,22 @@
 import { Book } from '../entity/book';
-import {
-  EntitySubscriberInterface,
-  EventSubscriber,
-  InsertEvent,
-  RemoveEvent,
-  UpdateEvent,
-} from 'typeorm';
-import { getBookRepository } from '../repository/index';
+import { EventSubscriber, Repository } from 'typeorm';
+import { ElasticsearchSubscriber } from './elasticsearch.subscriber';
+import { Indexer } from '../../elasticsearch/indexer';
 import { bookIndexer } from '../../elasticsearch/book.indexer';
+import { getBookRepository } from '../repository/index';
 
 @EventSubscriber()
-export class BookElasticsearchSubscriber implements EntitySubscriberInterface<Book> {
+export class BookElasticsearchSubscriber extends ElasticsearchSubscriber<Book> {
 
   listenTo() {
     return Book;
   }
 
-  afterInsert(event: InsertEvent<Book>): Promise<any> | void {
-    return this.index(event.entity);
+  protected getIndexer(): Indexer<Book> {
+    return bookIndexer;
   }
 
-  afterUpdate(event: UpdateEvent<Book>): Promise<any> | void {
-    return this.index(event.entity);
-  }
-
-  beforeRemove(event: RemoveEvent<Book>): Promise<any> | void {
-    return this.delete(event.entity);
-  }
-
-  private index(book: Book): Promise<any> | void {
-    if (bookIndexer.isIndexReady()) {
-      return getBookRepository()
-      // Из-за того, что в entity может прийти "полная" сущность и т.к. в elasticsearch
-      // храним "краткие" данные, то необходимо по-новой получить "краткую" сущность
-        .findOneOrFail(book.id)
-        .then(bookIndexer.indexDocument);
-    }
-  }
-
-  private delete(book: Book): Promise<any> | void {
-    if (bookIndexer.isIndexReady()) {
-      return bookIndexer.deleteDocument(book);
-    }
+  protected getRepository(): Repository<Book> {
+    return getBookRepository();
   }
 }

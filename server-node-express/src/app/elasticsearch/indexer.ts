@@ -46,14 +46,9 @@ export abstract class Indexer<T> {
   }
 
   private fillIndex = async () => {
-    const books = await this.getDocumentsForIndexing();
+    const documents = await this.getDocumentsForIndexing();
 
-    const promises: Promise<any>[] = [];
-    books.forEach((book) => {
-      const indexed = client.indexDocument(this.indexParams, book);
-      promises.push(indexed);
-    });
-
-    await Promise.all(promises);
+    await Promise.all(documents.map(document =>
+      client.indexDocument(this.indexParams, document)));
   }
 }
