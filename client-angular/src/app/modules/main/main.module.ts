@@ -8,6 +8,7 @@ import { ShopMenuHorizontalComponent } from './components/shop-menu-horizontal/s
 import { CartLogoComponent } from './components/cart-logo/cart-logo.component';
 import { FormsModule } from '@angular/forms';
 import { CommonComponentsModule } from '../common-components/common-components.module';
+import { CheckoutService } from '../../services/rest/checkout.service';
 
 @NgModule({
   imports: [
@@ -21,6 +22,9 @@ import { CommonComponentsModule } from '../common-components/common-components.m
     ShopHeaderComponent,
     ShopMenuHorizontalComponent,
     CartLogoComponent,
+  ],
+  providers: [
+    CheckoutService,
   ],
 })
 export class MainModule { }

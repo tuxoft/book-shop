@@ -16,7 +16,7 @@
       <tr>
         <td>{{order.id}}</td>
         <td>{{order.status}}</td>
-        <td>{{order.total}} ₽</td>
+        <td>{{order.total}} <i class="fa fa-rouble"></i></td>
         <td class="edit-controls">
           <a class="info-order-link" (click)="cancelOrder(order.id)">Отменить заказ</a>
           <a class="info-order-link" routerLink="/profile/order/detail/{{order.id}}">Подробнее</a>
