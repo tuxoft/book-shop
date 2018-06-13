@@ -47,10 +47,10 @@
       </div>
       <div class="personal-data-block">
         <div class="short-personal-label">Итого</div>
-        <div class="short-personal-content">{{order.total}} ₽</div>
+        <div class="short-personal-content">{{order.total}} <i class="fa fa-rouble"></i></div>
       </div>
       <div class="personal-data-block large-button">
-        <button pButton type="button" class="ui-button-success" label="Оплатить заказ"></button>
+        <button pButton type="button" class="ui-button-success" label="Оплатить заказ" (click)="createPayment()"></button>
       </div>
     </div>
   <h2 class="main-color"><i class="fa fa-fw fa-shopping-cart"></i> Состав заказа</h2>

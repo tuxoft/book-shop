@@ -1,0 +1,12 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint-config-airbnb"
+  ],
+  "linterOptions": {
+    "exclude": ["**/orm/migration/content/*.ts"]
+  },
+  "jsRules": {},
+  "rules": {},
+  "rulesDirectory": []
+}

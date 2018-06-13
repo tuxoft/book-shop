@@ -14,7 +14,7 @@ NestFactory.create(ApplicationModule, expressInstance, {}).then((app) => {
   app.use(bodyParser.json());
   app.useGlobalPipes(new ValidationPipe());
   app.setGlobalPrefix('api');
-  app.listen(3000, () =>
-    console.log('Application is listening on port 3000.'),
+  app.listen(443, () =>
+    console.log('Application is listening on port 443.'),
   );
 });

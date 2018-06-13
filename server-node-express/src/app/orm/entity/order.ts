@@ -12,6 +12,7 @@ import { Type } from 'class-transformer';
 import { IsNotEmpty, ValidateNested } from 'class-validator';
 import { isNotEmptyMessage } from '../../utils/validation.util';
 import { OrderItem } from './orderItem';
+import { Payment } from './payment';
 
 @Entity('orders')
 export class Order {
@@ -36,6 +37,9 @@ export class Order {
 
   @OneToMany(type => OrderItem, orderItem => orderItem.order, { eager: true })
   items: OrderItem[];
+
+  @OneToMany(type => Payment, payment => payment.order, { eager: true })
+  payments: Payment[];
 
   @Column({ default: 0 })
   total: number;

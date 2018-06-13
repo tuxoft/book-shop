@@ -1,28 +1,34 @@
 import * as express from 'express';
 import * as yandexCheckout from 'yandex-checkout';
+import { getRepository } from 'typeorm';
+import { Payment } from '../../orm/entity/payment';
+import * as moment from 'moment';
+import { Order } from '../../orm/entity/order';
+import * as uuid from 'uuid/v4';
 
-const shopId = 1;
-const secretKey = 2;
+const shopId = '1';
+const secretKey = '2';
 
-const yandex = yandexCheckout(
-  {
-    shopId,
-    secretKey,
-    timeout: 20000,
-  });
+const yandex = yandexCheckout({
+  shopId,
+  secretKey,
+  timeout: 20000,
+  base_host: 'http://localhost:3000',
+});
 
 const router = express.Router();
 
 export default router;
 
-router.get('/', async (req, res, next) => {
+router.post('/', async (req, res, next) => {
   try {
-    const idempotenceKey = '02347fc4-a1f0-49db-807e-f0d67c2ed5a5';
-    yandex
-    .createPayment(
+    debugger;
+    const idempotenceKey = uuid();
+    const order: Order = await getRepository(Order).findOneOrFail(req.body.id);
+    const result: any = await yandex.createPayment(
       {
         amount: {
-          value: '2.00',
+          value: order.total,
           currency: 'RUB',
         },
         payment_method_data: {
@@ -30,20 +36,29 @@ router.get('/', async (req, res, next) => {
         },
         confirmation: {
           type: 'redirect',
-          return_url: 'https://www.merchant-website.com/return_url',
+          return_url: 'http://localhost:4200/order/payment-success',
         },
+        test: true,
       },
-      idempotenceKey)
-    .then((result) => {
-      console.log({ payment: result });
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+      idempotenceKey);
+
+    if (result && result.id) {
+      const payment: Payment = {
+        id: result.id,
+        createdDate: moment(result.created_at, 'YYYY-MM-DDTHH:mm:ssZ').toDate(),
+        status: result.status,
+        paid: result.paid,
+        order: req.body.id,
+        total: result.amount ? result.amount.value : 0,
+      };
+      await getRepository(Payment).save(payment);
+    }
 
     res.send('Checkout OK');
 
   } catch (err) {
+    console.error(err);
+    res.send('Checkout error:' + err);
     next(err);
   }
 });
