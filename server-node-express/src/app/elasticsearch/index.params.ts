@@ -1,3 +1,7 @@
+export interface IndexType<T> {
+  new (...args: any[]): T;
+}
+
 export interface IndexParamsBody {
   body: object;
 }
@@ -14,21 +18,21 @@ export class IndexParams<T> {
   indexType: string;
   bodies: IndexParamsBodies;
 
-  constructor(type: { new(): T }, bodies: IndexParamsBodies) {
-    const instance: T = new type();
+  constructor(indexType: IndexType<T>, bodies: IndexParamsBodies) {
+    const instance: T = new indexType();
     this.indexName = this.generateIndexName(instance);
     this.indexType = this.indexName;
     this.bodies = bodies;
   }
 
-  private generateIndexName = <T>(type: T) => {
-    switch (type.constructor.name) {
+  private generateIndexName = <T>(indexType: T) => {
+    switch (indexType.constructor.name) {
       case 'Book' :
         return 'book';
       case 'Author':
         return 'author';
       default:
-        throw new Error('Unsupported type ' + type.constructor.name);
+        throw new Error('Unsupported index type ' + indexType.constructor.name);
     }
   }
 
