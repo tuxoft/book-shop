@@ -72,6 +72,10 @@ export function deleteDocument<T>(indexParams: IndexParams<T>, document: T) {
   return client.delete(indexParams.getDeleteDocumentParams(document));
 }
 
-export function searchDocument<T>(indexParams: IndexParams<T>, text: string) {
-  return client.search(indexParams.getSearchDocumentParams(text));
+export function search<T>(indexParams: IndexParams<T>, text: string) {
+  return client.search(indexParams.getSearchParams(text));
+}
+
+export function suggest<T>(indexParams: IndexParams<T>, text: string) {
+  return client.search(indexParams.getSuggestParams(text));
 }

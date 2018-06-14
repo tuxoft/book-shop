@@ -64,8 +64,13 @@ export class IndexParams<T> {
     id: document['id'],
   })
 
-  public getSearchDocumentParams = (text: string) => ({
+  public getSearchParams = (text: string) => ({
     index: this.indexName,
     body: this.bodies.getSearchBody(text).body,
+  })
+
+  public getSuggestParams = (text: string) => ({
+    index: this.indexName,
+    body: this.bodies.getSuggestBody(text).body,
   })
 }

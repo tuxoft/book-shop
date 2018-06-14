@@ -1,9 +1,38 @@
+import * as client from './client';
 import { Indexer } from './indexer';
 import { IndexParams, IndexParamsBody } from './index.params';
 import { Author } from '../orm/entity/author';
 import { getRepository } from 'typeorm';
 
+class AuthorForSuggestCompletion extends Author {
+  suggestCompletion1: string;
+  suggestCompletion2: string;
+
+  constructor(author: Author) {
+    super();
+    this.id = author.id;
+    this.name = author.name;
+
+    this.suggestCompletion1 = (
+      (this.name.last || '')
+      + ' ' + (this.name.first || '')
+      + ' ' + (this.name.middle || '')
+    ).trim().replace(/\s\s+/g, ' ');
+
+    this.suggestCompletion2 = (
+      (this.name.first || '')
+      + ' ' + (this.name.middle || '')
+      + ' ' + (this.name.last || '')
+    ).trim().replace(/\s\s+/g, ' ');
+  }
+}
+
 class AuthorIndexer extends Indexer<Author> {
+
+  public indexDocument = (author: Author) => {
+    const authorForSuggestCompletion = new AuthorForSuggestCompletion(author);
+    return client.indexDocument(this.indexParams, authorForSuggestCompletion);
+  }
 
   getDocumentsForIndexing(): Promise<Author[]> {
     return getRepository(Author).find();
@@ -45,12 +74,26 @@ const authorIndexParams: IndexParams<Author> = new IndexParams(Author, {
             },
           },
         },
+        suggestCompletion1: {
+          type: 'keyword',
+          index: false,
+          copy_to: 'suggestCompletionAll',
+        },
+        suggestCompletion2: {
+          type: 'keyword',
+          index: false,
+          copy_to: 'suggestCompletionAll',
+        },
+        suggestCompletionAll: {
+          type: 'completion',
+        },
       },
     },
   }),
 
   getSearchBody: (searchText: string): IndexParamsBody => ({
     body: {
+      _source: ['id', 'name'],
       query: {
         bool: {
           should: [{
@@ -77,7 +120,21 @@ const authorIndexParams: IndexParams<Author> = new IndexParams(Author, {
   }),
 
   getSuggestBody: (searchText: string): IndexParamsBody => ({
-    body: {},
+    body: {
+      _source: false,
+      suggest: {
+        completion: {
+          prefix: searchText,
+          completion: {
+            field: 'suggestCompletionAll',
+            size: 10,
+            fuzzy: {
+              fuzziness: 'auto',
+            },
+          },
+        },
+      },
+    },
   }),
 });
 

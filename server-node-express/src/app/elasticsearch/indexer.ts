@@ -22,17 +22,13 @@ export abstract class Indexer<T> {
 
   public isIndexReady = () => this.indexReady;
 
-  public searchDocument = (text: string) => client.searchDocument(this.indexParams, text);
-
   public indexDocument = (document: T) => client.indexDocument(this.indexParams, document);
 
   public deleteDocument = (document: T) => client.deleteDocument(this.indexParams, document);
 
-  private deleteIndex = async () => {
-    if (await client.indexExists(this.indexParams)) {
-      await client.deleteIndex(this.indexParams);
-    }
-  }
+  public search = (text: string) => client.search(this.indexParams, text);
+
+  public suggest = (text: string) => client.suggest(this.indexParams, text);
 
   private createIndex = async () => {
 
@@ -45,10 +41,16 @@ export abstract class Indexer<T> {
     await client.indexMapping(this.indexParams);
   }
 
+  private deleteIndex = async () => {
+    if (await client.indexExists(this.indexParams)) {
+      await client.deleteIndex(this.indexParams);
+    }
+  }
+
   private fillIndex = async () => {
     const documents = await this.getDocumentsForIndexing();
 
     await Promise.all(documents.map(document =>
-      client.indexDocument(this.indexParams, document)));
+      this.indexDocument(document)));
   }
 }

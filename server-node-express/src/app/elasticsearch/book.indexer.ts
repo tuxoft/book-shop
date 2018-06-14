@@ -48,6 +48,12 @@ const bookIndexParams: IndexParams<Book> = new IndexParams(Book, {
         title: {
           type: 'text',
           analyzer: 'russian',
+          fields: {
+            completion: {
+              type: 'completion',
+              analyzer: 'standard',
+            },
+          },
         },
         isbn: {
           type: 'keyword',
@@ -117,7 +123,27 @@ const bookIndexParams: IndexParams<Book> = new IndexParams(Book, {
   }),
 
   getSuggestBody: (searchText: string): IndexParamsBody => ({
-    body: {},
+    body: {
+      _source: ['id', 'title', 'authors'],
+      size: 10,
+      query: {
+        match: {
+          title: searchText,
+        },
+      },
+      suggest: {
+        completion: {
+          prefix: searchText,
+          completion: {
+            field: 'title.completion',
+            size: 10,
+            fuzzy: {
+              fuzziness: 'auto',
+            },
+          },
+        },
+      },
+    },
   }),
 });
 

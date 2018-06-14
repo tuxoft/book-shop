@@ -7,6 +7,8 @@
     "exclude": ["**/orm/migration/content/*.ts"]
   },
   "jsRules": {},
-  "rules": {},
+  "rules": {
+    "no-else-after-return": false
+  },
   "rulesDirectory": []
 }
