@@ -1,8 +1,8 @@
 import * as express from 'express';
 import { Selection } from '../../orm/entity/selection';
 import { transformAndValidate } from 'class-transformer-validator';
-import { getSelectionRepository } from '../../orm/repository/index';
 import { plainToClass } from 'class-transformer';
+import { getRepository } from 'typeorm';
 
 const router = express.Router();
 
@@ -10,7 +10,7 @@ export default router;
 
 router.get('/', async (req, res, next) => {
   try {
-    const selection = await getSelectionRepository().find();
+    const selection = await getRepository(Selection).find();
 
     res.send(selection);
 
@@ -27,7 +27,7 @@ router.post('/', async (req, res, next) => {
       },
     });
 
-    await getSelectionRepository().save(selection);
+    await getRepository(Selection).save(selection);
 
     res.send(selection);
 
@@ -40,7 +40,7 @@ router.get('/:id', async (req, res, next) => {
   try {
     const id: string = req.params.id;
 
-    const selection = await getSelectionRepository().findOneOrFail(id);
+    const selection = await getRepository(Selection).findOneOrFail(id);
 
     res.send(selection);
 
@@ -52,7 +52,7 @@ router.get('/:id', async (req, res, next) => {
 router.delete('/:id', async (req, res, next) => {
   try {
     const selection = plainToClass(Selection, { id: req.params.id });
-    await getSelectionRepository().remove(selection);
+    await getRepository(Selection).remove(selection);
 
     res.send(selection);
 

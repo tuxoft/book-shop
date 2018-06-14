@@ -1,12 +1,12 @@
 import { Indexer } from './indexer';
 import { Book } from '../orm/entity/book';
-import { getBookRepository } from '../orm/repository/index';
 import { IndexParams, IndexParamsBody } from './index.params';
+import { getRepository } from 'typeorm';
 
 class BookIndexer extends Indexer<Book> {
 
   getDocumentsForIndexing(): Promise<Book[]> {
-    return getBookRepository().find();
+    return getRepository(Book).find();
   }
 }
 

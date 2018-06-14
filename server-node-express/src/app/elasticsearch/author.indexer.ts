@@ -1,12 +1,12 @@
 import { Indexer } from './indexer';
 import { IndexParams, IndexParamsBody } from './index.params';
-import { getAuthorRepository } from '../orm/repository/index';
 import { Author } from '../orm/entity/author';
+import { getRepository } from 'typeorm';
 
 class AuthorIndexer extends Indexer<Author> {
 
   getDocumentsForIndexing(): Promise<Author[]> {
-    return getAuthorRepository().find();
+    return getRepository(Author).find();
   }
 }
 

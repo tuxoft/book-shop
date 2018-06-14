@@ -1,8 +1,8 @@
 import * as express from 'express';
 import { Publisher } from '../../orm/entity/publisher';
 import { transformAndValidate } from 'class-transformer-validator';
-import { getPublisherRepository } from '../../orm/repository/index';
 import { plainToClass } from 'class-transformer';
+import { getRepository } from 'typeorm';
 
 const router = express.Router();
 
@@ -10,7 +10,7 @@ export default router;
 
 router.get('/', async (req, res, next) => {
   try {
-    const publishers = await getPublisherRepository().find();
+    const publishers = await getRepository(Publisher).find();
 
     res.send(publishers);
 
@@ -27,7 +27,7 @@ router.post('/', async (req, res, next) => {
       },
     });
 
-    await getPublisherRepository().save(publisher);
+    await getRepository(Publisher).save(publisher);
 
     res.send(publisher);
 
@@ -40,7 +40,7 @@ router.get('/:id', async (req, res, next) => {
   try {
     const id: string = req.params.id;
 
-    const publisher = await getPublisherRepository().findOneOrFail(id, {
+    const publisher = await getRepository(Publisher).findOneOrFail(id, {
       relations: ['books', 'bookSeries'],
     });
 
@@ -54,7 +54,7 @@ router.get('/:id', async (req, res, next) => {
 router.delete('/:id', async (req, res, next) => {
   try {
     const publisher = plainToClass(Publisher, { id: req.params.id });
-    await getPublisherRepository().remove(publisher);
+    await getRepository(Publisher).remove(publisher);
 
     res.send(publisher);
 

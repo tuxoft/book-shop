@@ -1,17 +1,15 @@
 import * as express from 'express';
 import { keycloak } from '../../secure/index';
 import { getUserUUID } from '../../utils/authentication.util';
-import {
-  getCartItemRepository,
-  getOrderItemRepository,
-  getOrderRepository,
-} from '../../orm/repository/index';
 import { transformAndValidate } from 'class-transformer-validator';
 import { Order } from '../../orm/entity/order';
 import { getUserOrCreateIfNotExists } from './user.router';
 import { ArrayNotSupportedClientError } from '../../errors/client.errors';
 import { BusinessLogicError } from '../../errors/businesslogic.errors';
 import { UnauthorizedAccessSecurityError } from '../../errors/security.errors';
+import { CartItem } from '../../orm/entity/cartItem';
+import { getRepository } from 'typeorm';
+import { OrderItem } from '../../orm/entity/orderItem';
 
 const router = express.Router();
 
@@ -21,7 +19,7 @@ router.get('/', keycloak.protect(), async (req, res, next) => {
   try {
     const userUUID = getUserUUID(req);
 
-    const orders = await getOrderRepository().find({ where: { user: { id: userUUID } } });
+    const orders = await getRepository(Order).find({ where: { user: { id: userUUID } } });
 
     res.send(orders);
 
@@ -35,7 +33,7 @@ router.get('/:id', keycloak.protect(), async (req, res, next) => {
     const orderId: string = req.params.id;
     const userUUID = getUserUUID(req);
 
-    const order = await getOrderRepository().findOneOrFail(orderId);
+    const order = await getRepository(Order).findOneOrFail(orderId);
 
     if (order.userId !== userUUID) {
       next(new UnauthorizedAccessSecurityError());
@@ -71,21 +69,21 @@ router.post('/', keycloak.protect(), async (req, res, next) => {
     }
 
     order.total = 0;
-    await getOrderRepository().save(order);
+    await getRepository(Order).save(order);
     for (let i = 0; i < order.user.cart.items.length; i += 1) {
       const cartItem = order.user.cart.items[i];
-      const orderItem = getOrderItemRepository().create();
+      const orderItem = getRepository(OrderItem).create();
       orderItem.order = order;
       orderItem.book = cartItem.book;
       orderItem.count = cartItem.count;
       orderItem.sum = cartItem.count * cartItem.book.price;
       order.total += orderItem.sum;
-      await getOrderItemRepository().save(orderItem);
-      await getCartItemRepository().delete(cartItem);
+      await getRepository(OrderItem).save(orderItem);
+      await getRepository(CartItem).delete(cartItem);
     }
-    await getOrderRepository().save(order);
+    await getRepository(Order).save(order);
 
-    res.send(await getOrderRepository().findOneOrFail(order.id));
+    res.send(await getRepository(Order).findOneOrFail(order.id));
 
   } catch (err) {
     next(err);
