@@ -2,11 +2,13 @@ import { bookIndexer } from './book.indexer';
 import * as client from './client';
 import { authorIndexer } from './author.indexer';
 import { Indexer } from './indexer';
+import { categoryIndexer } from './category.indexer';
 
 // Новые "индексы" добавляем в этот массив
 const indexers: Indexer<any>[] = [
-  bookIndexer,
   authorIndexer,
+  bookIndexer,
+  categoryIndexer,
 ];
 
 export function init(): Promise<any> {

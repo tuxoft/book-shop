@@ -137,9 +137,6 @@ const bookIndexParams: IndexParams<Book> = new IndexParams(Book, {
           completion: {
             field: 'title.completion',
             size: 10,
-            fuzzy: {
-              fuzziness: 'auto',
-            },
           },
         },
       },

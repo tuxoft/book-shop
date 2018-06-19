@@ -27,12 +27,14 @@ export class IndexParams<T> {
 
   private generateIndexName = <T>(indexType: T) => {
     switch (indexType.constructor.name) {
-      case 'Book' :
-        return 'book';
       case 'Author':
         return 'author';
+      case 'Book' :
+        return 'book';
+      case 'Category':
+        return 'category';
       default:
-        throw new Error('Unsupported index type ' + indexType.constructor.name);
+        throw new Error('Unsupported index type: ' + indexType.constructor.name);
     }
   }
 
@@ -57,6 +59,24 @@ export class IndexParams<T> {
     id: document['id'],
     body: document,
   })
+
+  public getIndexDocumentsParams = (documents: T[]) => {
+    const body = [];
+    documents.forEach((document) => {
+      body.push({
+        index: {
+          _id: document['id'],
+        },
+      });
+      body.push(document);
+    });
+
+    return {
+      body,
+      index: this.indexName,
+      type: this.indexType,
+    };
+  }
 
   public getDeleteDocumentParams = (document: T) => ({
     index: this.indexName,

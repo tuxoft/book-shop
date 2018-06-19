@@ -10,6 +10,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/toArray';
 import 'rxjs/add/operator/toPromise';
+import { categoryIndexer } from '../../elasticsearch/category.indexer';
 
 const router = express.Router();
 
@@ -30,18 +31,28 @@ router.get('/suggest', async (req, res, next) => {
   try {
     const query = req.query.q;
 
+    let authors = [];
     let books = [];
+    let categories = [];
     let completion = [];
 
     if (validator.isNotEmpty(query)) {
       const authorSuggest = await authorIndexer.suggest(query);
       const bookSuggest = await bookIndexer.suggest(query);
+      const categorySuggest = await categoryIndexer.suggest(query);
 
-      completion = await Observable.of(authorSuggest, bookSuggest)
+      completion = await Observable.of(categorySuggest, authorSuggest, bookSuggest)
         .map(e => e['suggest'])
         .switchMap(e => e['completion'])
         .switchMap(e => e['options'])
         .map(e => e['text'])
+        .toArray()
+        .toPromise();
+
+      authors = await Observable.of(authorSuggest)
+        .map(e => e['hits'])
+        .switchMap(e => e['hits'])
+        .map(e => e['_source'])
         .toArray()
         .toPromise();
 
@@ -51,11 +62,20 @@ router.get('/suggest', async (req, res, next) => {
         .map(e => e['_source'])
         .toArray()
         .toPromise();
+
+      categories = await Observable.of(categorySuggest)
+        .map(e => e['hits'])
+        .switchMap(e => e['hits'])
+        .map(e => e['_source'])
+        .toArray()
+        .toPromise();
     }
 
     res.send({
-      completion,
+      authors,
       books,
+      categories,
+      completion,
     });
 
   } catch (err) {
@@ -75,6 +95,15 @@ router.get('/books', async (req, res, next) => {
 router.get('/authors', async (req, res, next) => {
   try {
     const result = await search(authorIndexer, req.query.q);
+    res.send(result);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get('/categories', async (req, res, next) => {
+  try {
+    const result = await search(categoryIndexer, req.query.q);
     res.send(result);
   } catch (err) {
     next(err);

@@ -68,6 +68,10 @@ export function indexDocument<T>(indexParams: IndexParams<T>, document: T) {
   return client.index(indexParams.getIndexDocumentParams(document));
 }
 
+export function indexDocuments<T>(indexParams: IndexParams<T>, documents: T[]) {
+  return client.bulk(indexParams.getIndexDocumentsParams(documents));
+}
+
 export function deleteDocument<T>(indexParams: IndexParams<T>, document: T) {
   return client.delete(indexParams.getDeleteDocumentParams(document));
 }

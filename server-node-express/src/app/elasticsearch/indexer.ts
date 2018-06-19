@@ -24,6 +24,8 @@ export abstract class Indexer<T> {
 
   public indexDocument = (document: T) => client.indexDocument(this.indexParams, document);
 
+  public indexDocuments = (document: T[]) => client.indexDocuments(this.indexParams, document);
+
   public deleteDocument = (document: T) => client.deleteDocument(this.indexParams, document);
 
   public search = (text: string) => client.search(this.indexParams, text);
@@ -49,8 +51,6 @@ export abstract class Indexer<T> {
 
   private fillIndex = async () => {
     const documents = await this.getDocumentsForIndexing();
-
-    await Promise.all(documents.map(document =>
-      this.indexDocument(document)));
+    await this.indexDocuments(documents);
   }
 }

@@ -34,10 +34,40 @@ class AuthorIndexer extends Indexer<Author> {
     return client.indexDocument(this.indexParams, authorForSuggestCompletion);
   }
 
+  public indexDocuments = (authors: Author[]) => {
+    const authorsForSuggestCompletion = authors.map(author =>
+      new AuthorForSuggestCompletion(author));
+
+    return client.indexDocuments(this.indexParams, authorsForSuggestCompletion);
+  }
+
   getDocumentsForIndexing(): Promise<Author[]> {
     return getRepository(Author).find();
   }
 }
+
+const getQuery = searchText => ({
+  bool: {
+    should: [{
+      nested: {
+        path: 'name',
+        score_mode: 'sum',
+        boost: 5,
+        query: {
+          multi_match: {
+            query: searchText,
+            type: 'cross_fields',
+            boost: 0.3,
+            fields: [
+              'name.last^3',
+              'name.first^2',
+              'name.middle^1.5'],
+          },
+        },
+      },
+    }],
+  },
+});
 
 const authorIndexParams: IndexParams<Author> = new IndexParams(Author, {
   getSettingsBody: (): IndexParamsBody => ({
@@ -94,43 +124,20 @@ const authorIndexParams: IndexParams<Author> = new IndexParams(Author, {
   getSearchBody: (searchText: string): IndexParamsBody => ({
     body: {
       _source: ['id', 'name'],
-      query: {
-        bool: {
-          should: [{
-            nested: {
-              path: 'name',
-              score_mode: 'sum',
-              boost: 5,
-              query: {
-                multi_match: {
-                  query: searchText,
-                  type: 'cross_fields',
-                  boost: 0.3,
-                  fields: [
-                    'name.last^3',
-                    'name.first^2',
-                    'name.middle^1.5'],
-                },
-              },
-            },
-          }],
-        },
-      },
+      query: getQuery(searchText),
     },
   }),
 
   getSuggestBody: (searchText: string): IndexParamsBody => ({
     body: {
-      _source: false,
+      _source: ['id', 'name'],
+      query: getQuery(searchText),
       suggest: {
         completion: {
           prefix: searchText,
           completion: {
             field: 'suggestCompletionAll',
             size: 10,
-            fuzzy: {
-              fuzziness: 'auto',
-            },
           },
         },
       },
