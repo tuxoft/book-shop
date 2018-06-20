@@ -9,7 +9,6 @@ export class CheckoutService {
   constructor(private http: HttpClient) { }
 
   createPayment(orderId: number): Observable<any> {
-    debugger;
     return this.http.post<any>(this.checkoutUrl, { id: orderId });
   }
 }
