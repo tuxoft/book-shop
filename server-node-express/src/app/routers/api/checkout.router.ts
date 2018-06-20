@@ -22,7 +22,6 @@ export default router;
 
 router.post('/', async (req, res, next) => {
   try {
-    debugger;
     const idempotenceKey = uuid();
     const order: Order = await getRepository(Order).findOneOrFail(req.body.id);
     const result: any = await yandex.createPayment(
